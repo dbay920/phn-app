@@ -3,7 +3,7 @@ Mobile app for Primary Health Network
 
 PROJECT BRIEF 
 
-To provide our patients and employees access to provider, services, and location information through an easy to use and convenient mobile appliaction.   
+To provide our patients and employees access to provider, services, and location information through an easy to use and convenient mobile application.   
 
 
 1.0 FUNCTIONALITY
