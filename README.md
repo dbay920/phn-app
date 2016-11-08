@@ -13,3 +13,28 @@ To provide our patients and employees access to provider, services, and location
 - List of services
 - Patient Portal
 - Health & Fitness News
+
+
+FUNCTION BREAKDOWN
+
+Search by provider
+- provider A-Z
+- provider by location
+- provider by category
+
+Search by location
+- location A-Z
+- location by distance
+- location by category
+
+List of services
+- A-Z service description
+- services by location
+- services by provider
+
+Health & Fitness News
+- PHN Blog posts
+
+Patient Portal
+- Bill Pay
+- Make an appointment
