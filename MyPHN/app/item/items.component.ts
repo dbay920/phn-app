@@ -24,7 +24,8 @@ export class ItemsComponent implements OnInit {
     ngOnInit(): void {
         //this.items = this.itemService.getItems();
         this.locationsService.getCountyLocations().then((x) => {
-            console.log(x);
+            let str = JSON.stringify(x, null, 4)
+            console.log(str);
         },
             (error) => alert("Unfortunately we could not find your account.")
         );
