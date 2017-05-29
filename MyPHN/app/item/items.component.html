@@ -33,79 +33,107 @@
         </StackLayout>
     </StackLayout>
 </ActionBar>
-<TabView>
-    <AbsoluteLayout
-        *tabItem="{title: 'Home', iconSource: '~/images/Home.png'}"
-        style=" width: 360pt;"
-    >
-        <StackLayout>
-            <Label text="Closest PHN Location:" class="small-title background">
 
-            </Label>
-            <Image src="~/images/clarion.png" width="360pt"></Image>
-            <Button text="Locations" class="tile"
-                    style=" height: 80pt; font-size: 24pt;background-color: #00817d; background-image: ~/images/Icon_Locations.png;  background-repeat: no-repeat; background-position: 310 25; border-radius: 5pt;">
-            </Button>
-
-            <Label text="Services" class="tile background"
-                   style="background-image: ~/images/Icon_Services.png;  background-repeat: no-repeat; background-position: 303 25;">
-            </Label>
-            <Label text="Providers" class="tile background"
-                   style="background-image: ~/images/Icon_Providers.png;  background-repeat: no-repeat; background-position: 304 25;">
-            </Label>
+<RadSideDrawer tkExampleTitle tkToggleNavButton>
+    <StackLayout tkDrawerContent class="sideStackLayout">
+        <StackLayout class="sideTitleStackLayout">
+            <Label text="Navigation Menu"></Label>
         </StackLayout>
-        <Label
-            top="207"
-            left="2"
-            text="Clarion Urgent Care"
-            class="alpha double-pica col-12"
-        >
-
-        </Label>
-        <Label
-            top="235"
-            left="2"
-            text="30 Pinnacle Drive"
-            class="alpha-two great-primer col-12"
-        >
-
-        </Label>
-        <Label
-            top="256"
-            left="2"
-            text="Clarion, PA 16214"
-            class="alpha-two great-primer col-12"
-        >
-
-        </Label>
-        <Label
-            top="256" left="300" text="5.2 mi" class="alpha-two great-primer"
-        >
-
-        </Label>
-        <Image src="~/images/Icon_Directions.png" top="210" left="300">
-
-        </Image>
-    </AbsoluteLayout>
-
-    <StackLayout *tabItem="{title: 'Portal', iconSource: '~/images/Portal.png'}">
-        <Label text="Second tab item"></Label>
+        <StackLayout class="sideStackLayout">
+            <Label text="Primary" class="sideLabel sideLightGrayLabel"></Label>
+            <Label text="Social" class="sideLabel"></Label>
+            <Label text="Promotions" class="sideLabel"></Label>
+            <Label text="Labels" class="sideLabel sideLightGrayLabel"></Label>
+            <Label text="Important" class="sideLabel"></Label>
+            <Label text="Starred" class="sideLabel"></Label>
+            <Label text="Sent Mail" class="sideLabel"></Label>
+            <Label text="Drafts" class="sideLabel"></Label>
+        </StackLayout>
+        <Label text="Close Drawer" color="lightgray" padding="10" style="horizontal-align: center" (tap)="onCloseDrawerTap()"></Label>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'News', iconSource: '~/images/News.png'}">
-        <Label text="Third tab item"></Label>
-    </StackLayout>
-    <StackLayout *tabItem="{title: 'More', iconSource: '~/images/More.png'}">
-        <Label text="Third tab item"></Label>
-        <CardView class="cardStyle" margin="8" elevation="40" radius="100" >
-            <GridLayout rows="10,30,30,250, auto, auto,10" columns="10,40, *, 30,10">
-                <Image src="~/images/Icon_Locations.png" stretch="aspectFit" verticalAlignment="stretch" col="1" row="1" rowSpan="2"></Image>
-                <Label class="createdBy text-left" horizontalAlignment="left" text="item.CreatedBy" row="1" col="2" textWrap="true"></Label>
-                <Label class="createdOn text-left" horizontalAlignment="left" text="item.UpdatedDate" row="2" col="2"></Label>
 
-                <Label horizontalAlignment="left" text="item.Title" colSpan="3" row="4" textWrap="true" col="1"></Label>
-                <Label  horizontalAlignment="left" text="item.Summary" textWrap="true" col="1" row="5" colSpan="3"></Label>
-            </GridLayout>
-        </CardView>
+        <TabView tkMainContent>
+            <AbsoluteLayout
+                *tabItem="{title: 'Home', iconSource: '~/images/Home.png'}"
+                style=" width: 360pt;"
+            >
+                <StackLayout>
+                    <Label text="Closest PHN Location:" class="small-title background">
 
-    </StackLayout>
-</TabView>
+                    </Label>
+                    <Image src="~/images/clarion.png" width="360pt"></Image>
+                    <Button text="Locations" class="tile"
+                            style=" height: 80pt; font-size: 24pt;background-color: #00817d; background-image: ~/images/Icon_Locations.png;  background-repeat: no-repeat; background-position: 310 25; border-radius: 5pt;"
+                            (tap)="change()"
+                    >
+                    </Button>
+
+                    <Label text="Services" class="tile background"
+                           style="background-image: ~/images/Icon_Services.png;  background-repeat: no-repeat; background-position: 303 25;">
+                    </Label>
+                    <Label text="Providers" class="tile background"
+                           style="background-image: ~/images/Icon_Providers.png;  background-repeat: no-repeat; background-position: 304 25;">
+                    </Label>
+                </StackLayout>
+                <Label
+                    top="207"
+                    left="2"
+                    text="Clarion Urgent Care"
+                    class="alpha double-pica col-12"
+                >
+
+                </Label>
+                <Label
+                    top="235"
+                    left="2"
+                    text="30 Pinnacle Drive"
+                    class="alpha-two great-primer col-12"
+                >
+
+                </Label>
+                <Label
+                    top="256"
+                    left="2"
+                    text="Clarion, PA 16214"
+                    class="alpha-two great-primer col-12"
+                >
+
+                </Label>
+                <Label
+                    top="256" left="300" text="5.2 mi" class="alpha-two great-primer"
+                >
+
+                </Label>
+                <Image src="~/images/Icon_Directions.png" top="210" left="300">
+
+                </Image>
+            </AbsoluteLayout>
+
+            <StackLayout *tabItem="{title: 'Portal', iconSource: '~/images/Portal.png'}">
+                <Label text="Second tab item"></Label>
+            </StackLayout>
+
+            <StackLayout>
+                <Label text="Second tab item"></Label>
+            </StackLayout>
+
+            <StackLayout *tabItem="{title: 'News', iconSource: '~/images/News.png'}">
+                <Label text="Third tab item"></Label>
+            </StackLayout>
+            <StackLayout *tabItem="{title: 'More', iconSource: '~/images/More.png'}">
+                <Label text="Third tab item"></Label>
+                <CardView class="cardStyle" margin="8" elevation="40" radius="100" >
+                    <GridLayout rows="10,30,30,250, auto, auto,10" columns="10,40, *, 30,10">
+                        <Image src="~/images/Icon_Locations.png" stretch="aspectFit" verticalAlignment="stretch" col="1" row="1" rowSpan="2"></Image>
+                        <Label class="createdBy text-left" horizontalAlignment="left" text="item.CreatedBy" row="1" col="2" textWrap="true"></Label>
+                        <Label class="createdOn text-left" horizontalAlignment="left" text="item.UpdatedDate" row="2" col="2"></Label>
+
+                        <Label horizontalAlignment="left" text="item.Title" colSpan="3" row="4" textWrap="true" col="1"></Label>
+                        <Label  horizontalAlignment="left" text="item.Summary" textWrap="true" col="1" row="5" colSpan="3"></Label>
+                    </GridLayout>
+                </CardView>
+
+            </StackLayout>
+        </TabView>
+
+</RadSideDrawer>

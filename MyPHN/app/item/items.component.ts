@@ -17,17 +17,27 @@ declare var CGSizeMake: any;
     templateUrl: "./items.component.html",
 })
 
-export class ItemsComponent implements OnInit {
 
-    constructor(private locationsService: LocationsService) { }
+export class ItemsComponent implements OnInit {
+    public tabSelectedIndex: number;
+    thing: number
+    constructor(private locationsService: LocationsService) {
+        this.tabSelectedIndex = 3;
+    }
 
     ngOnInit(): void {
         //this.items = this.itemService.getItems();
+        this.thing = 0;
         this.locationsService.getCountyLocations().then((x) => {
             let str = JSON.stringify(x, null, 4)
             console.log(str);
         },
             (error) => alert("Unfortunately we could not find your account.")
         );
+    }
+
+    change(): void {
+        this.tabSelectedIndex = 3;
+        console.log(this.tabSelectedIndex);
     }
 }
