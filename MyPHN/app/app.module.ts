@@ -4,7 +4,7 @@ import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
 import { HttpModule } from "@angular/http";
 
-import { UserService } from "./shared/user.service";
+import { LocationsService } from "./shared/location/locations.service";
 import { ItemsComponent } from "./item/items.component";
 
 @NgModule({
@@ -21,7 +21,7 @@ import { ItemsComponent } from "./item/items.component";
         ItemsComponent,
     ],
     providers: [
-        UserService
+        LocationsService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

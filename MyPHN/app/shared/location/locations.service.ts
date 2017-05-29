@@ -12,7 +12,7 @@ var onEventCallback = function(event: xmlModule.ParserEvent) {
             if (event.attributes) {
                 message += ", Attributes:";
                 for (var attributeName in event.attributes) {
-                    if (event.attributes.hasOwnProperty(attributeName)) {
+                    if (event.attributes.hasOwnProperty(attributeName) && attributeName === 'href') {
                         message += " " + attributeName + "=\"" + event.attributes[attributeName] + "\"";
                     }
                 }
@@ -21,7 +21,7 @@ var onEventCallback = function(event: xmlModule.ParserEvent) {
             break;
 
         case xmlModule.ParserEventType.EndElement:
-            console.log(event.eventType + " " + event.elementName);
+            //console.log(event.eventType + " " + event.elementName);
             break;
 
         case xmlModule.ParserEventType.Text:

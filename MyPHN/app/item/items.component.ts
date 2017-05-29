@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { View } from "ui/core/view";
 import { Item } from "./item";
-import { UserService } from "../shared/user.service";
+import { LocationsService } from "../shared/location/locations.service";
 import tabViewModule = require("ui/tab-view");
 
 import { Color } from "color";
@@ -19,11 +19,11 @@ declare var CGSizeMake: any;
 
 export class ItemsComponent implements OnInit {
 
-    constructor(private userService: UserService) { }
+    constructor(private locationsService: LocationsService) { }
 
     ngOnInit(): void {
         //this.items = this.itemService.getItems();
-        this.userService.getCountyLocations().then((x) => {
+        this.locationsService.getCountyLocations().then((x) => {
             console.log(x);
         },
             (error) => alert("Unfortunately we could not find your account.")
