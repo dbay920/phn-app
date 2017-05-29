@@ -10,3 +10,143 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import 'nativescript-theme-core/css/core.light.css';
+
+
+
+ActionBar {
+  background-color:  #00817d;
+  color: white;
+}
+
+TabView {
+  background-color: #9d9d9d;
+  tab-background-color: rgba(255,255,255,0.5);
+  font-size: 14pt;
+}
+
+Page {
+  background-color: rgba(155,155,155,1);
+}
+
+.tile {
+  height: 80pt;
+  border-radius: 2px;
+}
+
+.col-12 {
+  width: 356pt;
+  padding: 5pt;
+}
+
+.alpha {
+  background-color: rgba(0,129,125,0.65);
+  height: 35pt;
+  color: white;
+
+}
+
+.alpha-two {
+  background-color: rgba(0,129,125,0.65);
+
+  color: white;
+}
+
+
+Label.tile {
+  font-size: 32pt;
+  background-color: #00817D;
+  color: #FFFFFF;
+  font-weight: bold;
+  height: 80pt;
+  margin: 4pt;
+  padding: 18pt;
+}
+
+.tile-icon {
+  background-color: #00817d;
+}
+
+.action-image {
+  height: 25pt;
+}
+
+.background {
+  color: white;
+  background-color: #00817d;
+}
+
+.cardStyle {
+    background-color: #3489db;
+    color: #fff;
+}
+
+.small-title {
+  font-size: 18pt;
+  line-height: 21pt;
+  font-family: Roboto;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.my-phn {
+  height: 22pt;
+  width: 150pt;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 24pt;
+}
+
+.logo {
+  height: 40pt;
+  width: 40pt;
+}
+
+.favorites {
+  height: 16pt;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 14pt;
+  line-height: 16pt;
+  text-align: center;
+}
+
+.search-phn {
+  height: 16pt;
+  width: 90pt;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 14pt;
+  line-height: 16pt;
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.pica {
+  font-size: 12pt;
+}
+
+.english {
+  font-size: 14pt;
+}
+
+.double-english {
+  font-size: 28pt;
+}
+
+.double-pica {
+  font-size: 24pt;
+  height: 28pt;
+}
+
+.double-columbian {
+  font-size: 32pt;
+
+}
+
+.great-primer {
+  font-size: 18pt;
+  height: 21pt;
+}
