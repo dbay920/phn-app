@@ -7,6 +7,8 @@ import { NativeScriptUISideDrawerModule } from "nativescript-telerik-ui-pro/side
 
 import { LocationsService } from "./shared/location/locations.service";
 import { ItemsComponent } from "./item/items.component";
+import { SomeOtherComponent } from "./some.component";
+import { StartComponent } from "./start.component";
 
 @NgModule({
     bootstrap: [
@@ -21,6 +23,8 @@ import { ItemsComponent } from "./item/items.component";
     declarations: [
         AppComponent,
         ItemsComponent,
+        StartComponent,
+        SomeOtherComponent
     ],
     providers: [
         LocationsService

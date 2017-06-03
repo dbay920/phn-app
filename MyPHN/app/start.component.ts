@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { View } from "ui/core/view";
-import { Item } from "./item";
-import { LocationsService } from "../shared/location/locations.service";
+import { LocationsService } from "./shared/location/locations.service";
 import tabViewModule = require("ui/tab-view");
 
 import { Color } from "color";
@@ -12,11 +11,11 @@ declare var CGSizeMake: any;
 @Component({
     selector: "ns-items",
     moduleId: module.id,
-    templateUrl: "./items.component.html",
+    templateUrl: "./some.component.html",
 })
 
 
-export class ItemsComponent implements OnInit {
+export class StartComponent implements OnInit {
     public tabSelectedIndex: number;
     thing: number
     constructor(private locationsService: LocationsService) {

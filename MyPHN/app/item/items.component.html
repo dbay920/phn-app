@@ -110,12 +110,10 @@
             </AbsoluteLayout>
 
             <StackLayout *tabItem="{title: 'Portal', iconSource: '~/images/Portal.png'}">
-                <Label text="Second tab item"></Label>
+                <router-outlet>
+                </router-outlet>
             </StackLayout>
 
-            <StackLayout>
-                <Label text="Second tab item"></Label>
-            </StackLayout>
 
             <StackLayout *tabItem="{title: 'News', iconSource: '~/images/News.png'}">
                 <Label text="Third tab item"></Label>
