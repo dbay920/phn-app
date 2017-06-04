@@ -3,4 +3,7 @@ import { platformNativeScriptDynamic } from "nativescript-angular/platform";
 
 import { AppModule } from "./app.module";
 
+import * as elementRegistryModule from 'nativescript-angular/element-registry';
+elementRegistryModule.registerElement("CardView", () => require("nativescript-cardview").CardView);
+
 platformNativeScriptDynamic().bootstrapModule(AppModule);
