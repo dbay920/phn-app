@@ -7,6 +7,9 @@
     "id": "org.nativescript.MyPHN",
     "tns-ios": {
       "version": "3.0.1"
+    },
+    "tns-android": {
+      "version": "3.0.1"
     }
   },
   "dependencies": {
@@ -31,6 +34,10 @@
     "zone.js": "~0.8.2"
   },
   "devDependencies": {
+    "babel-traverse": "6.24.1",
+    "babel-types": "6.24.1",
+    "babylon": "6.17.2",
+    "lazy": "1.0.11",
     "nativescript-dev-android-snapshot": "^0.*.*",
     "nativescript-dev-typescript": "^0.4.5",
     "typescript": "^2.2.1"
