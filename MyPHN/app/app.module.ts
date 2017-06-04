@@ -12,6 +12,7 @@ import { StartComponent } from "./start.component";
 import { HomeComponent } from "./home/home.component";
 import { LocationsComponent } from "./locations/locations.component";
 
+
 @NgModule({
     bootstrap: [
         AppComponent
@@ -31,7 +32,7 @@ import { LocationsComponent } from "./locations/locations.component";
         LocationsComponent
     ],
     providers: [
-        LocationsService
+        LocationsService,
     ],
     schemas: [
         NO_ERRORS_SCHEMA

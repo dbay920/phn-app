@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { View } from "ui/core/view";
 import { LocationsService } from "./shared/location/locations.service";
-import tabViewModule = require("ui/tab-view");
+
 
 import { Color } from "color";
 

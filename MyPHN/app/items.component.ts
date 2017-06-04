@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from "@angular/core";
 import { View } from "ui/core/view";
 import { LocationsService } from "./shared/location/locations.service";
-import tabViewModule = require("ui/tab-view");
+
 import { SideDrawerLocation } from 'nativescript-telerik-ui-pro/sidedrawer';
 import { RadSideDrawerComponent } from "nativescript-telerik-ui-pro/sidedrawer/angular";
 import { RadSideDrawer } from "nativescript-telerik-ui-pro/sidedrawer";

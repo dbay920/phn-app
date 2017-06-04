@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { View } from "ui/core/view";
 import { LocationsService } from "../shared/location/locations.service";
-import tabViewModule = require("ui/tab-view");
 
+import { ActivatedRoute, Router } from '@angular/router';
 import { Color } from "color";
 
 
@@ -18,9 +18,15 @@ declare var CGSizeMake: any;
 export class HomeComponent implements OnInit {
     public tabSelectedIndex: number;
     thing: number
-    constructor(private locationsService: LocationsService) {
+    constructor(private _router: Router, private locationsService: LocationsService) {
         this.tabSelectedIndex = 3;
     }
+
+    goToLocations(): void {
+        this._router.navigateByUrl("items/locations");
+
+    }
+
 
     ngOnInit(): void {
         //this.items = this.itemService.getItems();
@@ -40,8 +46,5 @@ export class HomeComponent implements OnInit {
 
     }
 
-    change(): void {
-        this.tabSelectedIndex = 3;
-        console.log(this.tabSelectedIndex);
-    }
+
 }

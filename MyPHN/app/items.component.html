@@ -33,7 +33,6 @@
         </StackLayout>
     </StackLayout>
 </ActionBar>
-
 <RadSideDrawer
     tkExampleTitle
     tkToggleNavButton
@@ -41,8 +40,9 @@
     [drawerLocation]="SideDrawerLocation.Right"
 >
     <StackLayout tkDrawerContent class="sideStackLayout">
+        <Label text="Favorites" class="sideLabel double-pica">
 
-            <Label text="Favorites" class="sideLabel double-pica"></Label>
+        </Label>
             <Label text="Search" class="double-pica sideLabel"></Label>
             <Label text="Home" class="double-pica sideLabel"></Label>
             <Button text="Locations" class="double-pica sideLabel " (tap)="goToLocations()"></Button>
@@ -54,74 +54,27 @@
         <Button text="Close Drawer" style="horizontal-align: center" (tap)="onCloseDrawerTap()"></Button>
     </StackLayout>
 
-        <TabView tkMainContent>
+    <AbsoluteLayout tkMainContent>
+        <TabView height="603pt" width="375pt">
             <AbsoluteLayout
                 *tabItem="{title: 'Home',  iconSource: '~/images/Home.png'}"
                 style=" width: 360pt;"
             >
-                <StackLayout>
-                    <Label text="Closest PHN Location:" class="small-title background">
 
-                    </Label>
-                    <Image src="~/images/clarion.png" width="360pt"></Image>
-                    <Button text="Locations" class="tile"
-                            style=" height: 80pt; font-size: 24pt;background-color: #00817d; background-image: ~/images/Icon_Locations.png;  background-repeat: no-repeat; background-position: 310 25; border-radius: 5pt;"
-                            (tap)="goToLocations()"
-                    >
-                    </Button>
-
-                    <Label text="Services" class="tile background"
-                           style="background-image: ~/images/Icon_Services.png;  background-repeat: no-repeat; background-position: 303 25;">
-                    </Label>
-                    <Label text="Providers" class="tile background"
-                           style="background-image: ~/images/Icon_Providers.png;  background-repeat: no-repeat; background-position: 304 25;">
-                    </Label>
-                </StackLayout>
-                <Label
-                    top="207"
-                    left="2"
-                    text="Clarion Urgent Care"
-                    class="alpha double-pica col-12"
-                >
-
-                </Label>
-                <Label
-                    top="235"
-                    left="2"
-                    text="30 Pinnacle Drive"
-                    class="alpha-two great-primer col-12"
-                >
-
-                </Label>
-                <Label
-                    top="256"
-                    left="2"
-                    text="Clarion, PA 16214"
-                    class="alpha-two great-primer col-12"
-                >
-
-                </Label>
-                <Label
-                    top="256" left="300" text="5.2 mi" class="alpha-two great-primer"
-                >
-
-                </Label>
-                <Image src="~/images/Icon_Directions.png" top="210" left="300">
-
-                </Image>
             </AbsoluteLayout>
+            <StackLayout
+                *tabItem="{title: 'Portal', iconSource: '~/images/Portal.png'}"
+            >
 
-            <StackLayout *tabItem="{title: 'Portal', iconSource: '~/images/Portal.png'}">
-                <router-outlet>
-                </router-outlet>
             </StackLayout>
+            <StackLayout
+                *tabItem="{title: 'News', iconSource: '~/images/News.png'}"
+            >
 
-
-            <StackLayout *tabItem="{title: 'News', iconSource: '~/images/News.png'}">
-                <Label text="Third tab item"></Label>
             </StackLayout>
-            <StackLayout *tabItem="{title: 'More', iconSource: '~/images/More.png'}">
-                <Label text="Third tab item"></Label>
+            <StackLayout
+                *tabItem="{title: 'More', iconSource: '~/images/More.png'}"
+            >
                 <CardView class="cardStyle" margin="8" elevation="40" radius="100" >
                     <GridLayout rows="10,30,30,250, auto, auto,10" columns="10,40, *, 30,10">
                         <Image src="~/images/Icon_Locations.png" stretch="aspectFit" verticalAlignment="stretch" col="1" row="1" rowSpan="2"></Image>
@@ -132,8 +85,10 @@
                         <Label  horizontalAlignment="left" text="item.Summary" textWrap="true" col="1" row="5" colSpan="3"></Label>
                     </GridLayout>
                 </CardView>
-
             </StackLayout>
         </TabView>
+        <router-outlet>
 
+        </router-outlet>
+    </AbsoluteLayout>
 </RadSideDrawer>
