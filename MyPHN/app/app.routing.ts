@@ -3,8 +3,10 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
 import { StartComponent } from "./start.component";
 import { SomeOtherComponent } from "./some.component";
+import { LocationsComponent } from "./locations/locations.component";
+import { HomeComponent } from "./home/home.component";
 
-import { ItemsComponent } from "./item/items.component";
+import { ItemsComponent } from "./items.component";
 
 const routes: Routes = [
     {
@@ -17,10 +19,11 @@ const routes: Routes = [
         component: ItemsComponent,
         children: [
             // '/home' loaded into `router-outlet` in main content
-            { path: "", component: StartComponent },
+            { path: "", component: HomeComponent },
             // '/home/otherPath' loaded into `router-outlet` in main content
             { path: "otherPath", component: SomeOtherComponent },
             // etc.
+            { path: "locations", component: LocationsComponent },
         ]
     },
 ];

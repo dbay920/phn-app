@@ -6,9 +6,11 @@ import { HttpModule } from "@angular/http";
 import { NativeScriptUISideDrawerModule } from "nativescript-telerik-ui-pro/sidedrawer/angular";
 
 import { LocationsService } from "./shared/location/locations.service";
-import { ItemsComponent } from "./item/items.component";
+import { ItemsComponent } from "./items.component";
 import { SomeOtherComponent } from "./some.component";
 import { StartComponent } from "./start.component";
+import { HomeComponent } from "./home/home.component";
+import { LocationsComponent } from "./locations/locations.component";
 
 @NgModule({
     bootstrap: [
@@ -24,7 +26,9 @@ import { StartComponent } from "./start.component";
         AppComponent,
         ItemsComponent,
         StartComponent,
-        SomeOtherComponent
+        HomeComponent,
+        SomeOtherComponent,
+        LocationsComponent
     ],
     providers: [
         LocationsService
