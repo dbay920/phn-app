@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { View } from "ui/core/view";
-import { Item } from "./item";
 import { LocationsService } from "../shared/location/locations.service";
 import tabViewModule = require("ui/tab-view");
+import { SideDrawerLocation } from 'nativescript-telerik-ui-pro/sidedrawer';
 
 import { Color } from "color";
 
@@ -13,14 +13,21 @@ declare var CGSizeMake: any;
     selector: "ns-items",
     moduleId: module.id,
     templateUrl: "./items.component.html",
+    styleUrls: ['items.component.css']
 })
 
 
 export class ItemsComponent implements OnInit {
     public tabSelectedIndex: number;
+    public SideDrawerLocation: any;
     thing: number
     constructor(private locationsService: LocationsService) {
         this.tabSelectedIndex = 3;
+        this.SideDrawerLocation = SideDrawerLocation;
+    }
+
+    onCloseDrawerTap(): void {
+
     }
 
     ngOnInit(): void {

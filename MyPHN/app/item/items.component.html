@@ -34,22 +34,24 @@
     </StackLayout>
 </ActionBar>
 
-<RadSideDrawer tkExampleTitle tkToggleNavButton>
+<RadSideDrawer
+    tkExampleTitle
+    tkToggleNavButton
+    showOverNavigation="true"
+    [drawerLocation]="SideDrawerLocation.Right"
+>
     <StackLayout tkDrawerContent class="sideStackLayout">
-        <StackLayout class="sideTitleStackLayout">
-            <Label text="Navigation Menu"></Label>
-        </StackLayout>
-        <StackLayout class="sideStackLayout">
-            <Label text="Primary" class="sideLabel sideLightGrayLabel"></Label>
-            <Label text="Social" class="sideLabel"></Label>
-            <Label text="Promotions" class="sideLabel"></Label>
-            <Label text="Labels" class="sideLabel sideLightGrayLabel"></Label>
-            <Label text="Important" class="sideLabel"></Label>
-            <Label text="Starred" class="sideLabel"></Label>
-            <Label text="Sent Mail" class="sideLabel"></Label>
-            <Label text="Drafts" class="sideLabel"></Label>
-        </StackLayout>
-        <Label text="Close Drawer" color="lightgray" padding="10" style="horizontal-align: center" (tap)="onCloseDrawerTap()"></Label>
+
+            <Label text="Favorites" class="sideLabel"></Label>
+            <Label text="Search" class="sideLabel"></Label>
+            <Label text="Home" class="sideLabel"></Label>
+            <Label text="Locations" class="sideLabel "></Label>
+            <Label text="Services" class="sideLabel"></Label>
+            <Label text="Providers" class="sideLabel"></Label>
+            <Label text="Patient Portal" class="sideLabel"></Label>
+            <Label text="News" class="sideLabel"></Label>
+
+        <Button text="Close Drawer" color="lightgray" padding="10" style="horizontal-align: center" (tap)="onCloseDrawerTap()"></Button>
     </StackLayout>
 
         <TabView tkMainContent>
