@@ -4,7 +4,7 @@
     <ListView
         [items]="counties"
         class="small-spacing"
-        width="360"
+        width="370"
         height="500"
     >
         <ng-template
@@ -13,35 +13,41 @@
             let-odd="odd"
             let-even="even"
         >
-            <CardView
-                class="cardStyle"
-                margin="8"
-                elevation="40"
-                radius="100"
-                [class.hidden]="odd"
-            >
-                <GridLayout
-                    rows="10,30,30,25, auto, auto,10"
-                    columns="10,40, *, 30,10"
+            <StackLayout orientation="horizontal">
+                <CardView
+                    class="cardStyle"
+                    margin="8"
+                    elevation="40"
+                    radius="100"
+                    [class.hidden]="odd"
+                    height="80pt"
+                    width="176pt"
+                    (tap)="listViewItemTap(i)"
                 >
-                    <Image src="~/images/Icon_Locations.png" stretch="aspectFit" verticalAlignment="stretch" col="1" row="1" rowSpan="2">
+                        <Label  horizontalAlignment="left" [text]="item.getName()" textWrap="true">
 
-                    </Image>
-                    <Label class="createdBy text-left" horizontalAlignment="left" text="item.CreatedBy" row="1" col="2" textWrap="true">
+                        </Label>
+                </CardView>
 
-                    </Label>
-                    <Label class="createdOn text-left" horizontalAlignment="left" text="item.UpdatedDate" row="2" col="2">
+                <CardView
+                    class="cardStyle"
+                    margin="8"
+                    elevation="40"
+                    radius="100"
+                    [class.hidden]="odd"
+                    height="80pt"
+                    width="176pt"
+                    (tap)="listViewItemTap(i+1)"
+                >
+                    <Label [class.hidden]="i + 1 >= counties.length"
+                           horizontalAlignment="left" [text]="i + 1 < counties.length ? counties[i + 1].getName() : 'null'" textWrap="true" >
 
-                    </Label>
+                        </Label>
 
-                    <Label horizontalAlignment="left" text="item.Title" colSpan="3" row="4" textWrap="true" col="1">
+                </CardView>
 
-                    </Label>
-                    <Label  horizontalAlignment="left" [text]="item.getName()" textWrap="true" col="1" row="5" colSpan="3">
+            </StackLayout>
 
-                    </Label>
-                </GridLayout>
-            </CardView>
         </ng-template>
     </ListView>
 

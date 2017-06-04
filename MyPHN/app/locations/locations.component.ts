@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { View } from "ui/core/view";
 import { LocationsService } from "../shared/location/locations.service";
 import { County } from "../shared/location/county";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: "ns-items",
@@ -14,8 +15,16 @@ export class LocationsComponent implements OnInit {
 
     public counties: Array<County>;
 
-    constructor(private locationsService: LocationsService) {
+    constructor(private _router: Router, private locationsService: LocationsService) {
 
+    }
+
+    listViewItemTap(i): void {
+        this.goToLocations();
+    }
+
+    goToLocations(): void {
+        this._router.navigateByUrl("items");
     }
 
     ngOnInit(): void {
