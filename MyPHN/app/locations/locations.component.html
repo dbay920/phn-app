@@ -1,11 +1,38 @@
 <StackLayout>
-    <Label text="Locations"></Label>
+    <CardView
+        elevation="40"
+        radius="100"
+        height="90"
+        width="360"
+        class="primary-background"
+        style="margin-bottom: 8pt;"
+    >
+        <AbsoluteLayout>
+            <Label
+                text="Locations"
+                class="double-columbian white bold"
+                style="margin-left: 68pt;"
+        >
 
+        </Label>
+        </AbsoluteLayout>
+    </CardView>
+    <CardView
+        width="360"
+        height="38"
+        class="primary-background"
+    >
+        <AbsoluteLayout>
+            <Label text="Sort By: County" class="great-primer white center bold">
+
+            </Label>
+        </AbsoluteLayout>
+    </CardView>
     <ListView
         [items]="counties"
-        class="small-spacing"
-        width="370"
-        height="500"
+        width="375"
+        height="418"
+        style="background-color: #9d9d9d;"
     >
         <ng-template
             let-item="item"
@@ -16,7 +43,6 @@
             <StackLayout orientation="horizontal">
                 <CardView
                     class="cardStyle"
-                    margin="8"
                     elevation="40"
                     radius="100"
                     [class.hidden]="odd"
@@ -24,14 +50,17 @@
                     width="176pt"
                     (tap)="listViewItemTap(i)"
                 >
-                        <Label  horizontalAlignment="left" [text]="item.getName()" textWrap="true">
+                    <Label
+                        [text]="item.getName()"
+                        textWrap="true"
+                        class="double-pica bold primary center white-background"
+                    >
 
                         </Label>
                 </CardView>
 
                 <CardView
                     class="cardStyle"
-                    margin="8"
                     elevation="40"
                     radius="100"
                     [class.hidden]="odd"
@@ -39,8 +68,12 @@
                     width="176pt"
                     (tap)="listViewItemTap(i+1)"
                 >
-                    <Label [class.hidden]="i + 1 >= counties.length"
-                           horizontalAlignment="left" [text]="i + 1 < counties.length ? counties[i + 1].getName() : 'null'" textWrap="true" >
+                    <Label
+                        [class.hidden]="i + 1 >= counties.length"
+                        [text]="i + 1 < counties.length ? counties[i + 1].getName() : 'null'"
+                        textWrap="true"
+                        class="double-pica bold primary center white-background"
+                    >
 
                         </Label>
 

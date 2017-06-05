@@ -11,6 +11,7 @@ import { SomeOtherComponent } from "./some.component";
 import { StartComponent } from "./start.component";
 import { HomeComponent } from "./home/home.component";
 import { LocationsComponent } from "./locations/locations.component";
+import { CountyComponent } from "./locations/county.component";
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { LocationsComponent } from "./locations/locations.component";
         ItemsComponent,
         StartComponent,
         HomeComponent,
+        CountyComponent,
         SomeOtherComponent,
         LocationsComponent
     ],

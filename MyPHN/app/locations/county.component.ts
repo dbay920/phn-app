@@ -8,30 +8,31 @@ import { PageRoute } from "nativescript-angular/router";
 @Component({
     selector: "ns-items",
     moduleId: module.id,
-    templateUrl: "./locations.component.html",
-    styleUrls: ["./locations.component.css"]
+    templateUrl: "./county.component.html",
+    styleUrls: ["./county.component.css"]
 })
 
-export class LocationsComponent implements OnInit {
+export class CountyComponent implements OnInit {
 
-    public counties: Array<County>;
+    public locations: Array<Location>;
+    county: County;
 
     constructor(private route: ActivatedRoute, private _router: Router, private locationsService: LocationsService) {
+        this.route.params
+            .forEach((params) => {
+                this.county = County.buildFromName(params["id"]);
+            });
     }
 
-    listViewItemTap(i): void {
-        this.goToLocations(i);
-    }
 
-    goToLocations(i): void {
-        this._router.navigateByUrl("items/locations/" + this.counties[i].getName());
-    }
 
     ngOnInit(): void {
-        this.locationsService.getCounties().then((x) => {
-            this.counties = x;
+        this.locationsService.getCountyLocations(this.county.getHref()).then((x) => {
+            this.locations = x;
         },
-            (error) => alert("Could not load location info." + error)
+            (error) => alert("Could not load locations.")
         );
+
+
     }
 }

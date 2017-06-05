@@ -94,8 +94,9 @@ var countyParser = new xmlModule.XmlParser(onEventCallback2, onErrorCallback);
 export class LocationsService {
     constructor() { }
 
-    getCountyLocations() {
-        return fetchModule.fetch("https://primary-health.net/Clarion.aspx",
+    getCountyLocations(href) {
+        //console.log('href is', href);
+        return fetchModule.fetch(href,
             {
                 method: "GET"
             })

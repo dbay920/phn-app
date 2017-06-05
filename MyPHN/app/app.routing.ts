@@ -5,6 +5,7 @@ import { StartComponent } from "./start.component";
 import { SomeOtherComponent } from "./some.component";
 import { LocationsComponent } from "./locations/locations.component";
 import { HomeComponent } from "./home/home.component";
+import { CountyComponent } from "./locations/county.component";
 
 import { ItemsComponent } from "./items.component";
 
@@ -24,6 +25,8 @@ const routes: Routes = [
             { path: "otherPath", component: SomeOtherComponent },
             // etc.
             { path: "locations", component: LocationsComponent },
+            { path: "locations/:id", component: CountyComponent },
+
         ]
     },
 ];
