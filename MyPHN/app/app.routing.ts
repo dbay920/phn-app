@@ -19,14 +19,16 @@ const routes: Routes = [
         path: "items",
         component: ItemsComponent,
         children: [
-            // '/home' loaded into `router-outlet` in main content
             { path: "", component: HomeComponent },
-            // '/home/otherPath' loaded into `router-outlet` in main content
-            { path: "otherPath", component: SomeOtherComponent },
-            // etc.
             { path: "locations", component: LocationsComponent },
             { path: "locations/:id", component: CountyComponent },
 
+            { path: 'favorites', component: HomeComponent },
+            { path: 'search', component: HomeComponent },
+            { path: 'services', component: HomeComponent },
+            { path: 'providers', component: HomeComponent },
+            { path: 'portal', component: HomeComponent },
+            { path: 'news', component: HomeComponent },
         ]
     },
 ];

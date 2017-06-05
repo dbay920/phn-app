@@ -40,18 +40,29 @@
     [drawerLocation]="SideDrawerLocation.Right"
 >
     <StackLayout tkDrawerContent class="sideStackLayout">
-        <Label text="Favorites" class="sideLabel double-pica">
+        <ListView
+            [items]="routes"
+            height="550"
+            style="background-color: transparent;"
+        >
+            <ng-template
+                let-item="item"
+                let-i="index"
+                let-odd="odd"
+                let-even="even"
+            >
+                <Button
+                    text="{{item.name}}"
+                    class="double-pica sideLabel"
+                    (tap)="goToLocations(item.url)"
+                >
 
-        </Label>
-            <Label text="Search" class="double-pica sideLabel"></Label>
-            <Label text="Home" class="double-pica sideLabel"></Label>
-            <Button text="Locations" class="double-pica sideLabel " (tap)="goToLocations()"></Button>
-            <Label text="Services" class="double-pica sideLabel"></Label>
-            <Label text="Providers" class="double-pica sideLabel"></Label>
-            <Label text="Patient Portal" class="double-pica sideLabel"></Label>
-            <Label text="News" class="double-pica sideLabel"></Label>
+                </Button>
+            </ng-template>
+        </ListView>
+        <Button text="Close Drawer" style="horizontal-align: center" (tap)="onCloseDrawerTap()">
 
-        <Button text="Close Drawer" style="horizontal-align: center" (tap)="onCloseDrawerTap()"></Button>
+        </Button>
     </StackLayout>
 
     <AbsoluteLayout tkMainContent>

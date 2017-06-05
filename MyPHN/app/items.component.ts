@@ -24,9 +24,23 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     public tabSelectedIndex: number;
     public SideDrawerLocation: any;
     thing: number
+    routes: Array<any>;
+
     constructor(private _router: Router, private locationsService: LocationsService) {
         this.tabSelectedIndex = 3;
         this.SideDrawerLocation = SideDrawerLocation;
+
+
+        this.routes = [
+            { name: 'Favorites', url: 'items/favorites' },
+            { name: 'Search', url: 'items/search' },
+            { name: 'Home', url: 'items' },
+            { name: 'Locations', url: "items/locations" },
+            { name: 'Services', url: 'items/services' },
+            { name: 'Providers', url: 'items/providers' },
+            { name: 'Patient Portal', url: 'items/portal' },
+            { name: 'News', url: 'items/news' },
+        ];
     }
 
     onCloseDrawerTap(): void {
@@ -53,8 +67,8 @@ export class ItemsComponent implements OnInit, AfterViewInit {
 
     }
 
-    goToLocations(): void {
-        this._router.navigateByUrl("items/locations");
+    goToLocations(url): void {
+        this._router.navigateByUrl(url);
         this.drawer.closeDrawer();
     }
 }
