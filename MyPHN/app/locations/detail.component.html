@@ -34,6 +34,16 @@
                         >
 
                         </Label>
+
+
+                        <Label
+                            [text]="item.data"
+                            textWrap="true"
+                            class="pica bold primary center white-background"
+                        >
+
+                        </Label>
+
                     </StackLayout>
                 </CardView>
         </ng-template>
@@ -52,19 +62,14 @@
 <Label
     top="235"
     left="2"
-    text="30 Pinnacle Drive"
+    text="{{address}}"
+    textWrap="true"
     class="alpha-two great-primer col-12"
+    style="height: 70pt;"
 >
 
 </Label>
-<Label
-    top="256"
-    left="2"
-    text="Clarion, PA 16214"
-    class="alpha-two great-primer col-12"
->
 
-</Label>
 <Label
     top="256" left="300" text="5.2 mi" class="alpha-two great-primer"
 >

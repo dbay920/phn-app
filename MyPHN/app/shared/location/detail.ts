@@ -20,8 +20,9 @@ export class LocationDetail {
         return this.data[2];
 
     }
-    getAddress() {
-        return this.data[3];
+
+    getAddress(): string {
+        return this.about[0];
     }
 
     push(x: string) {
@@ -47,5 +48,21 @@ export class LocationDetail {
 
     getImage() {
         return this.image;
+    }
+
+    getHours() {
+        return this.hours.slice(0, -1).join('\n');
+    }
+
+    getAbout(): string {
+        return this.about[1];
+    }
+
+    getContact() {
+        return this.data[0];
+    }
+
+    getProviders() {
+        return {};
     }
 }

@@ -16,6 +16,7 @@ export class LocationDetailComponent implements OnInit {
 
     public cards: Array<any>;
     public details: LocationDetail;
+    public address: string;
 
     constructor(private route: ActivatedRoute, private _router: Router, private locationsService: LocationsService) {
         this.route.params
@@ -23,12 +24,7 @@ export class LocationDetailComponent implements OnInit {
                 //                this.county = County.buildFromName(params["id"]);
 
             });
-        this.cards = [
-            { name: 'About' },
-            { name: 'Hours' },
-            { name: 'Contact' },
-            { name: 'Providers' }
-        ]
+
     }
 
 
@@ -38,7 +34,16 @@ export class LocationDetailComponent implements OnInit {
             //this.locations = x;
             let str = JSON.stringify(x, null, 4)
             console.log(str);
+            this.details = x;
 
+            this.cards = [
+                { name: 'About', data: this.details.getAbout() },
+                { name: 'Hours', data: this.details.getHours() },
+                { name: 'Contact', data: this.details.getContact() },
+                { name: 'Providers', data: this.details.getProviders() }
+            ]
+            this.address = this.details.getAddress().replace(',', '\n');
+            console.log(this.address);
         },
             (error) => alert("Could not load location details.")
         );
