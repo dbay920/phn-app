@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
 import { LocationsComponent } from "./locations/locations.component";
+import { LocationDetailComponent } from "./locations/detail.component";
 import { HomeComponent } from "./home/home.component";
 import { CountyComponent } from "./locations/county.component";
 
@@ -20,6 +21,7 @@ const routes: Routes = [
             { path: "", component: HomeComponent },
             { path: "locations", component: LocationsComponent },
             { path: "locations/:id", component: CountyComponent },
+            { path: "locations/detail/:id", component: LocationDetailComponent },
 
             { path: 'favorites', component: HomeComponent },
             { path: 'search', component: HomeComponent },

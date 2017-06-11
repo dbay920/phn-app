@@ -1,0 +1,77 @@
+<AbsoluteLayout
+    style=" width: 360pt;"
+>
+
+<StackLayout>
+
+    <Image src="~/images/clarion.png" width="360pt"></Image>
+
+    <ListView
+        [items]="cards"
+        width="375"
+        height="418"
+        style="background-color: #9d9d9d;"
+    >
+        <ng-template
+            let-item="item"
+            let-i="index"
+            let-odd="odd"
+            let-even="even"
+        >
+                <CardView
+                    class="cardStyle"
+                    elevation="40"
+                    radius="100"
+                    height="162pt"
+                    width="360pt"
+                    (tap)="listViewItemTap(i)"
+                >
+                    <StackLayout>
+                        <Label
+                            [text]="item.name"
+                            textWrap="true"
+                            class="double-pica bold primary center white-background"
+                        >
+
+                        </Label>
+                    </StackLayout>
+                </CardView>
+        </ng-template>
+    </ListView>
+</StackLayout>
+
+
+<Label
+    top="207"
+    left="2"
+    text="Clarion Urgent Care"
+    class="alpha double-pica col-12"
+>
+
+</Label>
+<Label
+    top="235"
+    left="2"
+    text="30 Pinnacle Drive"
+    class="alpha-two great-primer col-12"
+>
+
+</Label>
+<Label
+    top="256"
+    left="2"
+    text="Clarion, PA 16214"
+    class="alpha-two great-primer col-12"
+>
+
+</Label>
+<Label
+    top="256" left="300" text="5.2 mi" class="alpha-two great-primer"
+>
+
+</Label>
+<Image src="~/images/Icon_Directions.png" top="210" left="300">
+
+</Image>
+
+</AbsoluteLayout>

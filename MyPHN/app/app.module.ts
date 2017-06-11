@@ -9,6 +9,7 @@ import { LocationsService } from "./shared/location/locations.service";
 import { ItemsComponent } from "./items.component";
 import { HomeComponent } from "./home/home.component";
 import { LocationsComponent } from "./locations/locations.component";
+import { LocationDetailComponent } from "./locations/detail.component";
 import { CountyComponent } from "./locations/county.component";
 
 
@@ -27,7 +28,8 @@ import { CountyComponent } from "./locations/county.component";
         ItemsComponent,
         HomeComponent,
         CountyComponent,
-        LocationsComponent
+        LocationsComponent,
+        LocationDetailComponent,
     ],
     providers: [
         LocationsService,
