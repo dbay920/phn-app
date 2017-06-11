@@ -37,11 +37,11 @@ export class HomeComponent implements OnInit {
         },
             (error) => alert("Unfortunately we could not find your account.")
         );*/
-/*        this.locationsService.getCounties().then((x) => {
-            console.log(x[0].getName(), x[0].getHref());
-        },
-            (error) => alert("Unfortunately we could not find your account." + error)
-        );*/
+        /*        this.locationsService.getCounties().then((x) => {
+                    console.log(x[0].getName(), x[0].getHref());
+                },
+                    (error) => alert("Unfortunately we could not find your account." + error)
+                );*/
 
 
     }

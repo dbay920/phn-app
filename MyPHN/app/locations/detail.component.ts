@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { View } from "ui/core/view";
 import { LocationsService } from "../shared/location/locations.service";
-import { County } from "../shared/location/county";
+import { LocationDetail } from "../shared/location/detail";
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageRoute } from "nativescript-angular/router";
 
@@ -15,12 +15,13 @@ import { PageRoute } from "nativescript-angular/router";
 export class LocationDetailComponent implements OnInit {
 
     public cards: Array<any>;
-    county: County;
+    public details: LocationDetail;
 
     constructor(private route: ActivatedRoute, private _router: Router, private locationsService: LocationsService) {
         this.route.params
             .forEach((params) => {
-                this.county = County.buildFromName(params["id"]);
+                //                this.county = County.buildFromName(params["id"]);
+
             });
         this.cards = [
             { name: 'About' },
@@ -33,12 +34,13 @@ export class LocationDetailComponent implements OnInit {
 
 
     ngOnInit(): void {
-        /*        this.locationsService.getCountyLocations(this.county.getHref()).then((x) => {
-                    this.locations = x;
-                },
-                    (error) => alert("Could not load locations.")
-                );
-        */
+        this.locationsService.getLocationDetails(72).then((x) => {
+            //this.locations = x;
+            let str = JSON.stringify(x, null, 4)
+            console.log(str);
 
+        },
+            (error) => alert("Could not load location details.")
+        );
     }
 }
