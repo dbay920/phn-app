@@ -7,8 +7,6 @@ import { NativeScriptUISideDrawerModule } from "nativescript-telerik-ui-pro/side
 
 import { LocationsService } from "./shared/location/locations.service";
 import { ItemsComponent } from "./items.component";
-import { SomeOtherComponent } from "./some.component";
-import { StartComponent } from "./start.component";
 import { HomeComponent } from "./home/home.component";
 import { LocationsComponent } from "./locations/locations.component";
 import { CountyComponent } from "./locations/county.component";
@@ -27,10 +25,8 @@ import { CountyComponent } from "./locations/county.component";
     declarations: [
         AppComponent,
         ItemsComponent,
-        StartComponent,
         HomeComponent,
         CountyComponent,
-        SomeOtherComponent,
         LocationsComponent
     ],
     providers: [

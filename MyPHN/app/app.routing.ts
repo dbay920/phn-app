@@ -1,8 +1,6 @@
 import { NgModule } from "@angular/core";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
-import { StartComponent } from "./start.component";
-import { SomeOtherComponent } from "./some.component";
 import { LocationsComponent } from "./locations/locations.component";
 import { HomeComponent } from "./home/home.component";
 import { CountyComponent } from "./locations/county.component";
