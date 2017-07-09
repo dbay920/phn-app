@@ -1,10 +1,9 @@
 <StackLayout>
-    <CardView
+ <CardView
         elevation="40"
         radius="2"
         height="90"
         width="360"
-        class="primary-background"
         style="margin-bottom: 8pt;"
     >
             <Label
@@ -13,7 +12,7 @@
         >
 
         </Label>
-    </CardView>
+           </CardView>
     <ListView
         [items]="locations"
         width="375"
@@ -26,8 +25,7 @@
             let-odd="odd"
             let-even="even"
         >
-                <CardView
-                    class="cardStyle"
+               <CardView
                     elevation="40"
                     radius="2"
                     [class.hidden]="odd"
@@ -61,7 +59,7 @@
 
 
                     </StackLayout>
-                </CardView>
+                                   </CardView>
 
         </ng-template>
     </ListView>
