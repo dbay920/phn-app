@@ -19,6 +19,7 @@ export class LocationDetailComponent implements OnInit {
     public details: LocationDetail;
     public address: string;
     public image: string;
+    public name: string;
     public locationId;
 
     constructor(private route: ActivatedRoute, private _router: Router, private locationsService: LocationsService) {
@@ -47,7 +48,8 @@ export class LocationDetailComponent implements OnInit {
             this.image = this.details.getImage();
             console.log(this.image);
             this.address = this.details.getAddress().replace(',', '\n');
-            console.log(this.address);
+            this.name = this.details.getName();
+
             //console.log(this.details.getProviders());
         },
             (error) => alert("Could not load location details.")

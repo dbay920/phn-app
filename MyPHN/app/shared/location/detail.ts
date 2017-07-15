@@ -13,7 +13,7 @@ export class LocationDetail {
     }
 
     getName() {
-        return this.data[1];
+        return this.data[2];
     }
 
     getPhone() {
