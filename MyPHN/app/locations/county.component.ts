@@ -4,6 +4,7 @@ import { LocationsService } from "../shared/location/locations.service";
 import { County } from "../shared/location/county";
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageRoute } from "nativescript-angular/router";
+import { Location } from "../shared/location/location"
 
 @Component({
     selector: "ns-items",
@@ -29,7 +30,7 @@ export class CountyComponent implements OnInit {
     }
 
     goToLocations(i): void {
-        this._router.navigateByUrl("items/locations/detail/");// + this.counties[i].getName());
+        this._router.navigateByUrl("items/locations/detail/" + this.locations[i].getId());
     }
 
     ngOnInit(): void {

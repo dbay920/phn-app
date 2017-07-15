@@ -9,6 +9,10 @@ export class Location {
         return 'https://primary-health.net/' + this.data[0];
     }
 
+    getId() {
+        return this.getHref().split('=')[1];
+    }
+
     getName() {
         return this.data[1];
     }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { View } from "ui/core/view";
+import { Image } from "ui/image";
 import { LocationsService } from "../shared/location/locations.service";
 import { LocationDetail } from "../shared/location/detail";
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,12 +18,13 @@ export class LocationDetailComponent implements OnInit {
     public cards: Array<any>;
     public details: LocationDetail;
     public address: string;
+    public image: string;
+    public locationId;
 
     constructor(private route: ActivatedRoute, private _router: Router, private locationsService: LocationsService) {
         this.route.params
             .forEach((params) => {
-                //                this.county = County.buildFromName(params["id"]);
-
+                this.locationId = params["id"];
             });
 
     }
@@ -30,7 +32,7 @@ export class LocationDetailComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.locationsService.getLocationDetails(72).then((x) => {
+        this.locationsService.getLocationDetails(this.locationId).then((x) => {
             //this.locations = x;
             let str = JSON.stringify(x, null, 4)
             console.log(str);
@@ -42,8 +44,11 @@ export class LocationDetailComponent implements OnInit {
                 { name: 'Contact', data: this.details.getContact() },
                 { name: 'Providers', data: this.details.getProviders() }
             ]
+            this.image = this.details.getImage();
+            console.log(this.image);
             this.address = this.details.getAddress().replace(',', '\n');
             console.log(this.address);
+            //console.log(this.details.getProviders());
         },
             (error) => alert("Could not load location details.")
         );
