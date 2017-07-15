@@ -43,11 +43,12 @@ export class LocationDetail {
     }
 
     setImage(x: string) {
-        this.image = x;
+        if (!this.image)
+            this.image = x;
     }
 
     getImage() {
-        return this.image;
+        return 'https://primary-health.net/' + this.image;
     }
 
     getHours() {
