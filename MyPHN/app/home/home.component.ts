@@ -197,4 +197,12 @@ export class HomeComponent implements OnInit {
 
     }
 
+    favorites() {
+
+    }
+
+    search() {
+
+    }
+
 }

@@ -16,7 +16,7 @@
             </Label>
         </StackLayout>
         <StackLayout orientation="vertical">
-            <Image src="~/images/Icon_Favorite.png" class="action-image">
+            <Image src="~/images/Icon_Favorite.png" class="action-image" (tap)="favorites()">
 
             </Image>
             <Label text="Favorites"  class="favorites">
@@ -24,7 +24,7 @@
             </Label>
         </StackLayout>
         <StackLayout orientation="vertical">
-            <Image src="~/images/Icon_Search.png" class="action-image">
+            <Image src="~/images/Icon_Search.png" class="action-image" (tap)="search()">
 
             </Image>
             <Label text="Search PHN"  class="search-phn">
