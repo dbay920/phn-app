@@ -16,6 +16,7 @@ import { CensusService } from "./shared/census/census.service"
 import { ServicesComponent } from "./services/services.component"
 import { SearchComponent } from "./search/search.component"
 import { SearchTermComponent } from "./search/term.component"
+import { PortalComponent } from "./portal/portal.component"
 
 @NgModule({
     bootstrap: [
@@ -34,6 +35,7 @@ import { SearchTermComponent } from "./search/term.component"
         HomeComponent,
         ServicesComponent,
         SearchComponent,
+        PortalComponent,
         SearchTermComponent,
         CountyComponent,
         LocationsComponent,
