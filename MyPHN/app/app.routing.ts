@@ -7,6 +7,7 @@ import { HomeComponent } from "./home/home.component";
 import { CountyComponent } from "./locations/county.component";
 import { ServicesComponent } from "./services/services.component"
 import { SearchComponent } from "./search/search.component"
+import { SearchTermComponent } from "./search/term.component"
 import { ItemsComponent } from "./items.component";
 
 const routes: Routes = [
@@ -20,12 +21,19 @@ const routes: Routes = [
         component: ItemsComponent,
         children: [
             { path: "", component: HomeComponent },
+
             { path: "locations", component: LocationsComponent },
             { path: "locations/:id", component: CountyComponent },
-            { path: "locations/detail/:id", component: LocationDetailComponent },
+            {
+                path: "locations/detail/:id",
+                component: LocationDetailComponent
+            },
 
             { path: 'favorites', component: HomeComponent },
+
             { path: 'search', component: SearchComponent },
+            { path: 'search/:term', component: SearchTermComponent },
+
             { path: 'services', component: ServicesComponent },
             { path: 'providers', component: HomeComponent },
             { path: 'portal', component: ServicesComponent },

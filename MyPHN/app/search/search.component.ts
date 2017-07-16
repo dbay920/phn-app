@@ -32,9 +32,7 @@ export class SearchComponent implements OnInit {
     searchTerm;
 
     search() {
-
-        this.webViewSrc = 'https://primary-health.net/Search.aspx?q=' + this.searchTerm;
-        console.log(this.webViewSrc)
+        this._router.navigateByUrl('items/search/' + this.searchTerm)
     }
 
     ngOnInit(): void {
