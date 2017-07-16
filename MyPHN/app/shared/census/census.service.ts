@@ -14,7 +14,6 @@ export class CensusService {
             '&benchmark=9&format=json';
 
 
-        console.log('href is', href);
         return fetchModule.fetch(href,
             {
                 method: "GET"
@@ -26,16 +25,15 @@ export class CensusService {
                 return json;
 
             }).then(raw => {
-                let str = JSON.stringify(raw, null, 4)
-                console.log(str);
                 let json = raw;
-                let cond = (json.result && json.result.addressMatches && json.result.addressMatches.length > 0)
+                let cond = (json.result &&
+                    json.result.addressMatches &&
+                    json.result.addressMatches.length > 0)
                 let result = cond ? {
                     latitude: json.result.addressMatches[0].coordinates.y,
                     longitude: json.result.addressMatches[0].coordinates.x
                 } : {};
 
-                console.log(result, cond);
                 return result;
 
             })
@@ -43,7 +41,6 @@ export class CensusService {
 
     handleErrors(response) {
         if (!response.ok) {
-            console.log('error is', response.statusText);
             throw Error(response.statusText);
         }
         return response;

@@ -132,7 +132,6 @@ export class LocationsService {
     constructor() { }
 
     getCountyLocations(href) {
-        //console.log('href is', href);
         return fetchModule.fetch(href,
             {
                 method: "GET"

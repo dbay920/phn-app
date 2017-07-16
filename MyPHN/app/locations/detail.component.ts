@@ -73,7 +73,7 @@ export class LocationDetailComponent implements OnInit {
                     if (loc) {
                         let metersToMiles = 0.000621371;
                         this.distance = (distance(x, loc) * metersToMiles).toFixed(1) + ' mi';
-
+                        console.log(loc.latitude, loc.longitude)
 
 
                     }

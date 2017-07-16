@@ -22,7 +22,7 @@ export class LocationDetail {
     }
 
     getAddress(): string {
-        return this.about[0];
+        return this.about ? this.about[0] : null;
     }
 
     push(x: string) {
