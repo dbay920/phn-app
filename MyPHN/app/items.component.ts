@@ -97,4 +97,13 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         this._router.navigateByUrl(url);
         this.drawer.closeDrawer();
     }
+
+        favorites() {
+        this._router.navigateByUrl("items/favorites");
+    }
+
+    search() {
+        this._router.navigateByUrl("items/search");
+    }
+
 }

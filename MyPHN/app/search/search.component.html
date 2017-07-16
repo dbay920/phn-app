@@ -1,0 +1,50 @@
+<AbsoluteLayout
+    style=" width: 360pt;"
+>
+    <StackLayout>
+        <Label text="Search Page Stub" class="small-title background">
+
+        </Label>
+        <Image src="{{image}}" width="360pt" height="200pt">
+
+        </Image>
+        <Button text="Locations" class="tile"
+                style=" height: 80pt; font-size: 24pt;background-color: #00817d; background-image: ~/images/Icon_Locations.png;  background-repeat: no-repeat; background-position: 310 25; border-radius: 2;"
+                (tap)="goToLocations()"
+        >
+        </Button>
+
+        <Label text="Services" class="tile background"
+               style="background-image: ~/images/Icon_Services.png;  background-repeat: no-repeat; background-position: 303 25;">
+        </Label>
+        <Label text="Providers" class="tile background"
+               style="background-image: ~/images/Icon_Providers.png;  background-repeat: no-repeat; background-position: 304 25;">
+        </Label>
+    </StackLayout>
+    <Label
+        top="207"
+        left="2"
+        text="{{name}}"
+        class="alpha double-pica col-12"
+    >
+
+    </Label>
+    <Label
+        top="235"
+        left="2"
+        text="{{address}}"
+        class="alpha-two great-primer col-12"
+        textWrap="true" style="height: 70pt;"
+    >
+
+    </Label>
+    <Label
+        top="256" left="300" text="{{distance}}" class="alpha-two great-primer"
+
+    >
+
+    </Label>
+    <Image src="~/images/Icon_Directions.png" top="210" left="300" (tap)="navigate()">
+
+    </Image>
+</AbsoluteLayout>

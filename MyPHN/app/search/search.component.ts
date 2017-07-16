@@ -8,15 +8,18 @@ import { LocationDetail } from "../shared/location/detail"
 import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";
 import { LocateAddress } from "nativescript-locate-address";
 
+
+
 declare var CGSizeMake: any;
 
 @Component({
     selector: "ns-items",
     moduleId: module.id,
-    templateUrl: "./home.component.html",
+    templateUrl: "./search.component.html",
 })
 
-export class HomeComponent implements OnInit {
+
+export class SearchComponent implements OnInit {
     public tabSelectedIndex: number;
     thing: number
     countyLats;
@@ -29,7 +32,6 @@ export class HomeComponent implements OnInit {
     constructor(
         private _router: Router,
         private locationsService: LocationsService,
-        private censusService: CensusService
     ) {
         this.tabSelectedIndex = 3;
 
@@ -120,68 +122,71 @@ export class HomeComponent implements OnInit {
                         minCounty = location;
                     }
                 });
-                this.locationsService.getCountyLocations('https://primary-health.net/' + minCounty + '.aspx').then((x) => {
-                    let promiseArray = [];
-                    x.forEach((y) => {
-                        promiseArray.push(this.censusService.getLocation(y.getAddress()));
-                        console.log(y.getImage)
-                    });
+                /*                this.locationsService.getCountyLocations('https://primary-health.net/' + minCounty + '.aspx').then((x) => {
+                                    let promiseArray = [];
+                                    x.forEach((y) => {
+                                        promiseArray.push(this.censusService.getLocation(y.getAddress()));
+                                        console.log(y.getImage)
+                                    });
 
-                    Promise.all(promiseArray).then((locationArray) => {
-                        let minDist = 3500;
-                        let minLoc;
+                                    Promise.all(promiseArray).then((locationArray) => {
+                                        let minDist = 3500;
+                                        let minLoc;
 
-                        locationArray.forEach((z, index) => {
-                            let dist = distance(z, loc) * metersToMiles;
+                                        locationArray.forEach((z, index) => {
+                                            let dist = distance(z, loc) * metersToMiles;
 
-                            if (dist < minDist) {
-                                minDist = dist;
-                                minLoc = index;
+                                            if (dist < minDist) {
+                                                minDist = dist;
+                                                minLoc = index;
+                                            }
+                                        });
+                                        this.distance = minDist.toFixed(1) + ' mi';
+                                        this.locationsService.getLocationDetails(x[minLoc].getId()).then((w) => {
+                                            this.details = w;
+                                            this.image = w.getImage();
+                                            this.address = w.getAddress().replace(',', '\n');
+                                            this.name = w.getName();
+
+                                        }, (e) => alert(e));
+                                    }, (e) => alert(e));
+                                }, (e) => alert(e));
                             }
                         });
-                        this.distance = minDist.toFixed(1) + ' mi';
-                        this.locationsService.getLocationDetails(x[minLoc].getId()).then((w) => {
-                            this.details = w;
-                            this.image = w.getImage();
-                            this.address = w.getAddress().replace(',', '\n');
-                            this.name = w.getName();
 
-                        }, (e) => alert(e));
-                    }, (e) => alert(e));
-                }, (e) => alert(e));
+                        this.thing = 0;
+
+                        /*        Promise.all(promiseArray).then((x) => {
+                                    promiseArray = [];
+                                    x.forEach((location, index) => {
+                                        let address = location.getAddress();
+
+                                        if (address)
+                                            promiseArray.push(this.censusService.getLocation(location.getAddress()))
+                                    })
+                                },
+                                    (error) => alert(error)
+                                );
+                                Promise.all(promiseArray).then((x) => {
+                                    console.log('test')
+                                    x.forEach((x) => {
+                                        console.log(x.latitude);
+                                    })
+                                }, (e) => alert(e));
+
+                                let minDist = 2000;
+                                let minLocation;*/
+
+
+                /*        this.locationsService.getCounties().then((x) => {
+                            console.log(x[0].getName(), x[0].getHref());
+                        },
+                            (error) => alert("Unfortunately we could not find your account." + error)
+                        );*/
             }
-        });
-
-        this.thing = 0;
-
-        /*        Promise.all(promiseArray).then((x) => {
-                    promiseArray = [];
-                    x.forEach((location, index) => {
-                        let address = location.getAddress();
-
-                        if (address)
-                            promiseArray.push(this.censusService.getLocation(location.getAddress()))
-                    })
-                },
-                    (error) => alert(error)
-                );
-                Promise.all(promiseArray).then((x) => {
-                    console.log('test')
-                    x.forEach((x) => {
-                        console.log(x.latitude);
-                    })
-                }, (e) => alert(e));
-
-                let minDist = 2000;
-                let minLocation;*/
-
-
-        /*        this.locationsService.getCounties().then((x) => {
-                    console.log(x[0].getName(), x[0].getHref());
-                },
-                    (error) => alert("Unfortunately we could not find your account." + error)
-                );*/
+        })
     }
+
     navigate() {
         let locator = new LocateAddress();
         locator.locate({
@@ -193,6 +198,5 @@ export class HomeComponent implements OnInit {
         });
 
     }
-
 
 }
