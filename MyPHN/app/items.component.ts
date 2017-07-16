@@ -90,6 +90,9 @@ export class ItemsComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         this.drawer = this.drawerComponent.sideDrawer;
+        //        ItemsComponent.tabView = this.ref.first.nativeElement;
+        //ItemsComponent.tabView.items[3].addEventListener('tap', this.hi);
+        //        ItemsComponent.tabView.items.push(new TabViewItem());
 
     }
 
@@ -105,5 +108,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     search() {
         this._router.navigateByUrl("items/search");
     }
+
+    //  @ViewChildren('ref') ref: QueryList<any>;
 
 }

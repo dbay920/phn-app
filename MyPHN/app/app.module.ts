@@ -13,7 +13,7 @@ import { LocationDetailComponent } from "./locations/detail.component";
 import { CountyComponent } from "./locations/county.component";
 import { CensusService } from "./shared/census/census.service"
 import { ServicesComponent } from "./services/services.component"
-import { SearchComponent} from "./search/search.component"
+import { SearchComponent } from "./search/search.component"
 
 @NgModule({
     bootstrap: [
