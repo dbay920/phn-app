@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { View } from "ui/core/view";
 import { Image } from "ui/image";
 import { LocationsService } from "../shared/location/locations.service";
@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PageRoute } from "nativescript-angular/router";
 import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";
 import { LocateAddress } from "nativescript-locate-address";
+import { CensusService } from "../shared/census/census.service";
+import * as LabelModule from "tns-core-modules/ui/label";
 
 
 
@@ -25,8 +27,14 @@ export class LocationDetailComponent implements OnInit {
     public image: string;
     public name: string;
     public locationId;
+    public distance;
 
-    constructor(private route: ActivatedRoute, private _router: Router, private locationsService: LocationsService) {
+    constructor(
+        private route: ActivatedRoute,
+        private _router: Router,
+        private locationsService: LocationsService,
+        private censusService: CensusService
+    ) {
         this.route.params
             .forEach((params) => {
                 this.locationId = params["id"];
@@ -35,20 +43,12 @@ export class LocationDetailComponent implements OnInit {
     }
 
 
-
     ngOnInit(): void {
         if (!isEnabled()) {
             enableLocationRequest();
             console.log('nonblocking');
         }
 
-        let x = getCurrentLocation({});
-        x.then((loc) => {
-            if (loc) {
-                console.log("Current location is: " + loc.latitude + loc.longitude);
-
-            }
-        });
 
         this.locationsService.getLocationDetails(this.locationId).then((x) => {
             //this.locations = x;
@@ -65,6 +65,22 @@ export class LocationDetailComponent implements OnInit {
             this.image = this.details.getImage();
             console.log(this.image);
             this.address = this.details.getAddress().replace(',', '\n');
+            let result = this.censusService.getLocation(this.details.getAddress());
+            result.then((x) => {
+
+
+                getCurrentLocation({}).then((loc) => {
+                    if (loc) {
+                        let metersToMiles = 0.000621371;
+                        this.distance = (distance(x, loc) * metersToMiles).toFixed(1) + ' mi';
+
+
+
+                    }
+                });
+
+
+            })
             this.name = this.details.getName();
             //console.log(this.details.getProviders());
         },

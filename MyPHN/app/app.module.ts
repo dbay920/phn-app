@@ -11,7 +11,7 @@ import { HomeComponent } from "./home/home.component";
 import { LocationsComponent } from "./locations/locations.component";
 import { LocationDetailComponent } from "./locations/detail.component";
 import { CountyComponent } from "./locations/county.component";
-
+import { CensusService } from "./shared/census/census.service"
 
 @NgModule({
     bootstrap: [
@@ -33,6 +33,7 @@ import { CountyComponent } from "./locations/county.component";
     ],
     providers: [
         LocationsService,
+        CensusService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
