@@ -25,8 +25,10 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     public SideDrawerLocation: any;
     thing: number
     routes: Array<any>;
+    public firstTime: boolean;
 
     constructor(private _router: Router, private locationsService: LocationsService) {
+        this.firstTime = true;
         this.tabSelectedIndex = 3;
         this.SideDrawerLocation = SideDrawerLocation;
 
@@ -46,6 +48,30 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     onCloseDrawerTap(): void {
         this.drawer.closeDrawer();
     }
+
+    onSelectedIndexChanged(event): void {
+        switch (event.newIndex) {
+            case 0:
+                if (this.firstTime)
+                    this.firstTime = false;
+                else
+                    this.goToLocations(this.routes[2].url);
+                break;
+            case 1:
+                this.goToLocations(this.routes[6].url);
+                break;
+            case 2:
+                this.goToLocations(this.routes[7].url);
+                break;
+            case 3:
+                this.drawer.showDrawer();
+                break;
+            default:
+                console.log('error');
+        }
+
+    }
+
 
     ngOnInit(): void {
         this.thing = 0;

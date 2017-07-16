@@ -66,7 +66,7 @@
     </StackLayout>
 
     <AbsoluteLayout tkMainContent>
-        <TabView height="603pt" width="375pt">
+        <TabView height="603pt" width="375pt" (selectedIndexChanged)="onSelectedIndexChanged($event)">
             <AbsoluteLayout
                 *tabItem="{title: 'Home',  iconSource: '~/images/Home.png'}"
                 style=" width: 360pt;"
