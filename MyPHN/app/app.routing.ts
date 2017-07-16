@@ -5,6 +5,7 @@ import { LocationsComponent } from "./locations/locations.component";
 import { LocationDetailComponent } from "./locations/detail.component";
 import { HomeComponent } from "./home/home.component";
 import { CountyComponent } from "./locations/county.component";
+import { ServicesComponent } from "./services/services.component"
 
 import { ItemsComponent } from "./items.component";
 
@@ -25,10 +26,10 @@ const routes: Routes = [
 
             { path: 'favorites', component: HomeComponent },
             { path: 'search', component: HomeComponent },
-            { path: 'services', component: HomeComponent },
+            { path: 'services', component: ServicesComponent },
             { path: 'providers', component: HomeComponent },
-            { path: 'portal', component: HomeComponent },
-            { path: 'news', component: HomeComponent },
+            { path: 'portal', component: ServicesComponent },
+            { path: 'news', component: ServicesComponent },
         ]
     },
 ];
