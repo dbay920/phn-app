@@ -23,6 +23,8 @@ const routes: Routes = [
         children: [
             { path: "", component: HomeComponent },
 
+
+            // Location tree
             { path: "locations", component: LocationsComponent },
             { path: "locations/:id", component: CountyComponent },
             {
@@ -30,13 +32,18 @@ const routes: Routes = [
                 component: LocationDetailComponent
             },
 
-            { path: 'favorites', component: HomeComponent },
+            // favorites
+            { path: 'favorites', component: ServicesComponent },
 
+            // search tree
             { path: 'search', component: SearchComponent },
             { path: 'search/:term', component: SearchTermComponent },
 
+            // services
             { path: 'services', component: ServicesComponent },
-            { path: 'providers', component: HomeComponent },
+
+            // providers
+            { path: 'providers', component: ServicesComponent },
             { path: 'portal', component: PortalComponent },
             { path: 'news', component: ServicesComponent },
         ]
