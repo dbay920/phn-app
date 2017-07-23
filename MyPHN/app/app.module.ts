@@ -17,6 +17,7 @@ import { ServicesComponent } from "./services/services.component"
 import { SearchComponent } from "./search/search.component"
 import { SearchTermComponent } from "./search/term.component"
 import { PortalComponent } from "./portal/portal.component"
+import { ServicesService } from "./shared/services/services.service"
 
 @NgModule({
     bootstrap: [
@@ -43,7 +44,8 @@ import { PortalComponent } from "./portal/portal.component"
     ],
     providers: [
         LocationsService,
-        CensusService
+        CensusService,
+        ServicesService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

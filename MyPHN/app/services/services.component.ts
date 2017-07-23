@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { View } from "ui/core/view";
-import { LocationsService } from "../shared/location/locations.service";
+import { ServicesService } from "../shared/services/services.service";
 import { CensusService } from "../shared/census/census.service"
 import { ActivatedRoute, Router } from '@angular/router';
 import { Color } from "color";
@@ -26,10 +26,9 @@ export class ServicesComponent implements OnInit {
 
     constructor(
         private _router: Router,
-        private locationsService: LocationsService,
+        private servicesService: ServicesService,
     ) {
         this.tabSelectedIndex = 3;
-
     }
 
     goToLocations(): void {
@@ -46,10 +45,11 @@ export class ServicesComponent implements OnInit {
                 let metersToMiles = 0.000621371;
                 let minDist = 3500;
                 let minCounty;
-
-
             }
         })
+        this.servicesService.getServices().then((x) => {
+            console.log(x)
+        });
     }
 
     navigate() {
@@ -61,7 +61,5 @@ export class ServicesComponent implements OnInit {
         }, (error) => {
             console.log(error);
         });
-
     }
-
 }
