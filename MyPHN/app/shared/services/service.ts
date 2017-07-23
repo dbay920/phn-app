@@ -16,7 +16,7 @@ export class Service {
     }
 
     getName() {
-        return this.data[1];
+        return this.name;
     }
 
     getPhone() {

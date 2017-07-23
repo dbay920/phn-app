@@ -68,6 +68,9 @@ export class ServicesService {
                 currentServices = [];
 
                 xmlParser.parse('<html><li' + x.split('<li class="dropdown yamm-fullwidth"')[1]);
+                currentServices.shift()
+                currentServices.shift()
+
                 return currentServices;
             });
     }
@@ -76,6 +79,7 @@ export class ServicesService {
         if (!response.ok) {
             throw Error(response.statusText);
         }
+
         return response;
     }
 }

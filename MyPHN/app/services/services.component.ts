@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { View } from "ui/core/view";
 import { ServicesService } from "../shared/services/services.service";
+import { Service } from "../shared/services/service"
 import { CensusService } from "../shared/census/census.service"
 import { ActivatedRoute, Router } from '@angular/router';
 import { Color } from "color";
@@ -17,6 +18,8 @@ import { LocateAddress } from "nativescript-locate-address";
 export class ServicesComponent implements OnInit {
     public tabSelectedIndex: number;
     thing: number
+
+    services: Array<Service>;
 
     image: string;
     details: LocationDetail;
@@ -48,7 +51,7 @@ export class ServicesComponent implements OnInit {
             }
         })
         this.servicesService.getServices().then((x) => {
-            console.log(x)
+            this.services = x;
         });
     }
 
