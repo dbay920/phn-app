@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from "@angular/core";
+import { ViewChildren, QueryList, Component, OnInit, ElementRef, ViewChild, AfterViewInit } from "@angular/core";
 import { View } from "ui/core/view";
 import { LocationsService } from "./shared/location/locations.service";
 
@@ -6,11 +6,8 @@ import { SideDrawerLocation } from 'nativescript-telerik-ui-pro/sidedrawer';
 import { RadSideDrawerComponent } from "nativescript-telerik-ui-pro/sidedrawer/angular";
 import { RadSideDrawer } from "nativescript-telerik-ui-pro/sidedrawer";
 import { ActivatedRoute, Router } from '@angular/router';
-
-import { Color } from "color";
-
-
-declare var CGSizeMake: any;
+import { registerElement } from 'nativescript-angular';
+import { setInterval, setTimeout, clearInterval } from "timer";
 
 @Component({
     selector: "ns-items",
@@ -19,19 +16,21 @@ declare var CGSizeMake: any;
     styleUrls: ['items.component.css']
 })
 
-
 export class ItemsComponent implements OnInit, AfterViewInit {
     public tabSelectedIndex: number;
     public SideDrawerLocation: any;
     thing: number
     routes: Array<any>;
     public firstTime: boolean;
+    public id: number;
 
-    constructor(private _router: Router, private locationsService: LocationsService) {
+    constructor(
+        private _router: Router,
+        private locationsService: LocationsService
+    ) {
         this.firstTime = true;
         this.tabSelectedIndex = 3;
         this.SideDrawerLocation = SideDrawerLocation;
-
 
         this.routes = [
             { name: 'Favorites', url: 'items/favorites' },
@@ -43,10 +42,39 @@ export class ItemsComponent implements OnInit, AfterViewInit {
             { name: 'Patient Portal', url: 'items/portal' },
             { name: 'News', url: 'items/news' },
         ];
+
+        // TODO: android behavior
+        this.id = setInterval(() => {
+            if (this.isMoreTab()) {
+                this.drawer.showDrawer();
+                this.setSelectedIndex(5);
+            }
+        }, 1000);
     }
 
     onCloseDrawerTap(): void {
         this.drawer.closeDrawer();
+    }
+
+    getSelectedIndex(): number {
+
+        // TODO: android behavior
+        if (!ItemsComponent.tabView)
+            return -1;
+
+        return ItemsComponent.tabView.ios.selectedIndex;
+    }
+
+    setSelectedIndex(i) {
+
+        // TODO: android behavior
+        ItemsComponent.tabView.ios.selectedIndex = i;
+    }
+
+    isMoreTab(): boolean {
+
+        // TODO: android behavior
+        return this.getSelectedIndex() === 9223372036854776000
     }
 
     onSelectedIndexChanged(event): void {
@@ -64,14 +92,13 @@ export class ItemsComponent implements OnInit, AfterViewInit {
                 this.goToLocations(this.routes[7].url);
                 break;
             case 3:
-                this.drawer.showDrawer();
+                // TODO: add phn social route and icon
+                //this.goToLocations(this.routes[7].url);
                 break;
             default:
-                console.log('error');
+                console.log('error', event.newIndex);
         }
-
     }
-
 
     ngOnInit(): void {
         this.thing = 0;
@@ -87,13 +114,16 @@ export class ItemsComponent implements OnInit, AfterViewInit {
 
     @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
     private drawer: RadSideDrawer;
+    public static tabView;
 
     ngAfterViewInit() {
         this.drawer = this.drawerComponent.sideDrawer;
-        //        ItemsComponent.tabView = this.ref.first.nativeElement;
+        ItemsComponent.tabView = this.ref.first.nativeElement;
         //ItemsComponent.tabView.items[3].addEventListener('tap', this.hi);
         //        ItemsComponent.tabView.items.push(new TabViewItem());
 
+        let uiTabBarCtrl = ItemsComponent.tabView.ios;
+        let view = ItemsComponent.tabView.nativeView;
     }
 
     goToLocations(url): void {
@@ -101,7 +131,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         this.drawer.closeDrawer();
     }
 
-        favorites() {
+    favorites() {
         this._router.navigateByUrl("items/favorites");
     }
 
@@ -109,6 +139,5 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         this._router.navigateByUrl("items/search");
     }
 
-    //  @ViewChildren('ref') ref: QueryList<any>;
-
+    @ViewChildren('ref') ref: QueryList<any>;
 }

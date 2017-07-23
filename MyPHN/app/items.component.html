@@ -67,6 +67,39 @@
 
     <AbsoluteLayout tkMainContent>
         <!-- UIToolBar goes here -->
+        <TabView #ref height="603pt" width="375pt" (selectedIndexChanged)="onSelectedIndexChanged($event)">
+            <AbsoluteLayout
+                *tabItem="{title: 'Home',  iconSource: '~/images/Home.png'}"
+                style=" width: 360pt;"
+            >
+
+            </AbsoluteLayout>
+            <StackLayout
+                *tabItem="{title: 'Portal', iconSource: '~/images/Portal.png'}"
+            >
+
+            </StackLayout>
+            <StackLayout
+                *tabItem="{title: 'News', iconSource: '~/images/News.png'}"
+            >
+
+            </StackLayout>
+            <StackLayout
+                *tabItem="{title: 'PHN Social', iconSource: '~/images/Portal.png'}"
+            >
+
+            </StackLayout>
+            <StackLayout
+                *tabItem="{title: 'More', iconSource: '~/images/More.png'}"
+            >
+
+            </StackLayout>
+            <StackLayout
+                *tabItem="{title: 'More', iconSource: '~/images/More.png'}"
+            >
+
+            </StackLayout>
+        </TabView>
         <router-outlet>
 
         </router-outlet>
