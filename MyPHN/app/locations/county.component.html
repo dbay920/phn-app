@@ -1,18 +1,18 @@
 <StackLayout>
- <CardView
+    <CardView
         elevation="40"
         radius="2"
         height="90"
         width="360"
         style="margin-bottom: 8pt;"
     >
-            <Label
-                text="{{county.getName()}}"
-                class="double-columbian white bold center"
+        <Label
+            text="{{county.getName()}}"
+            class="double-columbian white bold center"
         >
 
         </Label>
-           </CardView>
+    </CardView>
     <ListView
         [items]="locations"
         width="375"
@@ -25,41 +25,41 @@
             let-odd="odd"
             let-even="even"
         >
-               <CardView
-                    elevation="40"
-                    radius="2"
-                    [class.hidden]="odd"
-                    height="162pt"
-                    width="360pt"
-                    (tap)="listViewItemTap(i)"
-                >
-                    <StackLayout>
-                        <Label
-                            [text]="item.getName()"
-                            textWrap="true"
-                            class="double-pica bold primary center white-background"
-                        >
+            <CardView
+                elevation="40"
+                radius="2"
+                [class.hidden]="odd"
+                height="162pt"
+                width="360pt"
+                (tap)="listViewItemTap(i)"
+            >
+                <StackLayout>
+                    <Label
+                        [text]="item.getName()"
+                        textWrap="true"
+                        class="double-pica bold primary center white-background"
+                    >
 
-                        </Label>
-                        <Label
-                            [text]="item.getAddress()"
-                            textWrap="true"
-                            class="double-pica bold primary center white-background"
-                        >
+                    </Label>
+                    <Label
+                        [text]="item.getAddress()"
+                        textWrap="true"
+                        class="double-pica bold primary center white-background"
+                    >
 
-                        </Label>
+                    </Label>
 
-                        <Label
-                            [text]="item.getPhone()"
-                            textWrap="true"
-                            class="double-pica bold primary center white-background"
-                        >
+                    <Label
+                        [text]="item.getPhone()"
+                        textWrap="true"
+                        class="double-pica bold primary center white-background"
+                    >
 
-                        </Label>
+                    </Label>
 
 
-                    </StackLayout>
-                                   </CardView>
+                </StackLayout>
+            </CardView>
 
         </ng-template>
     </ListView>
