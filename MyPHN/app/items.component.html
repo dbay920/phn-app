@@ -16,7 +16,7 @@
             </Label>
         </StackLayout>
         <StackLayout orientation="vertical">
-            <Image src="~/images/Icon_Favorite.png" class="action-image">
+            <Image src="~/images/Icon_Favorite.png" class="action-image" (tap)="favorites()">
 
             </Image>
             <Label text="Favorites"  class="favorites">
@@ -24,7 +24,7 @@
             </Label>
         </StackLayout>
         <StackLayout orientation="vertical">
-            <Image src="~/images/Icon_Search.png" class="action-image">
+            <Image src="~/images/Icon_Search.png" class="action-image" (tap)="search()">
 
             </Image>
             <Label text="Search PHN"  class="search-phn">
@@ -40,22 +40,34 @@
     [drawerLocation]="SideDrawerLocation.Right"
 >
     <StackLayout tkDrawerContent class="sideStackLayout">
-        <Label text="Favorites" class="sideLabel double-pica">
+        <ListView
+            [items]="routes"
+            height="550"
+            style="background-color: transparent;"
+        >
+            <ng-template
+                let-item="item"
+                let-i="index"
+                let-odd="odd"
+                let-even="even"
+            >
+                <Button
+                    text="{{item.name}}"
+                    class="double-pica sideLabel"
+                    (tap)="goToLocations(item.url)"
+                >
 
-        </Label>
-            <Label text="Search" class="double-pica sideLabel"></Label>
-            <Label text="Home" class="double-pica sideLabel"></Label>
-            <Button text="Locations" class="double-pica sideLabel " (tap)="goToLocations()"></Button>
-            <Label text="Services" class="double-pica sideLabel"></Label>
-            <Label text="Providers" class="double-pica sideLabel"></Label>
-            <Label text="Patient Portal" class="double-pica sideLabel"></Label>
-            <Label text="News" class="double-pica sideLabel"></Label>
+                </Button>
+            </ng-template>
+        </ListView>
+        <Button text="Close Drawer" style="horizontal-align: center" (tap)="onCloseDrawerTap()">
 
-        <Button text="Close Drawer" style="horizontal-align: center" (tap)="onCloseDrawerTap()"></Button>
+        </Button>
     </StackLayout>
 
     <AbsoluteLayout tkMainContent>
-        <TabView height="603pt" width="375pt">
+        <!-- UIToolBar goes here -->
+        <TabView #ref height="603pt" width="375pt" (selectedIndexChanged)="onSelectedIndexChanged($event)">
             <AbsoluteLayout
                 *tabItem="{title: 'Home',  iconSource: '~/images/Home.png'}"
                 style=" width: 360pt;"
@@ -73,18 +85,19 @@
 
             </StackLayout>
             <StackLayout
+                *tabItem="{title: 'PHN Social', iconSource: '~/images/Portal.png'}"
+            >
+
+            </StackLayout>
+            <StackLayout
                 *tabItem="{title: 'More', iconSource: '~/images/More.png'}"
             >
-                <CardView class="cardStyle" margin="8" elevation="40" radius="100" >
-                    <GridLayout rows="10,30,30,250, auto, auto,10" columns="10,40, *, 30,10">
-                        <Image src="~/images/Icon_Locations.png" stretch="aspectFit" verticalAlignment="stretch" col="1" row="1" rowSpan="2"></Image>
-                        <Label class="createdBy text-left" horizontalAlignment="left" text="item.CreatedBy" row="1" col="2" textWrap="true"></Label>
-                        <Label class="createdOn text-left" horizontalAlignment="left" text="item.UpdatedDate" row="2" col="2"></Label>
 
-                        <Label horizontalAlignment="left" text="item.Title" colSpan="3" row="4" textWrap="true" col="1"></Label>
-                        <Label  horizontalAlignment="left" text="item.Summary" textWrap="true" col="1" row="5" colSpan="3"></Label>
-                    </GridLayout>
-                </CardView>
+            </StackLayout>
+            <StackLayout
+                *tabItem="{title: 'More', iconSource: '~/images/More.png'}"
+            >
+
             </StackLayout>
         </TabView>
         <router-outlet>

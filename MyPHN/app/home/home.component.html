@@ -5,9 +5,11 @@
         <Label text="Closest PHN Location:" class="small-title background">
 
         </Label>
-        <Image src="~/images/clarion.png" width="360pt"></Image>
+        <Image src="{{image}}" width="360pt" height="200pt">
+
+        </Image>
         <Button text="Locations" class="tile"
-                style=" height: 80pt; font-size: 24pt;background-color: #00817d; background-image: ~/images/Icon_Locations.png;  background-repeat: no-repeat; background-position: 310 25; border-radius: 5pt;"
+                style=" height: 80pt; font-size: 24pt;background-color: #00817d; background-image: ~/images/Icon_Locations.png;  background-repeat: no-repeat; background-position: 310 25; border-radius: 2;"
                 (tap)="goToLocations()"
         >
         </Button>
@@ -22,7 +24,7 @@
     <Label
         top="207"
         left="2"
-        text="Clarion Urgent Care"
+        text="{{name}}"
         class="alpha double-pica col-12"
     >
 
@@ -30,25 +32,19 @@
     <Label
         top="235"
         left="2"
-        text="30 Pinnacle Drive"
+        text="{{address}}"
         class="alpha-two great-primer col-12"
+        textWrap="true" style="height: 70pt;"
     >
 
     </Label>
     <Label
-        top="256"
-        left="2"
-        text="Clarion, PA 16214"
-        class="alpha-two great-primer col-12"
+        top="256" left="300" text="{{distance}}" class="alpha-two great-primer"
+
     >
 
     </Label>
-    <Label
-        top="256" left="300" text="5.2 mi" class="alpha-two great-primer"
-    >
-
-    </Label>
-    <Image src="~/images/Icon_Directions.png" top="210" left="300">
+    <Image src="~/images/Icon_Directions.png" top="210" left="300" (tap)="navigate()">
 
     </Image>
 </AbsoluteLayout>

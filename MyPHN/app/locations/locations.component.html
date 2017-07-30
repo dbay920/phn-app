@@ -1,3 +1,84 @@
 <StackLayout>
-    <Label text="rela outlettttt Second tab item locations"></Label>
+    <CardView
+        elevation="40"
+        radius="2"
+        height="90"
+        width="360"
+        style="margin-bottom: 8pt;"
+    >
+        <AbsoluteLayout>
+            <Label
+                text="Locations"
+                class="double-columbian white bold"
+                style="margin-left: 68pt;"
+        >
+
+        </Label>
+        </AbsoluteLayout>
+    </CardView>
+    <CardView
+        width="360"
+        height="38"
+        radius="2"
+    >
+        <AbsoluteLayout>
+            <Label text="Sort By: County" class="great-primer white center bold">
+
+            </Label>
+        </AbsoluteLayout>
+    </CardView>
+    <ListView
+        [items]="counties"
+        width="375"
+        height="418"
+        style="background-color: #9d9d9d;"
+    >
+        <ng-template
+            let-item="item"
+            let-i="index"
+            let-odd="odd"
+            let-even="even"
+        >
+            <StackLayout orientation="horizontal">
+                <CardView
+                    elevation="40"
+                    radius="2"
+                    [class.hidden]="odd"
+                    height="80pt"
+                    width="176pt"
+                    (tap)="listViewItemTap(i)"
+                >
+                    <Label
+                        [text]="item.getName()"
+                        textWrap="true"
+                        class="double-pica bold primary center white-background"
+                    >
+
+                        </Label>
+                </CardView>
+
+                <CardView
+                    elevation="40"
+                    radius="2"
+                    [class.hidden]="odd"
+                    height="80pt"
+                    width="176pt"
+                    (tap)="listViewItemTap(i+1)"
+                >
+                    <Label
+                        [class.hidden]="i + 1 >= counties.length"
+                        [text]="i + 1 < counties.length ? counties[i + 1].getName() : 'null'"
+                        textWrap="true"
+                        class="double-pica bold primary center white-background"
+                    >
+
+                        </Label>
+
+                </CardView>
+
+            </StackLayout>
+
+        </ng-template>
+    </ListView>
+
 </StackLayout>

@@ -1,12 +1,14 @@
-export class Location {
+export class Service {
     data: Array<string>
+    name: string;
 
-    constructor() {
+    constructor(name: string) {
+        this.name = name;
         this.data = [];
     }
 
     getHref() {
-        return 'https://primary-health.net/' + this.data[0];
+        return this.data[0];
     }
 
     getId() {
@@ -14,7 +16,7 @@ export class Location {
     }
 
     getName() {
-        return this.data[1];
+        return this.name;
     }
 
     getPhone() {

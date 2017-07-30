@@ -1,0 +1,67 @@
+<StackLayout>
+    <CardView
+        elevation="40"
+        radius="2"
+        height="90"
+        width="360"
+        style="margin-bottom: 8pt;"
+    >
+        <Label
+            text="{{county.getName()}}"
+            class="double-columbian white bold center"
+        >
+
+        </Label>
+    </CardView>
+    <ListView
+        [items]="locations"
+        width="375"
+        height="418"
+        style="background-color: #9d9d9d;"
+    >
+        <ng-template
+            let-item="item"
+            let-i="index"
+            let-odd="odd"
+            let-even="even"
+        >
+            <CardView
+                elevation="40"
+                radius="2"
+                [class.hidden]="odd"
+                height="162pt"
+                width="360pt"
+                (tap)="listViewItemTap(i)"
+            >
+                <StackLayout>
+                    <Label
+                        [text]="item.getName()"
+                        textWrap="true"
+                        class="double-pica bold primary center white-background"
+                    >
+
+                    </Label>
+                    <Label
+                        [text]="item.getAddress()"
+                        textWrap="true"
+                        class="double-pica bold primary center white-background"
+                    >
+
+                    </Label>
+
+                    <Label
+                        [text]="item.getPhone()"
+                        textWrap="true"
+                        class="double-pica bold primary center white-background"
+                    >
+
+                    </Label>
+
+
+                </StackLayout>
+            </CardView>
+
+        </ng-template>
+    </ListView>
+
+</StackLayout>

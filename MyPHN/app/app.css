@@ -78,6 +78,8 @@ Label.tile {
 .cardStyle {
     background-color: #3489db;
     color: #fff;
+    margin-left: 8pt;
+    margin-top: 8pt;
 }
 
 .small-title {
@@ -107,6 +109,26 @@ Label.tile {
   font-family: Roboto;
   font-size: 14pt;
   line-height: 16pt;
+  text-align: center;
+}
+
+.white {
+  color: white;
+}
+
+.white-background {
+  background-color: white;
+}
+
+.primary {
+  color: #00817d;
+}
+
+.primary-background {
+  background-color: #00817d;
+}
+
+.center {
   text-align: center;
 }
 
@@ -148,4 +170,12 @@ Label.tile {
 .great-primer {
   font-size: 18pt;
   height: 21pt;
+}
+
+.small-spacing {
+  margin: 5;
+}
+
+.medium-spacing {
+  margin: 10;
 }

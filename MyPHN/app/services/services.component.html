@@ -1,0 +1,40 @@
+<StackLayout>
+    <CardView height="97">
+        <Label text="Services">
+
+        </Label>
+    </CardView>
+    <ListView
+        [items]="services"
+        width="375"
+        height="418"
+        style="background-color: #9d9d9d;"
+    >
+        <ng-template
+            let-item="item"
+            let-i="index"
+            let-odd="odd"
+            let-even="even"
+        >
+            <CardView
+                elevation="40"
+                radius="2"
+                [class.hidden]="odd"
+                height="80pt"
+                width="360pt"
+                (tap)="listViewItemTap(i)"
+                class="white-background"
+            >
+                <StackLayout>
+                    <Label
+                        [text]="item.getName()"
+                        textWrap="true"
+                        class="double-pica bold primary center white-background"
+                    >
+
+                    </Label>
+                </StackLayout>
+            </CardView>
+        </ng-template>
+    </ListView>
+</StackLayout>
