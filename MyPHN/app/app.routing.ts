@@ -21,8 +21,10 @@ const routes: Routes = [
         path: "items",
         component: ItemsComponent,
         children: [
-            { path: "", component: HomeComponent },
 
+            // default route
+            { path: "", component: HomeComponent },
+            //{ path: "", component: ServicesComponent },
 
             // Location tree
             { path: "locations", component: LocationsComponent },
