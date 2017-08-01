@@ -16,7 +16,12 @@ export class County {
     }
 
     getName() {
-        return this.data[0].split('net/')[1].split('.')[0] + ' County';
+        let x = this.data[0].split('net/')[1];
+
+        if (x)
+            x = x.split('.')[0] + ' County';
+
+        return x;
     }
 
     push(x: string) {
