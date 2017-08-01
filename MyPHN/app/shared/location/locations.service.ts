@@ -185,16 +185,7 @@ export class LocationsService {
 
     }
 
-    /*    login(user: User) {
-            return this.http.get(
-                Config.apiUrl + "users/",
-                { headers: user.getHeaders() }
-            ).map(response => response.json()).do(data => {
-                Config.user = user;
-            }).catch(this.handleErrors);
-        }*/
-
-    handleErrors(response) {
+    private handleErrors(response) {
         if (!response.ok) {
             throw Error(response.statusText);
         }
