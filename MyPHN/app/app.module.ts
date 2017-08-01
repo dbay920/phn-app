@@ -14,6 +14,7 @@ import { LocationDetailComponent } from "./locations/detail.component";
 import { CountyComponent } from "./locations/county.component";
 import { CensusService } from "./shared/census/census.service"
 import { ServicesComponent } from "./services/services.component"
+import { ServiceDetailComponent } from "./services/detail.component"
 import { SearchComponent } from "./search/search.component"
 import { SearchTermComponent } from "./search/term.component"
 import { PortalComponent } from "./portal/portal.component"
@@ -35,6 +36,7 @@ import { ServicesService } from "./shared/services/services.service"
         ItemsComponent,
         HomeComponent,
         ServicesComponent,
+        ServiceDetailComponent,
         SearchComponent,
         PortalComponent,
         SearchTermComponent,
