@@ -67,7 +67,10 @@ export class ServicesService {
             .then((x) => {
                 currentServices = [];
 
-                xmlParser.parse('<html><li' + x.split('<li class="dropdown yamm-fullwidth"')[1]);
+                xmlParser.parse(
+                    '<html><li' +
+                    x.split('<li class="dropdown yamm-fullwidth"')[1]
+                );
                 currentServices.shift()
                 currentServices.shift()
 
@@ -75,7 +78,34 @@ export class ServicesService {
             });
     }
 
-    handleErrors(response) {
+    /*getDetails(id: number) {
+        console.log(id)
+
+        return fetchModule.fetch(
+            'https://primary-health.net/ServiceDetail.aspx?id=' + id,
+            {
+                method: "GET"
+            })
+            .then(this.handleErrors)
+            .then((x) => {
+                let text = x.text();
+
+                return text;
+            })
+            .then((x) => {
+                console.log(x);
+                currentServices = [];
+
+                xmlParser.parse('<html><li' + x.split('<li class="dropdown yamm-fullwidth"')[1]);
+                currentServices.push(currentService)
+                currentServices.shift()
+                currentServices.shift()
+
+                return currentServices;
+            });
+    }*/
+
+    private handleErrors(response) {
         if (!response.ok) {
             throw Error(response.statusText);
         }
