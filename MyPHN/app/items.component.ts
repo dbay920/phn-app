@@ -26,7 +26,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
 
     constructor(
         private _router: Router,
-        private locationsService: LocationsService
+        private locationsService: LocationsService,
     ) {
         this.firstTime = true;
         this.tabSelectedIndex = 3;
@@ -47,6 +47,16 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         this.id = setInterval(() => {
             if (this.isMoreTab()) {
                 this.drawer.showDrawer();
+                this.setSelectedIndex(5);
+            }
+            let validRoutes = [
+                '/items',
+                '/items/news',
+                '/items/portal'
+            ]
+            if (!validRoutes.find((route) => {
+                return route === this._router.url;
+            })) {
                 this.setSelectedIndex(5);
             }
         }, 1000);
