@@ -49,7 +49,7 @@ import { NewsComponent } from "./news/news.component"
     providers: [
         LocationsService,
         CensusService,
-        ServicesService
+        ServicesService,
     ],
     schemas: [
         NO_ERRORS_SCHEMA

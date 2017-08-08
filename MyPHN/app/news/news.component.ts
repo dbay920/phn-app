@@ -1,5 +1,4 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
-import { ServicesService } from "../shared/services/services.service";
 import { Service } from "../shared/services/service"
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,10 +10,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class NewsComponent implements OnInit {
     services: Array<Service>;
+    webViewSrc: string;
 
     constructor(
         private _router: Router,
-        private servicesService: ServicesService,
     ) {
     }
 
@@ -23,9 +22,7 @@ export class NewsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.servicesService.getServices().then((x) => {
-            this.services = x;
-        });
+        this.webViewSrc = 'https://primary-health.net/blog/';
     }
 
     listViewItemTap(i) {
