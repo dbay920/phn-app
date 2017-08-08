@@ -1,10 +1,44 @@
-<AbsoluteLayout
-    style=" width: 360pt;"
->
-
 <StackLayout>
 
     <Image src="{{image}}" width="360pt"></Image>
+
+    <CardView>
+        <Label
+            top="207"
+            left="2"
+            text="{{name}}"
+            class="alpha double-pica col-12"
+        >
+
+        </Label>
+        <Label
+            top="235"
+            left="2"
+            text="{{address}}"
+            textWrap="true"
+            class="alpha-two great-primer col-12"
+            style="height: 70pt;"
+        >
+
+        </Label>
+
+        <Label
+            top="256"
+            left="300"
+            text="{{distance}}"
+            class="alpha-two great-primer"
+        >
+
+        </Label>
+        <Image
+            src="~/images/Icon_Directions.png"
+            top="210"
+            left="300"
+            (tap)="navigate()"
+        >
+
+        </Image>
+    </CardView>
 
     <ListView
         [items]="cards"
@@ -48,42 +82,3 @@
         </ng-template>
     </ListView>
 </StackLayout>
-
-
-<Label
-    top="207"
-    left="2"
-    text="{{name}}"
-    class="alpha double-pica col-12"
->
-
-</Label>
-<Label
-    top="235"
-    left="2"
-    text="{{address}}"
-    textWrap="true"
-    class="alpha-two great-primer col-12"
-    style="height: 70pt;"
->
-
-</Label>
-
-<Label
-    top="256"
-    left="300"
-    text="{{distance}}"
-    class="alpha-two great-primer"
->
-
-</Label>
-<Image
-    src="~/images/Icon_Directions.png"
-    top="210"
-    left="300"
-    (tap)="navigate()"
->
-
-</Image>
-
-</AbsoluteLayout>
