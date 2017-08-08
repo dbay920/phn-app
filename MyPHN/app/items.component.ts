@@ -47,7 +47,6 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         this.id = setInterval(() => {
             if (this.isMoreTab()) {
                 this.drawer.showDrawer();
-                this.setSelectedIndex(5);
             }
             let validRoutes = [
                 '/items',
