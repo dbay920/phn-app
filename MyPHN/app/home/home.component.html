@@ -1,50 +1,58 @@
-<AbsoluteLayout
-    style=" width: 360pt;"
->
-    <StackLayout>
-        <Label text="Closest PHN Location:" class="small-title background">
-
-        </Label>
-        <Image src="{{image}}" width="360pt" height="200pt">
-
-        </Image>
-        <Button text="Locations" class="tile"
-                style=" height: 80pt; font-size: 24pt;background-color: #00817d; background-image: ~/images/Icon_Locations.png;  background-repeat: no-repeat; background-position: 310 25; border-radius: 2;"
-                (tap)="goToLocations()"
-        >
-        </Button>
-
-        <Label text="Services" class="tile background"
-               style="background-image: ~/images/Icon_Services.png;  background-repeat: no-repeat; background-position: 303 25;">
-        </Label>
-        <Label text="Providers" class="tile background"
-               style="background-image: ~/images/Icon_Providers.png;  background-repeat: no-repeat; background-position: 304 25;">
-        </Label>
-    </StackLayout>
-    <Label
-        top="207"
-        left="2"
-        text="{{name}}"
-        class="alpha double-pica col-12"
-    >
+<StackLayout>
+    <Label text="Closest PHN Location:" class="small-title background">
 
     </Label>
-    <Label
-        top="235"
-        left="2"
-        text="{{address}}"
-        class="alpha-two great-primer col-12"
-        textWrap="true" style="height: 70pt;"
+    <CardView
+        elevation="40"
+        radius="2"
+        height="258"
+        width="360"
+        style="margin-bottom: 8pt;"
     >
+        <AbsoluteLayout>
+            <Image src="{{image}}" stretch="aspectFit" verticalAlignment="stretch" width="360" row="0" top="0" left="0">
 
-    </Label>
-    <Label
-        top="256" left="300" text="{{distance}}" class="alpha-two great-primer"
+            </Image>
 
+            <Label
+                top="181"
+                left="2"
+                text="{{name}}"
+                class="alpha double-pica col-12"
+            >
+
+            </Label>
+            <Label
+                top="212"
+                left="2"
+                text="{{address}}"
+                class="alpha-two great-primer col-12"
+                textWrap="true" style="height: 70pt;"
+            >
+
+            </Label>
+            <Label
+                top="233" left="300" text="{{distance}}" class="alpha-two great-primer"
+
+            >
+
+            </Label>
+            <Image src="~/images/Icon_Directions.png" top="188" left="300" (tap)="navigate()">
+
+            </Image>
+
+        </AbsoluteLayout>
+    </CardView>
+    <Button text="Locations" class="tile"
+            style=" height: 80pt; font-size: 24pt;background-color: #00817d; background-image: ~/images/Icon_Locations.png;  background-repeat: no-repeat; background-position: 310 25; border-radius: 2;"
+            (tap)="goToLocations()"
     >
+    </Button>
 
+    <Label text="Services" class="tile background"
+           style="background-image: ~/images/Icon_Services.png;  background-repeat: no-repeat; background-position: 303 25;">
     </Label>
-    <Image src="~/images/Icon_Directions.png" top="210" left="300" (tap)="navigate()">
-
-    </Image>
-</AbsoluteLayout>
+    <Label text="Providers" class="tile background"
+           style="background-image: ~/images/Icon_Providers.png;  background-repeat: no-repeat; background-position: 304 25;">
+    </Label>
+</StackLayout>
