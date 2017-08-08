@@ -7,6 +7,7 @@ import { HomeComponent } from "./home/home.component";
 import { CountyComponent } from "./locations/county.component";
 import { ServicesComponent } from "./services/services.component"
 import { ServiceDetailComponent } from "./services/detail.component"
+import { NewsComponent } from "./news/news.component";
 import { SearchComponent } from "./search/search.component"
 import { SearchTermComponent } from "./search/term.component"
 import { PortalComponent } from "./portal/portal.component"
@@ -49,7 +50,7 @@ const routes: Routes = [
             // providers
             { path: 'providers', component: ServicesComponent },
             { path: 'portal', component: PortalComponent },
-            { path: 'news', component: ServicesComponent },
+            { path: 'news', component: NewsComponent },
         ]
     },
 ];

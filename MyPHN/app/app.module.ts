@@ -19,6 +19,7 @@ import { SearchComponent } from "./search/search.component"
 import { SearchTermComponent } from "./search/term.component"
 import { PortalComponent } from "./portal/portal.component"
 import { ServicesService } from "./shared/services/services.service"
+import { NewsComponent } from "./news/news.component"
 
 @NgModule({
     bootstrap: [
@@ -40,6 +41,7 @@ import { ServicesService } from "./shared/services/services.service"
         SearchComponent,
         PortalComponent,
         SearchTermComponent,
+        NewsComponent,
         CountyComponent,
         LocationsComponent,
         LocationDetailComponent,
