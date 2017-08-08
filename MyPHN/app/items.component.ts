@@ -51,13 +51,17 @@ export class ItemsComponent implements OnInit, AfterViewInit {
             }
             let validRoutes = [
                 '/items',
+                '/items/portal',
                 '/items/news',
-                '/items/portal'
             ]
-            if (!validRoutes.find((route) => {
+            let index = validRoutes.findIndex((route) => {
                 return route === this._router.url;
-            })) {
+            })
+
+            if (index === -1) {
                 this.setSelectedIndex(5);
+            } else {
+                this.setSelectedIndex(index);
             }
         }, 1000);
     }
