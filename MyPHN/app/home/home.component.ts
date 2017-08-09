@@ -9,8 +9,6 @@ import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, di
 import { LocateAddress } from "nativescript-locate-address";
 import { Config } from '../shared/config';
 
-declare var CGSizeMake: any;
-
 @Component({
     selector: "ns-items",
     moduleId: module.id,
