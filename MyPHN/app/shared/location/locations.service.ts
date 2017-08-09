@@ -161,6 +161,7 @@ export class LocationsService {
                 currentDetail = new LocationDetail();
 
                 detailParser.parse('<html><div' + x.split('<div class="post format-image"')[1]);
+
                 return currentDetail;
             });
     }
