@@ -57,10 +57,17 @@ export class ItemsComponent implements OnInit, AfterViewInit {
                 return route === this._router.url;
             })
 
+
             if (index === -1) {
-                this.setSelectedIndex(5);
+                if (this.getSelectedIndex() !== 3) {
+                    this.firstTime = true;
+                    this.setSelectedIndex(3);
+                }
             } else {
-                this.setSelectedIndex(index);
+                if (index !== this.getSelectedIndex()) {
+                    this.firstTime = true;
+                    this.setSelectedIndex(index);
+                }
             }
         }, 1000);
     }
@@ -79,9 +86,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     }
 
     setSelectedIndex(i) {
-
-        // TODO: android behavior
-        ItemsComponent.tabView.ios.selectedIndex = i;
+        ItemsComponent.tabView.selectedIndex = i;
     }
 
     isMoreTab(): boolean {
@@ -91,12 +96,14 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     }
 
     onSelectedIndexChanged(event): void {
+        if (this.firstTime) {
+            this.firstTime = false;
+            return;
+        }
+
         switch (event.newIndex) {
             case 0:
-                if (this.firstTime)
-                    this.firstTime = false;
-                else
-                    this.goToLocations(this.routes[2].url);
+                this.goToLocations(this.routes[2].url);
                 break;
             case 1:
                 this.goToLocations(this.routes[6].url);
@@ -105,8 +112,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
                 this.goToLocations(this.routes[7].url);
                 break;
             case 3:
-                // TODO: add phn social route and icon
-                //this.goToLocations(this.routes[7].url);
+                this.drawer.showDrawer();
                 break;
             default:
                 console.log('error', event.newIndex);
