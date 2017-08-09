@@ -64,6 +64,6 @@ export class LocationDetail {
     }
 
     getProviders() {
-        return {};
+        return [];
     }
 }
