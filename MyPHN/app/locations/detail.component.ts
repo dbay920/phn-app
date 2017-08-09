@@ -60,7 +60,7 @@ export class LocationDetailComponent implements OnInit {
                 { name: 'About', data: this.details.getAbout() },
                 { name: 'Hours', data: this.details.getHours() },
                 { name: 'Contact', data: this.details.getContact() },
-                { name: 'Providers', data: this.details.getProviders() }
+                //  { name: 'Providers', data: this.details.getProviders() }
             ]
             this.image = this.details.getImage();
             console.log(this.image);
