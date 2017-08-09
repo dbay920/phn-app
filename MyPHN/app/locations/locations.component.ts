@@ -4,6 +4,12 @@ import { LocationsService } from "../shared/location/locations.service";
 import { County } from "../shared/location/county";
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageRoute } from "nativescript-angular/router";
+import { SegmentedBar, SegmentedBarItem } from "ui/segmented-bar";
+import { Config } from '../shared/config';
+import * as _ from "lodash";
+import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";
+import { LocateAddress } from "nativescript-locate-address";
+
 
 @Component({
     selector: "ns-items",
@@ -15,6 +21,12 @@ import { PageRoute } from "nativescript-angular/router";
 export class LocationsComponent implements OnInit {
 
     public counties: Array<County>;
+    public myItems: Array<SegmentedBarItem>;
+    public i;
+    visibility1;
+    visibility3;
+    visibility2;
+    selectedIndex;
 
     constructor(private route: ActivatedRoute, private _router: Router, private locationsService: LocationsService) {
     }
@@ -27,7 +39,75 @@ export class LocationsComponent implements OnInit {
         this._router.navigateByUrl("items/locations/" + this.counties[i].getName());
     }
 
+    onSelectedIndexChange(event) {
+        let segmetedBar = <SegmentedBar>event.object;
+        this.selectedIndex = segmetedBar.selectedIndex;
+        switch (this.selectedIndex) {
+            case 0:
+                this.visibility1 = true;
+                this.visibility2 = false;
+                this.visibility3 = false;
+                break;
+            case 1:
+                this.visibility1 = false;
+                this.visibility2 = true;
+                this.visibility3 = false;
+                break;
+            case 2:
+                this.visibility1 = false;
+                this.visibility2 = false;
+                this.visibility3 = true;
+                break;
+            default:
+                break;
+        }
+        console.log(event);
+    }
+
+    sortedAlphabetically;
+    sortedDistance;
+
+    myDist(x, y) {
+        return distance(x, y);
+    }
+
     ngOnInit(): void {
+        this.sortedAlphabetically = _.sortBy(Config.healthCenters.features, 'properties.title');
+
+        if (!isEnabled()) {
+            enableLocationRequest();
+            console.log('nonblocking');
+        }
+        getCurrentLocation({}).then((loc) => {
+            if (loc) {
+                this.sortedDistance = _.sortBy(Config.healthCenters.features, (feature: any) => {
+                    let location = {
+                        latitude: feature.geometry.coordinates[1],
+                        longitude: feature.geometry.coordinates[0],
+                    };
+                    let dist = this.myDist(location, loc);
+
+                    return dist;
+                });
+
+                console.log(this.sortedDistance[0].properties.title);
+            }
+        });
+
+        this.i = 0;
+        this.myItems = [
+
+        ];
+        for (let i = 1; i < 4; i++) {
+            const item = new SegmentedBarItem();
+
+            this.myItems.push(item);
+        }
+        this.myItems[0].title = 'County';
+        this.myItems[1].title = 'Distance';
+        this.myItems[2].title = 'Alphabetical';
+
+
         this.locationsService.getCounties().then((x) => {
             this.counties = x;
         },

@@ -16,22 +16,61 @@
             </Label>
         </AbsoluteLayout>
     </CardView>
-    <CardView
-        width="360"
-        height="38"
-        radius="2"
+    <Label text="Sort by:">
+
+    </Label>
+    <SegmentedBar [items]="myItems" selectedIndex="0" (selectedIndexChange)="onSelectedIndexChange($event)">
+
+    </SegmentedBar>
+    <ListView
+        [items]="sortedDistance"
+        visibility="{{ visibility2 ? 'visible' : 'collapsed' }}"
+        width="375"
+        height="418"
+        style="background-color: #9d9d9d;"
     >
-        <AbsoluteLayout>
-            <Label text="Sort By: County" class="great-primer white center bold">
+        <ng-template
+            let-item="item"
+            let-i="index"
+            let-odd="odd"
+            let-even="even"
+        >
+            <Label [text]="item.properties.title" style="color: #000;">
 
             </Label>
-        </AbsoluteLayout>
-    </CardView>
+        </ng-template>
+
+    </ListView>
+
+    <ListView
+        [items]="sortedAlphabetically"
+        visibility="{{ visibility3 ? 'visible' : 'collapsed' }}"
+        width="375"
+        height="418"
+        style="background-color: #9d9d9d;"
+    >
+        <ng-template
+            let-item="item"
+            let-i="index"
+            let-odd="odd"
+            let-even="even"
+        >
+            <StackLayout>
+            <Label [text]="item.properties.title" style="color: #000;">
+
+            </Label>
+            </StackLayout>
+        </ng-template>
+
+    </ListView>
+
+
     <ListView
         [items]="counties"
         width="375"
         height="418"
         style="background-color: #9d9d9d;"
+        visibility="{{ visibility1 ? 'visible' : 'collapsed' }}"
     >
         <ng-template
             let-item="item"
