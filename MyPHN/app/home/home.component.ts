@@ -16,8 +16,6 @@ import { Config } from '../shared/config';
 })
 
 export class HomeComponent implements OnInit {
-    public tabSelectedIndex: number;
-    thing: number
     countyLats;
     image: string;
     details: LocationDetail;
@@ -30,7 +28,6 @@ export class HomeComponent implements OnInit {
         private locationsService: LocationsService,
         private censusService: CensusService
     ) {
-        this.tabSelectedIndex = 3;
     }
 
     myDist(x, y) {
@@ -42,11 +39,14 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
         if (!isEnabled()) {
             enableLocationRequest();
             console.log('nonblocking');
         }
-        getCurrentLocation({}).then((loc) => {
+        getCurrentLocation({
+            desiredAccuracy: 3, updateDistance: 10, timeout: 20000
+        }).then((loc) => {
             if (loc) {
                 let metersToMiles = 0.000621371;
                 let minDist = 3500;
@@ -71,9 +71,9 @@ export class HomeComponent implements OnInit {
                 this.distance = minDist.toFixed(1) + ' mi';
                 this.image = minCounty.properties.image;
             }
+        }, function(e) {
+            console.log("Error: " + e.message);
         });
-
-        this.thing = 0;
     }
 
     navigate() {

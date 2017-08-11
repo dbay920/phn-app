@@ -8,6 +8,7 @@ import { RadSideDrawer } from "nativescript-telerik-ui-pro/sidedrawer";
 import { ActivatedRoute, Router } from '@angular/router';
 import { registerElement } from 'nativescript-angular';
 import { setInterval, setTimeout, clearInterval } from "timer";
+import { TabView } from "ui/tab-view"
 
 @Component({
     selector: "ns-items",
@@ -17,9 +18,7 @@ import { setInterval, setTimeout, clearInterval } from "timer";
 })
 
 export class ItemsComponent implements OnInit, AfterViewInit {
-    public tabSelectedIndex: number;
     public SideDrawerLocation: any;
-    thing: number
     routes: Array<any>;
     public firstTime: boolean;
     public id: number;
@@ -29,7 +28,6 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         private locationsService: LocationsService,
     ) {
         this.firstTime = true;
-        this.tabSelectedIndex = 3;
         this.SideDrawerLocation = SideDrawerLocation;
 
         this.routes = [
@@ -43,7 +41,6 @@ export class ItemsComponent implements OnInit, AfterViewInit {
             { name: 'News', url: 'items/news' },
         ];
 
-        // TODO: android behavior
         this.id = setInterval(() => {
             if (this.isMoreTab()) {
                 this.drawer.showDrawer();
@@ -56,7 +53,6 @@ export class ItemsComponent implements OnInit, AfterViewInit {
             let index = validRoutes.findIndex((route) => {
                 return route === this._router.url;
             })
-
 
             if (index === -1) {
                 if (this.getSelectedIndex() !== 3) {
@@ -77,12 +73,13 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     }
 
     getSelectedIndex(): number {
-
-        // TODO: android behavior
         if (!ItemsComponent.tabView)
             return -1;
 
-        return ItemsComponent.tabView.ios.selectedIndex;
+        if (!android)
+            return ItemsComponent.tabView.ios.selectedIndex;
+
+        return ItemsComponent.tabView.selectedIndex;
     }
 
     setSelectedIndex(i) {
@@ -90,9 +87,9 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     }
 
     isMoreTab(): boolean {
+        let index = this.getSelectedIndex();
 
-        // TODO: android behavior
-        return this.getSelectedIndex() === 9223372036854776000
+        return android ? index === 3 : index === 9223372036854776000;
     }
 
     onSelectedIndexChanged(event): void {
@@ -120,29 +117,18 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit(): void {
-        this.thing = 0;
-
-        /*        this.locationsService.getCounties().then((x) => {
-             //       console.log(x[0].getName(), x[0].getHref());
-                },
-                    (error) => alert("Unfortunately we could not find your account." + error)
-                );*/
-
-
     }
 
     @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
     private drawer: RadSideDrawer;
-    public static tabView;
+    public static tabView: TabView;
 
     ngAfterViewInit() {
         this.drawer = this.drawerComponent.sideDrawer;
-        ItemsComponent.tabView = this.ref.first.nativeElement;
-        //ItemsComponent.tabView.items[3].addEventListener('tap', this.hi);
-        //        ItemsComponent.tabView.items.push(new TabViewItem());
 
-        let uiTabBarCtrl = ItemsComponent.tabView.ios;
-        let view = ItemsComponent.tabView.nativeView;
+        // protect from location interruption
+        if (this.ref.first)
+            ItemsComponent.tabView = this.ref.first.nativeElement;
     }
 
     goToLocations(url): void {
