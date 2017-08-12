@@ -1,31 +1,36 @@
-<StackLayout>
+<StackLayout width="320">
     <CardView
         elevation="40"
         radius="2"
-        height="90"
-        width="360"
-        style="margin-bottom: 8pt;"
+        height="90pt"
+        class="col-12"
     >
-        <AbsoluteLayout>
+        <StackLayout
+            class="primary-background"
+            columns="60,*"
+            width="312pt"
+            height="90pt"
+        >
             <Label
+                col="1"
                 text="Locations"
                 class="double-columbian white bold"
-                style="margin-left: 68pt;"
             >
 
             </Label>
-        </AbsoluteLayout>
+            <SegmentedBar
+                [items]="myItems"
+                selectedIndex="0"
+                (selectedIndexChange)="onSelectedIndexChange($event)"
+                style="font-size:10pt;"
+            >
+
+            </SegmentedBar>
+        </StackLayout>
     </CardView>
-    <Label text="Sort by:">
-
-    </Label>
-    <SegmentedBar [items]="myItems" selectedIndex="0" (selectedIndexChange)="onSelectedIndexChange($event)">
-
-    </SegmentedBar>
     <ListView
         [items]="sortedDistance"
         visibility="{{ visibility2 ? 'visible' : 'collapsed' }}"
-        width="375"
         height="418"
         style="background-color: #9d9d9d;"
     >
@@ -45,7 +50,6 @@
     <ListView
         [items]="sortedAlphabetically"
         visibility="{{ visibility3 ? 'visible' : 'collapsed' }}"
-        width="375"
         height="418"
         style="background-color: #9d9d9d;"
     >
@@ -56,9 +60,9 @@
             let-even="even"
         >
             <StackLayout>
-            <Label [text]="item.properties.title" style="color: #000;">
+                <Label [text]="item.properties.title" style="color: #000;">
 
-            </Label>
+                </Label>
             </StackLayout>
         </ng-template>
 
@@ -67,7 +71,6 @@
 
     <ListView
         [items]="counties"
-        width="375"
         height="418"
         style="background-color: #9d9d9d;"
         visibility="{{ visibility1 ? 'visible' : 'collapsed' }}"
@@ -84,7 +87,6 @@
                     radius="2"
                     [class.hidden]="odd"
                     height="80pt"
-                    width="176pt"
                     (tap)="listViewItemTap(i)"
                 >
                     <Label
@@ -101,7 +103,6 @@
                     radius="2"
                     [class.hidden]="odd"
                     height="80pt"
-                    width="176pt"
                     (tap)="listViewItemTap(i+1)"
                 >
                     <Label

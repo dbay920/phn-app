@@ -1,58 +1,105 @@
-<StackLayout>
-    <Label text="Closest PHN Location:" class="small-title background">
-
-    </Label>
+<StackLayout height="100%">
     <CardView
         elevation="40"
         radius="2"
-        height="258"
-        width="360"
-        style="margin-bottom: 8pt;"
+        height="150"
+        class="col-12"
+        (tap)="navigate()"
     >
-        <AbsoluteLayout>
-            <Image src="{{image}}" stretch="aspectFit" verticalAlignment="stretch" width="360" row="0" top="0" left="0">
-
-            </Image>
-
+        <GridLayout
+            style="background-image: {{image}}; background-size: contain; background-repeat: no-repeat;"
+            rows="24, *, 80"
+        >
             <Label
-                top="181"
-                left="2"
-                text="{{name}}"
-                class="alpha double-pica col-12"
+                text="Closest PHN Location:"
+                class="small-title background"
+                row="0"
+                height="25"
             >
 
             </Label>
-            <Label
-                top="212"
-                left="2"
-                text="{{address}}"
-                class="alpha-two great-primer col-12"
-                textWrap="true" style="height: 70pt;"
-            >
+            <StackLayout class="alpha" row="2">
+                <StackLayout class="row" orientation="horizontal">
+                    <Label
+                        text="{{name}}"
+                        class="col-10 double-pica"
+                    >
 
-            </Label>
-            <Label
-                top="233" left="300" text="{{distance}}" class="alpha-two great-primer"
+                    </Label>
+                    <Image
+                        src="~/images/Icon_Directions.png"
+                        class="col-2"
+                    >
 
-            >
+                    </Image>
+                </StackLayout>
+                <StackLayout orientation="horizontal">
+                    <Label
+                        text="{{address}}"
+                        class="english col-10"
+                        textWrap="true"
+                    >
 
-            </Label>
-            <Image src="~/images/Icon_Directions.png" top="188" left="300" (tap)="navigate()">
+                    </Label>
+                    <Label
+                        text="{{distance}}"
+                        class="english col-2"
+                    >
 
-            </Image>
-
-        </AbsoluteLayout>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </GridLayout>
     </CardView>
-    <Button text="Locations" class="tile"
-            style=" height: 80pt; font-size: 24pt;background-color: #00817d; background-image: ~/images/Icon_Locations.png;  background-repeat: no-repeat; background-position: 310 25; border-radius: 2;"
-            (tap)="goToLocations()"
+    <ListView [items]="cards" height="100%">
+        <ng-template
+            let-item="item"
+            let-i="index"
+            let-odd="odd"
+            let-even="even"
+        >
+            <CardView
+                elevation="40"
+                radius="4"
+                height="80pt"
+                class="col-12"
+                (tap)="goToUrl(item.url)"
+            >
+                <GridLayout
+                    width="312pt"
+                    columns="*, 60"
+                    style="background-color: #00817D;"
+                >
+                    <Label
+                        [text]="item.name"
+                        col="0"
+                        height="80pt"
+                        class="double-pica tile"
+                    >
+
+                    </Label>
+                    <Image
+                        col="1"
+                        src="{{item.image}}"
+                        height="40pt"
+                        style="margin-right: 20pt;"
+                    >
+
+                    </Image>
+                </GridLayout>
+            </CardView>
+        </ng-template>
+    </ListView>
+    <!--    <Button text="Locations" class="tile"
+    style=" height: 80pt; font-size: 24pt;background-color: #00817d; background-image: ~/images/Icon_Locations.png;  background-repeat: no-repeat; background-position: 310 25; border-radius: 2;"
+    (tap)="goToLocations()"
     >
     </Button>
 
     <Label text="Services" class="tile background"
-           style="background-image: ~/images/Icon_Services.png;  background-repeat: no-repeat; background-position: 303 25;">
+           style="background-image: ;  background-repeat: no-repeat; background-position: 303 25;">
     </Label>
     <Label text="Providers" class="tile background"
            style="background-image: ~/images/Icon_Providers.png;  background-repeat: no-repeat; background-position: 304 25;">
-    </Label>
+    </Label>-->
 </StackLayout>

@@ -13,8 +13,6 @@ refer to http://docs.nativescript.org/ui/theme.
 
 @import 'nativescript-theme-core/css/core.light.css';
 
-
-
 ActionBar {
   background-color:  #00817d;
   color: white;
@@ -23,40 +21,19 @@ ActionBar {
 TabView {
   background-color: #9d9d9d;
   tab-background-color: rgba(255,255,255,0.5);
-  font-size: 14pt;
 }
 
 Page {
   background-color: rgba(155,155,155,1);
 }
 
-.tile {
-  height: 80pt;
-  border-radius: 2px;
-}
-
-.col-12 {
-  width: 356pt;
-  padding: 5pt;
-}
-
 .alpha {
   background-color: rgba(0,129,125,0.65);
-  height: 35pt;
-  color: white;
-
-}
-
-.alpha-two {
-  background-color: rgba(0,129,125,0.65);
-
   color: white;
 }
-
 
 Label.tile {
   font-size: 32pt;
-  background-color: #00817D;
   color: #FFFFFF;
   font-weight: bold;
   height: 80pt;
@@ -78,7 +55,6 @@ Label.tile {
 }
 
 .cardStyle {
-    background-color: #3489db;
     color: #fff;
     margin-left: 8pt;
     margin-top: 8pt;
@@ -90,28 +66,6 @@ Label.tile {
   font-family: Roboto;
   font-weight: bold;
   color: #FFFFFF;
-}
-
-.my-phn {
-  height: 22pt;
-  width: 150pt;
-  color: #FFFFFF;
-  font-family: Roboto;
-  font-size: 24pt;
-}
-
-.logo {
-  height: 40pt;
-  width: 40pt;
-}
-
-.favorites {
-  height: 16pt;
-  color: #FFFFFF;
-  font-family: Roboto;
-  font-size: 14pt;
-  line-height: 16pt;
-  text-align: center;
 }
 
 .white {
@@ -134,15 +88,6 @@ Label.tile {
   text-align: center;
 }
 
-.search-phn {
-  height: 16pt;
-  width: 90pt;
-  color: #FFFFFF;
-  font-family: Roboto;
-  font-size: 14pt;
-  line-height: 16pt;
-  text-align: center;
-}
 
 .bold {
   font-weight: bold;
@@ -170,12 +115,10 @@ Label.tile {
 
 .double-columbian {
   font-size: 32pt;
-
 }
 
 .great-primer {
   font-size: 18pt;
-  height: 21pt;
 }
 
 .small-spacing {

@@ -1,0 +1,13 @@
+Tabview {
+  font-size: 14pt;
+}
+
+.col-12 {
+  width: 356pt;
+  padding: 5pt;
+}
+
+WebView {
+  height: 553pt;
+  width: 375pt;
+}

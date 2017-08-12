@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
     details: LocationDetail;
     distance;
     name;
+    cards;
     address;
 
     constructor(
@@ -38,14 +39,33 @@ export class HomeComponent implements OnInit {
         this._router.navigateByUrl("items/locations");
     }
 
+    goToUrl(url: string) {
+        this._router.navigateByUrl(url);
+    }
+
     ngOnInit(): void {
+        this.cards = [
+            {
+                name: 'Locations',
+                image: '~/images/Icon_Locations.png',
+                url: 'items/locations'
+            }, {
+                name: 'Services',
+                image: '~/images/Icon_Services.png',
+                url: 'items/services'
+            }, {
+                name: 'Providers',
+                image: '~/images/Icon_Providers.png',
+                url: 'items/providers'
+            }
+        ];
 
         if (!isEnabled()) {
             enableLocationRequest();
             console.log('nonblocking');
         }
         getCurrentLocation({
-            desiredAccuracy: 3, updateDistance: 10, timeout: 20000
+            desiredAccuracy: 3, updateDistance: 10, timeout: 30000
         }).then((loc) => {
             if (loc) {
                 let metersToMiles = 0.000621371;
@@ -78,12 +98,20 @@ export class HomeComponent implements OnInit {
 
     navigate() {
         let locator = new LocateAddress();
-        locator.locate({
-            address: this.address,
-        }).then(() => {
-            console.log("Maps app launched.");
-        }, (error) => {
-            console.log(error);
+
+        locator.available().then((avail) => {
+            if (!avail) {
+                alert("maps not available")
+            } else {
+                locator.locate({
+                    address: this.address.replace('\n', '%2C').replace(/ /g, '+').replace(',', '%2C'),
+                }).then(() => {
+                    console.log("Maps app launched.");
+                }, (error) => {
+                    console.log(error);
+                });
+            }
+
         });
 
     }

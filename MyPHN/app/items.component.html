@@ -7,14 +7,12 @@
         <Image src="~/images/PHN LOGO.png" class="logo">
 
         </Image>
-        <StackLayout orientation="vertical">
-            <Label text="MY" class="my-phn">
-
-            </Label>
-            <Label text="PHN" class="my-phn bold">
-
-            </Label>
-        </StackLayout>
+        <Label class="my-phn" textWrap="true" style="margin-right: 10pt;">
+            <FormattedString>
+                <Span text="MY"></Span>
+                <Span text="PHN" class="bold"></Span>
+            </FormattedString>
+        </Label>
         <StackLayout orientation="vertical">
             <Image src="~/images/Icon_Favorite.png" class="action-image" (tap)="favorites()">
 
@@ -39,34 +37,25 @@
     showOverNavigation="true"
     [drawerLocation]="SideDrawerLocation.Right"
 >
-    <StackLayout tkDrawerContent class="sideStackLayout">
-        <ListView
-            [items]="routes"
-            height="550"
-            style="background-color: transparent;"
-        >
-            <ng-template
-                let-item="item"
-                let-i="index"
-                let-odd="odd"
-                let-even="even"
+    <StackLayout tkDrawerContent class="sideStackLayout" height="600">
+        <StackLayout *ngFor="let item of routes">
+            <Button
+                text="{{item.name}}"
+                class="double-pica sideLabel"
+                (tap)="goToLocations(item.url)"
             >
-                <Button
-                    text="{{item.name}}"
-                    class="double-pica sideLabel"
-                    (tap)="goToLocations(item.url)"
-                >
 
-                </Button>
-            </ng-template>
-        </ListView>
-        <Button text="Close Drawer" style="horizontal-align: center" (tap)="onCloseDrawerTap()">
+            </Button>
+        </StackLayout>
+        <Button
+            text="Close Drawer"
+            style="horizontal-align: center; margin: 0px;"
+            (tap)="onCloseDrawerTap()"
+        >
 
         </Button>
     </StackLayout>
-
     <AbsoluteLayout tkMainContent>
-        <!-- UIToolBar goes here -->
         <TabView
             #ref
             width="100%"
@@ -88,26 +77,16 @@
             >
 
             </StackLayout>
-            <!--
-                 <StackLayout
-                 *tabItem="{title: 'PHN Social', iconSource: '~/images/Portal.png'}"
-                 >
-
-                 </StackLayout>
-                 <StackLayout
-                 *tabItem="{title: 'More', iconSource: '~/images/More.png'}"
-                 >
-
-                 </StackLayout>
-               -->
             <StackLayout
                 *tabItem="{title: 'More', iconSource: '~/images/More.png'}"
             >
 
             </StackLayout>
         </TabView>
-        <router-outlet>
+        <AbsoluteLayout top="64" height="100%">
+            <router-outlet>
 
-        </router-outlet>
+            </router-outlet>
+        </AbsoluteLayout>
     </AbsoluteLayout>
 </RadSideDrawer>

@@ -14,7 +14,7 @@ import { TabView } from "ui/tab-view"
     selector: "ns-items",
     moduleId: module.id,
     templateUrl: "./items.component.html",
-    styleUrls: ['items.component.css']
+    styleUrls: ['items.component.css', 'items-common.css']
 })
 
 export class ItemsComponent implements OnInit, AfterViewInit {
@@ -89,7 +89,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     isMoreTab(): boolean {
         let index = this.getSelectedIndex();
 
-        return android ? index === 3 : index === 9223372036854776000;
+        return android ? false : index === 9223372036854776000;
     }
 
     onSelectedIndexChanged(event): void {

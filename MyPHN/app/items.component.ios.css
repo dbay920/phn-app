@@ -7,3 +7,11 @@
   padding: 20pt;
   horizontal-align: center;
 }
+
+.my-phn {
+  height: 22pt;
+  width: 150pt;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 24pt;
+}

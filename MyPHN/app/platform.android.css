@@ -1,0 +1,17 @@
+.col-12 {
+  width: 308pt;
+  margin: 4pt;
+}
+
+.col-10 {
+  width: 260pt
+}
+
+.col-2{
+  width: 52pt;
+}
+
+WebView {
+  height: 400pt;
+  width: 320pt;
+}

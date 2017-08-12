@@ -61,7 +61,6 @@ export class LocationsComponent implements OnInit {
             default:
                 break;
         }
-        console.log(event);
     }
 
     sortedAlphabetically;
@@ -78,7 +77,9 @@ export class LocationsComponent implements OnInit {
             enableLocationRequest();
             console.log('nonblocking');
         }
-        getCurrentLocation({}).then((loc) => {
+        getCurrentLocation({
+            desiredAccuracy: 3, updateDistance: 10, timeout: 30000
+        }).then((loc) => {
             if (loc) {
                 this.sortedDistance = _.sortBy(Config.healthCenters.features, (feature: any) => {
                     let location = {
@@ -92,6 +93,8 @@ export class LocationsComponent implements OnInit {
 
                 console.log(this.sortedDistance[0].properties.title);
             }
+        }, function(e) {
+            console.log("Error: " + e.message);
         });
 
         this.i = 0;

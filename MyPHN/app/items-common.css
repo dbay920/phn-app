@@ -1,0 +1,23 @@
+.logo {
+  height: 40pt;
+  width: 40pt;
+}
+
+.favorites {
+  height: 16pt;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 14pt;
+  line-height: 16pt;
+  text-align: center;
+}
+
+.search-phn {
+  height: 16pt;
+  width: 90pt;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 14pt;
+  line-height: 16pt;
+  text-align: center;
+}
