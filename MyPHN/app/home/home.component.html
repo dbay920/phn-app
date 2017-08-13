@@ -4,7 +4,6 @@
         radius="2"
         height="150"
         class="col-12"
-        (tap)="navigate()"
     >
         <GridLayout
             style="background-image: {{image}}; background-size: contain; background-repeat: no-repeat;"
@@ -18,7 +17,7 @@
             >
 
             </Label>
-            <StackLayout class="alpha" row="2">
+            <StackLayout class="alpha" row="2"         (tap)="navigate()">
                 <StackLayout class="row" orientation="horizontal">
                     <Label
                         text="{{name}}"
