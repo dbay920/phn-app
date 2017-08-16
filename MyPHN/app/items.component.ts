@@ -27,21 +27,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         private _router: Router,
         private locationsService: LocationsService,
     ) {
-        this.firstTime = true;
-        this.SideDrawerLocation = SideDrawerLocation;
-
-        this.routes = [
-            { name: 'Favorites', url: 'items/favorites' },
-            { name: 'Search', url: 'items/search' },
-            { name: 'Home', url: 'items' },
-            { name: 'Locations', url: "items/locations" },
-            { name: 'Services', url: 'items/services' },
-            { name: 'Providers', url: 'items/providers' },
-            { name: 'Patient Portal', url: 'items/portal' },
-            { name: 'News', url: 'items/news' },
-        ];
-
-        this.id = setInterval(() => {
+        /*this.id = setInterval(() => {
             if (this.isMoreTab()) {
                 this.drawer.showDrawer();
             }
@@ -65,7 +51,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
                     this.setSelectedIndex(index);
                 }
             }
-        }, 1000);
+        }, 1000);*/
     }
 
     onCloseDrawerTap(): void {
@@ -117,6 +103,19 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit(): void {
+        this.firstTime = true;
+        this.SideDrawerLocation = SideDrawerLocation;
+
+        this.routes = [
+            { name: 'Favorites', url: 'items/favorites' },
+            { name: 'Search', url: 'items/search' },
+            { name: 'Home', url: 'items' },
+            { name: 'Locations', url: "items/locations" },
+            { name: 'Services', url: 'items/services' },
+            { name: 'Providers', url: 'items/providers' },
+            { name: 'Patient Portal', url: 'items/portal' },
+            { name: 'News', url: 'items/news' },
+        ];
     }
 
     @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
