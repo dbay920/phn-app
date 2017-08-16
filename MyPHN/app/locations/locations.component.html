@@ -7,14 +7,13 @@
     >
         <StackLayout
             class="primary-background"
-            columns="60,*"
             width="312pt"
             height="90pt"
         >
             <Label
-                col="1"
+                width="312pt"
                 text="Locations"
-                class="double-columbian white bold"
+                class="double-columbian white bold center"
             >
 
             </Label>
@@ -28,6 +27,7 @@
             </SegmentedBar>
         </StackLayout>
     </CardView>
+    <!-- Sorted by Distance -->
     <ListView
         [items]="sortedDistance"
         visibility="{{ visibility2 ? 'visible' : 'collapsed' }}"
@@ -46,7 +46,7 @@
         </ng-template>
 
     </ListView>
-
+<!-- Sorted Alphabetically -->
     <ListView
         [items]="sortedAlphabetically"
         visibility="{{ visibility3 ? 'visible' : 'collapsed' }}"
@@ -65,13 +65,11 @@
                 </Label>
             </StackLayout>
         </ng-template>
-
     </ListView>
-
-
+    <!-- traditional view -->
     <ListView
         [items]="counties"
-        height="418"
+        class="by-county"
         style="background-color: #9d9d9d;"
         visibility="{{ visibility1 ? 'visible' : 'collapsed' }}"
     >
