@@ -181,6 +181,7 @@ export class LocationsService {
                 //                currentCounties = x.split('Health Centers</a>')[1];
                 countyParser.parse('<html>' + y.split('Health Centers</a>')[1]);
                 currentCounties.pop();
+                currentCounties.pop();
                 return currentCounties;
             });
 
