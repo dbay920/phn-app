@@ -8,11 +8,19 @@
 }
 
 .sideStackLayout {
-  padding: 0pt;
-    background-color: rgba(255,255,255,0.8);
+  padding-top: 80pt;
+  background-color: rgba(255,255,255,0.8);
 }
 
 .sideLabel {
   padding: 0pt;
   horizontal-align: center;
+  font-size: 22pt;
+  font-weight: bold;
+  font-color: #4A4A4A;
+  margin: 6pt
+}
+
+.hidden {
+  visibility: collapse;
 }
