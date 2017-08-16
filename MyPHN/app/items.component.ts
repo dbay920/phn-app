@@ -107,7 +107,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         this.SideDrawerLocation = SideDrawerLocation;
 
         this.routes = [
-            { name: 'Favorites', url: 'items/favorites' },
+            //            { name: 'Favorites', url: 'items/favorites' },
             { name: 'Search', url: 'items/search' },
             { name: 'Home', url: 'items' },
             { name: 'Locations', url: "items/locations" },
@@ -118,7 +118,10 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         ];
     }
 
-    @ViewChild(RadSideDrawerComponent) public drawerComponent: RadSideDrawerComponent;
+    // get reference to drawer
+    @ViewChild(RadSideDrawerComponent)
+    public drawerComponent: RadSideDrawerComponent;
+
     private drawer: RadSideDrawer;
     public static tabView: TabView;
 
