@@ -6,8 +6,24 @@
   width: 260pt;
 }
 
+.col-6 {
+  width: 152pt;
+}
+
+.col-7 {
+  width: 178pt;
+}
+
 .col-2{
   width: 52pt;
+}
+
+.col-3 {
+  width: 78pt;
+}
+
+.col-9 {
+  width: 234pt;
 }
 
 WebView {
