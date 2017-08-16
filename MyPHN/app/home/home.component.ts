@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit {
                     }
                 });
                 this.name = minCounty.properties.title;
-                this.address = minCounty.properties.address.replace(',', '\n');
+                this.address = minCounty.properties.address.replace(', ', '\n');
                 this.distance = minDist.toFixed(1) + ' mi';
                 this.image = minCounty.properties.image;
             }
