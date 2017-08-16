@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
     selector: "ns-items",
     moduleId: module.id,
     templateUrl: "./services.component.html",
+    styleUrls: ['./services.css', './services-common.css']
 })
 
 export class ServicesComponent implements OnInit {
