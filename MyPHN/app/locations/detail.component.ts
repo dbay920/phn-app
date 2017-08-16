@@ -10,8 +10,6 @@ import { LocateAddress } from "nativescript-locate-address";
 import { CensusService } from "../shared/census/census.service";
 import * as LabelModule from "tns-core-modules/ui/label";
 
-
-
 @Component({
     selector: "ns-items",
     moduleId: module.id,
@@ -34,21 +32,18 @@ export class LocationDetailComponent implements OnInit {
         private _router: Router,
         private locationsService: LocationsService,
         private censusService: CensusService
-    ) {
+    ) { }
+
+    ngOnInit(): void {
         this.route.params
             .forEach((params) => {
                 this.locationId = params["id"];
             });
 
-    }
-
-
-    ngOnInit(): void {
         if (!isEnabled()) {
             enableLocationRequest();
             console.log('nonblocking');
         }
-
 
         this.locationsService.getLocationDetails(this.locationId).then((x) => {
             //this.locations = x;
@@ -57,35 +52,56 @@ export class LocationDetailComponent implements OnInit {
             this.details = x;
 
             this.cards = [
-                { name: 'About', data: this.details.getAbout() },
-                { name: 'Hours', data: this.details.getHours() },
-                { name: 'Contact', data: this.details.getContact() },
+                {
+                    name: 'About',
+                    data: this.details.getAbout(),
+                    icon: '~/images/Icon_About.png',
+                    visible: false
+                },
+                {
+                    name: 'Hours',
+                    data: this.details.getHours(),
+                    icon: '~/images/Icon_Hours.png',
+                    visible: false
+                },
+                {
+                    name: 'Contact',
+                    data: this.details.getContact(),
+                    icon: '~/images/Icon_Contact.png',
+                    visible: false
+                },
                 //  { name: 'Providers', data: this.details.getProviders() }
             ]
             this.image = this.details.getImage();
-            console.log(this.image);
             this.address = this.details.getAddress().replace(',', '\n');
             let result = this.censusService.getLocation(this.details.getAddress());
             result.then((x) => {
 
 
-                getCurrentLocation({}).then((loc) => {
+                getCurrentLocation({
+                    desiredAccuracy: 3, updateDistance: 10, timeout: 30000
+                }).then((loc) => {
                     if (loc) {
                         let metersToMiles = 0.000621371;
                         this.distance = (distance(x, loc) * metersToMiles).toFixed(1) + ' mi';
-                        console.log(loc.latitude, loc.longitude)
-
-
                     }
+                }, function(e) {
+                    console.log("Error: " + e.message);
                 });
 
 
+            }, function(e) {
+                console.log("Error: " + e.message);
             })
             this.name = this.details.getName();
             //console.log(this.details.getProviders());
         },
             (error) => alert("Could not load location details.")
         );
+    }
+
+    listViewItemTap(i) {
+        this.cards[i].visible = !this.cards[i].visible;
     }
 
     navigate() {
@@ -97,6 +113,5 @@ export class LocationDetailComponent implements OnInit {
         }, (error) => {
             console.log(error);
         });
-
     }
 }

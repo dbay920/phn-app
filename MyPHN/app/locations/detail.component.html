@@ -1,49 +1,54 @@
 <StackLayout>
-
-    <Image src="{{image}}" width="360pt"></Image>
-
-    <CardView>
-        <Label
-            top="207"
-            left="2"
-            text="{{name}}"
-            class="alpha double-pica col-12"
+    <CardView
+        elevation="40"
+        radius="2"
+        height="150"
+        class="col-12"
+    >
+        <GridLayout
+            style="background-image: {{image}}; background-size: contain; background-repeat: no-repeat;"
+            rows="*, 80"
         >
+            <StackLayout
+                class="alpha"
+                row="1"
+                (tap)="navigate()"
+            >
+                <StackLayout class="row" orientation="horizontal">
+                    <Label
+                        text="{{name}}"
+                        class="col-10 double-pica"
+                    >
 
-        </Label>
-        <Label
-            top="235"
-            left="2"
-            text="{{address}}"
-            textWrap="true"
-            class="alpha-two great-primer col-12"
-            style="height: 70pt;"
-        >
+                    </Label>
+                    <Image
+                        src="~/images/Icon_Directions.png"
+                        class="col-2"
+                    >
 
-        </Label>
+                    </Image>
+                </StackLayout>
+                <StackLayout orientation="horizontal">
+                    <Label
+                        text="{{address}}"
+                        class="english col-10"
+                        textWrap="true"
+                    >
 
-        <Label
-            top="256"
-            left="300"
-            text="{{distance}}"
-            class="alpha-two great-primer"
-        >
+                    </Label>
+                    <Label
+                        text="{{distance}}"
+                        class="english col-2"
+                    >
 
-        </Label>
-        <Image
-            src="~/images/Icon_Directions.png"
-            top="210"
-            left="300"
-            (tap)="navigate()"
-        >
-
-        </Image>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </GridLayout>
     </CardView>
-
     <ListView
         [items]="cards"
-        width="375"
-        height="350"
+        height="231"
         style="background-color: #9d9d9d;"
     >
         <ng-template
@@ -52,32 +57,36 @@
             let-odd="odd"
             let-even="even"
         >
-                <CardView
-                    elevation="40"
-                    radius="2"
-                    height="162pt"
-                    width="360pt"
-                    (tap)="listViewItemTap(i)"
-                >
-                    <StackLayout>
+            <CardView
+                elevation="40"
+                radius="2"
+                height="162pt"
+                (tap)="listViewItemTap(i)"
+            >
+                <StackLayout>
+                    <StackLayout orientation="horizontal" height="80">
                         <Label
                             [text]="item.name"
-                            textWrap="true"
-                            class="double-pica bold primary center white-background"
+                            class="col-10 double-pica bold primary white-background"
+                            height="80"
+                            padding="23"
                         >
 
                         </Label>
+                        <Image [src]="item.icon" class="col-2" height="40">
 
-                        <Label
-                            [text]="item.data"
-                            textWrap="true"
-                            class="pica bold primary center white-background"
-                        >
-
-                        </Label>
-
+                        </Image>
                     </StackLayout>
-                </CardView>
+                    <Label
+                        [text]="item.data"
+                        textWrap="true"
+                        class=" pica bold primary center white-background"
+                        visibility="{{item.visible ? 'visible' : 'collapsed' }}"
+                    >
+
+                    </Label>
+                </StackLayout>
+            </CardView>
         </ng-template>
     </ListView>
 </StackLayout>
