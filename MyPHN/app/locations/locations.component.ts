@@ -15,7 +15,7 @@ import { LocateAddress } from "nativescript-locate-address";
     selector: "ns-items",
     moduleId: module.id,
     templateUrl: "./locations.component.html",
-    styleUrls: ["./locations.component.css"]
+    styleUrls: ["./locations.component.css", './locations-common.css']
 })
 
 export class LocationsComponent implements OnInit {
@@ -87,11 +87,15 @@ export class LocationsComponent implements OnInit {
                         longitude: feature.geometry.coordinates[0],
                     };
                     let dist = this.myDist(location, loc);
+                    let metersToMiles = 0.000621371;
+
+                    // save distance
+                    feature.properties.distance = (dist * metersToMiles).toFixed(1) + ' mi';
 
                     return dist;
                 });
 
-                console.log(this.sortedDistance[0].properties.title);
+                console.log(this.sortedDistance[0].properties.distance);
             }
         }, function(e) {
             console.log("Error: " + e.message);
@@ -113,6 +117,7 @@ export class LocationsComponent implements OnInit {
 
         this.locationsService.getCounties().then((x) => {
             this.counties = x;
+            this.counties.forEach((x) => { console.log(x.getName()); })
         },
             (error) => alert("Could not load location info." + error)
         );
