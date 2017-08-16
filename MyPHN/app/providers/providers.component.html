@@ -1,0 +1,76 @@
+<StackLayout width="320">
+    <CardView
+        elevation="40"
+        radius="2"
+        height="90pt"
+        class="col-12 m-4"
+    >
+        <StackLayout
+            class="primary-background"
+            width="312pt"
+            height="90pt"
+            orientation="horizontal"
+        >
+            <Image
+                src="~/images/Icon_Services.png"
+                height="30"
+                class="col-2 m-4"
+            >
+
+            </Image>
+            <Label
+                text="Providers"
+                class="double-columbian white font-weight-bold col-10"
+                style="padding: 22pt;"
+            >
+
+            </Label>
+        </StackLayout>
+    </CardView>
+    <ListView
+        [items]="services"
+    >
+        <ng-template
+            let-item="item"
+            let-i="index"
+            let-odd="odd"
+            let-even="even"
+        >
+            <StackLayout orientation="horizontal">
+                <CardView
+                    elevation="40"
+                    radius="2"
+                    [class.hidden]="odd"
+                    height="80pt"
+                    class="m-4 col-6"
+                    (tap)="listViewItemTap(i)"
+                >
+                    <Label
+                        [text]="item.getName()"
+                        textWrap="true"
+                        class="great-primer font-weight-bold primary text-center white-background py-16"
+                    >
+
+                    </Label>
+                </CardView>
+                <CardView
+                    elevation="40"
+                    radius="2"
+                    [class.hidden]="odd || i + 1 >= services.length "
+                    height="80pt"
+                    class="m-4 col-6"
+                    (tap)="listViewItemTap(i+1)"
+                >
+                    <Label
+                        [class.hidden]="i + 1 >= services.length"
+                        [text]="i + 1 < services.length ? services[i + 1].getName() : i"
+                        textWrap="true"
+                        class="great-primer font-weight-bold primary text-center white-background py-16"
+                    >
+
+                    </Label>
+                </CardView>
+            </StackLayout>
+        </ng-template>
+    </ListView>
+</StackLayout>
