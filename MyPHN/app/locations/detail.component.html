@@ -1,4 +1,4 @@
-<StackLayout>
+<StackLayout width="320">
     <CardView
         elevation="40"
         radius="2"
@@ -48,8 +48,8 @@
     </CardView>
     <ListView
         [items]="cards"
-        height="231"
-        style="background-color: #9d9d9d;"
+        height="223"
+        class="m-4"
     >
         <ng-template
             let-item="item"
@@ -60,6 +60,7 @@
             <CardView
                 elevation="40"
                 radius="2"
+                class="m-4 col-12"
                 height="162pt"
                 (tap)="listViewItemTap(i)"
             >
@@ -67,7 +68,7 @@
                     <StackLayout orientation="horizontal" height="80">
                         <Label
                             [text]="item.name"
-                            class="col-10 double-pica bold primary white-background"
+                            class="col-10 double-pica font-weight-bold primary white-background"
                             height="80"
                             padding="23"
                         >
@@ -80,7 +81,7 @@
                     <Label
                         [text]="item.data"
                         textWrap="true"
-                        class=" pica bold primary center white-background"
+                        class=" pica font-weight-bold primary text-center white-background"
                         visibility="{{item.visible ? 'visible' : 'collapsed' }}"
                     >
 

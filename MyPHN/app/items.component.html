@@ -10,9 +10,10 @@
         <Label class="my-phn" textWrap="true" style="margin-right: 10pt;">
             <FormattedString>
                 <Span text="MY"></Span>
-                <Span text="PHN" class="bold"></Span>
+                <Span text="PHN" class="font-weight-bold"></Span>
             </FormattedString>
         </Label>
+        <!-- TODO: add favorites functionality
         <StackLayout orientation="vertical">
             <Image src="~/images/Icon_Favorite.png" class="action-image" (tap)="favorites()">
 
@@ -20,7 +21,7 @@
             <Label text="Favorites"  class="favorites">
 
             </Label>
-        </StackLayout>
+        </StackLayout> -->
         <StackLayout orientation="vertical">
             <Image src="~/images/Icon_Search.png" class="action-image" (tap)="search()">
 
@@ -37,23 +38,33 @@
     showOverNavigation="true"
     [drawerLocation]="SideDrawerLocation.Right"
 >
-    <StackLayout tkDrawerContent class="sideStackLayout" height="600">
-        <StackLayout *ngFor="let item of routes">
-            <Button
+    <StackLayout
+        tkDrawerContent
+        class="sideStackLayout"
+        height="600"
+    >
+        <StackLayout
+            *ngFor="let item of routes;let first = first; let last = last;"
+        >
+            <Label
                 text="{{item.name}}"
                 class="double-pica sideLabel"
                 (tap)="goToLocations(item.url)"
             >
 
-            </Button>
+            </Label>
+            <StackLayout class="hr-light" width="130" [class.hidden]="last">
+
+            </StackLayout>
         </StackLayout>
-        <Button
-            text="Close Drawer"
-            style="horizontal-align: center; margin: 0px;"
+        <Image
+            src="~/images/Shape Copy 2.png"
+            style="horizontal-align: center; margin: 12pt;"
             (tap)="onCloseDrawerTap()"
+            height="40"
         >
 
-        </Button>
+        </Image>
     </StackLayout>
     <AbsoluteLayout tkMainContent>
         <TabView

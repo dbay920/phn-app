@@ -1,23 +1,23 @@
-<StackLayout>
+<StackLayout width="320">
     <CardView
         elevation="40"
         radius="2"
         height="90"
-        width="360"
         style="margin-bottom: 8pt;"
     >
-        <Label
-            text="{{county.getName()}}"
-            class="double-columbian white bold center"
-        >
+        <StackLayout class="primary-background">
+            <Label
+                text="{{county.getName()}}"
+                class="double-columbian white font-weight-bold text-center"
+                style="padding: 22pt;"
+            >
 
-        </Label>
+            </Label>
+        </StackLayout>
     </CardView>
     <ListView
         [items]="locations"
-        width="375"
-        height="418"
-        style="background-color: #9d9d9d;"
+        class="col-12 m-4"
     >
         <ng-template
             let-item="item"
@@ -29,22 +29,57 @@
                 elevation="40"
                 radius="2"
                 [class.hidden]="odd"
-                height="162pt"
-                width="360pt"
                 (tap)="listViewItemTap(i)"
+                class="m-4"
             >
-                <StackLayout>
+                <StackLayout
+                    orientation="horizontal"
+                >
+                    <StackLayout class="col-3">
+                        <Image
+                            src="~/images/clarion.png"
+                            height="64"
+                            width="64"
+                            class="img-circle"
+                        >
+
+                        </Image>
+                    </StackLayout>
+                    <StackLayout class="col-2">
+                        <Image
+                            src="~/images/Icon_Location.png"
+                            height="20"
+                            weight="20"
+                            class="m-t-2 m-b-20"
+                        >
+
+                        </Image>
+
+                        <Image
+                            src="~/images/Icon_Contact.png"
+                            height="20"
+                            weight="20"
+                            class="m-b-5"
+                        >
+
+                        </Image>
+
+                        <Image
+                            src="~/images/Icon_Address.png"
+                            height="20"
+                            weight="20"
+                        >
+
+                        </Image>
+
+
+                    </StackLayout>
+                    <StackLayout class="col-7">
                     <Label
                         [text]="item.getName()"
                         textWrap="true"
-                        class="double-pica bold primary center white-background"
-                    >
-
-                    </Label>
-                    <Label
-                        [text]="item.getAddress()"
-                        textWrap="true"
-                        class="double-pica bold primary center white-background"
+                        class="columbian font-weight-bold primary white-background"
+                        style="min-height: 40pt;"
                     >
 
                     </Label>
@@ -52,12 +87,18 @@
                     <Label
                         [text]="item.getPhone()"
                         textWrap="true"
-                        class="double-pica bold primary center white-background"
+                        class="font-weight-bold primary  white-background"
                     >
 
                     </Label>
+                    <Label
+                        [text]="item.getAddress()"
+                        textWrap="true"
+                        class=" primary  white-background"
+                    >
 
-
+                    </Label>
+                    </StackLayout>
                 </StackLayout>
             </CardView>
 

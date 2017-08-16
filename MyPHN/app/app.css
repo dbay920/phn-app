@@ -10,7 +10,6 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import url("~/platform.css");
-
 @import 'nativescript-theme-core/css/core.light.css';
 
 ActionBar {
@@ -21,10 +20,6 @@ ActionBar {
 TabView {
   background-color: #9d9d9d;
   tab-background-color: rgba(255,255,255,0.5);
-}
-
-Page {
-  background-color: rgba(155,155,155,1);
 }
 
 .alpha {
@@ -84,16 +79,13 @@ Label.tile {
   background-color: #00817d;
 }
 
-.center {
-  text-align: center;
-}
-
 .m-4{
   margin: 4pt;
 }
 
-.bold {
-  font-weight: bold;
+.py-16 {
+  padding-top: 16pt;
+  padding-bottom: 16pt;
 }
 
 .pica {
@@ -116,12 +108,20 @@ Label.tile {
   font-size: 24pt;
 }
 
+.columbian {
+  font-size: 16pt;
+}
+
 .double-columbian {
   font-size: 32pt;
 }
 
 .great-primer {
   font-size: 18pt;
+}
+
+.paragon {
+  font-size: 20pt;
 }
 
 .small-spacing {

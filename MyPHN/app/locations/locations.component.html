@@ -2,21 +2,37 @@
     <CardView
         elevation="40"
         radius="2"
-        height="90pt"
-        class="col-12"
+        class="col-12 m-4"
     >
         <StackLayout
             class="primary-background"
             width="312pt"
-            height="90pt"
         >
-            <Label
+            <StackLayout
+                class="primary-background"
                 width="312pt"
-                text="Locations"
-                class="double-columbian white bold center"
+                height="90pt"
+                orientation="horizontal"
             >
+                <Image
+                    src="~/images/Icon_Locations.png"
+                    height="30"
+                    class="col-2 m-4"
+                >
 
-            </Label>
+                </Image>
+                <Label
+                    text="Locations"
+                    class="double-columbian white font-weight-bold col-10"
+                    style="padding: 22pt;"
+                >
+
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </CardView>
+    <CardView class="m-4">
+        <StackLayout>
             <SegmentedBar
                 [items]="myItems"
                 selectedIndex="0"
@@ -32,7 +48,6 @@
         [items]="sortedDistance"
         visibility="{{ visibility2 ? 'visible' : 'collapsed' }}"
         height="418"
-        style="background-color: #9d9d9d;"
     >
         <ng-template
             let-item="item"
@@ -40,9 +55,68 @@
             let-odd="odd"
             let-even="even"
         >
-            <Label [text]="item.properties.title" style="color: #000;">
+            <CardView
+                elevation="40"
+                radius="2"
+                height="162pt"
+                class="m-4 col-12"
+                (tap)="listViewItemTap(i)"
+            >
+                <StackLayout>
+                    <StackLayout orientation="horizontal">
+                        <Image src="~/images/Icon_Directions.png"
+                               height="40"
+                               class="col-2"
+                        >
 
-            </Label>
+                        </Image>
+                        <Image src="~/images/Icon_Location.png"
+                               height="20"
+                               class="col-2"
+                        >
+
+                        </Image>
+                        <Label
+                            [text]="item.properties.title"
+                            class="primary col-7 columbian font-weight-bold"
+                            textWrap="true"
+                        >
+
+                        </Label>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal">
+                        <Label
+                            [text]="item.properties.distance"
+                            class="primary col-2"
+                        >
+
+                        </Label>
+                        <Image src="~/images/Icon_Location.png"
+                               height="20"
+                               class="col-2"
+                        >
+
+                        </Image>
+                        <Label
+                            [text]="item.properties.phone"
+                            class="primary col-7"
+                        >
+
+                        </Label>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal">
+                        <Label
+                            [text]="item.properties.address"
+                            class="primary col-7"
+                        >
+
+                        </Label>
+                    </StackLayout>
+
+                </StackLayout>
+            </CardView>
+
+
         </ng-template>
 
     </ListView>
@@ -59,18 +133,69 @@
             let-odd="odd"
             let-even="even"
         >
-            <StackLayout>
-                <Label [text]="item.properties.title" style="color: #000;">
+            <CardView
+                elevation="40"
+                radius="2"
+                height="162pt"
+                class="m-4 col-12"
+                (tap)="listViewItemTap(i)"
+            >
+                <StackLayout>
+                    <StackLayout orientation="horizontal">
+                        <Image src="~/images/Icon_Directions.png"
+                               height="40"
+                               class="col-2"
+                        >
 
-                </Label>
-            </StackLayout>
+                        </Image>
+                        <Image src="~/images/Icon_Location.png"
+                               height="20"
+                               class="col-2"
+                        >
+
+                        </Image>
+                        <Label
+                            [text]="item.properties.title"
+                            class="primary col-7 columbian font-weight-bold"
+                            textWrap="true"
+                        >
+
+                        </Label>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal">
+                        <Label
+                            [text]="item.properties.distance"
+                            class="primary col-2"
+                        >
+
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout orientation="horizontal">
+                        <Label
+                            [text]="item.properties.phone"
+                            class="primary col-7"
+                        >
+
+                        </Label>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal">
+                        <Label
+                            [text]="item.properties.address"
+                            class="primary col-7"
+                        >
+
+                        </Label>
+                    </StackLayout>
+
+                </StackLayout>
+            </CardView>
         </ng-template>
     </ListView>
     <!-- traditional view -->
     <ListView
         [items]="counties"
         class="by-county"
-        style="background-color: #9d9d9d;"
         visibility="{{ visibility1 ? 'visible' : 'collapsed' }}"
     >
         <ng-template
@@ -85,29 +210,30 @@
                     radius="2"
                     [class.hidden]="odd"
                     height="80pt"
+                    class="m-4 col-6"
                     (tap)="listViewItemTap(i)"
                 >
                     <Label
                         [text]="item.getName()"
                         textWrap="true"
-                        class="double-pica bold primary center white-background"
+                        class="great-primer font-weight-bold primary text-center white-background py-16"
                     >
 
                     </Label>
                 </CardView>
-
                 <CardView
                     elevation="40"
                     radius="2"
-                    [class.hidden]="odd"
+                    [class.hidden]="odd || i + 1 >= counties.length "
                     height="80pt"
+                    class="m-4 col-6"
                     (tap)="listViewItemTap(i+1)"
                 >
                     <Label
                         [class.hidden]="i + 1 >= counties.length"
-                        [text]="i + 1 < counties.length ? counties[i + 1].getName() : 'null'"
+                        [text]="i + 1 < counties.length ? counties[i + 1].getName() : i"
                         textWrap="true"
-                        class="double-pica bold primary center white-background"
+                        class="great-primer font-weight-bold primary text-center white-background py-16"
                     >
 
                     </Label>
