@@ -1,3 +1,7 @@
 .hidden {
   visibility: collapse;
 }
+
+ListView.by-county {
+  height: 418;
+}
