@@ -3,7 +3,7 @@
         elevation="40"
         radius="2"
         height="150"
-        class="col-12"
+        class="col-12 m-4"
     >
         <GridLayout
             style="background-image: {{image}}; background-size: contain; background-repeat: no-repeat;"
@@ -28,6 +28,7 @@
                     <Image
                         src="~/images/Icon_Directions.png"
                         class="col-2"
+                        height="40"
                     >
 
                     </Image>
@@ -42,7 +43,7 @@
                     </Label>
                     <Label
                         text="{{distance}}"
-                        class="english col-2"
+                        class="great-primer col-2"
                     >
 
                     </Label>
@@ -50,7 +51,7 @@
             </StackLayout>
         </GridLayout>
     </CardView>
-    <ListView [items]="cards" height="100%">
+    <ListView [items]="cards" height="229" >
         <ng-template
             let-item="item"
             let-i="index"
@@ -61,7 +62,7 @@
                 elevation="40"
                 radius="4"
                 height="80pt"
-                class="col-12"
+                class="col-12 m-4"
                 (tap)="goToUrl(item.url)"
             >
                 <GridLayout
@@ -89,16 +90,4 @@
             </CardView>
         </ng-template>
     </ListView>
-    <!--    <Button text="Locations" class="tile"
-    style=" height: 80pt; font-size: 24pt;background-color: #00817d; background-image: ~/images/Icon_Locations.png;  background-repeat: no-repeat; background-position: 310 25; border-radius: 2;"
-    (tap)="goToLocations()"
-    >
-    </Button>
-
-    <Label text="Services" class="tile background"
-           style="background-image: ;  background-repeat: no-repeat; background-position: 303 25;">
-    </Label>
-    <Label text="Providers" class="tile background"
-           style="background-image: ~/images/Icon_Providers.png;  background-repeat: no-repeat; background-position: 304 25;">
-    </Label>-->
 </StackLayout>
