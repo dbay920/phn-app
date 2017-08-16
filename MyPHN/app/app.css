@@ -88,6 +88,9 @@ Label.tile {
   text-align: center;
 }
 
+.m-4{
+  margin: 4pt;
+}
 
 .bold {
   font-weight: bold;
