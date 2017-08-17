@@ -23,7 +23,8 @@ var onEventCallback = function(event: xmlModule.ParserEvent) {
                 for (var attributeName in event.attributes) {
                     if (event.attributes.hasOwnProperty(attributeName) && attributeName === 'href') {
                         message += " " + attributeName + "=\"" + event.attributes[attributeName] + "\"";
-                        currentService.push(event.attributes['href']);
+                        currentService = new Service(event.attributes['href']);
+                        currentServices.push(currentService);
                     }
                 }
             }
@@ -37,8 +38,7 @@ var onEventCallback = function(event: xmlModule.ParserEvent) {
         case xmlModule.ParserEventType.Text:
             var significantText = event.data.trim();
             if (significantText !== "") {
-                currentServices.push(currentService);
-                currentService = new Service(significantText);
+                currentService.push(significantText);
                 //              console.log(event.eventType + "=\"" + significantText + "\"");
             }
             break;
@@ -71,7 +71,6 @@ export class ServicesService {
                     '<html><li' +
                     x.split('<li class="dropdown yamm-fullwidth"')[1]
                 );
-                currentServices.shift()
                 currentServices.shift()
 
                 return currentServices;

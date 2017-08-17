@@ -1,10 +1,8 @@
 export class Service {
     data: Array<string>
-    name: string;
 
     constructor(name: string) {
-        this.name = name;
-        this.data = [];
+        this.data = [name];
     }
 
     getHref() {
@@ -16,7 +14,7 @@ export class Service {
     }
 
     getName() {
-        return this.name;
+        return this.data[1];
     }
 
     getPhone() {
