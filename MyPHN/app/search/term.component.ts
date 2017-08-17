@@ -11,7 +11,6 @@ import { WebView } from "ui/web-view"
 export class SearchTermComponent implements AfterViewInit, OnInit {
     public webViewSrc;
     public searchTerm;
-    public static tabView;
     @ViewChildren('ref') ref: QueryList<any>;
 
     isLocation(href) {
