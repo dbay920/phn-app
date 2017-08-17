@@ -101,7 +101,7 @@ var onEventCallback3 = function(event: xmlModule.ParserEvent) {
                     }
                 }
             }
-            console.log(message);
+            //console.log(message);
             break;
 
         case xmlModule.ParserEventType.EndElement:
@@ -111,7 +111,7 @@ var onEventCallback3 = function(event: xmlModule.ParserEvent) {
         case xmlModule.ParserEventType.Text:
             var significantText = event.data.trim();
             if (significantText !== "") {
-                console.log(event.eventType + "=\"" + significantText + "\"");
+                //   console.log(event.eventType + "=\"" + significantText + "\"");
             }
             currentDetail.push(significantText);
             break;
