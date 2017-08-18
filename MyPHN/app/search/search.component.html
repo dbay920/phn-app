@@ -1,7 +1,5 @@
-<StackLayout height="70" width="375">
+<StackLayout class="form" width="320">
     <TextField
-        row="1"
-        col="0"
         style="background-color: #FFFFFF;"
         [(ngModel)]="searchTerm"
         hint="Enter Search Term"
@@ -10,17 +8,16 @@
         autocorrect="false"
         verticalAlignment="center"
         autocapitalizationType="none"
+        class="input input-border m-10"
     >
 
     </TextField>
     <Button
-        row="2"
-        col="0"
         (tap)="search()"
         text="Search"
         style="background-color: #FFFFFF;"
+        class="btn primary"
     >
 
     </Button>
-
 </StackLayout>
