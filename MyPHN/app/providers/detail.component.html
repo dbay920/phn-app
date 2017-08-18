@@ -1,3 +1,25 @@
-<WebView #ref [src]="webViewSrc">
+<StackLayout width="320">
+    <CardView class="m-4">
+        <StackLayout>
+            <Label class="primary" [text]="name">
 
-</WebView>
+            </Label>
+            <Label [text]="desc" textWrap="true">
+
+            </Label>
+        </StackLayout>
+    </CardView>
+<!--    <CardView *ngFor="let location of locations;">
+        <StackLayout>
+            <Label [text]="location.getName()">
+
+            </Label>
+            <Label [text]="location.getAddress()">
+
+            </Label>
+            <Label [text]="location.getPhone()">
+
+            </Label>
+        </StackLayout>
+    </CardView>-->
+</StackLayout>

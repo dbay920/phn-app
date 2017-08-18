@@ -1,7 +1,7 @@
-import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
-import { ServicesService } from "../shared/services/services.service";
+import { Component, OnInit, ElementRef, ViewChild, NgZone } from "@angular/core";
+import { ProvidersService } from "../shared/providers/providers.service";
 import { ActivatedRoute, Router } from '@angular/router';
-import { ServiceDetail } from '../shared/services/detail'
+import { Provider } from '../shared/providers/provider'
 
 @Component({
     selector: "ns-items",
@@ -12,20 +12,16 @@ import { ServiceDetail } from '../shared/services/detail'
 
 export class ProviderDetailComponent implements OnInit {
     id: string;
-    detail: ServiceDetail
-    webViewSrc;
+    provider: Provider;
+    name;
+    desc;
 
     constructor(
         private route: ActivatedRoute,
         private _router: Router,
-        //private servicesService: ServicesService
+        private providersService: ProvidersService,
+        private _ngZone: NgZone
     ) {
-        this.route.params
-            .forEach((params) => {
-                this.id = params["id"];
-            });
-        console.log(typeof this.id);
-        this.webViewSrc = 'https://primary-health.net/ServiceDetail.aspx?id=' + this.id;
     }
 
     /*listViewItemTap(i): void {
@@ -37,10 +33,21 @@ export class ProviderDetailComponent implements OnInit {
     }*/
 
     ngOnInit(): void {
-        /*        this.servicesService.getDetails(this.id).then((x) => {
-                    this.detail = x;
-                },
-                    (error) => alert("Could not load locations.")
-                );*/
+        this.route.params.forEach((params) => {
+            this.id = params["id"];
+        });
+        this.name = ''
+        this.desc = ''
+
+        this.providersService.getDetails(this.id).then((x) => {
+            this.provider = x;
+            this.name = this.provider.getName();
+            this.desc = this.provider.getDescription();
+            this._ngZone.run(() => {
+                // weird fix for arriving from webview
+            })
+        },
+            (error) => alert("Could not load locations.")
+        );
     }
 }
