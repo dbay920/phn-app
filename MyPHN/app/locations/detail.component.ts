@@ -14,7 +14,7 @@ import * as LabelModule from "tns-core-modules/ui/label";
     selector: "ns-items",
     moduleId: module.id,
     templateUrl: "./detail.component.html",
-    styleUrls: ["./detail.component.css"]
+    styleUrls: ["./detail.component.css", './detail-common.css']
 })
 
 export class LocationDetailComponent implements OnInit {
@@ -46,11 +46,7 @@ export class LocationDetailComponent implements OnInit {
         }
 
         this.locationsService.getLocationDetails(this.locationId).then((x) => {
-            //this.locations = x;
-            let str = JSON.stringify(x, null, 4)
-            console.log(str);
             this.details = x;
-
             this.cards = [
                 {
                     name: 'About',
@@ -70,14 +66,14 @@ export class LocationDetailComponent implements OnInit {
                     icon: '~/images/Icon_Contact.png',
                     visible: false
                 },
-                //  { name: 'Providers', data: this.details.getProviders() }
             ]
             this.image = this.details.getImage();
-            this.address = this.details.getAddress().replace(',', '\n');
-            let result = this.censusService.getLocation(this.details.getAddress());
+            this.address = this.details.getAddress().replace(', ', '\n');
+
+            let result =
+                this.censusService.getLocation(this.details.getAddress());
+
             result.then((x) => {
-
-
                 getCurrentLocation({
                     desiredAccuracy: 3, updateDistance: 10, timeout: 30000
                 }).then((loc) => {
@@ -88,13 +84,10 @@ export class LocationDetailComponent implements OnInit {
                 }, function(e) {
                     console.log("Error: " + e.message);
                 });
-
-
             }, function(e) {
                 console.log("Error: " + e.message);
             })
             this.name = this.details.getName();
-            //console.log(this.details.getProviders());
         },
             (error) => alert("Could not load location details.")
         );

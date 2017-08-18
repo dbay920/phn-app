@@ -13,34 +13,34 @@
                 class="alpha"
                 row="1"
                 (tap)="navigate()"
+                orientation="horizontal"
             >
-                <StackLayout class="row" orientation="horizontal">
+                <StackLayout class="col-10">
                     <Label
                         text="{{name}}"
-                        class="col-10 double-pica"
+                        class="double-pica"
                     >
 
                     </Label>
-                    <Image
-                        src="~/images/Icon_Directions.png"
-                        class="col-2"
-                    >
-
-                    </Image>
-                </StackLayout>
-                <StackLayout orientation="horizontal">
                     <Label
                         text="{{address}}"
-                        class="english col-10"
+                        class="english"
                         textWrap="true"
                     >
 
                     </Label>
-                    <Label
-                        text="{{distance}}"
-                        class="english col-2"
+                </StackLayout>
+                <StackLayout class="col-2">
+
+                    <Image
+                        src="~/images/Icon_Directions.png"
                     >
 
+                    </Image>
+                    <Label
+                        text="{{distance}}"
+                        class="english"
+                    >
                     </Label>
                 </StackLayout>
             </StackLayout>
@@ -81,7 +81,7 @@
                     <Label
                         [text]="item.data"
                         textWrap="true"
-                        class=" pica font-weight-bold primary text-center white-background"
+                        class="m-20 pica font-weight-bold primary text-center white-background"
                         visibility="{{item.visible ? 'visible' : 'collapsed' }}"
                     >
 
