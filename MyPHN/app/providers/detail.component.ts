@@ -7,7 +7,7 @@ import { Provider } from '../shared/providers/provider'
     selector: "ns-items",
     moduleId: module.id,
     templateUrl: "./detail.component.html",
-    styleUrls: ["./detail.component.css"]
+    styleUrls: ["./detail.component.css", 'detail-common.css']
 })
 
 export class ProviderDetailComponent implements OnInit {
@@ -15,6 +15,7 @@ export class ProviderDetailComponent implements OnInit {
     provider: Provider;
     name;
     desc;
+    locations;
 
     constructor(
         private route: ActivatedRoute,
@@ -36,13 +37,12 @@ export class ProviderDetailComponent implements OnInit {
         this.route.params.forEach((params) => {
             this.id = params["id"];
         });
-        this.name = ''
-        this.desc = ''
 
         this.providersService.getDetails(this.id).then((x) => {
             this.provider = x;
             this.name = this.provider.getName();
             this.desc = this.provider.getDescription();
+            this.locations = this.provider.getLocations();
             this._ngZone.run(() => {
                 // weird fix for arriving from webview
             })
