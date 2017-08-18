@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { View } from "ui/core/view";
 import { LocationsService } from "../shared/location/locations.service";
-import { CensusService } from "../shared/census/census.service"
+//import { CensusService } from "../shared/census/census.service"
 import { ActivatedRoute, Router } from '@angular/router';
 import { Color } from "color";
 import { LocationDetail } from "../shared/location/detail"
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     constructor(
         private _router: Router,
         private locationsService: LocationsService,
-        private censusService: CensusService
+        //      private censusService: CensusService
     ) {
     }
 

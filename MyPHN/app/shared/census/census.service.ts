@@ -35,7 +35,6 @@ export class CensusService {
                 } : {};
 
                 return result;
-
             })
     }
 

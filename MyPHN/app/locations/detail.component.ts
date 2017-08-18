@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ElementRef, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, OnInit, ElementRef, ViewChild, NgZone } from "@angular/core";
 import { View } from "ui/core/view";
 import { Image } from "ui/image";
 import { LocationsService } from "../shared/location/locations.service";
@@ -7,8 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PageRoute } from "nativescript-angular/router";
 import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";
 import { LocateAddress } from "nativescript-locate-address";
-import { CensusService } from "../shared/census/census.service";
+//import { CensusService } from "../shared/census/census.service";
 import * as LabelModule from "tns-core-modules/ui/label";
+import { Config } from '../shared/config';
+import * as _ from "lodash";
+
 
 @Component({
     selector: "ns-items",
@@ -31,8 +34,13 @@ export class LocationDetailComponent implements OnInit {
         private route: ActivatedRoute,
         private _router: Router,
         private locationsService: LocationsService,
-        private censusService: CensusService
+        //      private censusService: CensusService,
+        private _ngZone: NgZone,
     ) { }
+
+    myDist(x, y) {
+        return distance(x, y);
+    }
 
     ngOnInit(): void {
         this.route.params
@@ -45,8 +53,8 @@ export class LocationDetailComponent implements OnInit {
             console.log('nonblocking');
         }
 
-        this.locationsService.getLocationDetails(this.locationId).then((x) => {
-            this.details = x;
+        this.locationsService.getLocationDetails(this.locationId).then((z) => {
+            this.details = z;
             this.cards = [
                 {
                     name: 'About',
@@ -69,25 +77,33 @@ export class LocationDetailComponent implements OnInit {
             ]
             this.image = this.details.getImage();
             this.address = this.details.getAddress().replace(', ', '\n');
+            this.name = this.details.getName();
 
-            let result =
-                this.censusService.getLocation(this.details.getAddress());
+            let feature =
+                _.find(Config.healthCenters.features, [
+                    'properties.title',
+                    this.name
+                ]);
+            let x = {
+                latitude: feature['geometry'].coordinates[1],
+                longitude: feature['geometry'].coordinates[0],
+            };
 
-            result.then((x) => {
-                getCurrentLocation({
-                    desiredAccuracy: 3, updateDistance: 10, timeout: 30000
-                }).then((loc) => {
-                    if (loc) {
-                        let metersToMiles = 0.000621371;
-                        this.distance = (distance(x, loc) * metersToMiles).toFixed(1) + ' mi';
-                    }
-                }, function(e) {
-                    console.log("Error: " + e.message);
-                });
+            getCurrentLocation({
+                desiredAccuracy: 3, updateDistance: 10, timeout: 30000
+            }).then((loc) => {
+                if (loc) {
+                    let metersToMiles = 0.000621371;
+
+                    this.distance = (this.myDist(x, loc)
+                        * metersToMiles).toFixed(1) + ' mi';
+                }
+                this._ngZone.run(() => {
+                    // weird fix for arriving from webview
+                })
             }, function(e) {
                 console.log("Error: " + e.message);
-            })
-            this.name = this.details.getName();
+            });
         },
             (error) => alert("Could not load location details.")
         );
