@@ -86,13 +86,13 @@ export class ItemsComponent implements OnInit, AfterViewInit {
 
         switch (event.newIndex) {
             case 0:
-                this.goToLocations(this.routes[2].url);
+                this.goToLocations(this.homeRoute.url);
                 break;
             case 1:
-                this.goToLocations(this.routes[6].url);
+                this.goToLocations(this.portalRoute.url);
                 break;
             case 2:
-                this.goToLocations(this.routes[7].url);
+                this.goToLocations(this.newsRoute.url);
                 break;
             case 3:
                 this.drawer.showDrawer();
@@ -102,19 +102,26 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         }
     }
 
+    homeRoute
+    newsRoute
+    portalRoute
+
     ngOnInit(): void {
         this.firstTime = true;
         this.SideDrawerLocation = SideDrawerLocation;
+        this.homeRoute = { name: 'Home', url: 'items' };
+        this.portalRoute = { name: 'Patient Portal', url: 'items/portal' };
+        this.newsRoute = { name: 'News', url: 'items/news' };
 
         this.routes = [
             //            { name: 'Favorites', url: 'items/favorites' },
             { name: 'Search', url: 'items/search' },
-            { name: 'Home', url: 'items' },
+            this.homeRoute,
             { name: 'Locations', url: "items/locations" },
             { name: 'Services', url: 'items/services' },
             { name: 'Providers', url: 'items/providers' },
-            { name: 'Patient Portal', url: 'items/portal' },
-            { name: 'News', url: 'items/news' },
+            this.portalRoute,
+            this.newsRoute,
         ];
     }
 
