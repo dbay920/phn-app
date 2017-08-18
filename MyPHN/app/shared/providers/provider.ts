@@ -7,14 +7,6 @@ export class Provider {
         this.data = [name];
     }
 
-    getHref() {
-        return this.data[6];
-    }
-
-    getId() {
-        return this.getHref().split('=')[1];
-    }
-
     getServiceName() {
         return this.data[10];
     }
@@ -23,13 +15,13 @@ export class Provider {
         let i;
         let result = [];
 
-        for (i = 6; i < this.data.length; i += 7) {
+        for (i = 5; i < this.data.length; i += 7) {
             let currentLocation = new Location();
 
             currentLocation.push(this.data[i]);
             currentLocation.push(this.data[i + 1]);
-            currentLocation.push(this.data[i + 5]);
             currentLocation.push(this.data[i + 6]);
+            currentLocation.push(this.data[i + 5]);
             result.push(currentLocation);
         }
 
