@@ -8,7 +8,7 @@ export class Provider {
     }
 
     getServiceName() {
-        return this.data[10];
+        return this.data[9];
     }
 
     getLocations() {
@@ -29,7 +29,7 @@ export class Provider {
     }
 
     getImage() {
-        return this.data[2];
+        return 'https://primary-health.net/' + this.data[2];
     }
 
     getDescription() {
