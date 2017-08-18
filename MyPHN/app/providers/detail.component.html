@@ -1,25 +1,123 @@
-<StackLayout width="320">
-    <CardView class="m-4">
+<ListView [items]="locations" width="320" height="385">
+    <ng-template
+        let-item="item"
+        let-i="index"
+        let-odd="odd"
+        let-even="even"
+    >
         <StackLayout>
-            <Label class="primary" [text]="name">
+            <CardView
+                visibility="{{i === 0 ? 'visible' : 'collapse'}}"
+                class="m-4"
+            >
+                <StackLayout>
+                    <StackLayout orientation="horizontal">
+                        <Image
+                            src="~/images/Icon_Provider.png"
+                            height="26"
+                            class="m-10"
+                        >
 
-            </Label>
-            <Label [text]="desc" textWrap="true">
+                        </Image>
+                        <Label
+                            class="primary h3 p-10"
+                            [text]="name"
+                        >
 
-            </Label>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal">
+                        <Image [src]="image" class="img-circle col-6">
+
+                        </Image>
+                        <StackLayout
+                            orientation="horizontal"
+                            height="21"
+                            class="col-6 m-5"
+                            verticalAlignment="top"
+                        >
+                            <Image
+                                src="~/images/Icon_ServiceType.png"
+                                height="21"
+                                class="m-x-5"
+                            >
+
+                            </Image>
+                            <Label
+                                [text]="area"
+                                class="m-x-5"
+                            >
+
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+                    <Label
+                        class="body m-20"
+                        [text]="desc"
+                        style="color: #4a4a4a;"
+                        textWrap="true"
+                    >
+
+                    </Label>
+                    <Label
+                        text="Visit {{name+'\n'}}at these Health Centers:"
+                        textWrap="true"
+                        class="primary m-20"
+                    >
+
+                    </Label>
+                </StackLayout>
+            </CardView>
+            <CardView class="m-4">
+                <StackLayout orientation="horizontal">
+                    <StackLayout>
+                        <Image
+                            src="~/images/Icon_Location.png"
+                            height="40"
+                            class="m-20"
+                        >
+
+                        </Image>
+                        <Image
+                            src="~/images/Icon_Address.png"
+                            height="36"
+                            class="m-10"
+                        >
+
+                        </Image>
+                        <Image
+                            src="~/images/Icon_Phone.png"
+                            height="32"
+                            class="m-10"
+                        >
+
+                        </Image>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            class="primary h3 p-y-30"
+                            [text]="item.getName()"
+                        >
+
+                        </Label>
+
+                        <Label
+                            class="primary"
+                            [text]="item.getAddress().replace(', ', '\n')"
+                            textWrap="true"
+                        >
+
+                        </Label>
+                        <Label
+                            class="primary font-weight-bold m-y-25"
+                            [text]="item.getPhone()"
+                        >
+
+                        </Label>
+
+                    </StackLayout>
+                </StackLayout>
+            </CardView>
         </StackLayout>
-    </CardView>
-<!--    <CardView *ngFor="let location of locations;">
-        <StackLayout>
-            <Label [text]="location.getName()">
-
-            </Label>
-            <Label [text]="location.getAddress()">
-
-            </Label>
-            <Label [text]="location.getPhone()">
-
-            </Label>
-        </StackLayout>
-    </CardView>-->
-</StackLayout>
+    </ng-template>
+</ListView>

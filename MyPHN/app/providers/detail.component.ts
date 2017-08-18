@@ -16,6 +16,8 @@ export class ProviderDetailComponent implements OnInit {
     name;
     desc;
     locations;
+    image;
+    area;
 
     constructor(
         private route: ActivatedRoute,
@@ -43,6 +45,8 @@ export class ProviderDetailComponent implements OnInit {
             this.name = this.provider.getName();
             this.desc = this.provider.getDescription();
             this.locations = this.provider.getLocations();
+            this.image = this.provider.getImage();
+            this.area = this.provider.getServiceName();
             this._ngZone.run(() => {
                 // weird fix for arriving from webview
             })
