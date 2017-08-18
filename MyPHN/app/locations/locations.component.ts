@@ -117,7 +117,6 @@ export class LocationsComponent implements OnInit {
 
         this.locationsService.getCounties().then((x) => {
             this.counties = x;
-            this.counties.forEach((x) => { console.log(x.getName()); })
         },
             (error) => alert("Could not load location info." + error)
         );
