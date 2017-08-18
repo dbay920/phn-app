@@ -5,6 +5,11 @@ export class Location {
         this.data = [];
     }
 
+    // href
+    // name
+    // phone
+    // address
+
     getHref() {
         return 'https://primary-health.net/' + this.data[0];
     }
