@@ -17,18 +17,21 @@ export class SearchTermComponent implements AfterViewInit, OnInit {
         return href.indexOf('LocationDetail.aspx?id=') >= 0;
     }
 
+    isProvider(href) {
+        return href.indexOf('DoctorBio.aspx?id=') >= 0;
+    }
+
     ngOnInit() {
         this.route.params.forEach((params) => {
             this.searchTerm = params["term"];
         });
-
         this.webViewSrc = 'https://primary-health.net/Search.aspx?q='
             + this.searchTerm;
     }
 
     ngAfterViewInit() {
         this.ref.first.nativeElement.on(WebView.loadStartedEvent, (event) => {
-            if (this.isLocation(event.url)) {
+            if (this.isLocation(event.url) || this.isProvider(event.url)) {
 
                 // Stop the loading event
                 if (!android) {
@@ -38,8 +41,15 @@ export class SearchTermComponent implements AfterViewInit, OnInit {
                 }
 
                 // Do something depending on the coordinates in the URL
-                this._router.navigateByUrl("items/locations/detail/" +
-                    event.url.split('=')[1]);
+                if (this.isLocation(event.url)) {
+                    this._router.navigateByUrl("items/locations/detail/" +
+                        event.url.split('=')[1]);
+                } else {
+
+                    // is provider
+                    this._router.navigateByUrl("items/providers/" +
+                        event.url.split('=')[1]);
+                }
             }
         });
     }
