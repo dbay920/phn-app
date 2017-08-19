@@ -1,7 +1,5 @@
 import { QueryList, Component, OnInit, ElementRef, ViewChildren, AfterViewInit } from "@angular/core";
-//import { ServicesService } from "../shared/services/services.service";
 import { ActivatedRoute, Router } from '@angular/router';
-//import { ServiceDetail } from '../shared/services/detail'
 import { WebView } from "ui/web-view"
 
 @Component({
@@ -13,14 +11,12 @@ import { WebView } from "ui/web-view"
 
 export class ServiceDetailComponent implements OnInit, AfterViewInit {
     public id: string;
-    //detail: ServiceDetail
     public webViewSrc: string;
     @ViewChildren('ref') ref: QueryList<any>;
 
     constructor(
         private route: ActivatedRoute,
         private _router: Router,
-        //private servicesService: ServicesService
     ) { }
 
     isLocation(href) {
@@ -47,6 +43,7 @@ export class ServiceDetailComponent implements OnInit, AfterViewInit {
                     this._router.navigateByUrl("items/locations/detail/" +
                         event.url.split('=')[1]);
                 } else {
+
                     // is provider
                     this._router.navigateByUrl("items/providers/" +
                         event.url.split('=')[1]);
@@ -55,25 +52,11 @@ export class ServiceDetailComponent implements OnInit, AfterViewInit {
         });
     }
 
-    /*listViewItemTap(i): void {
-        this.goToLocations(i);
-    }*/
-
-    /*goToLocations(i): void {
-        this._router.navigateByUrl("items/locations/detail/" + this.locations[i].getId());
-    }*/
-
     ngOnInit(): void {
         this.route.params.forEach((params) => {
             this.id = params["id"];
         });
-
-        this.webViewSrc = 'https://primary-health.net/ServiceDetail.aspx?id=' + this.id;
-
-        /*        this.servicesService.getDetails(this.id).then((x) => {
-                    this.detail = x;
-                },
-                    (error) => alert("Could not load locations.")
-                );*/
+        this.webViewSrc =
+            'https://primary-health.net/ServiceDetail.aspx?id=' + this.id;
     }
 }
