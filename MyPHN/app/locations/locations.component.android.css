@@ -1,3 +1,11 @@
 ListView.by-county {
   height: 224;
 }
+
+ListView.by-dist {
+  height: 224;
+}
+
+ListView.by-alpha {
+  height: 224;
+}
