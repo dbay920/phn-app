@@ -48,6 +48,7 @@
         [items]="sortedDistance"
         visibility="{{ visibility2 ? 'visible' : 'collapsed' }}"
         height="418"
+        class="by-dist"
     >
         <ng-template
             let-item="item"
@@ -62,7 +63,7 @@
                 class="m-4 col-12"
                 (tap)="listViewItemTap(i)"
             >
-                <StackLayout>
+                <StackLayout class="m-10">
                     <StackLayout orientation="horizontal">
                         <Image src="~/images/Icon_Directions.png"
                                height="40"
@@ -91,7 +92,7 @@
                         >
 
                         </Label>
-                        <Image src="~/images/Icon_Location.png"
+                        <Image src="~/images/Icon_Phone.png"
                                height="20"
                                class="col-2"
                         >
@@ -106,25 +107,36 @@
                     </StackLayout>
                     <StackLayout orientation="horizontal">
                         <Label
-                            [text]="item.properties.address"
+                            class="primary col-2"
+                        >
+
+                        </Label>
+                        <Image src="~/images/Icon_Address.png"
+                               height="20"
+                               class="col-2"
+                        >
+
+                        </Image>
+
+                        <Label
+                            text="{{item.properties.address.replace(', ', '\n')}}"
                             class="primary col-7"
+                            textWrap="true"
                         >
 
                         </Label>
                     </StackLayout>
-
                 </StackLayout>
             </CardView>
-
-
         </ng-template>
-
     </ListView>
-<!-- Sorted Alphabetically -->
+
+    <!-- Sorted Alphabetically -->
     <ListView
         [items]="sortedAlphabetically"
         visibility="{{ visibility3 ? 'visible' : 'collapsed' }}"
         height="418"
+        class="by-alpha"
         style="background-color: #9d9d9d;"
     >
         <ng-template
@@ -140,7 +152,7 @@
                 class="m-4 col-12"
                 (tap)="listViewItemTap(i)"
             >
-                <StackLayout>
+                <StackLayout class="m-10">
                     <StackLayout orientation="horizontal">
                         <Image src="~/images/Icon_Directions.png"
                                height="40"
@@ -169,9 +181,12 @@
                         >
 
                         </Label>
-                    </StackLayout>
+                        <Image src="~/images/Icon_Phone.png"
+                               height="20"
+                               class="col-2"
+                        >
 
-                    <StackLayout orientation="horizontal">
+                        </Image>
                         <Label
                             [text]="item.properties.phone"
                             class="primary col-7"
@@ -181,13 +196,25 @@
                     </StackLayout>
                     <StackLayout orientation="horizontal">
                         <Label
-                            [text]="item.properties.address"
+                            class="primary col-2"
+                        >
+
+                        </Label>
+                        <Image src="~/images/Icon_Address.png"
+                               height="20"
+                               class="col-2"
+                        >
+
+                        </Image>
+
+                        <Label
+                            text="{{item.properties.address.replace(', ', '\n')}}"
                             class="primary col-7"
+                            textWrap="true"
                         >
 
                         </Label>
                     </StackLayout>
-
                 </StackLayout>
             </CardView>
         </ng-template>

@@ -71,8 +71,6 @@ export class LocationsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.sortedAlphabetically = _.sortBy(Config.healthCenters.features, 'properties.title');
-
         if (!isEnabled()) {
             enableLocationRequest();
             console.log('nonblocking');
@@ -94,8 +92,8 @@ export class LocationsComponent implements OnInit {
 
                     return dist;
                 });
-
-                console.log(this.sortedDistance[0].properties.distance);
+                this.sortedAlphabetically = _.sortBy(this.sortedDistance,
+                    'properties.title');
             }
         }, function(e) {
             console.log("Error: " + e.message);
