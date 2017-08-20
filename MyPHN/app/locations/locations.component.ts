@@ -35,8 +35,27 @@ export class LocationsComponent implements OnInit {
         this.goToLocations(i);
     }
 
+    static getId(feature) {
+        return feature.properties.link.split('=')[1];
+    }
+
     goToLocations(i): void {
-        this._router.navigateByUrl("items/locations/" + this.counties[i].getName());
+        switch (this.selectedIndex) {
+            case 0:
+                this._router.navigateByUrl("items/locations/" +
+                    this.counties[i].getName());
+                break;
+            case 1:
+                this._router.navigateByUrl('items/locations/detail/' +
+                    LocationsComponent.getId(this.sortedDistance[i]));
+                break;
+            case 2:
+                this._router.navigateByUrl('items/locations/detail/' +
+                    LocationsComponent.getId(this.sortedAlphabetically[i]));
+                break;
+            default:
+                break;
+        }
     }
 
     onSelectedIndexChange(event) {

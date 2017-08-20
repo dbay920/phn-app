@@ -3,6 +3,10 @@
   width: 40pt;
 }
 
+.hidden {
+  visibility: collapse;
+}
+
 .favorites {
   height: 16pt;
   color: #FFFFFF;

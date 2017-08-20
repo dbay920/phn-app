@@ -28,33 +28,33 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         private _router: Router,
         private locationsService: LocationsService,
     ) {
-        if (isIOS) {
-            this.id = setInterval(() => {
-                if (this.isMoreTab()) {
-                    this.drawer.showDrawer();
-                }
-                let validRoutes = [
-                    '/items',
-                    '/items/portal',
-                    '/items/news',
-                ]
-                let index = validRoutes.findIndex((route) => {
-                    return route === this._router.url;
-                })
+        //if (isIOS) {
+        this.id = setInterval(() => {
+            if (this.isMoreTab()) {
+                this.drawer.showDrawer();
+            }
+            let validRoutes = [
+                '/items',
+                '/items/portal',
+                '/items/news',
+            ]
+            let index = validRoutes.findIndex((route) => {
+                return route === this._router.url;
+            })
 
-                if (index === -1) {
-                    if (this.getSelectedIndex() !== 3) {
-                        this.firstTime = true;
-                        this.setSelectedIndex(3);
-                    }
-                } else {
-                    if (index !== this.getSelectedIndex()) {
-                        this.firstTime = true;
-                        this.setSelectedIndex(index);
-                    }
+            if (index === -1) {
+                if (this.getSelectedIndex() !== 3) {
+                    this.firstTime = true;
+                    this.setSelectedIndex(3);
                 }
-            }, 1000);
-        }
+            } else {
+                if (index !== this.getSelectedIndex()) {
+                    this.firstTime = true;
+                    this.setSelectedIndex(index);
+                }
+            }
+        }, 1000);
+        // }
     }
 
     onCloseDrawerTap(): void {

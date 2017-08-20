@@ -94,7 +94,7 @@
 
                         </Label>
                         <Label
-                            [text]="item.getAddress()"
+                            [text]="item.getAddress().replace(', ', '\n')"
                             textWrap="true"
                             class="primary"
                         >
