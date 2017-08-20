@@ -1,9 +1,10 @@
-<StackLayout height="100%">
+<DockLayout>
     <CardView
         elevation="40"
         radius="2"
         height="150"
         class="col-12 m-4"
+        dock="top"
     >
         <GridLayout
             style="background-image: {{image}}; background-size: contain; background-repeat: no-repeat;"
@@ -51,7 +52,7 @@
             </StackLayout>
         </GridLayout>
     </CardView>
-    <ListView [items]="cards" height="229" >
+    <ListView class="cards" [items]="cards" >
         <ng-template
             let-item="item"
             let-i="index"
@@ -66,7 +67,6 @@
                 (tap)="goToUrl(item.url)"
             >
                 <GridLayout
-                    width="312pt"
                     columns="*, 60"
                     style="background-color: #00817D;"
                 >
@@ -90,4 +90,4 @@
             </CardView>
         </ng-template>
     </ListView>
-</StackLayout>
+</DockLayout>

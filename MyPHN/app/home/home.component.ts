@@ -13,6 +13,7 @@ import { Config } from '../shared/config';
     selector: "ns-items",
     moduleId: module.id,
     templateUrl: "./home.component.html",
+    styleUrls: ['home.css', 'home-common.css'],
 })
 
 export class HomeComponent implements OnInit {
