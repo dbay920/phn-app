@@ -1,4 +1,4 @@
-<StackLayout width="320">
+<StackLayout width="100%" style="background-color: #cecece;">
     <CardView
         elevation="40"
         radius="2"
@@ -6,11 +6,9 @@
     >
         <StackLayout
             class="primary-background"
-            width="312pt"
         >
             <StackLayout
                 class="primary-background"
-                width="312pt"
                 height="90pt"
                 orientation="horizontal"
             >
@@ -31,24 +29,25 @@
             </StackLayout>
         </StackLayout>
     </CardView>
-    <CardView class="m-4">
-        <StackLayout>
             <SegmentedBar
                 [items]="myItems"
                 selectedIndex="0"
+                class="m-5"
                 (selectedIndexChange)="onSelectedIndexChange($event)"
-                style="font-size:10pt;"
+                style="selected-background-color: #00817d;
+                       color: #00817d;
+                       background-color: #cecece;
+                       font-size: 10;"
             >
 
             </SegmentedBar>
-        </StackLayout>
-    </CardView>
     <!-- Sorted by Distance -->
     <ListView
         [items]="sortedDistance"
         visibility="{{ visibility2 ? 'visible' : 'collapsed' }}"
         height="418"
         class="by-dist"
+        style="background-color: #cecece;"
     >
         <ng-template
             let-item="item"
@@ -63,7 +62,7 @@
                 class="m-4 col-12"
                 (tap)="listViewItemTap(i)"
             >
-                <StackLayout class="m-10">
+                <StackLayout class="p-10" style="background-color: white;">
                     <StackLayout orientation="horizontal">
                         <Image src="~/images/Icon_Directions.png"
                                height="40"
@@ -137,6 +136,7 @@
         visibility="{{ visibility3 ? 'visible' : 'collapsed' }}"
         height="418"
         class="by-alpha"
+        style="background-color:#cecece;"
     >
         <ng-template
             let-item="item"
@@ -151,7 +151,7 @@
                 class="m-4 col-12"
                 (tap)="listViewItemTap(i)"
             >
-                <StackLayout class="m-10">
+                <StackLayout class="p-10" style="background-color: white;">
                     <StackLayout orientation="horizontal">
                         <Image src="~/images/Icon_Directions.png"
                                height="40"
@@ -223,6 +223,7 @@
         [items]="counties"
         class="by-county"
         visibility="{{ visibility1 ? 'visible' : 'collapsed' }}"
+        style="background-color: #cecece;"
     >
         <ng-template
             let-item="item"
@@ -230,7 +231,10 @@
             let-odd="odd"
             let-even="even"
         >
-            <StackLayout orientation="horizontal">
+            <StackLayout
+                orientation="horizontal"
+                horizontalAlignment="center"
+            >
                 <CardView
                     elevation="40"
                     radius="2"
