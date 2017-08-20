@@ -1,6 +1,7 @@
 import { QueryList, Component, ViewChildren, AfterViewInit, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from '@angular/router';
 import { WebView } from "ui/web-view"
+import { isAndroid, isIOS, device, screen } from "platform";
 
 @Component({
     selector: "ns-items",
@@ -34,7 +35,7 @@ export class SearchTermComponent implements AfterViewInit, OnInit {
             if (this.isLocation(event.url) || this.isProvider(event.url)) {
 
                 // Stop the loading event
-                if (!android) {
+                if (!isAndroid) {
                     event.object.ios.stopLoading();
                 } else {
                     event.object.android.stopLoading();
