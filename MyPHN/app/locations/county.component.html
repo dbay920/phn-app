@@ -19,6 +19,7 @@
     <ListView
         [items]="locations"
         class="col-12 m-4"
+        style="background-color: #cecece;"
     >
         <ng-template
             let-item="item"
@@ -34,6 +35,7 @@
             >
                 <StackLayout
                     orientation="horizontal"
+                    style="background-color: white;"
                 >
                     <StackLayout class="col-3">
                         <Image
@@ -78,7 +80,7 @@
                         <Label
                             [text]="item.getName()"
                             textWrap="true"
-                            class="columbian font-weight-bold primary white-background"
+                            class="columbian font-weight-bold primary"
                             style="min-height: 40pt;"
                         >
 
@@ -87,14 +89,14 @@
                         <Label
                             [text]="item.getPhone()"
                             textWrap="true"
-                            class="font-weight-bold primary  white-background"
+                            class="font-weight-bold primary"
                         >
 
                         </Label>
                         <Label
                             [text]="item.getAddress()"
                             textWrap="true"
-                            class=" primary  white-background"
+                            class="primary"
                         >
 
                         </Label>

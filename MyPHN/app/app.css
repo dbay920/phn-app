@@ -67,6 +67,10 @@ Label.tile {
   color: white;
 }
 
+Page {
+  background-color: #cecece;
+}
+
 .white-background {
   background-color: white;
 }

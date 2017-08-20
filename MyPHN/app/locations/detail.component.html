@@ -47,37 +47,34 @@
             </StackLayout>
         </GridLayout>
     </CardView>
-    <ListView
-        [items]="cards"
+    <ScrollView
         class="m-4"
     >
-        <ng-template
-            let-item="item"
-            let-i="index"
-            let-odd="odd"
-            let-even="even"
-        >
+        <StackLayout>
             <CardView
                 elevation="40"
                 radius="2"
                 class="m-4 col-12"
-
+                *ngFor="let item of cards; let i = index;"
             >
-                <StackLayout        (tap)="listViewItemTap(i)"
->
-                    <StackLayout orientation="horizontal" height="80">
+                <StackLayout
+                    (tap)="listViewItemTap(i)"
+                    style="background-color: white;"
+                >
+                    <DockLayout orientation="horizontal" height="80">
                         <Label
                             [text]="item.name"
-                            class="col-10 double-pica font-weight-bold primary white-background"
+                            class="col-10 double-pica font-weight-bold primary"
                             height="80"
                             padding="23"
+                            dock="left"
                         >
 
                         </Label>
-                        <Image [src]="item.icon" class="col-2" height="40">
+                        <Image dock="right" [src]="item.icon" class="col-2" height="40">
 
                         </Image>
-                    </StackLayout>
+                    </DockLayout>
                     <Label
                         [text]="item.data"
                         textWrap="true"
@@ -88,6 +85,6 @@
                     </Label>
                 </StackLayout>
             </CardView>
-        </ng-template>
-    </ListView>
+        </StackLayout>
+    </ScrollView>
 </DockLayout>

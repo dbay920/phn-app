@@ -1,4 +1,4 @@
-<ListView [items]="locations" width="320" height="385">
+<ListView [items]="locations" style="background-color: #cecece;">
     <ng-template
         let-item="item"
         let-i="index"
@@ -10,7 +10,7 @@
                 visibility="{{i === 0 ? 'visible' : 'collapse'}}"
                 class="m-4"
             >
-                <StackLayout>
+                <StackLayout class="white-background">
                     <StackLayout orientation="horizontal">
                         <Image
                             src="~/images/Icon_Provider.png"
@@ -27,7 +27,10 @@
                         </Label>
                     </StackLayout>
                     <StackLayout orientation="horizontal">
-                        <Image [src]="image" class="img-circle col-6">
+                        <Image [src]="image" class="img-circle"
+                               height="151"
+                               width="50%"
+                        >
 
                         </Image>
                         <StackLayout
@@ -69,7 +72,7 @@
                 </StackLayout>
             </CardView>
             <CardView class="m-4">
-                <StackLayout orientation="horizontal">
+                <StackLayout orientation="horizontal" class="white-background">
                     <StackLayout>
                         <Image
                             src="~/images/Icon_Location.png"
