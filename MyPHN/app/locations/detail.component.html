@@ -1,9 +1,10 @@
-<StackLayout width="320">
+<DockLayout>
     <CardView
         elevation="40"
         radius="2"
         height="150"
         class="col-12"
+        dock="top"
     >
         <GridLayout
             style="background-image: {{image}}; background-size: contain; background-repeat: no-repeat;"
@@ -48,7 +49,6 @@
     </CardView>
     <ListView
         [items]="cards"
-        height="223"
         class="m-4"
     >
         <ng-template
@@ -61,10 +61,10 @@
                 elevation="40"
                 radius="2"
                 class="m-4 col-12"
-                height="162pt"
-                (tap)="listViewItemTap(i)"
+
             >
-                <StackLayout>
+                <StackLayout        (tap)="listViewItemTap(i)"
+>
                     <StackLayout orientation="horizontal" height="80">
                         <Label
                             [text]="item.name"
@@ -82,7 +82,7 @@
                         [text]="item.data"
                         textWrap="true"
                         class="m-20 pica font-weight-bold primary text-center white-background"
-                        visibility="{{item.visible ? 'visible' : 'collapsed' }}"
+                        visibility="{{item.visible ? 'visible' : 'collapse' }}"
                     >
 
                     </Label>
@@ -90,4 +90,4 @@
             </CardView>
         </ng-template>
     </ListView>
-</StackLayout>
+</DockLayout>

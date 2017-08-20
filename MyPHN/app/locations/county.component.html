@@ -1,9 +1,10 @@
-<StackLayout width="320">
+<DockLayout width="100%">
     <CardView
         elevation="40"
         radius="2"
         height="90"
         style="margin-bottom: 8pt;"
+        dock="top"
     >
         <StackLayout class="primary-background">
             <Label
@@ -28,7 +29,6 @@
             <CardView
                 elevation="40"
                 radius="2"
-                [class.hidden]="odd"
                 (tap)="listViewItemTap(i)"
                 class="m-4"
             >
@@ -75,34 +75,32 @@
 
                     </StackLayout>
                     <StackLayout class="col-7">
-                    <Label
-                        [text]="item.getName()"
-                        textWrap="true"
-                        class="columbian font-weight-bold primary white-background"
-                        style="min-height: 40pt;"
-                    >
+                        <Label
+                            [text]="item.getName()"
+                            textWrap="true"
+                            class="columbian font-weight-bold primary white-background"
+                            style="min-height: 40pt;"
+                        >
 
-                    </Label>
+                        </Label>
 
-                    <Label
-                        [text]="item.getPhone()"
-                        textWrap="true"
-                        class="font-weight-bold primary  white-background"
-                    >
+                        <Label
+                            [text]="item.getPhone()"
+                            textWrap="true"
+                            class="font-weight-bold primary  white-background"
+                        >
 
-                    </Label>
-                    <Label
-                        [text]="item.getAddress()"
-                        textWrap="true"
-                        class=" primary  white-background"
-                    >
+                        </Label>
+                        <Label
+                            [text]="item.getAddress()"
+                            textWrap="true"
+                            class=" primary  white-background"
+                        >
 
-                    </Label>
+                        </Label>
                     </StackLayout>
                 </StackLayout>
             </CardView>
-
         </ng-template>
     </ListView>
-
-</StackLayout>
+</DockLayout>
