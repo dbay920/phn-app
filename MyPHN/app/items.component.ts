@@ -22,39 +22,39 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     public SideDrawerLocation: any;
     routes: Array<any>;
     public firstTime: boolean;
-    public id: number;
+    static public id: number;
 
     constructor(
         private _router: Router,
         private locationsService: LocationsService,
     ) {
-        //if (isIOS) {
-        this.id = setInterval(() => {
-            if (this.isMoreTab()) {
-                this.drawer.showDrawer();
-            }
-            let validRoutes = [
-                '/items',
-                '/items/portal',
-                '/items/news',
-            ]
-            let index = validRoutes.findIndex((route) => {
-                return route === this._router.url;
-            })
+        if (!ItemsComponent.id) {
+            ItemsComponent.id = setInterval(() => {
+                if (this.isMoreTab()) {
+                    this.drawer.showDrawer();
+                }
+                let validRoutes = [
+                    '/items',
+                    '/items/portal',
+                    '/items/news',
+                ]
+                let index = validRoutes.findIndex((route) => {
+                    return route === this._router.url;
+                })
 
-            if (index === -1) {
-                if (this.getSelectedIndex() !== 3) {
-                    this.firstTime = true;
-                    this.setSelectedIndex(3);
+                if (index === -1) {
+                    if (this.getSelectedIndex() !== 3) {
+                        this.firstTime = true;
+                        this.setSelectedIndex(3);
+                    }
+                } else {
+                    if (index !== this.getSelectedIndex()) {
+                        this.firstTime = true;
+                        this.setSelectedIndex(index);
+                    }
                 }
-            } else {
-                if (index !== this.getSelectedIndex()) {
-                    this.firstTime = true;
-                    this.setSelectedIndex(index);
-                }
-            }
-        }, 1000);
-        // }
+            }, 1000);
+        }
     }
 
     onCloseDrawerTap(): void {
