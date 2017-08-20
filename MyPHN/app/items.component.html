@@ -7,12 +7,14 @@
         <Image src="~/images/PHN LOGO.png" class="logo">
 
         </Image>
-        <Label class="my-phn" textWrap="true" style="margin-right: 10pt;">
-            <FormattedString>
-                <Span text="MY"></Span>
-                <Span text="PHN" class="font-weight-bold"></Span>
-            </FormattedString>
-        </Label>
+        <StackLayout>
+            <Label text="MY">
+
+            </Label>
+            <Label text="PHN" class="font-weight-bold">
+
+            </Label>
+        </StackLayout>
         <!-- TODO: add favorites functionality
         <StackLayout orientation="vertical">
             <Image src="~/images/Icon_Favorite.png" class="action-image" (tap)="favorites()">
@@ -41,7 +43,7 @@
     <StackLayout
         tkDrawerContent
         class="sideStackLayout"
-        height="600"
+        height="670"
     >
         <StackLayout
             *ngFor="let item of routes;let first = first; let last = last;"
@@ -66,38 +68,41 @@
 
         </Image>
     </StackLayout>
-    <AbsoluteLayout tkMainContent>
+    <DockLayout tkMainContent>
         <TabView
             #ref
-            width="100%"
             (selectedIndexChanged)="onSelectedIndexChanged($event)"
+            width="100%"
+            height="50"
+            dock="bottom"
         >
             <AbsoluteLayout
                 *tabItem="{title: 'Home',  iconSource: '~/images/Home.png'}"
-                style=" width: 360pt;"
+                height="0"
             >
 
             </AbsoluteLayout>
             <StackLayout
                 *tabItem="{title: 'Portal', iconSource: '~/images/Portal.png'}"
+                height="0"
             >
 
             </StackLayout>
             <StackLayout
                 *tabItem="{title: 'News', iconSource: '~/images/News.png'}"
+                height="0"
             >
 
             </StackLayout>
             <StackLayout
                 *tabItem="{title: 'More', iconSource: '~/images/More.png'}"
+                height="0"
             >
 
             </StackLayout>
         </TabView>
-        <AbsoluteLayout top="68" height="100%">
-            <router-outlet>
+        <router-outlet>
 
-            </router-outlet>
-        </AbsoluteLayout>
-    </AbsoluteLayout>
+        </router-outlet>
+    </DockLayout>
 </RadSideDrawer>
