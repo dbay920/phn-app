@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { registerElement } from 'nativescript-angular';
 import { setInterval, setTimeout, clearInterval } from "timer";
 import { TabView } from "ui/tab-view"
+import { isAndroid, isIOS, device, screen } from "platform";
 
 @Component({
     selector: "ns-items",
@@ -27,7 +28,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         private _router: Router,
         private locationsService: LocationsService,
     ) {
-        if (!android) {
+        if (isIOS) {
             this.id = setInterval(() => {
                 if (this.isMoreTab()) {
                     this.drawer.showDrawer();
@@ -64,7 +65,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         if (!ItemsComponent.tabView)
             return -1;
 
-        if (!android)
+        if (isIOS)
             return ItemsComponent.tabView.ios.selectedIndex;
 
         return ItemsComponent.tabView.selectedIndex;
@@ -77,7 +78,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     isMoreTab(): boolean {
         let index = this.getSelectedIndex();
 
-        return android ? false : index === 9223372036854776000;
+        return isAndroid ? false : index === 9223372036854776000;
     }
 
     onSelectedIndexChanged(event): void {
@@ -107,8 +108,12 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     homeRoute
     newsRoute
     portalRoute
+    topVal
+    heightVal;
 
     ngOnInit(): void {
+        this.topVal = 0//68;
+        this.heightVal = 0;
         this.firstTime = true;
         this.SideDrawerLocation = SideDrawerLocation;
         this.homeRoute = { name: 'Home', url: 'items' };
