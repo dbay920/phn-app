@@ -22,7 +22,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     public SideDrawerLocation: any;
     routes: Array<any>;
     public firstTime: boolean;
-    static public id: number;
+    public static id: number;
 
     constructor(
         private _router: Router,
