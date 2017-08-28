@@ -1,12 +1,16 @@
-import { ViewChildren, QueryList, Component, OnInit, ElementRef, ViewChild, AfterViewInit } from "@angular/core";
+import {
+    ViewChildren, QueryList, Component, OnInit, ElementRef, ViewChild,
+    AfterViewInit,
+} from "@angular/core";
+import { ActivatedRoute, Router, } from '@angular/router';
 import { View } from "ui/core/view";
 import { LocationsService } from "./shared/location/locations.service";
 
 import { SideDrawerLocation } from 'nativescript-telerik-ui-pro/sidedrawer';
 import { RadSideDrawerComponent } from "nativescript-telerik-ui-pro/sidedrawer/angular";
 import { RadSideDrawer } from "nativescript-telerik-ui-pro/sidedrawer";
-import { ActivatedRoute, Router } from '@angular/router';
-import { registerElement } from 'nativescript-angular';
+
+import { registerElement, RouterExtensions } from 'nativescript-angular';
 import { setInterval, setTimeout, clearInterval } from "timer";
 import { TabView } from "ui/tab-view"
 import { isAndroid, isIOS, device, screen } from "platform";
@@ -27,6 +31,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     constructor(
         private _router: Router,
         private locationsService: LocationsService,
+        private routerExtensions: RouterExtensions,
     ) {
         if (!ItemsComponent.id) {
             ItemsComponent.id = setInterval(() => {
@@ -57,7 +62,11 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         }
     }
 
-    onCloseDrawerTap(): void {
+    public goBack() {
+        this.routerExtensions.back();
+    }
+
+    Onclosedrawertap(): void {
         this.drawer.closeDrawer();
     }
 
