@@ -6,9 +6,9 @@ import { ActivatedRoute, Router, } from '@angular/router';
 import { View } from "ui/core/view";
 import { LocationsService } from "./shared/location/locations.service";
 
-import { SideDrawerLocation } from 'nativescript-telerik-ui-pro/sidedrawer';
-import { RadSideDrawerComponent } from "nativescript-telerik-ui-pro/sidedrawer/angular";
-import { RadSideDrawer } from "nativescript-telerik-ui-pro/sidedrawer";
+import { SideDrawerLocation } from 'nativescript-pro-ui/sidedrawer';
+import { RadSideDrawerComponent } from "nativescript-pro-ui/sidedrawer/angular";
+import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
 
 import { registerElement, RouterExtensions } from 'nativescript-angular';
 import { setInterval, setTimeout, clearInterval } from "timer";
