@@ -2,12 +2,11 @@
     <CardView
         elevation="40"
         radius="2"
-        height="150"
-        class="col-12 m-4"
+        height="250"
         dock="top"
     >
         <GridLayout
-            style="background-image: {{image}}; background-size: contain; background-repeat: no-repeat;"
+            style="background-image: {{image}}; background-size: cover; background-repeat: no-repeat;"
             rows="24, *, 80"
         >
             <Label
@@ -52,7 +51,7 @@
             </StackLayout>
         </GridLayout>
     </CardView>
-    <ListView class="cards" [items]="cards" >
+    <ListView class="cards" [items]="cards" separatorColor="transparent" >
         <ng-template
             let-item="item"
             let-i="index"
@@ -63,7 +62,7 @@
                 elevation="40"
                 radius="4"
                 height="80pt"
-                class="col-12 m-4"
+                class="cardButton"
                 (tap)="goToUrl(item.url)"
             >
                 <GridLayout

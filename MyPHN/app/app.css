@@ -135,3 +135,8 @@ Page {
 .medium-spacing {
   margin: 10;
 }
+
+.small-title, 
+.col-10 {
+  padding-left:10px;
+}

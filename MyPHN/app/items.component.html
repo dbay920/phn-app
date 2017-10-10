@@ -10,12 +10,14 @@
     </ActionItem>
     <StackLayout
         orientation="horizontal"
-        ios:horizontalAlignment="center"
-        android:horizontalAlignment="left"
     >
-        <Image src="~/images/PHN LOGO.png" class="logo">
-
+        <Image src="~/images/PHN LOGO.png" class="logo" horizontalAlignment="center" >
         </Image>
+
+        <!--        
+        
+        TODO: add image of logo including my phn text 
+        
         <StackLayout>
             <Label text="MY">
 
@@ -24,7 +26,9 @@
 
             </Label>
         </StackLayout>
-        <!-- TODO: add favorites functionality
+
+        TODO: add favorites functionality
+        
         <StackLayout orientation="vertical">
             <Image src="~/images/Icon_Favorite.png" class="action-image" (tap)="favorites()">
 
@@ -32,8 +36,11 @@
             <Label text="Favorites"  class="favorites">
 
             </Label>
-        </StackLayout> -->
-        <StackLayout orientation="vertical">
+        </StackLayout> 
+    
+    -->
+
+        <StackLayout orientation="vertical" horizontalAlignment="right" >
             <Image src="~/images/Icon_Search.png" class="action-image" (tap)="search()">
 
             </Image>
