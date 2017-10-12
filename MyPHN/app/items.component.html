@@ -1,3 +1,5 @@
+<!-- TODO: figure out how to position PHN logo in center and search icon/text on right side of ActionBar -->
+
 <ActionBar title="My PHN">
     <ActionItem
         (tap)="goBack()"
@@ -93,25 +95,25 @@
             dock="bottom"
         >
             <AbsoluteLayout
-                *tabItem="{title: 'Home',  iconSource: '~/images/Home.png'}"
+                *tabItem="{title: 'Home',  iconSource: 'res://home'}"
                 height="0"
             >
 
             </AbsoluteLayout>
             <StackLayout
-                *tabItem="{title: 'Portal', iconSource: '~/images/Portal.png'}"
+                *tabItem="{title: 'Portal', iconSource: 'res://portal'}"
                 height="0"
             >
 
             </StackLayout>
             <StackLayout
-                *tabItem="{title: 'News', iconSource: '~/images/News.png'}"
+                *tabItem="{title: 'News', iconSource: 'res://news'}"
                 height="0"
             >
 
             </StackLayout>
             <StackLayout
-                *tabItem="{title: 'More', iconSource: '~/images/More.png'}"
+                *tabItem="{title: 'More', iconSource: 'res://more'}"
                 height="0"
             >
 
