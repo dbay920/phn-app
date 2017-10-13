@@ -13,7 +13,7 @@
     <StackLayout
         orientation="horizontal"
     >
-        <Image src="~/images/PHN LOGO.png" class="logo" horizontalAlignment="center" >
+        <Image src="res://phn_logo" class="logo" horizontalAlignment="center" >
         </Image>
 
         <!--        
@@ -29,10 +29,10 @@
             </Label>
         </StackLayout>
 
-        TODO: add favorites functionality
+        TODO: add favorites functionality and add icon_favorite png to img resource folders
         
         <StackLayout orientation="vertical">
-            <Image src="~/images/Icon_Favorite.png" class="action-image" (tap)="favorites()">
+            <Image src="res://icon_favorite" class="action-image" (tap)="favorites()">
 
             </Image>
             <Label text="Favorites"  class="favorites">
@@ -43,7 +43,7 @@
     -->
 
         <StackLayout orientation="vertical" horizontalAlignment="right" >
-            <Image src="~/images/Icon_Search.png" class="action-image" (tap)="search()">
+            <Image src="res://icon_search" class="action-image" (tap)="search()">
 
             </Image>
             <Label text="Search PHN"  class="search-phn">
@@ -78,7 +78,7 @@
             </StackLayout>
         </StackLayout>
         <Image
-            src="~/images/Shape Copy 2.png"
+            src="res://close_sidedrawer"
             style="horizontal-align: center; margin: 12pt;"
             (tap)="onCloseDrawerTap()"
             height="40"

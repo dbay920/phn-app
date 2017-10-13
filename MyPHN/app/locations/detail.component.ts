@@ -59,19 +59,19 @@ export class LocationDetailComponent implements OnInit {
                 {
                     name: 'About',
                     data: this.details.getAbout(),
-                    icon: '~/images/Icon_About.png',
+                    icon: 'res://icon_about_location',
                     visible: false
                 },
                 {
                     name: 'Hours',
                     data: this.details.getHours(),
-                    icon: '~/images/Icon_Hours.png',
+                    icon: 'res://icon_hours_location',
                     visible: false
                 },
                 {
                     name: 'Contact',
                     data: this.details.getContact(),
-                    icon: '~/images/Icon_Contact.png',
+                    icon: 'res://icon_phone_location',
                     visible: false
                 },
             ]
