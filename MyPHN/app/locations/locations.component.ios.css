@@ -1,3 +1,12 @@
-ListView.by-county {
-  height: 418;
-}
+
+.county_card_l {
+    margin-left: 0;
+  }
+  
+  .county_card_r {
+    margin-right: 0;
+  }
+  
+  .col-county {
+    width: 47%;
+  }
