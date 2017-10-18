@@ -1,3 +1,5 @@
+<!-- TODO: figure out how to position PHN logo in center and search icon/text on right side of ActionBar -->
+
 <ActionBar title="My PHN">
     <ActionItem
         (tap)="goBack()"
@@ -10,12 +12,14 @@
     </ActionItem>
     <StackLayout
         orientation="horizontal"
-        ios:horizontalAlignment="center"
-        android:horizontalAlignment="left"
     >
-        <Image src="~/images/PHN LOGO.png" class="logo">
-
+        <Image src="res://phn_logo" class="logo" horizontalAlignment="center" >
         </Image>
+
+        <!--        
+        
+        TODO: add image of logo including my phn text 
+        
         <StackLayout>
             <Label text="MY">
 
@@ -24,17 +28,22 @@
 
             </Label>
         </StackLayout>
-        <!-- TODO: add favorites functionality
+
+        TODO: add favorites functionality and add icon_favorite png to img resource folders
+        
         <StackLayout orientation="vertical">
-            <Image src="~/images/Icon_Favorite.png" class="action-image" (tap)="favorites()">
+            <Image src="res://icon_favorite" class="action-image" (tap)="favorites()">
 
             </Image>
             <Label text="Favorites"  class="favorites">
 
             </Label>
-        </StackLayout> -->
-        <StackLayout orientation="vertical">
-            <Image src="~/images/Icon_Search.png" class="action-image" (tap)="search()">
+        </StackLayout> 
+    
+    -->
+
+        <StackLayout orientation="vertical" horizontalAlignment="right" >
+            <Image src="res://icon_search" class="action-image" (tap)="search()">
 
             </Image>
             <Label text="Search PHN"  class="search-phn">
@@ -69,7 +78,7 @@
             </StackLayout>
         </StackLayout>
         <Image
-            src="~/images/Shape Copy 2.png"
+            src="res://close_sidedrawer"
             style="horizontal-align: center; margin: 12pt;"
             (tap)="onCloseDrawerTap()"
             height="40"
@@ -86,25 +95,25 @@
             dock="bottom"
         >
             <AbsoluteLayout
-                *tabItem="{title: 'Home',  iconSource: '~/images/Home.png'}"
+                *tabItem="{title: 'Home',  iconSource: 'res://home'}"
                 height="0"
             >
 
             </AbsoluteLayout>
             <StackLayout
-                *tabItem="{title: 'Portal', iconSource: '~/images/Portal.png'}"
+                *tabItem="{title: 'Portal', iconSource: 'res://portal'}"
                 height="0"
             >
 
             </StackLayout>
             <StackLayout
-                *tabItem="{title: 'News', iconSource: '~/images/News.png'}"
+                *tabItem="{title: 'News', iconSource: 'res://news'}"
                 height="0"
             >
 
             </StackLayout>
             <StackLayout
-                *tabItem="{title: 'More', iconSource: '~/images/More.png'}"
+                *tabItem="{title: 'More', iconSource: 'res://more'}"
                 height="0"
             >
 

@@ -48,15 +48,15 @@ export class HomeComponent implements OnInit {
         this.cards = [
             {
                 name: 'Locations',
-                image: '~/images/Icon_Locations.png',
+                image: 'res://icon_location_home',
                 url: 'items/locations'
             }, {
                 name: 'Services',
-                image: '~/images/Icon_Services.png',
+                image: 'res://icon_service_home',
                 url: 'items/services'
             }, {
                 name: 'Providers',
-                image: '~/images/Icon_Providers.png',
+                image: 'res://icon_provider_home',
                 url: 'items/providers'
             }
         ];

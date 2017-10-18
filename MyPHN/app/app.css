@@ -19,7 +19,9 @@ ActionBar {
 
 TabView {
   background-color: #9d9d9d;
-  tab-background-color: rgba(255,255,255,0.5);
+  tab-text-color: #505050;
+  selected-tab-text-color: #00817d;
+  android-selected-tab-text-color: #00817d;
 }
 
 .alpha {
@@ -134,4 +136,9 @@ Page {
 
 .medium-spacing {
   margin: 10;
+}
+
+.small-title, 
+.col-10 {
+  padding-left:10px;
 }

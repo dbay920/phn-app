@@ -2,12 +2,12 @@
     <CardView
         elevation="40"
         radius="2"
-        height="150"
-        class="col-12"
+        height="250"
+        class=""
         dock="top"
     >
         <GridLayout
-            style="background-image: {{image}}; background-size: contain; background-repeat: no-repeat;"
+            style="background-image: {{image}}; background-size: cover; background-repeat: no-repeat;"
             rows="*, 80"
         >
             <StackLayout
@@ -34,7 +34,7 @@
                 <StackLayout class="col-2">
 
                     <Image
-                        src="~/images/Icon_Directions.png"
+                        src="res://directions"
                     >
 
                     </Image>
@@ -78,7 +78,7 @@
                     <Label
                         [text]="item.data"
                         textWrap="true"
-                        class="m-20 pica font-weight-bold primary text-center white-background"
+                        class="m-20 pica font-weight-bold primary text-left white-background"
                         visibility="{{item.visible ? 'visible' : 'collapse' }}"
                     >
 

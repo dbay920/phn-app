@@ -2,8 +2,9 @@
     <CardView
         elevation="40"
         radius="2"
-        class="col-12 m-4"
+        class=""
     >
+    <!-- Locations Header Bar -->
         <StackLayout
             class="primary-background"
         >
@@ -13,7 +14,7 @@
                 orientation="horizontal"
             >
                 <Image
-                    src="~/images/Icon_Locations.png"
+                    src="res://icon_location_home"
                     height="30"
                     class="col-2 m-4"
                 >
@@ -36,7 +37,7 @@
                 (selectedIndexChange)="onSelectedIndexChange($event)"
                 style="selected-background-color: #00817d;
                        color: #00817d;
-                       background-color: #cecece;
+                       background-color: #fff;
                        font-size: 10;"
             >
 
@@ -48,6 +49,7 @@
         height="418"
         class="by-dist"
         style="background-color: #cecece;"
+        separatorColor="transparent"
     >
         <ng-template
             let-item="item"
@@ -59,18 +61,18 @@
                 elevation="40"
                 radius="2"
                 height="162pt"
-                class="m-4 col-12"
+                class="m-4 distance_card"
                 (tap)="listViewItemTap(i)"
             >
                 <StackLayout class="p-10" style="background-color: white;">
                     <StackLayout orientation="horizontal">
-                        <Image src="~/images/Icon_Directions.png"
+                        <Image src="res://directions_nearme"
                                height="40"
                                class="col-2"
                         >
 
                         </Image>
-                        <Image src="~/images/Icon_Location.png"
+                        <Image src="res://icon_location_nearme"
                                height="20"
                                class="col-2"
                         >
@@ -91,7 +93,7 @@
                         >
 
                         </Label>
-                        <Image src="~/images/Icon_Phone.png"
+                        <Image src="res://icon_phone_nearme"
                                height="20"
                                class="col-2"
                         >
@@ -110,7 +112,7 @@
                         >
 
                         </Label>
-                        <Image src="~/images/Icon_Address.png"
+                        <Image src="res://icon_address_nearme"
                                height="20"
                                class="col-2"
                         >
@@ -137,6 +139,7 @@
         height="418"
         class="by-alpha"
         style="background-color:#cecece;"
+        separatorColor="transparent"
     >
         <ng-template
             let-item="item"
@@ -148,18 +151,18 @@
                 elevation="40"
                 radius="2"
                 height="162pt"
-                class="m-4 col-12"
+                class="m-4 alphabet_card"
                 (tap)="listViewItemTap(i)"
             >
                 <StackLayout class="p-10" style="background-color: white;">
                     <StackLayout orientation="horizontal">
-                        <Image src="~/images/Icon_Directions.png"
+                        <Image src="res://directions_nearme"
                                height="40"
                                class="col-2"
                         >
 
                         </Image>
-                        <Image src="~/images/Icon_Location.png"
+                        <Image src="res://icon_location_nearme"
                                height="20"
                                class="col-2"
                         >
@@ -180,7 +183,7 @@
                         >
 
                         </Label>
-                        <Image src="~/images/Icon_Phone.png"
+                        <Image src="res://icon_phone_nearme"
                                height="20"
                                class="col-2"
                         >
@@ -199,7 +202,7 @@
                         >
 
                         </Label>
-                        <Image src="~/images/Icon_Address.png"
+                        <Image src="res://icon_address_nearme"
                                height="20"
                                class="col-2"
                         >
@@ -218,13 +221,15 @@
             </CardView>
         </ng-template>
     </ListView>
-    <!-- traditional view -->
+    <!-- list by counties view, need to change to grid layout -->
+    
     <ListView
         [items]="counties"
         class="by-county"
         visibility="{{ visibility1 ? 'visible' : 'collapsed' }}"
         style="background-color: #cecece;"
         height="418"
+        separatorColor="transparent"
     >
         <ng-template
             let-item="item"
@@ -235,13 +240,14 @@
             <StackLayout
                 orientation="horizontal"
                 horizontalAlignment="center"
+                class="county_area"
             >
                 <CardView
                     elevation="40"
                     radius="2"
                     [class.hidden]="odd"
                     height="80pt"
-                    class="m-4 col-6"
+                    class="m-4 col-county county_card_l"
                     (tap)="listViewItemTap(i)"
                     horizontalAlignment="center"
                 >
@@ -249,6 +255,7 @@
                         [text]="item.getName()"
                         textWrap="true"
                         class="great-primer font-weight-bold primary text-center white-background py-16"
+                        verticalAlignment="center"
                     >
 
                     </Label>
@@ -258,7 +265,7 @@
                     radius="2"
                     [class.hidden]="odd || i + 1 >= counties.length "
                     height="80pt"
-                    class="m-4 col-6"
+                    class="m-4 col-county county_card_r"
                     (tap)="listViewItemTap(i+1)"
                 >
                     <Label
@@ -266,6 +273,7 @@
                         [text]="i + 1 < counties.length ? counties[i + 1].getName() : i"
                         textWrap="true"
                         class="great-primer font-weight-bold primary text-center white-background py-16"
+                        verticalAlignment="center"
                     >
 
                     </Label>
