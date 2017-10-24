@@ -1,0 +1,18 @@
+.sideStackLayout {
+  padding: 20pt;
+    background-color: rgba(255,255,255,0.8);
+}
+
+.sideLabel {
+  padding: 20pt;
+  horizontal-align: center;
+  color: #4a4a4a;
+}
+
+.my-phn {
+  height: 22pt;
+  width: 150pt;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 24pt;
+}

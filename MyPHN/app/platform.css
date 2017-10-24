@@ -1,0 +1,36 @@
+Tabview {
+  font-size: 14pt;
+}
+
+.col-12 {
+  width: 356pt;
+}
+
+.col-10 {
+  width: 290pt;
+}
+
+.col-6 {
+  width: 170pt;
+}
+
+.col-7 {
+  width: 199pt;
+}
+
+.col-2{
+  width: 58pt;
+}
+
+.col-3 {
+  width: 87pt;
+}
+
+.col-9 {
+  width: 261pt;
+}
+
+WebView {
+  height: 553pt;
+  width: 375pt;
+}
