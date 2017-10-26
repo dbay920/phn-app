@@ -6,7 +6,7 @@
   "nativescript": {
     "id": "org.nativescript.MyPHN",
     "tns-ios": {
-      "version": "3.0.0"
+      "version": "3.2.0"
     },
     "tns-android": {
       "version": "3.2.0"

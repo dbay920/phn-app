@@ -81,6 +81,11 @@ Page {
   color: #00817d;
 }
 
+.data {
+  font-size: 14pt;
+  line-height: 4pt;
+}
+
 .primary-background {
   background-color: #00817d;
 }
@@ -126,6 +131,10 @@ Page {
   font-size: 18pt;
 }
 
+.distance {
+  font-size: 12pt;
+}
+
 .paragon {
   font-size: 20pt;
 }
@@ -139,6 +148,6 @@ Page {
 }
 
 .small-title, 
-.col-10 {
+.col-10, .col-12 {
   padding-left:10px;
 }

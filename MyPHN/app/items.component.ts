@@ -121,8 +121,8 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     heightVal;
 
     ngOnInit(): void {
-        this.topVal = 0//68;
-        this.heightVal = isAndroid ? 72 : 50;
+        this.topVal = 0;//68;
+        this.heightVal = isAndroid ? 72 : 50;        
         this.firstTime = true;
         this.SideDrawerLocation = SideDrawerLocation;
         this.homeRoute = { name: 'Home', url: 'items' };

@@ -12,6 +12,7 @@ import { Config } from '../shared/config';
 @Component({
     selector: "ns-items",
     moduleId: module.id,
+    //change templateUrl to component_test to view test page in emulator
     templateUrl: "./home.component.html",
     styleUrls: ['home.css', 'home-common.css'],
 })

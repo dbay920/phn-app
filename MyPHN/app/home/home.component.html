@@ -1,92 +1,100 @@
 <DockLayout>
-    <CardView
-        elevation="40"
-        radius="2"
-        height="250"
-        dock="top"
-    >
-        <GridLayout
-            style="background-image: {{image}}; background-size: cover; background-repeat: no-repeat;"
-            rows="24, *, 80"
+        <CardView
+            elevation="40"
+            radius="2"
+            height="250"
+            dock="top"
         >
-            <Label
-                text="Closest PHN Location:"
-                class="small-title background"
-                row="0"
-                height="25"
+            <GridLayout
+                style="background-image: {{image}}; background-size: cover; background-repeat: no-repeat;"
+                rows="24, *, 80"
             >
-
-            </Label>
-            <StackLayout class="alpha" row="2"         (tap)="navigate()">
-                <StackLayout class="row" orientation="horizontal">
-                    <Label
-                        text="{{name}}"
-                        class="col-10 double-pica"
-                    >
-
-                    </Label>
-                    <Image
-                        src="res://directions"
-                        class="col-2"
-                        height="40"
-                    >
-
-                    </Image>
-                </StackLayout>
-                <StackLayout orientation="horizontal">
-                    <Label
-                        text="{{address}}"
-                        class="english col-10"
-                        textWrap="true"
-                    >
-
-                    </Label>
-                    <Label
-                        text="{{distance}}"
-                        class="great-primer col-2"
-                    >
-
-                    </Label>
-                </StackLayout>
-            </StackLayout>
-        </GridLayout>
-    </CardView>
-    <ListView class="cards" [items]="cards" separatorColor="transparent" >
-        <ng-template
-            let-item="item"
-            let-i="index"
-            let-odd="odd"
-            let-even="even"
-        >
-            <CardView
-                elevation="40"
-                radius="4"
-                height="80pt"
-                class="cardButton"
-                (tap)="goToUrl(item.url)"
-            >
-                <GridLayout
-                    columns="*, 60"
-                    style="background-color: #00817D;"
+                <Label
+                    text="Closest PHN Location:"
+                    class="small-title background"
+                    row="0"
+                    height="25"
                 >
-                    <Label
-                        [text]="item.name"
-                        col="0"
-                        height="80pt"
-                        class="double-pica tile"
+    
+                </Label>
+                <StackLayout 
+                    class="alpha" 
+                    row="2"   
+                    style="padding-top:5pt;"      
+                    (tap)="navigate()"
+                >
+                    <StackLayout 
+                        class="row" 
+                        orientation="horizontal"
                     >
-
-                    </Label>
-                    <Image
-                        col="1"
-                        src="{{item.image}}"
-                        height="40pt"
-                        style="margin-right: 20pt;"
+                        <Label
+                            text="{{name}}"
+                            class="col-11 location-name">
+                        </Label>
+                        
+                        <Image
+                            src="res://directions"
+                            class="col-2"
+                            height="40"
+                        >
+                        </Image>
+                    </StackLayout>
+                    <StackLayout orientation="horizontal">
+                        <Label
+                            text="{{address}}"
+                            class="english col-11"
+                            textWrap="true"
+                            style="margin-top:-5pt;"
+                        >
+    
+                        </Label>
+                        <Label
+                            text="{{distance}}"
+                            class="distance col-2"
+                        >
+    
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </GridLayout>
+        </CardView>
+        <ListView class="cards" [items]="cards" separatorColor="transparent" >
+            <ng-template
+                let-item="item"
+                let-i="index"
+                let-odd="odd"
+                let-even="even"
+            >
+                <CardView
+                    elevation="40"
+                    radius="4"
+                    height="80pt"
+                    class="cardButton"
+                    (tap)="goToUrl(item.url)"
+                >
+                    <GridLayout
+                        columns="*, 60"
+                        style="background-color: #00817D;"
                     >
-
-                    </Image>
-                </GridLayout>
-            </CardView>
-        </ng-template>
-    </ListView>
-</DockLayout>
+                        <Label
+                            [text]="item.name"
+                            col="0"
+                            height="80pt"
+                            class="double-pica tile"
+                        >
+    
+                        </Label>
+                        <Image
+                            col="1"
+                            src="{{item.image}}"
+                            height="40pt"
+                            style="margin-right: 20pt;"
+                        >
+    
+                        </Image>
+                    </GridLayout>
+                </CardView>
+            </ng-template>
+        </ListView>
+    </DockLayout>
+    

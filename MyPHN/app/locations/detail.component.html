@@ -10,41 +10,45 @@
             style="background-image: {{image}}; background-size: cover; background-repeat: no-repeat;"
             rows="*, 80"
         >
-            <StackLayout
-                class="alpha"
-                row="1"
-                (tap)="navigate()"
-                orientation="horizontal"
+        <StackLayout 
+        class="alpha" 
+        row="2"  
+        style="padding-top:5pt;"      
+        (tap)="navigate()"
+    >
+        <StackLayout 
+            class="row"
+            orientation="horizontal"
+        >
+            <Label
+                text="{{name}}"
+                class="col-11 location-name">
+            </Label>
+            
+            <Image
+                src="res://directions"
+                class="col-2"
+                height="40"
             >
-                <StackLayout class="col-10">
-                    <Label
-                        text="{{name}}"
-                        class="double-pica"
-                    >
+            </Image>
+        </StackLayout>
+        <StackLayout orientation="horizontal">
+            <Label
+                text="{{address}}"
+                class="english col-11"
+                textWrap="true"
+                style="margin-top:-5pt;"
+            >
 
-                    </Label>
-                    <Label
-                        text="{{address}}"
-                        class="english"
-                        textWrap="true"
-                    >
+            </Label>
+            <Label
+                text="{{distance}}"
+                class="distance col-2"
+            >
 
-                    </Label>
-                </StackLayout>
-                <StackLayout class="col-2">
-
-                    <Image
-                        src="res://directions"
-                    >
-
-                    </Image>
-                    <Label
-                        text="{{distance}}"
-                        class="english"
-                    >
-                    </Label>
-                </StackLayout>
-            </StackLayout>
+            </Label>
+        </StackLayout>
+    </StackLayout>
         </GridLayout>
     </CardView>
     <ScrollView
@@ -54,7 +58,7 @@
             <CardView
                 elevation="40"
                 radius="2"
-                class="m-4 col-12"
+                class="m-4"
                 *ngFor="let item of cards; let i = index;"
             >
                 <StackLayout
@@ -78,7 +82,8 @@
                     <Label
                         [text]="item.data"
                         textWrap="true"
-                        class="m-20 pica font-weight-bold primary text-left white-background"
+                        class="m-20 data primary text-left white-background"
+                        margin="-10 20 20 23"                        
                         visibility="{{item.visible ? 'visible' : 'collapse' }}"
                     >
 

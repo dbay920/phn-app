@@ -6,6 +6,11 @@ Tabview {
   width: 356pt;
 }
 
+.col-11 {
+  width: 290pt;
+  margin-left: 10pt;
+}
+
 .col-10 {
   width: 290pt;
 }

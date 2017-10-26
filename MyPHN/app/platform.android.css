@@ -2,13 +2,18 @@
   width: 312pt;
 }
 
+.col-11 {
+  width: 290pt;
+  margin-left: 10pt;
+}
+
 .col-10 {
   width: 260pt;
 }
 
 .col-6 {
-  width: 152pt;
-}
+  width: 170pt;
+} 
 
 .col-7 {
   width: 178pt;

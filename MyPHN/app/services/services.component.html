@@ -1,4 +1,4 @@
-<StackLayout width="100%">
+<StackLayout width="100%" >
     <CardView
         elevation="40"
         radius="2"
@@ -28,6 +28,7 @@
     </CardView>
     <ListView
         [items]="services"
+        style="background-color: #cecece;"
     >
         <ng-template
             let-item="item"
@@ -47,11 +48,13 @@
                     class="m-4 col-6"
                     (tap)="listViewItemTap(i)"
                     horizontalAlignment="center"
+                    
                 >
                     <Label
                         [text]="item.getName()"
                         textWrap="true"
-                        class="great-primer font-weight-bold primary text-center white-background py-16"
+                        class="svc-card great-primer font-weight-bold primary text-center white-background py-16"
+                        verticalAlignment="center"
                     >
 
                     </Label>
@@ -68,7 +71,8 @@
                         [class.hidden]="i + 1 >= services.length"
                         [text]="i + 1 < services.length ? services[i + 1].getName() : i"
                         textWrap="true"
-                        class="great-primer font-weight-bold primary text-center white-background py-16"
+                        class="svc-card great-primer font-weight-bold primary text-center white-background py-16"
+                        verticalAlignment="center"
                     >
 
                     </Label>

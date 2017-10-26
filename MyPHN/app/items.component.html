@@ -6,29 +6,21 @@
         text="< Back"
         ios.position="left"
         android.systemIcon="ic_menu_back"
-        android.position="actionBar"
+        android.position="actionBar" 
     >
-
+    
     </ActionItem>
     <StackLayout
         orientation="horizontal"
     >
-        <Image src="res://phn_logo" class="logo" horizontalAlignment="center" >
-        </Image>
-
+        <StackLayout
+        orientation="horizontal"
+        >
+            <Image src="res://phn_logo" class="logo" horizontalAlignment="center" >
+            </Image>
+        </StackLayout>
         <!--        
         
-        TODO: add image of logo including my phn text 
-        
-        <StackLayout>
-            <Label text="MY">
-
-            </Label>
-            <Label text="PHN" class="font-weight-bold">
-
-            </Label>
-        </StackLayout>
-
         TODO: add favorites functionality and add icon_favorite png to img resource folders
         
         <StackLayout orientation="vertical">
@@ -40,10 +32,10 @@
             </Label>
         </StackLayout> 
     
-    -->
+        -->
 
-        <StackLayout orientation="vertical" horizontalAlignment="right" >
-            <Image src="res://icon_search" class="action-image" (tap)="search()">
+        <StackLayout orientation="vertical" horizontalAlignment="right" ios.position="right" >
+            <Image src="res://icon_search" class="action-image" (tap)="search()" >
 
             </Image>
             <Label text="Search PHN"  class="search-phn">
@@ -93,6 +85,7 @@
             width="100%"
             height="{{heightVal}}"
             dock="bottom"
+            class="bottomDock"
         >
             <AbsoluteLayout
                 *tabItem="{title: 'Home',  iconSource: 'res://home'}"

@@ -240,21 +240,20 @@
             <StackLayout
                 orientation="horizontal"
                 horizontalAlignment="center"
-                class="county_area"
             >
                 <CardView
                     elevation="40"
                     radius="2"
                     [class.hidden]="odd"
                     height="80pt"
-                    class="m-4 col-county county_card_l"
+                    class="m-4 col-6"
                     (tap)="listViewItemTap(i)"
                     horizontalAlignment="center"
                 >
                     <Label
                         [text]="item.getName()"
                         textWrap="true"
-                        class="great-primer font-weight-bold primary text-center white-background py-16"
+                        class="location-card great-primer font-weight-bold primary text-center white-background py-16"
                         verticalAlignment="center"
                     >
 
@@ -265,14 +264,14 @@
                     radius="2"
                     [class.hidden]="odd || i + 1 >= counties.length "
                     height="80pt"
-                    class="m-4 col-county county_card_r"
+                    class="m-4 col-6"
                     (tap)="listViewItemTap(i+1)"
                 >
                     <Label
                         [class.hidden]="i + 1 >= counties.length"
                         [text]="i + 1 < counties.length ? counties[i + 1].getName() : i"
                         textWrap="true"
-                        class="great-primer font-weight-bold primary text-center white-background py-16"
+                        class="location-card great-primer font-weight-bold primary text-center white-background py-16"
                         verticalAlignment="center"
                     >
 
