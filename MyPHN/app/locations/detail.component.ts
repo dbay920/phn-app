@@ -44,7 +44,7 @@ export class LocationDetailComponent implements OnInit {
     }
 
     public callHome() {
-        TNSPhone.dial('415-123-4567', false);
+        TNSPhone.dial(this.details.getContact(), true);
     }
 
     ngOnInit(): void {
