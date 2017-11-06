@@ -20,8 +20,7 @@ export class ProvidersComponent implements OnInit {
     }
 
     goToService(i): void {
-        
-        this._router.navigateByUrl("items/services/" + this.services[i].getId())
+        this._router.navigateByUrl("items/services/" + this.services[i].getId() + '%23tab-2')
     }
 
     ngOnInit(): void {
