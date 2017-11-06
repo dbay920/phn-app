@@ -108,16 +108,17 @@
                             class="primary"
                             [text]="item.getAddress().replace(', ', '\n')"
                             textWrap="true"
+                            (tap)="navigate(item.getAddress())"
                         >
 
                         </Label>
                         <Label
                             class="primary font-weight-bold m-y-25"
                             [text]="item.getPhone()"
+                            (tap)="call(item.getPhone())"
                         >
 
                         </Label>
-
                     </StackLayout>
                 </StackLayout>
             </CardView>

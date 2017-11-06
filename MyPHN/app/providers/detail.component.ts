@@ -3,6 +3,9 @@ import { ProvidersService } from "../shared/providers/providers.service";
 import { ActivatedRoute, Router } from '@angular/router';
 import { Provider } from '../shared/providers/provider'
 
+import * as TNSPhone from 'nativescript-phone';
+import { LocateAddress } from "nativescript-locate-address";
+
 @Component({
     selector: "ns-items",
     moduleId: module.id,
@@ -54,4 +57,29 @@ export class ProviderDetailComponent implements OnInit {
             (error) => alert("Could not load locations.")
         );
     }
+
+    call(x): void {
+        TNSPhone.dial(x, true);
+    }
+
+    navigate(x) {
+        let locator = new LocateAddress();
+
+        locator.available().then((avail) => {
+            if (!avail) {
+                alert("maps not available")
+            } else {
+                locator.locate({
+                    address: x.replace('\n', '%2C').replace(/ /g, '+').replace(',', '%2C'),
+                }).then(() => {
+                    console.log("Maps app launched.");
+                }, (error) => {
+                    console.log(error);
+                });
+            }
+
+        });
+
+    }
+
 }
