@@ -6,6 +6,10 @@ import { ActivatedRoute, Router, } from '@angular/router';
 import { View } from "ui/core/view";
 import { LocationsService } from "./shared/location/locations.service";
 
+import { SideDrawerLocation } from 'nativescript-pro-ui/sidedrawer';
+import { RadSideDrawerComponent } from "nativescript-pro-ui/sidedrawer/angular";
+import { RadSideDrawer } from "nativescript-pro-ui/sidedrawer";
+
 import { registerElement, RouterExtensions } from 'nativescript-angular';
 import { setInterval, setTimeout, clearInterval } from "timer";
 import { TabView } from "ui/tab-view"
@@ -29,10 +33,41 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         private locationsService: LocationsService,
         private routerExtensions: RouterExtensions,
     ) {
+        if (!ItemsComponent.id) {
+            ItemsComponent.id = setInterval(() => {
+                if (this.isMoreTab()) {
+                    this.drawer.showDrawer();
+                }
+                let validRoutes = [
+                    '/items',
+                    '/items/portal',
+                    '/items/news',
+                ]
+                let index = validRoutes.findIndex((route) => {
+                    return route === this._router.url;
+                })
+
+                if (index === -1) {
+                    if (this.getSelectedIndex() !== 3) {
+                        this.firstTime = true;
+                        this.setSelectedIndex(3);
+                    }
+                } else {
+                    if (index !== this.getSelectedIndex()) {
+                        this.firstTime = true;
+                        this.setSelectedIndex(index);
+                    }
+                }
+            }, 1000);
+        }
     }
 
     public goBack() {
         this.routerExtensions.back();
+    }
+
+    Onclosedrawertap(): void {
+        this.drawer.closeDrawer();
     }
 
     getSelectedIndex(): number {
@@ -56,48 +91,65 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     }
 
     onSelectedIndexChanged(event): void {
-        let url = this.routes[event.newIndex];
-
         if (this.firstTime) {
             this.firstTime = false;
             return;
         }
-        if (url) {
-            this.goToLocations(url.url);
+
+        switch (event.newIndex) {
+            case 0:
+                this.goToLocations(this.homeRoute.url);
+                break;
+            case 1:
+                this.goToLocations(this.portalRoute.url);
+                break;
+            case 2:
+                this.goToLocations(this.newsRoute.url);
+                break;
+            case 3:
+                this.drawer.showDrawer();
+                break;
+            default:
+                console.log('error', event.newIndex);
         }
     }
 
-    homeRoute;
-    newsRoute;
-    portalRoute;
-    topVal;
+    homeRoute
+    newsRoute
+    portalRoute
+    topVal
     heightVal;
 
     ngOnInit(): void {
         this.topVal = 0;//68;
-        this.heightVal = isAndroid ? 72 : 50;
+        this.heightVal = isAndroid ? 72 : 50;        
         this.firstTime = true;
+        this.SideDrawerLocation = SideDrawerLocation;
         this.homeRoute = { name: 'Home', url: 'items' };
         this.portalRoute = { name: 'Patient Portal', url: 'items/portal' };
         this.newsRoute = { name: 'News', url: 'items/news' };
 
         this.routes = [
-            this.homeRoute,
-            this.portalRoute,
-            this.newsRoute,
-
             //            { name: 'Favorites', url: 'items/favorites' },
             { name: 'Search', url: 'items/search' },
+            this.homeRoute,
             { name: 'Locations', url: "items/locations" },
             { name: 'Services', url: 'items/services' },
             { name: 'Providers', url: 'items/providers' },
+            this.portalRoute,
+            this.newsRoute,
         ];
     }
 
     // get reference to drawer
+    @ViewChild(RadSideDrawerComponent)
+    public drawerComponent: RadSideDrawerComponent;
+
+    private drawer: RadSideDrawer;
     public static tabView: TabView;
 
     ngAfterViewInit() {
+        this.drawer = this.drawerComponent.sideDrawer;
 
         // protect from location interruption
         if (this.ref.first)
@@ -106,6 +158,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
 
     goToLocations(url): void {
         this._router.navigateByUrl(url);
+        this.drawer.closeDrawer();
     }
 
     favorites() {
