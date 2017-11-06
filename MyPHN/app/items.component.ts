@@ -72,6 +72,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     portalRoute;
     topVal;
     heightVal;
+    canGoBack;
 
     ngOnInit(): void {
         this.topVal = 0;//68;
@@ -92,6 +93,11 @@ export class ItemsComponent implements OnInit, AfterViewInit {
             { name: 'Services', url: 'items/services' },
             { name: 'Providers', url: 'items/providers' },
         ];
+
+        // handles the hiding of the back button when it is useless
+        this._router.events.subscribe((val) => {
+            this.canGoBack = this.routerExtensions.canGoBack();
+        });
     }
 
     // get reference to drawer
