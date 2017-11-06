@@ -30,14 +30,6 @@ export class ProviderDetailComponent implements OnInit {
     ) {
     }
 
-    /*listViewItemTap(i): void {
-        this.goToLocations(i);
-    }*/
-
-    /*goToLocations(i): void {
-        this._router.navigateByUrl("items/locations/detail/" + this.locations[i].getId());
-    }*/
-
     ngOnInit(): void {
         this.route.params.forEach((params) => {
             this.id = params["id"];
@@ -51,11 +43,16 @@ export class ProviderDetailComponent implements OnInit {
             this.image = this.provider.getImage();
             this.area = this.provider.getServiceName();
             this._ngZone.run(() => {
+
                 // weird fix for arriving from webview
             })
         },
             (error) => alert("Could not load locations.")
         );
+    }
+
+    goToLocation(i): void {
+        this._router.navigateByUrl("items/locations/detail/" + i);
     }
 
     call(x): void {
@@ -79,7 +76,5 @@ export class ProviderDetailComponent implements OnInit {
             }
 
         });
-
     }
-
 }

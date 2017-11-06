@@ -100,10 +100,10 @@
                         <Label
                             class="primary h3 p-y-30"
                             [text]="item.getName()"
+                            (tap)="goToLocation(item.getId())"
                         >
 
                         </Label>
-
                         <Label
                             class="primary"
                             [text]="item.getAddress().replace(', ', '\n')"
