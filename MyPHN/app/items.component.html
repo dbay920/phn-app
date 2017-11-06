@@ -1,4 +1,7 @@
-<!-- TODO: figure out how to position PHN logo in center and search icon/text on right side of ActionBar -->
+<!--
+     TODO: figure out how to position PHN logo in center and search icon/text
+     on right side of ActionBar
+   -->
 
 <ActionBar title="My PHN">
     <ActionItem
@@ -6,33 +9,37 @@
         text="< Back"
         ios.position="left"
         android.systemIcon="ic_menu_back"
-        android.position="actionBar" 
+        android.position="actionBar"
     >
-    
+
     </ActionItem>
     <StackLayout
         orientation="horizontal"
     >
         <StackLayout
-        orientation="horizontal"
+            orientation="horizontal"
         >
-            <Image src="res://phn_logo" class="logo" horizontalAlignment="center" >
+            <Image
+                src="res://phn_logo"
+                class="logo"
+                horizontalAlignment="center"
+            >
+
             </Image>
         </StackLayout>
-        <!--        
-        
-        TODO: add favorites functionality and add icon_favorite png to img resource folders
-        
-        <StackLayout orientation="vertical">
-            <Image src="res://icon_favorite" class="action-image" (tap)="favorites()">
+        <!--
+             TODO: add favorites functionality and add icon_favorite png to img resource folders
 
-            </Image>
-            <Label text="Favorites"  class="favorites">
+             <StackLayout orientation="vertical">
+             <Image src="res://icon_favorite" class="action-image" (tap)="favorites()">
 
-            </Label>
-        </StackLayout> 
-    
-        -->
+             </Image>
+             <Label text="Favorites"  class="favorites">
+
+             </Label>
+             </StackLayout>
+
+           -->
 
         <StackLayout orientation="vertical" horizontalAlignment="right" ios.position="right" >
             <Image src="res://icon_search" class="action-image" (tap)="search()" >
@@ -44,76 +51,62 @@
         </StackLayout>
     </StackLayout>
 </ActionBar>
-<RadSideDrawer
-    tkExampleTitle
-    tkToggleNavButton
-    showOverNavigation="true"
-    [drawerLocation]="SideDrawerLocation.Right"
->
-    <StackLayout
-        tkDrawerContent
-        class="sideStackLayout"
-        height="670"
+<DockLayout tkMainContent>
+    <TabView
+        #ref
+        (selectedIndexChanged)="onSelectedIndexChanged($event)"
+        width="100%"
+        height="{{heightVal}}"
+        dock="bottom"
+        class="bottomDock"
     >
+        <AbsoluteLayout
+            *tabItem="{title: 'Home',  iconSource: 'res://home'}"
+            height="0"
+        >
+
+        </AbsoluteLayout>
         <StackLayout
-            *ngFor="let item of routes;let first = first; let last = last;"
+            *tabItem="{title: 'Portal', iconSource: 'res://portal'}"
+            height="0"
         >
-            <Label
-                text="{{item.name}}"
-                class="double-pica sideLabel font-weight-bold"
-                (tap)="goToLocations(item.url)"
-            >
 
-            </Label>
-            <StackLayout class="hr-light" width="130" [class.hidden]="last">
-
-            </StackLayout>
         </StackLayout>
-        <Image
-            src="res://close_sidedrawer"
-            style="horizontal-align: center; margin: 12pt;"
-            (tap)="onCloseDrawerTap()"
-            height="40"
+        <StackLayout
+            *tabItem="{title: 'News', iconSource: 'res://news'}"
+            height="0"
         >
 
-        </Image>
-    </StackLayout>
-    <DockLayout tkMainContent>
-        <TabView
-            #ref
-            (selectedIndexChanged)="onSelectedIndexChanged($event)"
-            width="100%"
-            height="{{heightVal}}"
-            dock="bottom"
-            class="bottomDock"
+        </StackLayout>
+
+        <!-- TODO: add appropriate resources for these -->
+
+        <StackLayout
+            *tabItem="{title: 'Search', iconSource: 'res://news'}"
+            height="0"
         >
-            <AbsoluteLayout
-                *tabItem="{title: 'Home',  iconSource: 'res://home'}"
-                height="0"
-            >
 
-            </AbsoluteLayout>
-            <StackLayout
-                *tabItem="{title: 'Portal', iconSource: 'res://portal'}"
-                height="0"
-            >
+        </StackLayout>
+        <StackLayout
+            *tabItem="{title: 'Locations', iconSource: 'res://news'}"
+            height="0"
+        >
 
-            </StackLayout>
-            <StackLayout
-                *tabItem="{title: 'News', iconSource: 'res://news'}"
-                height="0"
-            >
+        </StackLayout>
+        <StackLayout
+            *tabItem="{title: 'Services', iconSource: 'res://news'}"
+            height="0"
+        >
 
-            </StackLayout>
-            <StackLayout
-                *tabItem="{title: 'More', iconSource: 'res://more'}"
-                height="0"
-            >
+        </StackLayout>
+        <StackLayout
+            *tabItem="{title: 'Providers', iconSource: 'res://news'}"
+            height="0"
+        >
 
-            </StackLayout>
-        </TabView>
-        <router-outlet>
+        </StackLayout>
+    </TabView>
+    <router-outlet>
 
-        </router-outlet>
-    </DockLayout>
-</RadSideDrawer>
+    </router-outlet>
+</DockLayout>
