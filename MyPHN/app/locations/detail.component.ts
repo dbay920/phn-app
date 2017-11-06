@@ -11,6 +11,7 @@ import { LocateAddress } from "nativescript-locate-address";
 import * as LabelModule from "tns-core-modules/ui/label";
 import { Config } from '../shared/config';
 import * as _ from "lodash";
+import * as TNSPhone from 'nativescript-phone';
 
 
 @Component({
@@ -40,6 +41,10 @@ export class LocationDetailComponent implements OnInit {
 
     myDist(x, y) {
         return distance(x, y);
+    }
+
+    public callHome() {
+        TNSPhone.dial(this.details.getContact(), true);
     }
 
     ngOnInit(): void {

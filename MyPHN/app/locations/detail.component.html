@@ -1,6 +1,6 @@
 <DockLayout>
     <CardView
-        elevation="40"
+         elevation="40"
         radius="2"
         height="250"
         class=""
@@ -10,13 +10,13 @@
             style="background-image: {{image}}; background-size: cover; background-repeat: no-repeat;"
             rows="*, 80"
         >
-        <StackLayout 
-        class="alpha" 
-        row="2"  
-        style="padding-top:5pt;"      
+        <StackLayout
+        class="alpha"
+        row="2"
+        style="padding-top:5pt;"
         (tap)="navigate()"
     >
-        <StackLayout 
+        <StackLayout
             class="row"
             orientation="horizontal"
         >
@@ -27,7 +27,7 @@
                 style="margin-top: -5pt; line-height: -4pt;"
             >
             </Label>
-            
+
             <Image
                 src="res://directions"
                 class="col-2"
@@ -86,8 +86,9 @@
                         [text]="item.data"
                         textWrap="true"
                         class="m-20 data primary text-left white-background"
-                        margin="-10 20 20 23"                        
+                        margin="-10 20 20 23"
                         visibility="{{item.visible ? 'visible' : 'collapse' }}"
+                        (tap)="callHome()"
                     >
 
                     </Label>
