@@ -1,110 +1,105 @@
-<DockLayout width="100%">
-    <CardView
-        elevation="40"
-        radius="2"
-        height="90"
-        style="margin-bottom: 8pt;"
-        dock="top"
-        width="100%"
-    >
-        <StackLayout class="primary-background" width="100%">
-            <Label
-                text="{{county.getName()}}"
-                class="double-columbian white font-weight-bold text-center"
-                style="padding: 22pt;"
-            >
-
-            </Label>
-        </StackLayout>
-    </CardView>
-    <ListView
-        [items]="locations"
-        class=""
-        style="background-color: #cecece;"
-    >
-        <ng-template
-            let-item="item"
-            let-i="index"
-            let-odd="odd"
-            let-even="even"
+<CardView
+    elevation="40"
+    radius="2"
+    height="90"
+    style="margin-bottom: 8pt;"
+    width="100%"
+>
+    <StackLayout class="primary-background" width="100%">
+        <Label
+            text="{{county.getName()}}"
+            class="double-columbian white font-weight-bold text-center"
+            style="padding: 22pt;"
         >
-            <CardView
-                elevation="40"
-                radius="2"
-                (tap)="listViewItemTap(i)"
-                class="m-4"
+
+        </Label>
+    </StackLayout>
+</CardView>
+<ListView
+    [items]="locations"
+    style="background-color: #cecece;"
+    height="100%"
+>
+    <ng-template
+        let-item="item"
+        let-i="index"
+        let-odd="odd"
+        let-even="even"
+    >
+        <CardView
+            elevation="40"
+            radius="2"
+            (tap)="listViewItemTap(i)"
+            class="m-4"
+        >
+            <StackLayout
+                orientation="horizontal"
+                style="background-color: white;"
             >
-                <StackLayout
-                    orientation="horizontal"
-                    style="background-color: white;"
-                >
                 <!-- need to remove static image of clarion and add location-specific image -->
-                    <StackLayout class="col-3">
-                        <Image
-                            src="~/images/clarion.png"
-                            height="64"
-                            width="64"
-                            class="img-circle"
-                        >
+                <StackLayout class="col-3">
+                    <Image
+                        src="~/images/clarion.png"
+                        height="64"
+                        width="64"
+                        class="img-circle"
+                    >
 
-                        </Image>
-                    </StackLayout>
-                    <StackLayout class="col-2">
-                        <Image
-                            src="res://icon_location"
-                            height="20"
-                            weight="20"
-                            class="m-t-2 m-b-20"
-                        >
-
-                        </Image>
-
-                        <Image
-                            src="res://icon_phone"
-                            height="20"
-                            weight="20"
-                            class="m-b-5"
-                        >
-
-                        </Image>
-
-                        <Image
-                            src="res://icon_address"
-                            height="20"
-                            weight="20"
-                        >
-
-                        </Image>
-
-
-                    </StackLayout>
-                    <StackLayout class="col-7">
-                        <Label
-                            [text]="item.getName()"
-                            textWrap="true"
-                            class="columbian font-weight-bold primary"
-                            style="min-height: 40pt;"
-                        >
-
-                        </Label>
-
-                        <Label
-                            [text]="item.getPhone()"
-                            textWrap="true"
-                            class="font-weight-bold primary"
-                        >
-
-                        </Label>
-                        <Label
-                            [text]="item.getAddress().replace(', ', '\n')"
-                            textWrap="true"
-                            class="primary"
-                        >
-
-                        </Label>
-                    </StackLayout>
+                    </Image>
                 </StackLayout>
-            </CardView>
-        </ng-template>
-    </ListView>
-</DockLayout>
+                <StackLayout class="col-2">
+                    <Image
+                        src="res://icon_location"
+                        height="20"
+                        weight="20"
+                        class="m-t-2 m-b-20"
+                    >
+
+                    </Image>
+
+                    <Image
+                        src="res://icon_phone"
+                        height="20"
+                        weight="20"
+                        class="m-b-5"
+                    >
+
+                    </Image>
+
+                    <Image
+                        src="res://icon_address"
+                        height="20"
+                        weight="20"
+                    >
+
+                    </Image>
+                </StackLayout>
+                <StackLayout class="col-7">
+                    <Label
+                        [text]="item.getName()"
+                        textWrap="true"
+                        class="columbian font-weight-bold primary"
+                        style="min-height: 40pt;"
+                    >
+
+                    </Label>
+
+                    <Label
+                        [text]="item.getPhone()"
+                        textWrap="true"
+                        class="font-weight-bold primary"
+                    >
+
+                    </Label>
+                    <Label
+                        [text]="item.getAddress().replace(', ', '\n')"
+                        textWrap="true"
+                        class="primary"
+                    >
+
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </CardView>
+    </ng-template>
+</ListView>

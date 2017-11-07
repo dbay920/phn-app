@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit {
     searchTerm;
 
     search() {
-        this._router.navigateByUrl('items/search/' + this.searchTerm)
+        this._router.navigateByUrl('items/(search:search/' + this.searchTerm + ')')
     }
 
     ngOnInit(): void {

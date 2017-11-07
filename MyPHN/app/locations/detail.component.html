@@ -65,11 +65,12 @@
                 *ngFor="let item of cards; let i = index;"
             >
                 <StackLayout
-                    (tap)="listViewItemTap(i)"
+
                     style="background-color: white;"
                 >
                     <DockLayout orientation="horizontal" height="80">
                         <Label
+                            (tap)="listViewItemTap(i)"
                             [text]="item.name"
                             class="col-10 double-pica font-weight-bold primary"
                             height="80"
