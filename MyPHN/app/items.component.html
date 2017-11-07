@@ -51,62 +51,50 @@
         </StackLayout>
     </StackLayout>
 </ActionBar>
-<DockLayout tkMainContent>
-    <TabView
-        #ref
-        (selectedIndexChanged)="onSelectedIndexChanged($event)"
-        width="100%"
-        height="{{heightVal}}"
-        dock="bottom"
-        class="bottomDock"
+
+
+<TabView
+    #ref
+    (selectedIndexChanged)="onSelectedIndexChanged($event)"
+>
+    <StackLayout
+        *tabItem="{title: 'Home',  iconSource: 'res://home'}"
+
     >
-        <AbsoluteLayout
-            *tabItem="{title: 'Home',  iconSource: 'res://home'}"
-            height="0"
-        >
+        <router-outlet name="home">
 
-        </AbsoluteLayout>
-        <StackLayout
-            *tabItem="{title: 'Portal', iconSource: 'res://portal'}"
-            height="0"
-        >
+        </router-outlet>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Portal', iconSource: 'res://portal'}">
+        <router-outlet name="portal">
 
-        </StackLayout>
-        <StackLayout
-            *tabItem="{title: 'News', iconSource: 'res://news'}"
-            height="0"
-        >
+        </router-outlet>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'News', iconSource: 'res://news'}">
+        <router-outlet name="news">
 
-        </StackLayout>
+        </router-outlet>
+    </StackLayout>
 
-        <!-- TODO: add appropriate resources for these -->
+    <!-- TODO: add appropriate resources for these -->
+    <StackLayout *tabItem="{title: 'Search', iconSource: 'res://news'}">
+        <router-outlet name="search">
 
-        <StackLayout
-            *tabItem="{title: 'Search', iconSource: 'res://news'}"
-            height="0"
-        >
+        </router-outlet>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Locations', iconSource: 'res://news'}" >
+        <router-outlet name="locations">
 
-        </StackLayout>
-        <StackLayout
-            *tabItem="{title: 'Locations', iconSource: 'res://news'}"
-            height="0"
-        >
+        </router-outlet>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Services', iconSource: 'res://news'}" >
+        <router-outlet name="services">
 
-        </StackLayout>
-        <StackLayout
-            *tabItem="{title: 'Services', iconSource: 'res://news'}"
-            height="0"
-        >
+        </router-outlet>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Providers', iconSource: 'res://news'}" >
+        <router-outlet name="providers">
 
-        </StackLayout>
-        <StackLayout
-            *tabItem="{title: 'Providers', iconSource: 'res://news'}"
-            height="0"
-        >
-
-        </StackLayout>
-    </TabView>
-    <router-outlet>
-
-    </router-outlet>
-</DockLayout>
+        </router-outlet>
+    </StackLayout>
+</TabView>

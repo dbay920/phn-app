@@ -45,7 +45,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         return ItemsComponent.tabView.selectedIndex;
     }
 
-    setSelectedIndex(i) {
+    public static setSelectedIndex(i) {
         ItemsComponent.tabView.selectedIndex = i;
     }
 
@@ -56,26 +56,24 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     }
 
     onSelectedIndexChanged(event): void {
-        let url = this.routes[event.newIndex];
+        /*        let url = this.routes[event.newIndex];
 
-        if (this.firstTime) {
-            this.firstTime = false;
-            return;
-        }
-        if (url) {
-            this.goToLocations(url.url);
-        }
+                if (this.firstTime) {
+                    this.firstTime = false;
+                    return;
+                }
+                if (url) {
+                    this.goToLocations(url.url);
+                }*/
     }
 
     homeRoute;
     newsRoute;
     portalRoute;
-    topVal;
     heightVal;
 
     ngOnInit(): void {
-        this.topVal = 0;//68;
-        this.heightVal = isAndroid ? 72 : 50;
+        this.heightVal = 300;//isAndroid ? 72 : 50;
         this.firstTime = true;
         this.homeRoute = { name: 'Home', url: 'items' };
         this.portalRoute = { name: 'Patient Portal', url: 'items/portal' };

@@ -27,38 +27,68 @@ const routes: Routes = [
         children: [
 
             // default route
-            { path: "", component: HomeComponent },
+            { path: "", component: HomeComponent, outlet: 'home' },
 
             // Location tree
-            { path: "locations", component: LocationsComponent },
-            { path: "locations/:id", component: CountyComponent },
+            {
+                path: "",
+                component: LocationsComponent,
+                outlet: 'locations'
+            },
+            {
+                path: "locations/:id",
+                component: CountyComponent,
+                outlet: 'locations'
+            },
             {
                 path: "locations/detail/:id",
-                component: LocationDetailComponent
+                component: LocationDetailComponent,
+                outlet: 'locations'
             },
 
             // favorites
             { path: 'favorites', component: ServicesComponent },
 
             // search tree
-            { path: 'search', component: SearchComponent },
-            { path: 'search/:term', component: SearchTermComponent },
+            { path: '', component: SearchComponent, outlet: 'search' },
+            {
+                path: 'search/:term',
+                component: SearchTermComponent,
+                outlet: 'search'
+            },
 
             // services
-            { path: 'services', component: ServicesComponent },
-            { path: 'services/:id', component: ServiceDetailComponent },
+            {
+                path: '',
+                component: ServicesComponent,
+                outlet: 'services'
+            },
+            {
+                path: 'services/:id',
+                component: ServiceDetailComponent,
+                outlet: 'services'
+            },
 
             // providers
-            { path: 'providers', component: ProvidersComponent },
-            { path: 'providers/:id', component: ProviderDetailComponent },
+            {
+                path: '',
+                component: ProvidersComponent,
+                outlet: 'providers'
+            },
+            {
+                path: 'providers/:id',
+                component: ProviderDetailComponent,
+                outlet: 'providers'
+            },
 
             // portal
-            { path: 'portal', component: PortalComponent },
+            { path: '', component: PortalComponent, outlet: 'portal' },
 
             // news
-            { path: 'news', component: NewsComponent },
+            { path: '', component: NewsComponent, outlet: 'news' },
         ]
     },
+
 ];
 
 @NgModule({
