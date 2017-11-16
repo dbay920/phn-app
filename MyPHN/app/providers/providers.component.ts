@@ -22,7 +22,7 @@ export class ProvidersComponent implements OnInit {
 
     goToService(i): void {
         this._router.navigateByUrl("items/(services:services/" +
-            this.services[i].getId() + ')')
+            this.services[i].getId() + '%23tab-2)')
         ItemsComponent.setSelectedIndex(5);
     }
 

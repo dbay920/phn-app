@@ -59,8 +59,14 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         // hook for tab change
     }
 
+
+      canGoBack;
     public ngOnInit(): void {
 
+        // handles the hiding of the back button when it is useless
+        this._router.events.subscribe((val) => {
+            this.canGoBack = this.routerExtensions.canGoBack();
+        });
     }
 
     public ngAfterViewInit() {

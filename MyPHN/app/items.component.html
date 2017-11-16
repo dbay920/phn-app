@@ -10,6 +10,7 @@
         ios.position="left"
         android.systemIcon="ic_menu_back"
         android.position="actionBar"
+        visibility="{{canGoBack ? 'visible' : 'collapse' }}"
     >
 
     </ActionItem>
@@ -51,11 +52,10 @@
         </StackLayout>
     </StackLayout>
 </ActionBar>
-
-
 <TabView
     #ref
     (selectedIndexChanged)="onSelectedIndexChanged($event)"
+          style="android-selected-tab-highlight-color: transparent;"
 >
     <StackLayout
         *tabItem="{title: 'Home',  iconSource: 'res://home'}"
