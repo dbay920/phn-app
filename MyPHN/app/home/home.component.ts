@@ -7,6 +7,7 @@ import { Color } from "color";
 import { LocationDetail } from "../shared/location/detail"
 import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";
 import { LocateAddress } from "nativescript-locate-address";
+import { ItemsComponent } from "../items.component";
 import { Config } from '../shared/config';
 
 @Component({
@@ -37,12 +38,8 @@ export class HomeComponent implements OnInit {
         return distance(x, y);
     }
 
-    goToLocations(): void {
-        this._router.navigateByUrl("items/locations");
-    }
-
-    goToUrl(url: string) {
-        this._router.navigateByUrl(url);
+    goToUrl(url) {
+        ItemsComponent.setSelectedIndex(url);
     }
 
     ngOnInit(): void {
@@ -50,15 +47,15 @@ export class HomeComponent implements OnInit {
             {
                 name: 'Locations',
                 image: 'res://icon_location_home',
-                url: 'items/locations'
+                url: 4
             }, {
                 name: 'Services',
                 image: 'res://icon_service_home',
-                url: 'items/services'
+                url: 5
             }, {
                 name: 'Providers',
                 image: 'res://icon_provider_home',
-                url: 'items/providers'
+                url: 6
             }
         ];
 

@@ -42,16 +42,17 @@ export class LocationsComponent implements OnInit {
     goToLocations(i): void {
         switch (this.selectedIndex) {
             case 0:
-                this._router.navigateByUrl("items/locations/" +
-                    this.counties[i].getName());
+                this._router.navigateByUrl('items/(locations:locations/' +
+                    this.counties[i].getName() + ')')
+
                 break;
             case 1:
-                this._router.navigateByUrl('items/locations/detail/' +
-                    LocationsComponent.getId(this.sortedDistance[i]));
+                this._router.navigateByUrl('items/(locations:locations/detail/' +
+                    LocationsComponent.getId(this.sortedDistance[i]) + ')');
                 break;
             case 2:
-                this._router.navigateByUrl('items/locations/detail/' +
-                    LocationsComponent.getId(this.sortedAlphabetically[i]));
+                this._router.navigateByUrl('items/(locations:locations/detail/' +
+                    LocationsComponent.getId(this.sortedAlphabetically[i]) + ')');
                 break;
             default:
                 break;

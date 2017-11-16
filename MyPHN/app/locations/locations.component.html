@@ -4,7 +4,7 @@
         radius="2"
         class=""
     >
-    <!-- Locations Header Bar -->
+        <!-- Locations Header Bar -->
         <StackLayout
             class="primary-background"
         >
@@ -30,23 +30,82 @@
             </StackLayout>
         </StackLayout>
     </CardView>
-            <SegmentedBar
-                [items]="myItems"
-                selectedIndex="0"
-                class="m-5"
-                (selectedIndexChange)="onSelectedIndexChange($event)"
-                style="selected-background-color: #00817d;
-                       color: #00817d;
-                       background-color: #fff;
-                       font-size: 10;"
-            >
+    <SegmentedBar
+        [items]="myItems"
+        selectedIndex="0"
+        class="m-5"
+        (selectedIndexChange)="onSelectedIndexChange($event)"
+        style="selected-background-color: #00817d;
+               color: #00817d;
+               background-color: #fff;
+               font-size: 10;"
+    >
 
-            </SegmentedBar>
+    </SegmentedBar>
+
+    <!-- list by counties view, need to change to grid layout -->
+    <ListView
+        [items]="counties"
+        class="by-county"
+        visibility="{{ visibility1 ? 'visible' : 'collapsed' }}"
+        style="background-color: #cecece;"
+        separatorColor="transparent"
+    >
+        <ng-template
+            let-item="item"
+            let-i="index"
+            let-odd="odd"
+            let-even="even"
+        >
+            <StackLayout
+                orientation="horizontal"
+                horizontalAlignment="center"
+            >
+                <CardView
+                    elevation="40"
+                    radius="2"
+                    [class.hidden]="odd"
+                    height="80pt"
+                    class="m-4 col-6"
+                    (tap)="listViewItemTap(i)"
+                    horizontalAlignment="center"
+                >
+                    <Label
+                        [text]="item.getName()"
+                        textWrap="true"
+                        class="location-card great-primer font-weight-bold primary text-center white-background py-16"
+                        verticalAlignment="center"
+                    >
+
+                    </Label>
+                </CardView>
+                <CardView
+                    elevation="40"
+                    radius="2"
+                    [class.hidden]="odd || i + 1 >= counties.length "
+                    height="80pt"
+                    class="m-4 col-6"
+                    (tap)="listViewItemTap(i+1)"
+                >
+                    <Label
+                        [class.hidden]="i + 1 >= counties.length"
+                        [text]="i + 1 < counties.length ? counties[i + 1].getName() : i"
+                        textWrap="true"
+                        class="location-card great-primer font-weight-bold primary text-center white-background py-16"
+                        verticalAlignment="center"
+                    >
+
+                    </Label>
+                </CardView>
+            </StackLayout>
+        </ng-template>
+    </ListView>
+
+
     <!-- Sorted by Distance -->
     <ListView
         [items]="sortedDistance"
         visibility="{{ visibility2 ? 'visible' : 'collapsed' }}"
-        height="418"
         class="by-dist"
         style="background-color: #cecece;"
         separatorColor="transparent"
@@ -136,7 +195,6 @@
     <ListView
         [items]="sortedAlphabetically"
         visibility="{{ visibility3 ? 'visible' : 'collapsed' }}"
-        height="418"
         class="by-alpha"
         style="background-color:#cecece;"
         separatorColor="transparent"
@@ -219,65 +277,6 @@
                     </StackLayout>
                 </StackLayout>
             </CardView>
-        </ng-template>
-    </ListView>
-    <!-- list by counties view, need to change to grid layout -->
-    
-    <ListView
-        [items]="counties"
-        class="by-county"
-        visibility="{{ visibility1 ? 'visible' : 'collapsed' }}"
-        style="background-color: #cecece;"
-        height="418"
-        separatorColor="transparent"
-    >
-        <ng-template
-            let-item="item"
-            let-i="index"
-            let-odd="odd"
-            let-even="even"
-        >
-            <StackLayout
-                orientation="horizontal"
-                horizontalAlignment="center"
-            >
-                <CardView
-                    elevation="40"
-                    radius="2"
-                    [class.hidden]="odd"
-                    height="80pt"
-                    class="m-4 col-6"
-                    (tap)="listViewItemTap(i)"
-                    horizontalAlignment="center"
-                >
-                    <Label
-                        [text]="item.getName()"
-                        textWrap="true"
-                        class="location-card great-primer font-weight-bold primary text-center white-background py-16"
-                        verticalAlignment="center"
-                    >
-
-                    </Label>
-                </CardView>
-                <CardView
-                    elevation="40"
-                    radius="2"
-                    [class.hidden]="odd || i + 1 >= counties.length "
-                    height="80pt"
-                    class="m-4 col-6"
-                    (tap)="listViewItemTap(i+1)"
-                >
-                    <Label
-                        [class.hidden]="i + 1 >= counties.length"
-                        [text]="i + 1 < counties.length ? counties[i + 1].getName() : i"
-                        textWrap="true"
-                        class="location-card great-primer font-weight-bold primary text-center white-background py-16"
-                        verticalAlignment="center"
-                    >
-
-                    </Label>
-                </CardView>
-            </StackLayout>
         </ng-template>
     </ListView>
 </StackLayout>

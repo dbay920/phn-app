@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { Service } from "../shared/services/service"
 import { ActivatedRoute, Router } from '@angular/router';
+import { ItemsComponent } from '../items.component';
 
 @Component({
     selector: "ns-items",
@@ -18,7 +19,9 @@ export class NewsComponent implements OnInit {
     }
 
     goToService(i): void {
-        this._router.navigateByUrl("items/services/" + this.services[i].getId())
+        this._router.navigateByUrl("items/(services:services/"
+            + this.services[i].getId() + ')')
+        ItemsComponent.setSelectedIndex(5);
     }
 
     ngOnInit(): void {

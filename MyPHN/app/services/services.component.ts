@@ -20,7 +20,8 @@ export class ServicesComponent implements OnInit {
     }
 
     goToService(i): void {
-        this._router.navigateByUrl("items/services/" + this.services[i].getId())
+        this._router.navigateByUrl("items/(services:services/" +
+            this.services[i].getId() + ')')
     }
 
     ngOnInit(): void {

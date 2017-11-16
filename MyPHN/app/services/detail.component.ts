@@ -2,6 +2,7 @@ import { QueryList, Component, OnInit, ElementRef, ViewChildren, AfterViewInit }
 import { ActivatedRoute, Router } from '@angular/router';
 import { WebView } from "ui/web-view"
 import { isAndroid, isIOS, device, screen } from "platform";
+import { ItemsComponent } from '../items.component';
 
 @Component({
     selector: "ns-items",
@@ -41,13 +42,19 @@ export class ServiceDetailComponent implements OnInit, AfterViewInit {
 
                 // Do something depending on the coordinates in the URL
                 if (this.isLocation(event.url)) {
-                    this._router.navigateByUrl("items/locations/detail/" +
-                        event.url.split('=')[1]);
+
+                    // is location
+                    this._router.navigateByUrl(
+                        "items/(locations:locations/detail/" +
+                        event.url.split('=')[1] + ')');
+                    ItemsComponent.setSelectedIndex(4);
                 } else {
 
                     // is provider
-                    this._router.navigateByUrl("items/providers/" +
-                        event.url.split('=')[1]);
+                    this._router.navigateByUrl(
+                        "items/(providers:providers/" +
+                        event.url.split('=')[1] + ')');
+                    ItemsComponent.setSelectedIndex(6);
                 }
             }
         });

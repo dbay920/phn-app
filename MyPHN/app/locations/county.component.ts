@@ -30,7 +30,9 @@ export class CountyComponent implements OnInit {
     }
 
     goToLocations(i): void {
-        this._router.navigateByUrl("items/locations/detail/" + this.locations[i].getId());
+        this._router.navigateByUrl(
+            "items/(locations:locations/detail/" +
+            this.locations[i].getId() + ')');
     }
 
     ngOnInit(): void {
