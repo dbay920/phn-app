@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, NgZone } from "@angular/core"
 import { ProvidersService } from "../shared/providers/providers.service";
 import { ActivatedRoute, Router } from '@angular/router';
 import { Provider } from '../shared/providers/provider'
-
+import { ItemsComponent } from '../items.component';
 import * as TNSPhone from 'nativescript-phone';
 import { LocateAddress } from "nativescript-locate-address";
 
@@ -52,7 +52,8 @@ export class ProviderDetailComponent implements OnInit {
     }
 
     goToLocation(i): void {
-        this._router.navigateByUrl("items/locations/detail/" + i);
+        this._router.navigateByUrl("items/(locations:locations/detail/" + i + ')');
+        ItemsComponent.setSelectedIndex(4);
     }
 
     call(x): void {
