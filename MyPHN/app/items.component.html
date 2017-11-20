@@ -1,8 +1,3 @@
-<!--
-     TODO: figure out how to position PHN logo in center and search icon/text
-     on right side of ActionBar
-   -->
-
 <ActionBar title="My PHN">
     <ActionItem
         (tap)="goBack()"
@@ -14,43 +9,15 @@
     >
 
     </ActionItem>
-    <StackLayout
-        orientation="horizontal"
+    <ActionItem
+        (tap)="search()"
+        ios.position="right"
+        ios.systemIcon="12"
+        android.systemIcon="ic_menu_search_holo_light"
+        android.position="actionBar"
     >
-        <StackLayout
-            orientation="horizontal"
-        >
-            <Image
-                src="res://phn_logo"
-                class="logo"
-                horizontalAlignment="center"
-            >
 
-            </Image>
-        </StackLayout>
-        <!--
-             TODO: add favorites functionality and add icon_favorite png to img resource folders
-
-             <StackLayout orientation="vertical">
-             <Image src="res://icon_favorite" class="action-image" (tap)="favorites()">
-
-             </Image>
-             <Label text="Favorites"  class="favorites">
-
-             </Label>
-             </StackLayout>
-
-           -->
-
-        <StackLayout orientation="vertical" horizontalAlignment="right" ios.position="right" >
-            <Image src="res://icon_search" class="action-image" (tap)="search()" >
-
-            </Image>
-            <Label text="Search PHN"  class="search-phn">
-
-            </Label>
-        </StackLayout>
-    </StackLayout>
+    </ActionItem>
 </ActionBar>
 <TabView
     #ref
