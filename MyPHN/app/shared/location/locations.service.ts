@@ -6,6 +6,7 @@ import * as xmlModule from "tns-core-modules/xml";
 import { Location } from "./location";
 import { County } from "./county";
 import { LocationDetail } from "./detail";
+import { Provider } from "../providers/provider"
 
 var currentLocation;
 var currentLocations;
@@ -158,9 +159,24 @@ export class LocationsService {
                 return x.text();
             })
             .then((x) => {
-                currentDetail = new LocationDetail();
+                let drs = x.split('org/Physician">').slice(1)
+                let providers: Array<Provider> = [];
 
-                detailParser.parse('<html><div' + x.split('<div class="post format-image"')[1]);
+                currentDetail = new LocationDetail();
+                drs.forEach((dr) => {
+                    let service = dr.match(/<h4><span>(.*)<\/span><\/h4>/)[1];
+                    let id = dr.match(/\?id=(.*)"/)[1]
+                    let name = dr.match(/itle="(.*?)" h/)[1]
+                    let provider = new Provider(name);
+
+                    provider.setId(id)
+                    provider.setServiceName(service)
+                    providers.push(provider)
+                })
+                currentDetail.setProviders(providers);
+                detailParser.parse(
+                    '<html><div' +
+                    x.split('<div class="post format-image"')[1]);
 
                 return currentDetail;
             });

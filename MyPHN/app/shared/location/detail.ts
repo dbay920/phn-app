@@ -1,8 +1,11 @@
+import { Provider } from '../providers/provider'
+
 export class LocationDetail {
     data: Array<string>;
     image: string;
     hours: Array<string>;
     about: Array<string>;
+    providers: Array<Provider>;
 
     constructor() {
         this.data = [];
@@ -63,7 +66,11 @@ export class LocationDetail {
         return this.data[0];
     }
 
-    getProviders() {
-        return [];
+    setProviders(x: Array<Provider>) {
+        this.providers = x;
+    }
+
+    getProviders(): Array<Provider> {
+        return this.providers;
     }
 }

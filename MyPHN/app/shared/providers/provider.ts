@@ -1,14 +1,24 @@
 import { Location } from '../location/location';
 
 export class Provider {
+    id;
+    service;
     data: Array<string>
 
     constructor(name: string) {
         this.data = [name];
     }
 
+    setId(x) {
+        this.id = x;
+    }
+
+    setServiceName(x) {
+        this.service = x;
+    }
+
     getServiceName() {
-        return this.data[9];
+        return this.service ? this.service : this.data[9];
     }
 
     getLocations() {
@@ -29,7 +39,7 @@ export class Provider {
     }
 
     getImage() {
-        return 'https://primary-health.net/' + this.data[2];
+        return id ? null : 'https://primary-health.net/' + this.data[2];
     }
 
     getDescription() {
