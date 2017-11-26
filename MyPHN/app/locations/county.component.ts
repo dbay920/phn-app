@@ -18,11 +18,9 @@ export class CountyComponent implements OnInit {
     public locations: Array<Location>;
     county: County;
 
-    constructor(private route: ActivatedRoute, private _router: Router, private locationsService: LocationsService) {
-        this.route.params
-            .forEach((params) => {
-                this.county = County.buildFromName(params["id"]);
-            });
+    constructor(private route: ActivatedRoute,
+        private _router: Router,
+        private locationsService: LocationsService) {
     }
 
     listViewItemTap(i): void {
@@ -36,12 +34,14 @@ export class CountyComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.locationsService.getCountyLocations(this.county.getHref()).then((x) => {
-            this.locations = x;
-        },
-            (error) => alert("Could not load locations.")
-        );
+        this.route.params
+            .forEach((params) => {
+                this.county = County.buildFromName(params["id"]);
+            });
 
-
+        this.locationsService.getCountyLocations(
+            this.county.getHref()).then((x) => {
+                this.locations = x;
+            }, (error) => alert("Could not load locations."));
     }
 }

@@ -125,7 +125,7 @@
             >
                 <StackLayout class="p-10" style="background-color: white;">
                     <StackLayout orientation="horizontal">
-                        <Image src="res://directions_nearme"
+                        <Image src="{{item.properties.image}}"
                                height="40"
                                class="col-2"
                         >
@@ -147,7 +147,7 @@
                     </StackLayout>
                     <StackLayout orientation="horizontal">
                         <Label
-                            [text]="item.properties.distance"
+                            text=""
                             class="primary col-2"
                         >
 
@@ -214,7 +214,7 @@
             >
                 <StackLayout class="p-10" style="background-color: white;">
                     <StackLayout orientation="horizontal">
-                        <Image src="res://directions_nearme"
+                        <Image src="{{item.properties.image}}"
                                height="40"
                                class="col-2"
                         >
@@ -236,7 +236,7 @@
                     </StackLayout>
                     <StackLayout orientation="horizontal">
                         <Label
-                            [text]="item.properties.distance"
+                            text=""
                             class="primary col-2"
                         >
 

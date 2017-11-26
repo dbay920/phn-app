@@ -1,3 +1,6 @@
+import { Config } from '../config'
+import * as _ from "lodash";
+
 export class Location {
     data: Array<string>
 
@@ -16,6 +19,16 @@ export class Location {
 
     getId() {
         return this.getHref().split('=')[1];
+    }
+
+    getImage() {
+        let feature =
+            _.find(Config.healthCenters.features, [
+                'properties.title',
+                this.getName()
+            ]);
+
+        return feature.properties.image;
     }
 
     getName() {
