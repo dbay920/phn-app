@@ -39,7 +39,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         this.routerExtensions.back();
     }
 
-    private getSelectedIndex(): number {
+    private static getSelectedIndex(): number {
         if (!ItemsComponent.tabView)
             return -1;
 
@@ -51,31 +51,37 @@ export class ItemsComponent implements OnInit, AfterViewInit {
 
     public static setSelectedIndex(i) {
         ItemsComponent.tabView.selectedIndex = i;
+        ItemsComponent.showActionBar();
     }
 
-    private isMoreTab(): boolean {
-        let index = this.getSelectedIndex();
+    public static showActionBar() {
+        if (!ItemsComponent.tabView) {
+            return;
+        }
+
+        let page = <Page>ItemsComponent.tabView.page;
+
+        ItemsComponent.navCtrl.navigationBarHidden = true;
+        page.actionBarHidden = false;
+    }
+
+    private static isMoreTab(): boolean {
+        let index = ItemsComponent.getSelectedIndex();
 
         return isAndroid ? false : index === 9223372036854776000;
     }
 
     // hook for tab change
     public onSelectedIndexChanged(event): void {
-        if (!ItemsComponent.tabView)
-            return;
-
-        let page = <Page>ItemsComponent.tabView.page;
-
-        page.actionBarHidden = false;
+        ItemsComponent.showActionBar();
     }
 
 
-    canGoBack;
+    canGoBack = null;
     public ngOnInit(): void {
 
         // handles the hiding of the back button when it is useless
         this._router.events.subscribe((val) => {
-            //console.log(val);
             let switchHash = {
                 locations: 4,
                 services: 5,
@@ -85,6 +91,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
                 search: 3
             }
             let part = val['url'];
+
             if (part) {
                 part = part.split('(')[1]
 
@@ -97,17 +104,17 @@ export class ItemsComponent implements OnInit, AfterViewInit {
 
             }
             this.canGoBack = this.routerExtensions.canGoBack();
+
         });
     }
 
+    static navCtrl;
     public ngAfterViewInit() {
-        let navCtrl;
 
         // protect from location interruption
         if (this.ref.first) {
             ItemsComponent.tabView = this.ref.first.nativeElement;
-            navCtrl = ItemsComponent.tabView.ios.moreNavigationController;
-            navCtrl.navigationBarHidden = true;
+            ItemsComponent.navCtrl = ItemsComponent.tabView.ios.moreNavigationController;
         }
     }
 
