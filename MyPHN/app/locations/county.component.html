@@ -5,7 +5,14 @@
     style="margin-bottom: 8pt;"
     width="100%"
 >
-    <StackLayout class="primary-background" width="100%">
+    <StackLayout
+        orientation="horizontal"
+        class="primary-background"
+        width="100%"
+    >
+        <Button text="Back" (tap)="back()">
+            <!-- TODO: style me -->
+        </Button>
         <Label
             text="{{county.getName()}}"
             class="double-columbian white font-weight-bold text-center"
