@@ -39,6 +39,10 @@ export class LocationDetailComponent implements OnInit {
         private _ngZone: NgZone,
     ) { }
 
+    back(): void {
+        this._router.navigateByUrl('/items');
+    }
+
     myDist(x, y) {
         return distance(x, y);
     }
