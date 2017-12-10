@@ -8,8 +8,17 @@
     >
         <GridLayout
             style="background-image: {{image}}; background-size: cover; background-repeat: no-repeat;"
-            rows="*, 80"
+            rows="24,*, 80"
         >
+            <Label
+                text="Back"
+                class="small-title background"
+                row="0"
+                height="25"
+                (tap)="back()"
+            >
+
+            </Label>
             <StackLayout
                 class="alpha"
                 row="2"
