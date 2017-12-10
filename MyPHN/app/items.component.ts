@@ -119,6 +119,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     }
 
     public search() {
+        this._router.navigateByUrl('/items');
         ItemsComponent.setSelectedIndex(3);
     }
 }
