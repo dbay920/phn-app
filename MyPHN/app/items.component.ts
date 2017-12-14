@@ -61,7 +61,8 @@ export class ItemsComponent implements OnInit, AfterViewInit {
 
         let page = <Page>ItemsComponent.tabView.page;
 
-        ItemsComponent.navCtrl.navigationBarHidden = true;
+        if (ItemsComponent.navCtrl)
+            ItemsComponent.navCtrl.navigationBarHidden = true;
         page.actionBarHidden = false;
     }
 
@@ -112,9 +113,13 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     public ngAfterViewInit() {
 
         // protect from location interruption
-        if (this.ref.first && isIOS) {
+        if (this.ref.first) {
             ItemsComponent.tabView = this.ref.first.nativeElement;
-            ItemsComponent.navCtrl = ItemsComponent.tabView.ios.moreNavigationController;
+
+        }
+        if (isIOS) {
+            ItemsComponent.navCtrl =
+                ItemsComponent.tabView.ios.moreNavigationController;
         }
     }
 
