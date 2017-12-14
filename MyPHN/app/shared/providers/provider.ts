@@ -39,7 +39,7 @@ export class Provider {
     }
 
     getImage() {
-        return id ? null : 'https://primary-health.net/' + this.data[2];
+        return this.id ? null : 'https://primary-health.net/' + this.data[2];
     }
 
     getDescription() {
