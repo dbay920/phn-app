@@ -112,7 +112,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     public ngAfterViewInit() {
 
         // protect from location interruption
-        if (this.ref.first) {
+        if (this.ref.first && isIOS) {
             ItemsComponent.tabView = this.ref.first.nativeElement;
             ItemsComponent.navCtrl = ItemsComponent.tabView.ios.moreNavigationController;
         }
