@@ -21,6 +21,10 @@ export class ServiceDetailComponent implements OnInit, AfterViewInit {
         private _router: Router,
     ) { }
 
+    back(): void {
+        this._router.navigateByUrl('/items');
+    }
+
     isLocation(href) {
         return href.indexOf('LocationDetail.aspx?id=') >= 0;
     }

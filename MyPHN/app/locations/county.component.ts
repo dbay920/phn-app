@@ -27,6 +27,10 @@ export class CountyComponent implements OnInit {
         this.goToLocations(i);
     }
 
+    back(): void {
+        this._router.navigateByUrl('/items');
+    }
+
     goToLocations(i): void {
         this._router.navigateByUrl(
             "items/(locations:locations/detail/" +

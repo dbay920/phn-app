@@ -30,6 +30,10 @@ export class ProviderDetailComponent implements OnInit {
     ) {
     }
 
+    back(): void {
+        this._router.navigateByUrl('/items');
+    }
+
     ngOnInit(): void {
         this.route.params.forEach((params) => {
             this.id = params["id"];
