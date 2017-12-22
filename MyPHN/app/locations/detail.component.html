@@ -1,6 +1,6 @@
 <DockLayout>
     <CardView
-         elevation="40"
+        elevation="40"
         radius="2"
         height="250"
         class=""
@@ -8,50 +8,59 @@
     >
         <GridLayout
             style="background-image: {{image}}; background-size: cover; background-repeat: no-repeat;"
-            rows="*, 80"
-        >
-        <StackLayout
-        class="alpha"
-        row="2"
-        style="padding-top:5pt;"
-        (tap)="navigate()"
-    >
-        <StackLayout
-            class="row"
-            orientation="horizontal"
+            rows="24,*, 80"
         >
             <Label
-                text="{{name}}"
-                class="col-11 location-name"
-                textWrap="true"
-                style="margin-top: -5pt; line-height: -4pt;"
-            >
-            </Label>
-
-            <Image
-                src="res://directions"
-                class="col-2"
-                height="40"
-            >
-            </Image>
-        </StackLayout>
-        <StackLayout orientation="horizontal">
-            <Label
-                text="{{address}}"
-                class="english col-11"
-                textWrap="true"
-                style="margin-top:-2pt; line-height:-1pt;"
+                text="Back"
+                class="small-title background"
+                row="0"
+                height="25"
+                (tap)="back()"
             >
 
             </Label>
-            <Label
-                text="{{distance}}"
-                class="distance col-2"
+            <StackLayout
+                class="alpha"
+                row="2"
+                style="padding-top:5pt;"
+                (tap)="navigate()"
             >
+                <StackLayout
+                    class="row"
+                    orientation="horizontal"
+                >
+                    <Label
+                        text="{{name}}"
+                        class="col-11 location-name"
+                        textWrap="true"
+                        style="margin-top: -5pt; line-height: -4pt;"
+                    >
+                    </Label>
 
-            </Label>
-        </StackLayout>
-    </StackLayout>
+                    <Image
+                        src="res://directions"
+                        class="col-2"
+                        height="40"
+                    >
+                    </Image>
+                </StackLayout>
+                <StackLayout orientation="horizontal">
+                    <Label
+                        text="{{address}}"
+                        class="english col-11"
+                        textWrap="true"
+                        style="margin-top:-2pt; line-height:-1pt;"
+                    >
+
+                    </Label>
+                    <Label
+                        text="{{distance}}"
+                        class="distance col-2"
+                    >
+
+                    </Label>
+                </StackLayout>
+            </StackLayout>
         </GridLayout>
     </CardView>
     <ScrollView
