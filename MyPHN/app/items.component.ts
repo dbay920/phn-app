@@ -76,7 +76,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     public onSelectedIndexChanged(event): void {
 
         // hook for tab change
-        if (this.getSelectedIndex() === 0)
+        if (ItemsComponent.getSelectedIndex() === 0)
             this._router.navigateByUrl('/items');
         ItemsComponent.showActionBar();
     }
