@@ -39,7 +39,9 @@ export class Provider {
     }
 
     getImage() {
-        return this.id ? null : 'https://primary-health.net/' + this.data[2];
+        if (this.id)
+            return 'https://primary-health.net/images/docimg/' + this.id + '.jpg'
+        return 'https://primary-health.net/' + this.data[2];
     }
 
     getDescription() {
@@ -47,6 +49,8 @@ export class Provider {
     }
 
     getName() {
+        if (this.data.length === 1)
+            return this.data[0]
         return this.data[1];
     }
 

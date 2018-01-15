@@ -92,16 +92,22 @@
 
                         </Image>
                     </DockLayout>
-                    <Label
-                        [text]="item.data"
-                        textWrap="true"
-                        class="m-20 data primary text-left white-background"
-                        margin="-10 20 20 23"
-                        visibility="{{item.visible ? 'visible' : 'collapse' }}"
-                        (tap)="callHome()"
-                    >
+                    <DockLayout orientation="horizontal" visibility="{{item.visible ? 'visible' : 'collapse' }}">
+                        <Label
+                            [text]="item.data"
+                            textWrap="true"
+                            class="m-20 data primary text-left white-background"
+                            margin="-10 20 20 23"
+                            visibility="{{item.visible ? 'visible' : 'collapse' }}"
+                            (tap)="callHome()"
+                            dock="left"
+                        >
 
-                    </Label>
+                        </Label>
+                        <Image dock="right" [src]="item.image" height="70" visibility="{{item.visible && item.image ? 'visible' : 'collapse' }}">
+
+                        </Image>
+                    </DockLayout>
                 </StackLayout>
             </CardView>
         </StackLayout>
