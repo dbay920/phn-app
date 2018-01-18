@@ -74,7 +74,6 @@
                 *ngFor="let item of cards; let i = index;"
             >
                 <StackLayout
-
                     style="background-color: white;"
                 >
                     <DockLayout orientation="horizontal" height="80">
@@ -108,6 +107,55 @@
 
                         </Image>
                     </DockLayout>
+                </StackLayout>
+            </CardView>
+            <CardView
+                elevation="40"
+                radius="2"
+                class="m-4"
+            >
+                <StackLayout
+                    style="background-color: white;"
+                >
+                    <DockLayout orientation="horizontal" height="80">
+                        <Label
+                            (tap)="providersTap(i)"
+                            text="Providers"
+                            class="col-10 double-pica font-weight-bold primary"
+                            height="80"
+                            padding="23"
+                            dock="left"
+                        >
+
+                        </Label>
+                        <Image dock="right" src="res://icon_providers_location" class="col-2" height="40">
+
+                        </Image>
+                    </DockLayout>
+                    <StackLayout
+                        style="background-color: white;"
+                        *ngFor="let item of providers; let i = index;"
+                    >
+                        <DockLayout orientation="horizontal" visibility="{{providersVisible}}">
+                            <Label
+                                [text]="item.data"
+                                textWrap="true"
+                                class="m-20 data primary text-left white-background"
+                                margin="-10 20 20 23"
+                                visibility="{{providersVisible}}"
+                                (tap)="callHome()"
+                                dock="left"
+                            >
+
+                            </Label>
+                            <Image dock="right" [src]="item.image" height="70" visibility="{{providersVisible}}">
+
+                            </Image>
+                        </DockLayout>
+                        <Button text="Bio" visibility="{{providersVisible}}" (tap)="gotoProvider(i)">
+
+                        </Button>
+                    </StackLayout>
                 </StackLayout>
             </CardView>
         </StackLayout>

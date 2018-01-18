@@ -13,7 +13,6 @@ import { Config } from '../shared/config';
 import * as _ from "lodash";
 import * as TNSPhone from 'nativescript-phone';
 
-
 @Component({
     selector: "ns-items",
     moduleId: module.id,
@@ -51,6 +50,20 @@ export class LocationDetailComponent implements OnInit {
         TNSPhone.dial(this.details.getContact(), true);
     }
 
+    providersVisible;
+    providers;
+
+    gotoProvider(i) {
+        this._router.navigateByUrl("items/(providers:providers/" + this.details.getProviders()[i].getId());
+    }
+
+    providersTap() {
+        if (this.providersVisible === 'collapse')
+            this.providersVisible = 'visible';
+        else
+            this.providersVisible = 'collapse';
+    }
+
     ngOnInit(): void {
         this.route.params
             .forEach((params) => {
@@ -84,8 +97,9 @@ export class LocationDetailComponent implements OnInit {
                     visible: false
                 }
             ]
+            this.providers = []
             this.details.getProviders().forEach((x) => {
-                this.cards.push({
+                this.providers.push({
                     name: x.getName(), //'Providers',
                     data: x.getServiceName(),
                     icon: 'res://icon_providers_location',
@@ -93,6 +107,7 @@ export class LocationDetailComponent implements OnInit {
                     visible: false
                 });
             })
+            this.providersTap();
             this.image = this.details.getImage();
             this.address = this.details.getAddress().replace(', ', '\n');
             this.name = this.details.getName();
