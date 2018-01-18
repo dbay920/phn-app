@@ -113,17 +113,70 @@ export class ItemsComponent implements OnInit, AfterViewInit {
             this.canGoBack = this.routerExtensions.canGoBack();
 
         });
+        if (isAndroid) {
+            this.initAndroid();
+        } else {
+            this.initIOS();
+        }
+    }
 
+    initAndroid() {
         // handles android push notifications
         pushPlugin.register({ senderID: Config.messageSenderId }, (token: String) => {
-            alert("Device registered. Access token: " + token);;
+            //   alert("Device registered. Access token: " + token);;
         }, function() { });
 
         pushPlugin.onMessageReceived((stringifiedData: String, fcmNotification: any) => {
             const notificationBody = fcmNotification && fcmNotification.getBody();
             alert("Message received!\n" + notificationBody + "\n" + stringifiedData);
         });
+    }
 
+    initIOS() {
+        const iosSettings = {
+            badge: true,
+            sound: true,
+            alert: true,
+            interactiveSettings: {
+                actions: [{
+                    identifier: 'READ_IDENTIFIER',
+                    title: 'Read',
+                    activationMode: "foreground",
+                    destructive: false,
+                    authenticationRequired: true
+                }, {
+                    identifier: 'CANCEL_IDENTIFIER',
+                    title: 'Cancel',
+                    activationMode: "foreground",
+                    destructive: true,
+                    authenticationRequired: true
+                }],
+                categories: [{
+                    identifier: 'READ_CATEGORY',
+                    actionsForDefaultContext: ['READ_IDENTIFIER', 'CANCEL_IDENTIFIER'],
+                    actionsForMinimalContext: ['READ_IDENTIFIER', 'CANCEL_IDENTIFIER']
+                }]
+            },
+            notificationCallbackIOS: (message: any) => {
+                alert("Message received!\n" + JSON.stringify(message));
+            },
+            senderID: Config.messageSenderId // had to add this i think
+        };
+
+        pushPlugin.register(iosSettings, (token: String) => {
+            alert("Device registered. Access token: " + token);
+
+            // Register the interactive settings
+            if (iosSettings.interactiveSettings) {
+                pushPlugin.registerUserNotificationSettings(() => {
+                    alert('Successfully registered for interactive push.');
+                }, (err) => {
+                    alert('Error registering for interactive push: ' + JSON.stringify(err));
+                });
+            }
+        }, (errorMessage: any) => {
+            alert("Device NOT registered! " + JSON.stringify(errorMessage));
+        });
     }
 
     static navCtrl;
