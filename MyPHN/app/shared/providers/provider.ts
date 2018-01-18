@@ -13,6 +13,10 @@ export class Provider {
         this.id = x;
     }
 
+    getId() {
+        return this.id;
+    }
+
     setServiceName(x) {
         this.service = x;
     }
