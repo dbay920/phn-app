@@ -4,7 +4,7 @@
   "readme": "NativeScript Application",
   "repository": "<fill-your-repository-here>",
   "nativescript": {
-    "id": "net.primary_health.MyPHN",
+    "id": "net.primaryhealth.MyPHN",
     "tns-ios": {
       "version": "3.2.0"
     },

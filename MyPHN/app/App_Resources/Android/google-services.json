@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:453784066967:android:4eada04760d098f8",
+        "mobilesdk_app_id": "1:453784066967:android:b2108772c550b4a9",
         "android_client_info": {
-          "package_name": "net.primary_health.MyPHN"
+          "package_name": "net.primaryhealth.MyPHN"
         }
       },
       "oauth_client": [

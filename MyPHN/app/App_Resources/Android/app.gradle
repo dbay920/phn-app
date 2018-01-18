@@ -15,7 +15,7 @@ repositories {
 android {  
   defaultConfig {  
     generatedDensities = []
-    applicationId = "net.primary_health.MyPHN"  
+    applicationId = "net.primaryhealth.MyPHN"  
   }  
   aaptOptions {  
     additionalParameters "--no-version-vectors"  
