@@ -1,3 +1,4 @@
+import * as pushPlugin from "nativescript-push-notifications";
 import {
     ViewChildren, QueryList, Component, OnInit, ElementRef, ViewChild,
     AfterViewInit,
@@ -12,6 +13,7 @@ import { TabView } from "ui/tab-view"
 import { ActionBar } from "ui/action-bar"
 import { Page } from "ui/page"
 import { isAndroid, isIOS, device, screen } from "platform";
+import { Config } from './shared/config';
 
 @Component({
     selector: "ns-items",
@@ -111,6 +113,17 @@ export class ItemsComponent implements OnInit, AfterViewInit {
             this.canGoBack = this.routerExtensions.canGoBack();
 
         });
+
+        // handles android push notifications
+        pushPlugin.register({ senderID: Config.messageSenderId }, (token: String) => {
+            alert("Device registered. Access token: " + token);;
+        }, function() { });
+
+        pushPlugin.onMessageReceived((stringifiedData: String, fcmNotification: any) => {
+            const notificationBody = fcmNotification && fcmNotification.getBody();
+            alert("Message received!\n" + notificationBody + "\n" + stringifiedData);
+        });
+
     }
 
     static navCtrl;

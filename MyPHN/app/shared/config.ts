@@ -3,6 +3,7 @@ var fetchModule = require("fetch");
 export class Config {
 
     static healthCenters;
+    static messageSenderId = '453784066967'; // used for push notifications
 
     static initialize() {
         let href = 'https://primary-health.net/PHN_SiteLocator/HealthCenters.js'
