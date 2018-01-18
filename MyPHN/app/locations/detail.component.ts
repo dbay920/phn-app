@@ -82,8 +82,17 @@ export class LocationDetailComponent implements OnInit {
                     data: this.details.getContact(),
                     icon: 'res://icon_phone_location',
                     visible: false
-                },
+                }
             ]
+            this.details.getProviders().forEach((x) => {
+                this.cards.push({
+                    name: x.getName(), //'Providers',
+                    data: x.getServiceName(),
+                    icon: 'res://icon_providers_location',
+                    image: x.getImage(),
+                    visible: false
+                });
+            })
             this.image = this.details.getImage();
             this.address = this.details.getAddress().replace(', ', '\n');
             this.name = this.details.getName();
