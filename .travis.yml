@@ -20,8 +20,8 @@ before_cache:
 cache:
     directories:
         - .nvm
-        - $HOME/.gradle/caches/
-        - $HOME/.gradle/wrapper/
+        - $HOME/MyPHN/.gradle/caches/
+        - $HOME/MyPHN/.gradle/wrapper/
 
 install:
     - nvm install $NODE_VERSION
@@ -29,7 +29,7 @@ install:
     - npm install -g nativescript.tgz --ignore-scripts
     - tns usage-reporting disable
     - tns error-reporting disable
-    - npm install
+    - (cd MyPHN && npm install)
 
 before_script:
    - cd MyPHN
