@@ -5,10 +5,17 @@
 //	compile 'com.android.support:recyclerview-v7:+'
 //}
 
+repositories {
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+    }
+
 android {  
   defaultConfig {  
     generatedDensities = []
-    applicationId = "org.nativescript.MyPHN"  
+    applicationId = "net.primaryhealth.MyPHN"  
   }  
   aaptOptions {  
     additionalParameters "--no-version-vectors"  
