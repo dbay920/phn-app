@@ -8,6 +8,7 @@ import { SegmentedBar, SegmentedBarItem } from "ui/segmented-bar";
 import { Config } from '../shared/config';
 import * as _ from "lodash";
 import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";
+import { Location } from "../shared/location/location";
 import { LocateAddress } from "nativescript-locate-address";
 
 
@@ -35,10 +36,6 @@ export class LocationsComponent implements OnInit {
         this.goToLocations(i);
     }
 
-    static getId(feature) {
-        return feature.properties.link.split('=')[1];
-    }
-
     goToLocations(i): void {
         switch (this.selectedIndex) {
             case 0:
@@ -48,11 +45,11 @@ export class LocationsComponent implements OnInit {
                 break;
             case 1:
                 this._router.navigateByUrl('items/(locations:locations/detail/' +
-                    LocationsComponent.getId(this.sortedDistance[i]) + ')');
+                    (this.sortedDistance[i].getId()) + ')');
                 break;
             case 2:
                 this._router.navigateByUrl('items/(locations:locations/detail/' +
-                    LocationsComponent.getId(this.sortedAlphabetically[i]) + ')');
+                    (this.sortedAlphabetically[i].getId()) + ')');
                 break;
             default:
                 break;
@@ -95,30 +92,31 @@ export class LocationsComponent implements OnInit {
             enableLocationRequest();
             console.log('nonblocking');
         }
-        getCurrentLocation({
-            desiredAccuracy: 3, updateDistance: 10, timeout: 30000
-        }).then((loc) => {
-            if (loc) {
-                this.sortedDistance = _.sortBy(Config.healthCenters.features, (feature: any) => {
-                    let location = {
-                        latitude: feature.geometry.coordinates[1],
-                        longitude: feature.geometry.coordinates[0],
-                    };
-                    let dist = this.myDist(location, loc);
-                    let metersToMiles = 0.000621371;
 
-                    // save distance
-                    feature.properties.distance = (dist * metersToMiles).toFixed(1) + ' mi';
+        this.locationsService.getAllLocations().then((countyLats) => {
+            getCurrentLocation({
+                desiredAccuracy: 3, updateDistance: 10, timeout: 30000
+            }).then((loc) => {
+                if (loc) {
+                    this.sortedDistance = _.sortBy(countyLats, (feature: Location) => {
+                        let location = feature.getGeo();
+                        let dist = this.myDist(location, loc);
+                        let metersToMiles = 0.000621371;
 
-                    return dist;
-                });
-                this.sortedAlphabetically = _.sortBy(this.sortedDistance,
-                    'properties.title');
-            }
-        }, function(e) {
-            console.log("Error: " + e.message);
+                        // save distance
+                        feature.push((dist * metersToMiles).toFixed(1) + ' mi');
+
+                        return dist;
+                    });
+                    this.sortedAlphabetically =
+                        _.sortBy(this.sortedDistance, (location: Location) => {
+                            return location.getName();
+                        });
+                }
+            }, function(e) {
+                console.log("Error: " + e.message);
+            });
         });
-
         this.i = 0;
         this.myItems = [
 

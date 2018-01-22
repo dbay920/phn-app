@@ -12,6 +12,10 @@ export class Location {
     // name
     // phone
     // address
+    // image
+    // geo
+    // county
+    // dist
 
     getHref() {
         return 'https://primary-health.net/' + this.data[0];
@@ -22,13 +26,11 @@ export class Location {
     }
 
     getImage() {
-        let feature =
-            _.find(Config.healthCenters.features, [
-                'properties.title',
-                this.getName()
-            ]);
-
-        return feature.properties.image;
+        if (!this.data[4])
+            return ''
+        if (this.data[4].indexOf('http') >= 0)
+            return this.data[4]
+        return 'https://primary-health.net/' + this.data[4]
     }
 
     getName() {
@@ -41,6 +43,27 @@ export class Location {
     }
     getAddress() {
         return this.data[3];
+    }
+
+    getGeo() {
+        let longitude = this.data[5].match(/long(.*?),/)[1]
+        let latitude = this.data[5].match(/lat(.*?)[,<]/) ?
+            this.data[5].match(/lat(.*?)[,<]/)[1]
+            : this.data[5].split('lat')[1]
+        let result = {
+            latitude: latitude,
+            longitude: longitude
+        };
+
+        return result;
+    }
+
+    getCounty(): string {
+        return this.data[6];
+    }
+
+    getDist() {
+        return this.data[7];
     }
 
     push(x: string) {

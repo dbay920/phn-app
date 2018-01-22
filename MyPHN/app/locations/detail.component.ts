@@ -112,15 +112,7 @@ export class LocationDetailComponent implements OnInit {
             this.address = this.details.getAddress().replace(', ', '\n');
             this.name = this.details.getName();
 
-            let feature =
-                _.find(Config.healthCenters.features, [
-                    'properties.title',
-                    this.name
-                ]);
-            let x = {
-                latitude: feature['geometry'].coordinates[1],
-                longitude: feature['geometry'].coordinates[0],
-            };
+            let x = this.details.getGeo();
 
             getCurrentLocation({
                 desiredAccuracy: 3, updateDistance: 10, timeout: 30000
