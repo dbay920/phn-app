@@ -6,9 +6,28 @@ export class LocationDetail {
     hours: Array<string>;
     about: Array<string>;
     providers: Array<Provider>;
+    geo: string;
 
     constructor() {
         this.data = [];
+    }
+
+    setGeo(geo) {
+        this.geo = geo;
+    }
+
+    getGeo() {
+        let geo = this.geo;
+        let longitude = geo.match(/long(.*?),/)[1]
+        let latitude = geo.match(/lat(.*?)[,<]/) ?
+            geo.match(/lat(.*?)[,<]/)[1]
+            : geo.split('lat')[1]
+        let result = {
+            latitude: latitude,
+            longitude: longitude
+        };
+
+        return result;
     }
 
     getHref() {

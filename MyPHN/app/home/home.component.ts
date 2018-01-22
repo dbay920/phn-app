@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { View } from "ui/core/view";
 import { LocationsService } from "../shared/location/locations.service";
-//import { CensusService } from "../shared/census/census.service"
 import { ActivatedRoute, Router } from '@angular/router';
 import { Color } from "color";
 import { LocationDetail } from "../shared/location/detail"
@@ -9,6 +8,7 @@ import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, di
 import { LocateAddress } from "nativescript-locate-address";
 import { ItemsComponent } from "../items.component";
 import { Config } from '../shared/config';
+import { Location } from '../shared/location/location';
 
 @Component({
     selector: "ns-items",
@@ -64,35 +64,33 @@ export class HomeComponent implements OnInit {
             enableLocationRequest();
             console.log('nonblocking');
         }
-        getCurrentLocation({
-            desiredAccuracy: 3, updateDistance: 10, timeout: 30000
-        }).then((loc) => {
-            if (loc) {
-                let metersToMiles = 0.000621371;
-                let minDist = 3500;
-                let minCounty;
-                let countyLats = Config.healthCenters.features;
 
+        this.locationsService.getAllLocations().then((countyLats) => {
+            getCurrentLocation({
+                desiredAccuracy: 3, updateDistance: 10, timeout: 30000
+            }).then((loc) => {
+                if (loc) {
+                    let metersToMiles = 0.000621371;
+                    let minDist = 8000;
+                    let minCounty: Location;
 
-                countyLats.forEach((feature) => {
-                    let location = {
-                        latitude: feature.geometry.coordinates[1],
-                        longitude: feature.geometry.coordinates[0],
-                    };
-                    let dist = this.myDist(location, loc) * metersToMiles;
+                    countyLats.forEach((feature) => {
+                        let location = feature.getGeo();
+                        let dist = this.myDist(location, loc) * metersToMiles;
 
-                    if (dist < minDist) {
-                        minDist = dist;
-                        minCounty = feature;
-                    }
-                });
-                this.name = minCounty.properties.title;
-                this.address = minCounty.properties.address.replace(', ', '\n');
-                this.distance = minDist.toFixed(1) + ' mi';
-                this.image = minCounty.properties.image;
-            }
-        }, function(e) {
-            console.log("Error: " + e.message);
+                        if (dist < minDist) {
+                            minDist = dist;
+                            minCounty = feature;
+                        }
+                    });
+                    this.name = minCounty.getName()
+                    this.address = minCounty.getAddress().replace(', ', '\n');
+                    this.distance = minDist.toFixed(1) + ' mi';
+                    this.image = minCounty.getImage();
+                }
+            }, function(e) {
+                console.log("Error: " + e.message);
+            });
         });
     }
 

@@ -4,7 +4,8 @@ import { LocationsService } from "../shared/location/locations.service";
 import { County } from "../shared/location/county";
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageRoute } from "nativescript-angular/router";
-import { Location } from "../shared/location/location"
+import { Location } from "../shared/location/location";
+import * as _ from "lodash";
 
 @Component({
     selector: "ns-items",
@@ -43,9 +44,10 @@ export class CountyComponent implements OnInit {
                 this.county = County.buildFromName(params["id"]);
             });
 
-        this.locationsService.getCountyLocations(
-            this.county.getHref()).then((x) => {
-                this.locations = x;
-            }, (error) => alert("Could not load locations."));
+        this.locationsService.getAllLocations().then((x) => {
+            this.locations = _.filter(x, (loc: Location) => {
+                return loc.getCounty().includes(this.county.getName());
+            });
+        }, (error) => alert("Could not load locations."));
     }
 }

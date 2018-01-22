@@ -14,42 +14,6 @@ var currentCounties;
 var currentCounty;
 let currentDetail: LocationDetail;
 
-var onEventCallback = function(event: xmlModule.ParserEvent) {
-    switch (event.eventType) {
-
-        case xmlModule.ParserEventType.StartElement:
-
-            if (event.elementName !== 'a')
-                break;
-            currentLocation = new Location();
-            currentLocations.push(currentLocation);
-            var message = event.eventType + " " + event.elementName;
-            if (event.attributes) {
-                message += ", Attributes:";
-                for (var attributeName in event.attributes) {
-                    if (event.attributes.hasOwnProperty(attributeName) && attributeName === 'href') {
-                        message += " " + attributeName + "=\"" + event.attributes[attributeName] + "\"";
-                        currentLocation.push(event.attributes['href']);
-                    }
-                }
-            }
-            //            console.log(message);
-            break;
-
-        case xmlModule.ParserEventType.EndElement:
-            //          console.log(event.eventType + " " + event.elementName);
-            break;
-
-        case xmlModule.ParserEventType.Text:
-            var significantText = event.data.trim();
-            if (significantText !== "") {
-                //            console.log(event.eventType + "=\"" + significantText + "\"");
-                currentLocation.push(significantText);
-            }
-            break;
-    }
-};
-
 var onEventCallback2 = function(event: xmlModule.ParserEvent) {
     switch (event.eventType) {
 
@@ -123,7 +87,6 @@ var onErrorCallback = function(error: Error) {
     //console.log("Error: " + error.message);
 };
 
-var xmlParser = new xmlModule.XmlParser(onEventCallback, onErrorCallback);
 var countyParser = new xmlModule.XmlParser(onEventCallback2, onErrorCallback);
 var detailParser = new xmlModule.XmlParser(onEventCallback3, onErrorCallback);
 
@@ -132,8 +95,8 @@ var detailParser = new xmlModule.XmlParser(onEventCallback3, onErrorCallback);
 export class LocationsService {
     constructor() { }
 
-    getCountyLocations(href) {
-        return fetchModule.fetch(href,
+    getAllLocations() {
+        return fetchModule.fetch('https://primary-health.net/Locations.aspx',
             {
                 method: "GET"
             })
@@ -142,11 +105,38 @@ export class LocationsService {
                 return x.text();
             })
             .then((x) => {
-                currentLocations = [];
+                let counties = x.split('<article')[1]
+                    .split('id="Content_CountyList_CountyLabel_').splice(1);
+                let results = [];
 
-                xmlParser.parse('<html><article' + x.split('<article')[1]);
-                return currentLocations;
-            });
+                counties.forEach((county) => {
+                    let locations = county.split(
+                        /<ul style="list-style-type: none;">/gm).slice(1);
+                    let countyName = county.match(/>(.*?)</)[1];
+
+                    locations.forEach((location) => {
+                        let result = new Location();
+                        let href = location.match(/href="(.*?)"/)[1];
+                        let name = location.match(/itle="(.*?)"/)[1];
+                        let phone = location.match(/PhoneLabel_.*?">(.*?)</)[1];
+                        let address = location.match(/AddressLabel_.*?">(.*?)</)[1];
+                        let image = location.match(/image_.*?">(.*?)</)[1];
+                        let geo = location.match(/geoData_.*?">(.*?)</)[1];
+
+                        result.push(href)
+                        result.push(name)
+                        result.push(phone)
+                        result.push(address)
+                        result.push(image)
+                        result.push(geo)
+                        result.push(countyName)
+                        results.push(result);
+                    });
+
+                });
+
+                return results;
+            })
     }
 
     getLocationDetails(id) {
@@ -159,6 +149,7 @@ export class LocationsService {
                 return x.text();
             })
             .then((x) => {
+                let geo = x.match(/<meta name="keywords" content="(.*?)"/)[1];
                 let drs = x.split('org/Physician">').slice(1)
                 let providers: Array<Provider> = [];
 
@@ -174,6 +165,7 @@ export class LocationsService {
                     providers.push(provider)
                 })
                 currentDetail.setProviders(providers);
+                currentDetail.setGeo(geo);
                 detailParser.parse(
                     '<html><div' +
                     x.split('<div class="post format-image"')[1]);
