@@ -51,8 +51,8 @@ export class Location {
             this.data[5].match(/lat(.*?)[,<]/)[1]
             : this.data[5].split('lat')[1]
         let result = {
-            latitude: latitude,
-            longitude: longitude
+            latitude: parseFloat(latitude),
+            longitude: parseFloat(longitude)
         };
 
         return result;
