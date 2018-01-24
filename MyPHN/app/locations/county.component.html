@@ -44,15 +44,12 @@
                 style="background-color: white;"
             >
                 <!-- need to remove static image of clarion and add location-specific image -->
-                <StackLayout class="col-3">
-                    <Image
-                        src="{{item.getImage()}}"
-                        height="64"
-                        width="64"
-                        class="img-circle"
-                    >
-
-                    </Image>
+                <StackLayout 
+                    class="col-3 img-circle img-responsive"
+                    style="background-image: {{item.getImage()}}; background-size: cover; background-repeat: no-repeat; background-position: center; margin-left:20px;"
+                    height="64"
+                    width="64"
+                > 
                 </StackLayout>
                 <StackLayout class="col-2">
                     <Image

@@ -19,49 +19,116 @@
 
     </ActionItem>
 </ActionBar>
-<TabView
+
+<TabView 
+#ref
+(selectedIndexChanged)="onSelectedIndexChanged($event)"
+ style="android-selected-tab-highlight-color: #00817d;"
+ selectedIndex="0" (loaded)="onLoaded($event)"
+>
+    <StackLayout 
+    *tabItem="{title: 'Home'}"
+    >
+        <Label text="Search" class="hidden" color="blue"></Label>
+        <router-outlet 
+        name="home">
+        </router-outlet>
+	</StackLayout>
+	<StackLayout *tabItem="{title: 'Patient Portal'}">
+        <Label text="Location" class="hidden" color="blue"></Label>
+        <router-outlet 
+        name="portal">
+        </router-outlet>
+	</StackLayout>
+	<StackLayout *tabItem="{title: 'News'}">
+        <Label text="Services" class="hidden" color="blue"></Label>
+        <router-outlet 
+        name="news">
+        </router-outlet>
+	</StackLayout>
+	<StackLayout *tabItem="{title: 'Search'}">
+        <Label text="Providers" class="hidden" color="blue"></Label>
+        <router-outlet 
+        name="search">
+        </router-outlet>
+	</StackLayout>
+	<StackLayout *tabItem="{title: 'Locations'}">
+        <Label text="Providers" class="hidden" color="blue"></Label>
+        <router-outlet 
+        name="locations">
+        </router-outlet>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Services'}">
+        <Label text="Providers" class="hidden" color="blue"></Label>
+        <router-outlet 
+        name="services">
+        </router-outlet>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Providers'}">
+        <Label text="Providers" class="hidden" color="blue"></Label>
+        <router-outlet 
+        name="providers">
+        </router-outlet>
+	</StackLayout>
+</TabView>
+
+<!--  <TabView
     #ref
     (selectedIndexChanged)="onSelectedIndexChanged($event)"
-          style="android-selected-tab-highlight-color: transparent;"
+     style="android-selected-tab-highlight-color: transparent;"
 >
     <StackLayout
+        class="navbar-item"
         *tabItem="{title: 'Home',  iconSource: 'res://home'}"
-
     >
-        <router-outlet name="home">
+        <router-outlet 
+            name="home">
 
         </router-outlet>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'Portal', iconSource: 'res://portal'}">
+    <StackLayout 
+        class="navbar-item"
+        *tabItem="{title: 'Patient Portal', iconSource: 'res://portal'}">
         <router-outlet name="portal">
 
         </router-outlet>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'News', iconSource: 'res://news'}">
+    <StackLayout 
+        class="navbar-item"
+        *tabItem="{title: 'News', iconSource: 'res://news'}">
         <router-outlet name="news">
 
         </router-outlet>
     </StackLayout>
 
-    <!-- TODO: add appropriate resources for these -->
-    <StackLayout *tabItem="{title: 'Search', iconSource: 'res://news'}">
+
+    <StackLayout 
+        class="navbar-item"
+        *tabItem="{title: 'Search', iconSource: 'res://news'}">
         <router-outlet name="search">
 
         </router-outlet>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'Locations', iconSource: 'res://news'}" >
+
+    <StackLayout 
+        class="navbar-item"
+        *tabItem="{title: 'Locations', iconSource: 'res://news'}" >
         <router-outlet name="locations">
 
         </router-outlet>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'Services', iconSource: 'res://news'}" >
+    <StackLayout 
+        class="navbar-item"
+        *tabItem="{title: 'Services', iconSource: 'res://news'}" >
         <router-outlet name="services">
 
         </router-outlet>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'Providers', iconSource: 'res://news'}" >
+    <StackLayout 
+        class="navbar-item"
+        *tabItem="{title: 'Providers', iconSource: 'res://news'}" >
         <router-outlet name="providers">
 
         </router-outlet>
     </StackLayout>
-</TabView>
+</TabView> -->

@@ -14,6 +14,10 @@ import { ActionBar } from "ui/action-bar"
 import { Page } from "ui/page"
 import { isAndroid, isIOS, device, screen } from "platform";
 import { Config } from './shared/config';
+import { layout } from "utils/utils"
+import { EventData } from "data/observable";
+
+declare var android;
 
 @Component({
     selector: "ns-items",
@@ -117,6 +121,23 @@ export class ItemsComponent implements OnInit, AfterViewInit {
             this.initAndroid();
         } else {
             this.initIOS();
+        }
+    }
+
+    onLoaded(event: EventData) {
+        if (isAndroid) {
+            const tabView = (<any>event.object)._tabLayout.getChildAt(0);
+            for (let i = 0; i < tabView.getChildCount(); i++) {
+                const tabItem = tabView.getChildAt(i),
+                    textView = tabItem.getChildAt(1);
+                tabItem.setLayoutParams(
+                    new android.widget.LinearLayout
+                        .LayoutParams(android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+                        android.view.ViewGroup.LayoutParams.MATCH_PARENT)
+                );
+                textView.setMaxWidth(layout.toDevicePixels(900)); // increase as much you want
+                textView.setMaxLines(1);
+            }
         }
     }
 

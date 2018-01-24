@@ -24,3 +24,7 @@
 .hidden {
   visibility: collapse;
 }
+
+TabView {
+  font-size: 14pt;
+}

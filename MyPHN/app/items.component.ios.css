@@ -20,3 +20,7 @@
 .bottomDock {
   font-size: 10pt;
 }
+
+.hidden {
+  visibility: collapse;
+}

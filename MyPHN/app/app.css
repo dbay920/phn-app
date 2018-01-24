@@ -58,11 +58,11 @@ Label.tile {
 }
 
 .small-title {
-  font-size: 18pt;
-  line-height: 21pt;
+  font-size: 15pt;
+  line-height: 20pt;
   font-family: Roboto;
-  font-weight: bold;
   color: #FFFFFF;
+  vertical-align: middle;
 }
 
 .white {
