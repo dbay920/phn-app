@@ -103,7 +103,7 @@
                             [text]="item.data"
                             textWrap="true"
                             class="m-20 data primary text-left white-background"
-                            margin="-10 20 20 23"
+                            margin="0 20 20 23"
                             visibility="{{item.visible ? 'visible' : 'collapse' }}"
                             (tap)="callHome()"
                             dock="left"
@@ -123,6 +123,7 @@
             >
                 <StackLayout
                     style="background-color: white;"
+                    class="border-bottom"
                 >
                     <DockLayout orientation="horizontal" height="80">
                         <Label
@@ -143,24 +144,41 @@
                         style="background-color: white;"
                         *ngFor="let item of providers; let i = index;"
                     >
-                        <DockLayout orientation="horizontal" visibility="{{providersVisible}}">
+                        <DockLayout 
+                            orientation="horizontal" 
+                            visibility="{{providersVisible}}"
+                        >
                             <Label
-                                [text]="item.data"
+                                [text]="item.name + '\n' + item.data"
                                 textWrap="true"
                                 class="m-20 data primary text-left white-background"
-                                margin="-10 20 20 23"
+                                margin="0 20 20 23"
                                 visibility="{{providersVisible}}"
                                 (tap)="callHome()"
                                 dock="left"
                             >
 
                             </Label>
-                            <Image dock="right" [src]="item.image" height="70" visibility="{{providersVisible}}">
+                            <Image 
+                                dock="right" 
+                                [src]="item.image" 
+                                height="70" 
+                                visibility="{{providersVisible}}"
+                                class="pull-right"
+                                margin="0 20 0 0"
+                            >
 
                             </Image>
                         </DockLayout>
-                        <Button text="Bio" visibility="{{providersVisible}}" (tap)="gotoProvider(i)">
-
+                        <Button 
+                            text="Bio" 
+                            visibility="{{providersVisible}}" 
+                            (tap)="gotoProvider(i)"
+                            width="100"
+                            class="btn pull-left primary-background"
+                            style="color: white; float: left;"
+                            margin="-20 0 20 20"
+                        >
                         </Button>
                     </StackLayout>
                 </StackLayout>
