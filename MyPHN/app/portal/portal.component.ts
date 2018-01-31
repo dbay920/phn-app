@@ -4,7 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
     selector: "ns-items",
     moduleId: module.id,
-    templateUrl: "./portal.component.html",
+    templateUrl: "portal.component.html",
+    styleUrls: ["portal.component.css"]
 })
 
 export class PortalComponent {

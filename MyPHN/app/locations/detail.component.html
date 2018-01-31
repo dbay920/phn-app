@@ -11,10 +11,17 @@
             rows="24,*, 80"
         >
             <Label
-                text="Back"
-                class="small-title background"
+                text="Locations"
+                class="small-title alpha"
                 row="0"
-                height="25"
+                height="24"
+                orientation=""
+                style="background-image: url('res://back_circle_sm'); 
+                        background-repeat: no-repeat; 
+                        background-size: auto; 
+                        background-position: left center;
+                        padding-left: 30pt;
+                        line-height: auto;"                
                 (tap)="back()"
             >
 
@@ -47,7 +54,7 @@
                 <StackLayout orientation="horizontal">
                     <Label
                         text="{{address}}"
-                        class="english col-11"
+                        class="english col-11 font-weight-normal"
                         textWrap="true"
                         style="margin-top:-2pt; line-height:-1pt;"
                     >

@@ -18,21 +18,24 @@
                         <Image
                             src="res://icon_provider_bio"
                             height="26"
-                            class="m-10"
+                            class="m-20"
                         >
 
                         </Image>
                         <Label
-                            class="primary h3 p-10"
+                            class="primary h3"
+                            style="padding-top:20pt;"
                             [text]="name"
                         >
 
                         </Label>
                     </StackLayout>
-                    <StackLayout orientation="horizontal">
-                        <Image [src]="image" class="img-circle"
-                               height="151"
-                               width="50%"
+                    <StackLayout 
+                    orientation="horizontal"
+                    style="padding-left:20pt;"
+                    >
+                        <Image [src]="image" 
+                                style="height: 151rem; border-radius: 10%;"
                         >
 
                         </Image>
@@ -80,7 +83,7 @@
                         <Image
                             src="res://icon_location_bio"
                             height="40"
-                            class="m-20"
+                            class="m-10"
                         >
 
                         </Image>
@@ -101,14 +104,15 @@
                     </StackLayout>
                     <StackLayout>
                         <Label
-                            class="primary h3 p-y-30"
+                            class="primary"
+                            style="margin-top:20pt; margin-bottom: 26pt; font-size: 16pt; font-weight: bold;"
                             [text]="item.getName()"
                             (tap)="goToLocation(item.getId())"
                         >
 
                         </Label>
                         <Label
-                            class="primary"
+                            class="primary font-weight-normal"
                             [text]="item.getAddress().replace(', ', '\n')"
                             textWrap="true"
                             (tap)="navigate(item.getAddress())"
@@ -116,7 +120,7 @@
 
                         </Label>
                         <Label
-                            class="primary font-weight-bold m-y-25"
+                            class="primary font-weight-normal m-y-25"
                             [text]="item.getPhone()"
                             (tap)="call(item.getPhone())"
                         >

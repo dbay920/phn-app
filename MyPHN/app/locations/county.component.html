@@ -10,13 +10,18 @@
         class="primary-background"
         width="100%"
     >
-        <Button text="Back" (tap)="back()">
-            <!-- TODO: style me -->
-        </Button>
+    <Image
+    src="res://back_circle"
+    height="30"
+    weight="30"
+    (tap)="back()"
+    style="margin-left:10pt; margin-right:10pt;"
+    >
+    </Image>
         <Label
             text="{{county.getName()}}"
             class="double-columbian white font-weight-bold text-center"
-            style="padding: 22pt;"
+            style="padding-left: 5pt; vertical-align: middle;"
         >
 
         </Label>
@@ -91,14 +96,14 @@
                     <Label
                         [text]="item.getPhone()"
                         textWrap="true"
-                        class="font-weight-bold primary"
+                        class="font-weight-normal primary"
                     >
 
                     </Label>
                     <Label
                         [text]="item.getAddress().replace(', ', '\n')"
                         textWrap="true"
-                        class="primary"
+                        class="primary font-weight-normal"
                     >
 
                     </Label>
