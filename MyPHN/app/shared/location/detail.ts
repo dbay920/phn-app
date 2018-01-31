@@ -23,8 +23,8 @@ export class LocationDetail {
             geo.match(/lat(.*?)[,<]/)[1]
             : geo.split('lat')[1]
         let result = {
-            latitude: latitude,
-            longitude: longitude
+            latitude: parseFloat(latitude),
+            longitude: parseFloat(longitude)
         };
 
         return result;
