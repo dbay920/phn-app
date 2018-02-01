@@ -10,13 +10,18 @@
         class="primary-background"
         width="100%"
     >
-        <Button text="Back" (tap)="back()">
-            <!-- TODO: style me -->
-        </Button>
+    <Image
+    src="res://back_circle"
+    height="30"
+    weight="30"
+    (tap)="back()"
+    style="margin-left:10pt; margin-right:10pt;"
+    >
+    </Image>
         <Label
             text="{{county.getName()}}"
             class="double-columbian white font-weight-bold text-center"
-            style="padding: 22pt;"
+            style="padding-left: 5pt; vertical-align: middle;"
         >
 
         </Label>
@@ -41,18 +46,21 @@
         >
             <StackLayout
                 orientation="horizontal"
-                style="background-color: white;"
+                style="background-color: white; padding-top: 10pt; padding-bottom: 10pt;"
             >
                 <!-- need to remove static image of clarion and add location-specific image -->
-                <StackLayout class="col-3">
-                    <Image
-                        src="{{item.getImage()}}"
-                        height="64"
-                        width="64"
-                        class="img-circle"
-                    >
-
-                    </Image>
+                <StackLayout> 
+                <Image 
+                    height="74"
+                    width="74"
+                    class="img-responsive"
+                    style="background-image: {{item.getImage()}}; 
+                        background-size: cover; 
+                        background-repeat: no-repeat; 
+                        background-position: center;
+                        border-radius: 50%;
+                        margin-left: 10pt;">
+                </Image>
                 </StackLayout>
                 <StackLayout class="col-2">
                     <Image
@@ -94,14 +102,14 @@
                     <Label
                         [text]="item.getPhone()"
                         textWrap="true"
-                        class="font-weight-bold primary"
+                        class="font-weight-normal primary"
                     >
 
                     </Label>
                     <Label
                         [text]="item.getAddress().replace(', ', '\n')"
                         textWrap="true"
-                        class="primary"
+                        class="primary font-weight-normal"
                     >
 
                     </Label>
