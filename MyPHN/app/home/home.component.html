@@ -5,14 +5,14 @@
     dock="top"
 >
     <GridLayout
-        style="background-image: {{image}}; background-size: cover; background-repeat: no-repeat;"
+        style="background-image: {{image}}; background-size: cover; background-repeat: no-repeat; background-position: center;"
         rows="24, *, 80"
     >
         <Label
-            text="Closest PHN Location:"
-            class="small-title background"
+            text=" Closest PHN Location:"
+            class="small-title alpha"
             row="0"
-            height="25"
+            height="24"
         >
 
         </Label>
@@ -44,7 +44,7 @@
             <StackLayout orientation="horizontal">
                 <Label
                     text="{{address}}"
-                    class="english col-11"
+                    class="english col-11 font-weight-normal"
                     textWrap="true"
                     style="margin-top:-2pt; line-height:-1pt;"
                 >
