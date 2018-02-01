@@ -135,7 +135,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
                         .LayoutParams(android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
                         android.view.ViewGroup.LayoutParams.MATCH_PARENT)
                 );
-                textView.setMaxWidth(layout.toDevicePixels(900)); // increase as much you want
+                textView.setMaxWidth(layout.toDevicePixels(800)); // increase as much you want
                 textView.setMaxLines(1);
             }
         }
