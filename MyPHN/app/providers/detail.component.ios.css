@@ -1,3 +1,7 @@
 /* .hidden {
   visibility: collapse;
 } */
+
+Label .ios-fix {
+  padding-top: 0pt;
+}

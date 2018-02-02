@@ -148,39 +148,44 @@
                             orientation="horizontal" 
                             visibility="{{providersVisible}}"
                         >
+                        <StackLayout>
+                        <Image 
+                            dock="left" 
+                            [src]="item.image" 
+                            height="70" 
+                            width="70"
+                            visibility="{{providersVisible}}"
+                            class="pull-left img-circle"
+                            stretch="aspectFill"
+                            style="border-radius: 50%; margin-left: 20pt;"
+                        >
+                        </Image>
+                        </StackLayout>
+                        <StackLayout>
                             <Label
                                 [text]="item.name + '\n' + item.data"
                                 textWrap="true"
                                 class="m-20 data primary text-left white-background"
-                                margin="0 20 20 23"
+                                margin="0 20 10 23"
                                 visibility="{{providersVisible}}"
                                 (tap)="callHome()"
-                                dock="left"
+                                dock="right"
                             >
 
                             </Label>
-                            <Image 
-                                dock="right" 
-                                [src]="item.image" 
-                                height="70" 
-                                width="70"
-                                visibility="{{providersVisible}}"
-                                class="pull-right img-circle"
-                                stretch="aspectFill"
-                                style="border-radius: 50%; margin-right: 20pt;"
-                            >
-                            </Image>
-                        </DockLayout>
-                        <Button 
+                            <Button 
                             text="Bio" 
                             visibility="{{providersVisible}}" 
                             (tap)="gotoProvider(i)"
-                            width="100"
+                            width="100" 
                             class="btn pull-left primary-background"
-                            style="color: white; float: left;"
-                            margin="-20 0 20 20"
+                            style="color: white;"
+                            margin="0 20 30 20"
                         >
                         </Button>
+                    </StackLayout>
+                        </DockLayout>
+
                     </StackLayout>
                 </StackLayout>
             </CardView>

@@ -23,7 +23,7 @@
 
                         </Image>
                         <Label
-                            class="primary h3"
+                            class="primary h3 ios-fix"
                             style="padding-top:20pt;"
                             [text]="name"
                         >
@@ -110,6 +110,7 @@
                             class="primary"
                             style="margin-top:20pt; margin-bottom: 26pt; font-size: 16pt; font-weight: bold;"
                             [text]="item.getName()"
+                            textWrap="true"
                             (tap)="goToLocation(item.getId())"
                         >
 
