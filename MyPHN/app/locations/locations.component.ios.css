@@ -14,3 +14,7 @@
   .location-card {
     height: 80pt;
   }
+
+  .ios-fix {
+    margin-left: 7pt;
+  }

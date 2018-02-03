@@ -23,7 +23,7 @@
                 <Label
                     text="Locations"
                     class="double-columbian white font-weight-bold col-10"
-                    style="padding: 22pt;"
+                    style="padding-left: 5pt; vertical-align: middle;"
                 >
 
                 </Label>
@@ -119,21 +119,22 @@
             <CardView
                 elevation="40"
                 radius="2"
-                height="162pt"
                 class="m-4 distance_card"
                 (tap)="listViewItemTap(i)"
             >
-                <StackLayout class="p-10" style="background-color: white;">
+                <StackLayout class="p-10" style="background-color: white; padding-top: 10pt; padding-bottom: 10pt;">
                     <StackLayout orientation="horizontal">
-                        <Image src="{{item.getImage()}}"
-                               height="40"
-                               class="col-2"
+                        <Image 
+                               height="50pt"
+                               width="50pt"
+                               stretch="aspectFill"
+                               style="background-image: {{item.getImage()}}; background-size: cover; background-repeat: no-repeat; background-position: center; border-radius: 50%;"
                         >
 
                         </Image>
                         <Image src="res://icon_location_nearme"
                                height="20"
-                               class="col-2"
+                               class="col-2 ios-fix"
                         >
 
                         </Image>
@@ -147,7 +148,7 @@
                     </StackLayout>
                     <StackLayout orientation="horizontal">
                         <Label
-                            text=""
+                            [text]="item.getDist()"
                             class="primary col-2"
                         >
 
@@ -161,6 +162,7 @@
                         <Label
                             [text]="item.getPhone()"
                             class="primary col-7"
+                            style="margin-bottom: 10pt;"
                         >
 
                         </Label>

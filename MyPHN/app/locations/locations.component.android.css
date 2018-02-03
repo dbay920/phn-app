@@ -1,13 +1,13 @@
 ListView.by-county {
-  height: 224;
+  height: 100%;
 }
 
 ListView.by-dist {
-  height: 224;
+  height: 100%;
 }
 
 ListView.by-alpha {
-  height: 224;
+  height: 100%;
 }
 .county_card_l {
   margin-left: 2%;

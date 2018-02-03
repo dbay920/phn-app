@@ -58,11 +58,11 @@ Label.tile {
 }
 
 .small-title {
-  font-size: 18pt;
-  line-height: 21pt;
+  font-size: 16pt;
+  line-height: auto;
   font-family: Roboto;
-  font-weight: bold;
   color: #FFFFFF;
+  vertical-align: middle;
 }
 
 .white {
@@ -124,7 +124,7 @@ Page {
 }
 
 .double-columbian {
-  font-size: 32pt;
+  font-size: 28pt;
 }
 
 .great-primer {
