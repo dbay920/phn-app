@@ -76,6 +76,11 @@ const routes: Routes = [
                 outlet: 'providers'
             },
             {
+                path: 'providers/services/:id',
+                component: ServiceDetailComponent,
+                outlet: 'providers'
+            },
+            {
                 path: 'providers/:id',
                 component: ProviderDetailComponent,
                 outlet: 'providers'
