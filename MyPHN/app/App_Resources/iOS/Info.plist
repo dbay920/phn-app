@@ -49,5 +49,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+        <key>UIBackgroundModes</key>
+        <array>
+            <string>remote-notifications</string>
+        </array>
 </dict>
 </plist>

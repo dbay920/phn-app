@@ -184,20 +184,21 @@ export class ItemsComponent implements OnInit, AfterViewInit {
             senderID: Config.messageSenderId // had to add this i think
         };
 
-        pushPlugin.register(iosSettings, (token: String) => {
-            alert("Device registered. Access token: " + token);
+        /*        pushPlugin.register(iosSettings, (token: String) => {
+                    alert("Device registered. Access token: " + token);
 
-            // Register the interactive settings
-            if (iosSettings.interactiveSettings) {
-                pushPlugin.registerUserNotificationSettings(() => {
-                    alert('Successfully registered for interactive push.');
-                }, (err) => {
-                    alert('Error registering for interactive push: ' + JSON.stringify(err));
-                });
-            }
-        }, (errorMessage: any) => {
-            alert("Device NOT registered! " + JSON.stringify(errorMessage));
-        });
+                    // Register the interactive settings
+                    if (iosSettings.interactiveSettings) {
+                        pushPlugin.registerUserNotificationSettings(() => {
+                            alert('Successfully registered for interactive push.');
+                        }, (err) => {
+                            alert('Error registering for interactive push: ' + JSON.stringify(err));
+                        });
+                    }
+                }, (errorMessage: any) => {
+                    alert("Device NOT registered! " + JSON.stringify(errorMessage));
+                    });*/
+
     }
 
     static navCtrl;
