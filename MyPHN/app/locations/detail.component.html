@@ -10,22 +10,20 @@
             style="background-image: {{image}}; background-size: cover; background-repeat: no-repeat;"
             rows="24,*, 80"
         >
+        <StackLayout orientation="horizontal" class="alpha" (tap)="back()">
+            <Image
+            src="res://back_circle_sm"
+            height="18"
+            >
+            </Image>
             <Label
                 text="Locations"
-                class="small-title alpha"
+                class="small-title"
                 row="0"
                 height="24"
-                orientation=""
-                style="background-image: url('res://back_circle_sm'); 
-                        background-repeat: no-repeat; 
-                        background-size: auto; 
-                        background-position: left center;
-                        padding-left: 30pt;
-                        line-height: auto;"                
-                (tap)="back()"
             >
-
             </Label>
+        </StackLayout>
             <StackLayout
                 class="alpha"
                 row="2"

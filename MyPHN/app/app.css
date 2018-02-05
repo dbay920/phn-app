@@ -65,6 +65,14 @@ Label.tile {
   vertical-align: middle;
 }
 
+.small-title-grn {
+  font-size: 16pt;
+  line-height: auto;
+  font-family: Roboto;
+  color: #00817d;
+  vertical-align: middle;
+}
+
 .white {
   color: white;
 }

@@ -1,7 +1,18 @@
 <StackLayout>
-    <Button text="Back" (tap)="back()">
-
-    </Button>
+    <StackLayout orientation="horizontal" (tap)="back()" style="padding: 10pt 0pt 10pt 0pt; background-color: white;">
+        <Image
+        src="res://back_circle_sm_grn"
+        height="18"
+        >
+        </Image>
+        <Label
+            text="Services"
+            class="small-title-grn"
+            row="0"
+            height="24"
+        >
+        </Label>
+    </StackLayout>
     <WebView #ref [src]="webViewSrc" height="100%">
 
     </WebView>
