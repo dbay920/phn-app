@@ -11,7 +11,7 @@
         <key>application-identifier</key>
         <string>7K346UXQM3.net.primaryhealth.MyPHN</string>
         <key>com.apple.developer.team-identifier</key>
-        <string>7K346UXQM3</string>ing>
+        <string>7K346UXQM3</string>
         <key>aps-environment</key>
         <string>development</string>
     </dict>
