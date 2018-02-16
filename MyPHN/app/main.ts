@@ -6,4 +6,27 @@ import { AppModule } from "./app.module";
 import * as elementRegistryModule from 'nativescript-angular/element-registry';
 elementRegistryModule.registerElement("CardView", () => require("nativescript-cardview").CardView);
 
+const firebase = require("nativescript-plugin-firebase");
+
 platformNativeScriptDynamic().bootstrapModule(AppModule);
+
+firebase.init({
+    // Optionally pass in properties for database, authentication and cloud messaging,
+    // see their respective docs.
+
+    iOSEmulatorFlush: true,
+
+    onMessageReceivedCallback: (message) => {
+        alert(`${message.title}\n${message.body}`);
+        // if your server passed a custom property called 'foo', then do this:
+        //console.log(`Value of 'foo': ${message.data.foo}`);
+    }
+
+}).then(
+    instance => {
+        console.log("firebase.init done");
+    },
+    error => {
+        console.log(`firebase.init error: ${error}`);
+    }
+    );
