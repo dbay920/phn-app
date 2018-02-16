@@ -8,6 +8,8 @@ elementRegistryModule.registerElement("CardView", () => require("nativescript-ca
 
 const firebase = require("nativescript-plugin-firebase");
 
+platformNativeScriptDynamic().bootstrapModule(AppModule);
+
 firebase.init({
     // Optionally pass in properties for database, authentication and cloud messaging,
     // see their respective docs.
@@ -28,5 +30,3 @@ firebase.init({
         console.log(`firebase.init error: ${error}`);
     }
     );
-
-platformNativeScriptDynamic().bootstrapModule(AppModule);
