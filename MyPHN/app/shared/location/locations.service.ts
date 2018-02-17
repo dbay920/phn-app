@@ -95,6 +95,25 @@ var detailParser = new xmlModule.XmlParser(onEventCallback3, onErrorCallback);
 export class LocationsService {
     constructor() { }
 
+    getServiceLocationsText(id) {
+        return fetchModule.fetch('https://primary-health.net/ServiceDetail.aspx?id=' + id,
+            {
+                method: "GET"
+            })
+            .then(this.handleErrors)
+            .then((x) => {
+                return x.text();
+            })
+            .then((x) => {
+                const token = '<!-- /.etabs -->'
+                let result = x.split(token);
+
+                //console.log(result.length)
+
+                return result[1];
+            })
+    }
+
     getAllLocations() {
         return fetchModule.fetch('https://primary-health.net/Locations.aspx',
             {
@@ -136,7 +155,7 @@ export class LocationsService {
                 });
 
                 return results;
-            })
+            });
     }
 
     getLocationDetails(id) {

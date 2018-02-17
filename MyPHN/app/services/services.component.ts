@@ -11,21 +11,22 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class ServicesComponent implements OnInit {
+    static services: Array<Service>;
     services: Array<Service>;
 
     constructor(
         private _router: Router,
         private servicesService: ServicesService,
-    ) {
-    }
+    ) { }
 
     goToService(i): void {
         this._router.navigateByUrl("items/(services:services/" +
-            this.services[i].getId() + ')')
+            ServicesComponent.services[i].getId() + ')')
     }
 
     ngOnInit(): void {
         this.servicesService.getServices().then((x) => {
+            ServicesComponent.services = x;
             this.services = x;
         });
     }
