@@ -193,6 +193,37 @@ export class LocationsService {
             });
     }
 
+    getServiceProviders(id) {
+        return fetchModule.fetch('https://primary-health.net/ServiceDetail.aspx?id=' + id,
+            {
+                method: "GET"
+            })
+            .then(this.handleErrors)
+            .then((x) => {
+                return x.text();
+            })
+            .then((x) => {
+                const token = '<!-- /.etabs -->'
+                let result = x.split(token);
+                let drs = x.split('org/Physician">').slice(1)
+                let providers: Array<Provider> = [];
+
+                drs.forEach((dr) => {
+                    let service = dr.match(/<span>(.*?)<\/span>/)[1];
+                    let id = dr.match(/\?id=(.*?)"/)[1]
+                    let name = dr.match(/itle="(.*?)" h/)[1]
+                    let provider = new Provider(name);
+
+                    provider.setId(id)
+                    provider.setServiceName(service)
+                    providers.push(provider)
+                })
+
+                return providers;
+            })
+
+    }
+
     getCounties() {
         return fetchModule.fetch("https://primary-health.net",
             {
