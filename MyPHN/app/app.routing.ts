@@ -65,7 +65,7 @@ const routes: Routes = [
             },
             {
                 path: 'services/:id',
-                component: ServiceDetailComponent,
+                component: CountyComponent,
                 outlet: 'services'
             },
 
