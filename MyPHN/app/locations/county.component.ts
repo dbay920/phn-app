@@ -43,14 +43,17 @@ export class CountyComponent implements OnInit {
         this.route.params
             .forEach((params) => {
                 this.county = County.buildFromName(params["id"]);
-                this.county.service = ServicesComponent.services[0].getName();
+                ServicesComponent.services.forEach((service) => {
+                    if (service.getId() == this.county.getHref())
+                        this.county.service = service.getName();
+                });
             });
 
         this.locationsService.getAllLocations().then((x) => {
             const path = this.route.snapshot.url[0].path;
 
             if (path === 'services') {
-                this.locationsService.getServiceLocationsText(2).then((y) => {
+                this.locationsService.getServiceLocationsText(this.county.getHref()).then((y) => {
                     this.locations = _.filter(x, (loc: Location) => {
                         return y.indexOf(loc.getName()) >= 0;
                     });
