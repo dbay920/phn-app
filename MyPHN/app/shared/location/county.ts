@@ -1,5 +1,6 @@
 export class County {
-    data: Array<string>
+    data: Array<string>;
+    service: string;
 
     constructor() {
         this.data = [];
@@ -7,7 +8,14 @@ export class County {
 
     static buildFromName(name: string) {
         let obj = new County();
-        obj.push('https://primary-health.net/' + name.split(' ')[0] + '.aspx');
+        let county = name.split(' ')
+
+        if (county.length > 1) {
+            obj.push('https://primary-health.net/' + county[0] + '.aspx');
+        } else {
+            obj.push(county[0]);
+        }
+
         return obj;
     }
 
@@ -16,12 +24,16 @@ export class County {
     }
 
     getName() {
-        let x = this.data[0].split('net/')[1];
+        let parts = this.data[0].split('net/')
 
-        if (x)
-            x = x.split('.')[0] + ' County';
+        if (parts.length > 1) {
+            let x = parts[1];
 
-        return x;
+            if (x)
+                return x.split('.')[0] + ' County';
+        } else {
+            return this.service;
+        }
     }
 
     push(x: string) {
