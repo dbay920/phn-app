@@ -1,6 +1,4 @@
 import { Component } from "@angular/core";
-import pageModule = require("ui/page");
-import tabViewModule = require("ui/tab-view");
 
 const firebase = require("nativescript-plugin-firebase");
 
