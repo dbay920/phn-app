@@ -1,9 +1,10 @@
 // Add your native dependencies here:
 
 // Uncomment to add recyclerview-v7 dependency
-//dependencies {
-//	compile 'com.android.support:recyclerview-v7:+'
-//}
+dependencies {
+    //	compile 'com.android.support:recyclerview-v7:+'
+    //classpath 'com.google.gms:google-services:3.0.0'
+}
 
 repositories {
         jcenter()
@@ -12,12 +13,16 @@ repositories {
         }
     }
 
-android {  
-  defaultConfig {  
+android {
+  defaultConfig {
     generatedDensities = []
-    applicationId = "net.primaryhealth.MyPHN"  
-  }  
-  aaptOptions {  
-    additionalParameters "--no-version-vectors"  
-  }  
-} 
+    applicationId = "net.primaryhealth.MyPHN"
+  }
+  aaptOptions {
+    additionalParameters "--no-version-vectors"
+    }
+
+    project.ext {
+    googlePlayServicesVersion = "11.8.0"
+}
+}
