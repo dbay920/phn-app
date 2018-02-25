@@ -5,6 +5,7 @@ import { County } from "../shared/location/county";
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageRoute } from "nativescript-angular/router";
 import { Location } from "../shared/location/location";
+import { ServicesComponent } from '../services/services.component';
 import * as _ from "lodash";
 
 @Component({
@@ -42,12 +43,31 @@ export class CountyComponent implements OnInit {
         this.route.params
             .forEach((params) => {
                 this.county = County.buildFromName(params["id"]);
+                ServicesComponent.services.forEach((service) => {
+                    if (service.getId() == this.county.getHref())
+                        this.county.service = service.getName();
+                });
             });
 
         this.locationsService.getAllLocations().then((x) => {
-            this.locations = _.filter(x, (loc: Location) => {
-                return loc.getCounty().includes(this.county.getName());
-            });
+            const path = this.route.snapshot.url[0].path;
+
+            if (path === 'services') {
+                this.locationsService.getServiceLocationsText(this.county.getHref()).then((y) => {
+                    this.locations = _.filter(x, (loc: Location) => {
+                        return y.indexOf(loc.getName()) >= 0;
+                    });
+                });
+            } else {
+                this.locations = _.filter(x, (loc: Location) => {
+                    return loc.getCounty().includes(this.county.getName());
+                });
+            }
+
+
+
+
+
         }, (error) => alert("Could not load locations."));
     }
 }
