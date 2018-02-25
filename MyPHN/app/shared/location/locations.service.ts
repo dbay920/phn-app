@@ -209,7 +209,7 @@ export class LocationsService {
                 let providers: Array<Provider> = [];
 
                 drs.forEach((dr) => {
-                    let service = dr.match(/<span>(.*?)<\/span>/)[1];
+                    let service = dr.split('span')[6].slice(1, -2)
                     let id = dr.match(/\?id=(.*?)"/)[1]
                     let name = dr.match(/itle="(.*?)" h/)[1]
                     let provider = new Provider(name);

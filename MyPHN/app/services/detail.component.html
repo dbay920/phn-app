@@ -1,68 +1,78 @@
-<CardView
-    elevation="40"
-    radius="2"
-    class="m-4"
->
-    <StackLayout
-        style="background-color: white;"
-        class="border-bottom"
+<StackLayout>
+    <Button text="Back" (tap)="back()">
+
+    </Button>
+    <ScrollView
+        class="m-4"
     >
-        <DockLayout orientation="horizontal" height="80">
-            <Label
-                (tap)="providersTap(i)"
-                text="Providers"
-                class="col-10 double-pica font-weight-bold primary"
-                height="80"
-                padding="23"
-                dock="left"
-            >
 
-            </Label>
-            <Image dock="right" src="res://icon_providers_location" class="col-2" height="40">
-
-            </Image>
-        </DockLayout>
-        <StackLayout
-            style="background-color: white;"
-            *ngFor="let item of providers; let i = index;"
+        <CardView
+            elevation="40"
+            radius="2"
+            class="m-4"
         >
-            <DockLayout
-                orientation="horizontal"
-                visibility="{{providersVisible}}"
+            <StackLayout
+                style="background-color: white;"
+                class="border-bottom"
             >
-                <Label
-                    [text]="item.name + '\n' + item.data"
-                    textWrap="true"
-                    class="m-20 data primary text-left white-background"
-                    margin="0 20 20 23"
-                    visibility="{{providersVisible}}"
-                    (tap)="callHome()"
-                    dock="left"
-                >
+                <DockLayout orientation="horizontal" height="80">
+                    <Label
+                        (tap)="providersTap(i)"
+                        text="Providers"
+                        class="col-10 double-pica font-weight-bold primary"
+                        height="80"
+                        padding="23"
+                        dock="left"
+                    >
 
-                </Label>
-                <Image
-                    dock="right"
-                    [src]="item.image"
-                    height="70"
-                    width="70"
-                    visibility="{{providersVisible}}"
-                    class="pull-right img-circle"
-                    stretch="aspectFill"
-                    style="border-radius: 50%; margin-right: 20pt;"
+                    </Label>
+                    <Image dock="right" src="res://icon_providers_location" class="col-2" height="40">
+
+                    </Image>
+                </DockLayout>
+                <StackLayout
+                    style="background-color: white;"
+                    *ngFor="let item of providers; let i = index;"
                 >
-                </Image>
-            </DockLayout>
-            <Button
-                text="Bio"
-                visibility="{{providersVisible}}"
-                (tap)="gotoProvider(i)"
-                width="100"
-                class="btn pull-left primary-background"
-                style="color: white; float: left;"
-                margin="-20 0 20 20"
-            >
-            </Button>
-        </StackLayout>
-    </StackLayout>
-</CardView>
+                    <DockLayout
+                        orientation="horizontal"
+                        visibility="{{providersVisible}}"
+                    >
+                        <Label
+                            [text]="item.getName() + '\n' + item.getServiceName()"
+                            textWrap="true"
+                            class="m-20 data primary text-left white-background"
+                            margin="0 20 20 23"
+                            visibility="{{providersVisible}}"
+                            (tap)="callHome()"
+                            dock="left"
+                        >
+
+                        </Label>
+                        <Image
+                            dock="right"
+                            [src]="item.getImage()"
+                            height="70"
+                            width="70"
+                            visibility="{{providersVisible}}"
+                            class="pull-right img-circle"
+                            stretch="aspectFill"
+                            style="border-radius: 50%; margin-right: 20pt;"
+                        >
+                        </Image>
+                    </DockLayout>
+                    <Button
+                        text="Bio"
+                        visibility="{{providersVisible}}"
+                        (tap)="gotoProvider(i)"
+                        width="100"
+                        class="btn pull-left primary-background"
+                        style="color: white; float: left;"
+                        margin="-20 0 20 20"
+                    >
+                    </Button>
+                </StackLayout>
+            </StackLayout>
+        </CardView>
+    </ScrollView>
+</StackLayout>
