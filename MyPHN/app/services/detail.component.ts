@@ -1,8 +1,10 @@
-import { QueryList, Component, OnInit, ElementRef, ViewChildren, AfterViewInit } from "@angular/core";
+import { NgZone, QueryList, Component, OnInit, ElementRef, ViewChildren, AfterViewInit } from "@angular/core";
 import { ActivatedRoute, Router } from '@angular/router';
-import { WebView } from "ui/web-view"
 import { isAndroid, isIOS, device, screen } from "platform";
 import { ItemsComponent } from '../items.component';
+import { LocationsService } from '../shared/location/locations.service';
+import { Provider } from "../shared/providers/provider"
+import * as TNSPhone from 'nativescript-phone';
 
 @Component({
     selector: "ns-items",
@@ -13,12 +15,12 @@ import { ItemsComponent } from '../items.component';
 
 export class ServiceDetailComponent implements OnInit, AfterViewInit {
     public id: string;
-    public webViewSrc: string;
-    @ViewChildren('ref') ref: QueryList<any>;
 
     constructor(
         private route: ActivatedRoute,
         private _router: Router,
+        private locationsService: LocationsService,
+        private _ngZone: NgZone,
     ) { }
 
     back(): void {
@@ -34,41 +36,31 @@ export class ServiceDetailComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.ref.first.nativeElement.on(WebView.loadStartedEvent, (event) => {
-            if (this.isLocation(event.url) || this.isProvider(event.url)) {
 
-                // Stop the loading event
-                if (!isAndroid) {
-                    event.object.ios.stopLoading();
-                } else {
-                    event.object.android.stopLoading();
-                }
-
-                // Do something depending on the coordinates in the URL
-                if (this.isLocation(event.url)) {
-
-                    // is location
-                    this._router.navigateByUrl(
-                        "items/(locations:locations/detail/" +
-                        event.url.split('=')[1] + ')');
-                    ItemsComponent.setSelectedIndex(4);
-                } else {
-
-                    // is provider
-                    this._router.navigateByUrl(
-                        "items/(providers:providers/" +
-                        event.url.split('=')[1] + ')');
-                    ItemsComponent.setSelectedIndex(6);
-                }
-            }
-        });
     }
 
+    providersTap() {
+
+    }
+
+    gotoProvider(i) {
+        this._router.navigateByUrl("items/(providers:providers/" + this.providers[i].getId());
+    }
+
+    public callHome(x) {
+        TNSPhone.dial(x.getContact(), true);
+    }
+
+    providersVisible;
+    providers;
     ngOnInit(): void {
         this.route.params.forEach((params) => {
-            this.id = params["id"];
+            this.id = params["id"].split('#')[0];
         });
-        this.webViewSrc =
-            'https://primary-health.net/ServiceDetail.aspx?id=' + this.id;
+
+        this.locationsService.getServiceProviders(this.id).then(
+            (y: Array<Provider>) => {
+                this.providers = y;
+            });
     }
 }

@@ -16,12 +16,12 @@
                 row="0"
                 height="24"
                 orientation=""
-                style="background-image: url('res://back_circle_sm'); 
-                        background-repeat: no-repeat; 
-                        background-size: auto; 
+                style="background-image: url('res://back_circle_sm');
+                        background-repeat: no-repeat;
+                        background-size: auto;
                         background-position: left center;
                         padding-left: 30pt;
-                        line-height: auto;"                
+                        line-height: auto;"
                 (tap)="back()"
             >
 
@@ -144,8 +144,8 @@
                         style="background-color: white;"
                         *ngFor="let item of providers; let i = index;"
                     >
-                        <DockLayout 
-                            orientation="horizontal" 
+                        <DockLayout
+                            orientation="horizontal"
                             visibility="{{providersVisible}}"
                         >
                             <Label
@@ -159,10 +159,10 @@
                             >
 
                             </Label>
-                            <Image 
-                                dock="right" 
-                                [src]="item.image" 
-                                height="70" 
+                            <Image
+                                dock="right"
+                                [src]="item.image"
+                                height="70"
                                 width="70"
                                 visibility="{{providersVisible}}"
                                 class="pull-right img-circle"
@@ -171,9 +171,9 @@
                             >
                             </Image>
                         </DockLayout>
-                        <Button 
-                            text="Bio" 
-                            visibility="{{providersVisible}}" 
+                        <Button
+                            text="Bio"
+                            visibility="{{providersVisible}}"
                             (tap)="gotoProvider(i)"
                             width="100"
                             class="btn pull-left primary-background"
