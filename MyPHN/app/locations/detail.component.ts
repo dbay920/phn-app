@@ -7,7 +7,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PageRoute } from "nativescript-angular/router";
 import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";
 import { LocateAddress } from "nativescript-locate-address";
-//import { CensusService } from "../shared/census/census.service";
 import * as LabelModule from "tns-core-modules/ui/label";
 import { Config } from '../shared/config';
 import * as _ from "lodash";
@@ -34,7 +33,6 @@ export class LocationDetailComponent implements OnInit {
         private route: ActivatedRoute,
         private _router: Router,
         private locationsService: LocationsService,
-        //      private censusService: CensusService,
         private _ngZone: NgZone,
     ) { }
 
