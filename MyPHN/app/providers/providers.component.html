@@ -41,12 +41,14 @@
                 orientation="horizontal"
                 horizontalAlignment="center"
             >
+            <WrapLayout horizontal-alignment="center">
                 <CardView
                     elevation="40"
                     radius="2"
                     [class.hidden]="odd"
                     height="80pt"
-                    class="m-4 col-6"
+                    width="48%"
+                    margin="3"
                     (tap)="listViewItemTap(i)"
                 >
                     <Label
@@ -76,6 +78,7 @@
 
                     </Label>
                 </CardView>
+                </WrapLayout>
             </StackLayout>
         </ng-template>
     </ListView>
