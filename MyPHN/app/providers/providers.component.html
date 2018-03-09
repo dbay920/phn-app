@@ -1,4 +1,4 @@
-<StackLayout width="100%" style="background-color: #cecece;" >
+<StackLayout width="100%" height="100%" style="background-color: #cecece;" >
     <CardView
         elevation="40"
         radius="2"
@@ -7,7 +7,6 @@
     >
         <StackLayout
             class="primary-background"
-            height="90pt"
             orientation="horizontal"
         >
             <Image
@@ -37,16 +36,19 @@
             let-odd="odd"
             let-even="even"
         >
+
             <StackLayout 
                 orientation="horizontal"
                 horizontalAlignment="center"
             >
+            <WrapLayout horizontal-alignment="center">
                 <CardView
                     elevation="40"
                     radius="2"
                     [class.hidden]="odd"
                     height="80pt"
-                    class="m-4 col-6"
+                    width="48%"
+                    margin="3"
                     (tap)="listViewItemTap(i)"
                 >
                     <Label
@@ -63,7 +65,7 @@
                     radius="2"
                     [class.hidden]="odd || i + 1 >= services.length "
                     height="80pt"
-                    class="m-4 col-6"
+                    width="48%"                    margin="3"                    
                     (tap)="listViewItemTap(i+1)"
                 >
                     <Label
@@ -76,6 +78,7 @@
 
                     </Label>
                 </CardView>
+            </WrapLayout>
             </StackLayout>
         </ng-template>
     </ListView>
