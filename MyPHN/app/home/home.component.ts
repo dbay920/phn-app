@@ -44,6 +44,10 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        // Loading image to show while detecting location
+        this.image = 'res://loadingscreen'; // TODO: change me
+
+        // Cards to show on home screen
         this.cards = [
             {
                 name: 'Locations',
@@ -89,7 +93,9 @@ export class HomeComponent implements OnInit {
                     this.image = minCounty.getImage();
                 }
             }, function(e) {
-                console.log("Error: " + e.message);
+
+                // image to show when we cannot determine location
+                this.image = 'res://icon_location_home'; // TODO: change me
             });
         });
     }

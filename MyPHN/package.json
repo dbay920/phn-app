@@ -7,9 +7,12 @@
     "id": "net.primaryhealth.MyPHN",
     "tns-android": {
       "version": "3.4.2"
+<<<<<<< HEAD
     },
     "tns-ios": {
       "version": "3.4.1"
+=======
+>>>>>>> master
     }
   },
   "dependencies": {
