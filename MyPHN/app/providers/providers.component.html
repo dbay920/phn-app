@@ -1,5 +1,5 @@
 <GridLayout rows="auto *" width="100%" >
-    <CardView
+    <CardView row="0"
         elevation="40"
         radius="2"
         height="90pt"
@@ -27,6 +27,7 @@
         </StackLayout>
     </CardView>
     <ListView
+    row="1"
         [items]="services"
         style="background-color: #cecece;"
         separatorColor="transparent"
@@ -41,12 +42,14 @@
                 orientation="horizontal"
                 horizontalAlignment="center"
             >
+            <WrapLayout horizontal-alignment="center">
                 <CardView
                     elevation="40"
                     radius="2"
                     [class.hidden]="odd"
                     height="80pt"
-                    class="m-4 col-6"
+                    width="48%"
+                    margin="3"
                     (tap)="listViewItemTap(i)"
                 >
                     <Label
@@ -76,6 +79,7 @@
 
                     </Label>
                 </CardView>
+                </WrapLayout>
             </StackLayout>
         </ng-template>
     </ListView>

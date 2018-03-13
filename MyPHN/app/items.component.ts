@@ -33,6 +33,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     @ViewChildren('ref') ref: QueryList<any>;
     @ViewChildren('action') action: QueryList<any>;
 
+
     constructor(
         private _router: Router,
         private locationsService: LocationsService,
