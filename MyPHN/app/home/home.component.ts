@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
         // Loading image to show while detecting location
-        this.image = 'res://icon'; // TODO: change me
+        this.image = 'res://loadingscreen'; // TODO: change me
 
         // Cards to show on home screen
         this.cards = [
