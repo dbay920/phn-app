@@ -1,5 +1,5 @@
-<StackLayout width="100%" style="background-color: #cecece;" >
-    <CardView
+<GridLayout rows="auto *" width="100%" >
+    <CardView row="0"
         elevation="40"
         radius="2"
         height="90pt"
@@ -27,6 +27,7 @@
         </StackLayout>
     </CardView>
     <ListView
+    row="1"
         [items]="services"
         style="background-color: #cecece;"
         separatorColor="transparent"
@@ -82,4 +83,4 @@
             </StackLayout>
         </ng-template>
     </ListView>
-</StackLayout>
+</GridLayout>
