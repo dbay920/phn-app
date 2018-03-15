@@ -15,6 +15,7 @@ import { isAndroid, isIOS, device, screen } from "platform";
 import { Config } from './shared/config';
 import { layout } from "utils/utils"
 import { EventData } from "data/observable";
+import { setCurrentOrientation, orientationCleanup } from 'nativescript-screen-orientation';
 
 declare var android;
 
@@ -33,12 +34,20 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     @ViewChildren('ref') ref: QueryList<any>;
     @ViewChildren('action') action: QueryList<any>;
 
-
     constructor(
         private _router: Router,
         private locationsService: LocationsService,
         private routerExtensions: RouterExtensions,
+        private page: Page
     ) {
+        page.on("navigatedTo", function() {
+            setCurrentOrientation("portrait", function() {
+                console.log("portrait orientation");
+            });
+        });
+        page.on("navigatingFrom", function() {
+            orientationCleanup();
+        });
     }
 
     public goBack() {
