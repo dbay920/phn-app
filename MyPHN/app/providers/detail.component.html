@@ -11,9 +11,22 @@
                 class="m-4"
             >
                 <StackLayout class="white-background">
-                    <Button text="Back" (tap)="back()">
-
-                    </Button>
+                    <Label
+                        text=" Providers"
+                        class="small-title alpha"
+                        row="0"
+                        height="24"
+                        orientation=""
+                        style="background-image: url('res://back_circle_sm');
+                                background-repeat: no-repeat;
+                                background-size: auto;
+                                background-position: left center;
+                                padding-left: 30pt;
+                                line-height: auto;"
+                        (tap)="back()"
+                    >
+        
+                    </Label>
                     <StackLayout orientation="horizontal">
                         <Image
                             src="res://icon_provider_bio"

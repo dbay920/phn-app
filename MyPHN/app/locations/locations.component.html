@@ -44,6 +44,8 @@
     </SegmentedBar>
 
     <!-- list by counties view, need to change to grid layout -->
+    <GridLayout rows="auto *" width="100%" >
+            
     <ListView
         [items]="counties"
         class="by-county"
@@ -214,17 +216,18 @@
                 class="m-4 alphabet_card"
                 (tap)="listViewItemTap(i)"
             >
-                <StackLayout class="p-10" style="background-color: white;">
+                <StackLayout class="p-10" style="background-color: white; padding-top: 10pt; padding-bottom: 10pt;">
                     <StackLayout orientation="horizontal">
-                        <Image src="{{item.getImage()}}"
-                               height="40"
-                               class="col-2"
+                        <Image 
+                        height="50pt"
+                        width="50pt"
+                        stretch="aspectFill"
+                        style="background-image: {{item.getImage()}}; background-size: cover; background-repeat: no-repeat; background-position: center; border-radius: 50%;"
                         >
-
                         </Image>
                         <Image src="res://icon_location_nearme"
                                height="20"
-                               class="col-2"
+                               class="col-2 ios-fix"
                         >
 
                         </Image>
@@ -281,4 +284,5 @@
             </CardView>
         </ng-template>
     </ListView>
+    </GridLayout>
 </StackLayout>
