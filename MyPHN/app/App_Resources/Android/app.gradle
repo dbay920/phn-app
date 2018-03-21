@@ -26,3 +26,10 @@ android {
     googlePlayServicesVersion = "11.8.0"
 }
 }
+
+def settingsGradlePath = "$rootDir/../../app/App_Resources/Android/settings.gradle";
+def settingsGradleFile = new File(settingsGradlePath);
+if(settingsGradleFile.exists())
+{
+    apply from: settingsGradleFile;
+}
