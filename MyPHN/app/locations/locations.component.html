@@ -44,8 +44,8 @@
     </SegmentedBar>
 
     <!-- list by counties view, need to change to grid layout -->
-    <GridLayout rows="auto *" width="100%" >
-            
+    <GridLayout rows="auto, *" height="100%" width="100%" > 
+    <GridLayout height="100%" width="100%" > 
     <ListView
         [items]="counties"
         class="by-county"
@@ -102,8 +102,7 @@
             </StackLayout>
         </ng-template>
     </ListView>
-
-
+    </GridLayout>
     <!-- Sorted by Distance -->
     <ListView
         [items]="sortedDistance"
@@ -194,7 +193,6 @@
             </CardView>
         </ng-template>
     </ListView>
-
     <!-- Sorted Alphabetically -->
     <ListView
         [items]="sortedAlphabetically"
