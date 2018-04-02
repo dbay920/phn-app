@@ -10,7 +10,6 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import url("~/platform.css");
-@import 'nativescript-theme-core/css/core.light.css';
 
 ActionBar {
   background-color:  #00817d;
@@ -147,7 +146,7 @@ Page {
   margin: 10;
 }
 
-.small-title, 
+.small-title,
 .col-10, .col-12 {
   padding-left:10px;
 }
