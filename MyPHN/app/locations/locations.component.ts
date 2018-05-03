@@ -10,6 +10,8 @@ import * as _ from "lodash";
 import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";
 import { Location } from "../shared/location/location";
 import { LocateAddress } from "nativescript-locate-address";
+// adding home component to see if fixes distance load
+import { HomeComponent } from "../home/home.component";
 
 
 @Component({
@@ -88,10 +90,10 @@ export class LocationsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (!isEnabled()) {
+        /* if (!isEnabled()) {
             enableLocationRequest();
             console.log('nonblocking');
-        }
+        } */
 
         this.locationsService.getAllLocations().then((countyLats) => {
             getCurrentLocation({

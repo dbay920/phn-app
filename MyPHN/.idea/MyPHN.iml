@@ -3,13 +3,18 @@
   <component name="FacetManager">
     <facet type="android" name="Android">
       <configuration>
-        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/../../MyPHN/gen" />
-        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/../../MyPHN/gen" />
-        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../../MyPHN/AndroidManifest.xml" />
-        <option name="RES_FOLDER_RELATIVE_PATH" value="/../../MyPHN/res" />
-        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../../MyPHN/assets" />
-        <option name="LIBS_FOLDER_RELATIVE_PATH" value="/../../MyPHN/libs" />
-        <option name="PROGUARD_LOGS_FOLDER_RELATIVE_PATH" value="/../../MyPHN/proguard_logs" />
+        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/../gen" />
+        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/../gen" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../platforms/android/src/main/AndroidManifest.xml" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="/../platforms/android/src" />
+        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../platforms/android/src/main/assets" />
+        <option name="LIBS_FOLDER_RELATIVE_PATH" value="/../platforms/android/libs" />
+        <option name="PROGUARD_LOGS_FOLDER_RELATIVE_PATH" value="/../proguard_logs" />
+      </configuration>
+    </facet>
+    <facet type="android-gradle" name="Android-Gradle">
+      <configuration>
+        <option name="GRADLE_PROJECT_PATH" />
       </configuration>
     </facet>
   </component>
