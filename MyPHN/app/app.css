@@ -9,8 +9,15 @@ In many cases you may want to use the NativeScript core theme instead
 of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
-@import url("~/platform.css");
-@import 'nativescript-theme-core/css/core.light.css';
+@import '../node_modules/nativescript-theme-core/css/core.light.android.css';
+
+@import '../node_modules/nativescript-theme-core/css/core.light.android.css';
+
+@import '../app/platform.css';
+
+@import '../app/platform.ios.css';
+
+@import '../app/platform.android.css';
 
 ActionBar {
   background-color:  #00817d;
