@@ -13,19 +13,19 @@
     }
   },
   "dependencies": {
-    "@angular/animations": "~4.0.0",
-    "@angular/common": "~4.0.0",
-    "@angular/compiler": "~4.0.0",
-    "@angular/core": "~4.0.0",
-    "@angular/forms": "~4.0.0",
-    "@angular/http": "~4.0.0",
-    "@angular/platform-browser": "~4.0.0",
-    "@angular/platform-browser-dynamic": "~4.0.0",
-    "@angular/router": "~4.0.0",
+    "@angular/animations": "8.0.0",
+    "@angular/common": "8.0.0",
+    "@angular/compiler": "8.0.0",
+    "@angular/core": "8.0.0",
+    "@angular/forms": "8.0.0",
+    "@angular/http": "8.0.0-beta.10",
+    "@angular/platform-browser": "8.0.0",
+    "@angular/platform-browser-dynamic": "8.0.0",
+    "@angular/router": "8.0.0",
     "@types/lodash": "^4.14.72",
     "lodash": "^4.17.4",
-    "nativescript-angular": "^3.0.1",
-    "nativescript-cardview": "^2.0.2",
+    "nativescript-angular": "~8.0.1",
+    "nativescript-cardview": "^3.2.0",
     "nativescript-geolocation": "^3.0.0",
     "nativescript-imagepicker": "^3.0.7",
     "nativescript-locate-address": "^1.0.2",
@@ -35,11 +35,13 @@
     "nativescript-screen-orientation": "^2.0.0",
     "nativescript-theme-core": "~1.0.4",
     "reflect-metadata": "~0.1.8",
-    "rxjs": "~5.3.0",
-    "tns-core-modules": "^3.0.1",
-    "zone.js": "~0.8.4"
+    "rxjs": "6.4.0",
+    "tns-core-modules": "^5.1.0",
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
+    "@angular/compiler-cli": "8.0.0",
+    "@ngtools/webpack": "8.0.0",
     "babel-traverse": "6.24.1",
     "babel-types": "6.24.1",
     "babylon": "6.17.2",
@@ -47,8 +49,8 @@
     "nativescript-custom-entitlements": "^0.2.0",
     "nativescript-dev-android-snapshot": "^0.*.*",
     "nativescript-dev-typescript": "^0.5.0",
-    "nativescript-plugin-firebase": "^5.1.6",
+    "nativescript-dev-webpack": "0.24.1",
     "tns-platform-declarations": "^3.1.1",
-    "typescript": "2.3.4"
+    "typescript": "3.4.5"
   }
 }
