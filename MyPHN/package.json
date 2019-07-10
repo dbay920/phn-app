@@ -6,10 +6,10 @@
   "nativescript": {
     "id": "net.primaryhealth.MyPHN",
     "tns-android": {
-      "version": "3.4.2"
+      "version": "5.4.0"
     },
     "tns-ios": {
-      "version": "3.4.1"
+      "version": "5.4.2"
     }
   },
   "dependencies": {
