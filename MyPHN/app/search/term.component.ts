@@ -1,7 +1,7 @@
 import { QueryList, Component, ViewChildren, AfterViewInit, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from '@angular/router';
-import { WebView } from "ui/web-view"
-import { isAndroid, isIOS, device, screen } from "platform";
+import { WebView } from "tns-core-modules/ui/web-view"
+import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
 import { ItemsComponent } from '../items.component';
 
 @Component({

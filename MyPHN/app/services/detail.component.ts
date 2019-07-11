@@ -1,6 +1,6 @@
 import { NgZone, QueryList, Component, OnInit, ElementRef, ViewChildren, AfterViewInit } from "@angular/core";
 import { ActivatedRoute, Router } from '@angular/router';
-import { isAndroid, isIOS, device, screen } from "platform";
+import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
 import { ItemsComponent } from '../items.component';
 import { LocationsService } from '../shared/location/locations.service';
 import { Provider } from "../shared/providers/provider"

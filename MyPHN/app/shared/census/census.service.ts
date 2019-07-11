@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 
-var fetchModule = require("fetch");
+var fetchModule = require("tns-core-modules/fetch");
 
 @Injectable()
 export class CensusService {

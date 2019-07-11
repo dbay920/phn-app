@@ -3,18 +3,18 @@ import {
     AfterViewInit,
 } from "@angular/core";
 import { ActivatedRoute, Router, } from '@angular/router';
-import { View } from "ui/core/view";
+import { View } from "tns-core-modules/ui/core/view";
 import { LocationsService } from "./shared/location/locations.service";
 
 import { registerElement, RouterExtensions } from 'nativescript-angular';
-import { setInterval, setTimeout, clearInterval } from "timer";
-import { TabView } from "ui/tab-view"
-import { ActionBar } from "ui/action-bar"
-import { Page } from "ui/page"
-import { isAndroid, isIOS, device, screen } from "platform";
+import { setInterval, setTimeout, clearInterval } from "tns-core-modules/timer";
+import { TabView } from "tns-core-modules/ui/tab-view"
+import { ActionBar } from "tns-core-modules/ui/action-bar"
+import { Page } from "tns-core-modules/ui/page"
+import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
 import { Config } from './shared/config';
-import { layout } from "utils/utils"
-import { EventData } from "data/observable";
+import { layout } from "tns-core-modules/utils/utils"
+import { EventData } from "tns-core-modules/data/observable";
 import { setCurrentOrientation, orientationCleanup } from 'nativescript-screen-orientation';
 
 declare var android;

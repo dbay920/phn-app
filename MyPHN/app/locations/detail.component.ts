@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit, ElementRef, ViewChild, NgZone } from "@angular/core";
-import { View } from "ui/core/view";
-import { Image } from "ui/image";
+import { View } from "tns-core-modules/ui/core/view";
+import { Image } from "tns-core-modules/ui/image";
 import { LocationsService } from "../shared/location/locations.service";
 import { LocationDetail } from "../shared/location/detail";
 import { ActivatedRoute, Router } from '@angular/router';

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Service } from "./service"
-
-var fetchModule = require("fetch");
+// converted require to import
+import fetchModule from "tns-core-modules/fetch";
 
 import * as xmlModule from "tns-core-modules/xml";
 

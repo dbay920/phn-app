@@ -1,10 +1,10 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
-import { View } from "ui/core/view";
+import { View } from "tns-core-modules/ui/core/view";
 import { LocationsService } from "../shared/location/locations.service";
 import { County } from "../shared/location/county";
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageRoute } from "nativescript-angular/router";
-import { SegmentedBar, SegmentedBarItem } from "ui/segmented-bar";
+import { SegmentedBar, SegmentedBarItem } from "tns-core-modules/ui/segmented-bar";
 import { Config } from '../shared/config';
 import * as _ from "lodash";
 import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";

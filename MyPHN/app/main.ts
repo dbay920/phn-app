@@ -2,7 +2,7 @@
 import { platformNativeScriptDynamic } from "nativescript-angular/platform";
 
 import { AppModule } from "./app.module";
-import { isAndroid, isIOS, device, screen } from "platform";
+import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
 
 import * as elementRegistryModule from 'nativescript-angular/element-registry';
 elementRegistryModule.registerElement("CardView", () => require("nativescript-cardview").CardView);

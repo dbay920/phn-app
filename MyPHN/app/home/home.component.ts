@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
-import { View } from "ui/core/view";
+import { View } from "tns-core-modules/ui/core/view";
 import { LocationsService } from "../shared/location/locations.service";
 import { ActivatedRoute, Router } from '@angular/router';
-import { Color } from "color";
+import { Color } from "tns-core-modules/color";
 import { LocationDetail } from "../shared/location/detail"
 import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";
 import { LocateAddress } from "nativescript-locate-address";
