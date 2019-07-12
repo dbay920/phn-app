@@ -46,7 +46,16 @@ export class Location {
     }
 
     getGeo() {
-        let longitude = this.data[5].match(/long(.*?),/)[1]
+        let split = _.split(this.data[5], ',');
+        let longitude: string;
+
+        _.each(split, s => {
+            if (!s.includes('long')) {
+                return;
+            }
+            longitude = _.split(s, 'long')[1];
+        });
+
         let latitude = this.data[5].match(/lat(.*?)[,<]/) ?
             this.data[5].match(/lat(.*?)[,<]/)[1]
             : this.data[5].split('lat')[1]
