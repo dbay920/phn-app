@@ -16,6 +16,7 @@ import { Config } from './shared/config';
 import { layout } from "tns-core-modules/utils/utils"
 import { EventData } from "tns-core-modules/data/observable";
 import { setCurrentOrientation, orientationCleanup } from 'nativescript-screen-orientation';
+import { ActionbarService } from "./src/app/actionbar.service";
 
 declare var android;
 
@@ -30,6 +31,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
     public SideDrawerLocation: any;
     public static tabView: TabView;
     public static actionBar: ActionBar;
+    private static _ab:ActionbarService;
 
     @ViewChildren('ref') ref: QueryList<any>;
     @ViewChildren('action') action: QueryList<any>;
@@ -38,8 +40,10 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         private _router: Router,
         private locationsService: LocationsService,
         private routerExtensions: RouterExtensions,
-        private page: Page
+        private page: Page,
+        private ab:ActionbarService,
     ) {
+        ItemsComponent._ab =this.ab;
         page.on("navigatedTo", function() {
             setCurrentOrientation("portrait", function() {
                 console.log("portrait orientation");
@@ -74,11 +78,9 @@ export class ItemsComponent implements OnInit, AfterViewInit {
             return;
         }
 
-        let page = <Page>ItemsComponent.tabView.page;
-
+        ItemsComponent._ab.showActionBar();
         if (ItemsComponent.navCtrl)
             ItemsComponent.navCtrl.navigationBarHidden = true;
-        page.actionBarHidden = false;
     }
 
     private static isMoreTab(): boolean {
