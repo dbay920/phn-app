@@ -96,6 +96,7 @@ export class ItemsComponent implements OnInit, AfterViewInit {
         ItemsComponent.showActionBar();
     }
 
+    canGoBack = {};
 
     public ngOnInit(): void {
 
