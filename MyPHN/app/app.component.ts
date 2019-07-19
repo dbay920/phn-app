@@ -1,4 +1,8 @@
 import { Component } from "@angular/core";
+import { Router, NavigationEnd } from "@angular/router";
+import { Page } from "tns-core-modules/ui/page/page";
+import { topmost } from "tns-core-modules/ui/frame/frame";
+import { ActionbarService } from "./src/app/actionbar.service";
 
 const firebase = require("nativescript-plugin-firebase");
 
@@ -8,7 +12,18 @@ const firebase = require("nativescript-plugin-firebase");
 
 })
 export class AppComponent {
-    constructor() {
+    constructor(
+        private _Router:Router,
+        private page:Page,
+        private ab:ActionbarService,
+    ) {
+        this._Router.events.subscribe((ev) => {
+            if (ev instanceof NavigationEnd) {
+                const rootFrame = topmost();
+
+                ab.registerPage(rootFrame);
+            }
+        });
         firebase.init({
             // Optionally pass in properties for database, authentication and cloud messaging,
             // see their respective docs.
