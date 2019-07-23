@@ -17,6 +17,9 @@ android {
   defaultConfig {
     generatedDensities = []
     applicationId = "net.primaryhealth.MyPHN"
+    ndk {
+      abiFilters.clear()
+    }
   }
   aaptOptions {
     additionalParameters "--no-version-vectors"
