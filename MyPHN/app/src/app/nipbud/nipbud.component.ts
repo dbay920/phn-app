@@ -14,7 +14,7 @@ import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
 import { layout } from "tns-core-modules/utils/utils"
 import { EventData } from "tns-core-modules/data/observable";
 import { setCurrentOrientation, orientationCleanup } from 'nativescript-screen-orientation';
-import { enableLocationRequest } from "nativescript-geolocation";
+import { enableLocationRequest, isEnabled } from "nativescript-geolocation";
 
 declare var android;
 
@@ -29,22 +29,22 @@ export class NipbudComponent implements OnInit, AfterViewInit {
     public static tabView: TabView;
     public static actionBar: ActionBar;
 
-    @ViewChildren('ref') ref: QueryList<any>;
-    @ViewChildren('action') action: QueryList<any>;
+    //@ViewChildren('ref') ref: QueryList<any>;
+    //@ViewChildren('action') action: QueryList<any>;
 
     constructor(
         private _router: Router,
         private routerExtensions: RouterExtensions,
         private page: Page,
     ) {
-        page.on("navigatedTo", function() {
+        /*page.on("navigatedTo", function() {
             setCurrentOrientation("portrait", function() {
                 console.log("portrait orientation");
             });
         });
         page.on("navigatingFrom", function() {
             orientationCleanup();
-        });
+        });*/
     }
 
     public goBack() {
@@ -52,10 +52,10 @@ export class NipbudComponent implements OnInit, AfterViewInit {
     }
 
     public ngOnInit(): void {
-
+        this.getLocation();
     }
 
-    onLoaded(event: EventData) {
+   /* onLoaded(event: EventData) {
         if (isAndroid) {
             const tabView = (<any>event.object)._tabLayout.getChildAt(0);
             for (let i = 0; i < tabView.getChildCount(); i++) {
@@ -70,7 +70,7 @@ export class NipbudComponent implements OnInit, AfterViewInit {
                 textView.setMaxLines(1);
             }
         }
-    }
+    }*/
 
     static navCtrl;
     public ngAfterViewInit() {
@@ -78,8 +78,16 @@ export class NipbudComponent implements OnInit, AfterViewInit {
     }
 
     private getLocation() {
-        enableLocationRequest().then(x => {
-            console.log(x);
+        isEnabled().then( (isLocationEnabled) =>{
+            let message = "Location services are not available";
+            enableLocationRequest().then(()=>this._router.navigateByUrl('/items'));
+            if (isLocationEnabled) {
+                message = "Location services are available";
+                this._router.navigateByUrl('/items');
+            }
+         //   alert(message);
+        }, function (e) {
+            console.log("Location error received: " + (e.message || e));
         });
 
     }
