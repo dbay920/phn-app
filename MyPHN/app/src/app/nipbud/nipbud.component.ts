@@ -55,22 +55,22 @@ export class NipbudComponent implements OnInit, AfterViewInit {
         this.getLocation();
     }
 
-   /* onLoaded(event: EventData) {
-        if (isAndroid) {
-            const tabView = (<any>event.object)._tabLayout.getChildAt(0);
-            for (let i = 0; i < tabView.getChildCount(); i++) {
-                const tabItem = tabView.getChildAt(i),
-                    textView = tabItem.getChildAt(1);
-                tabItem.setLayoutParams(
-                    new android.widget.LinearLayout
-                        .LayoutParams(android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
-                            android.view.ViewGroup.LayoutParams.MATCH_PARENT)
-                );
-                textView.setMaxWidth(layout.toDevicePixels(800)); // increase as much you want
-                textView.setMaxLines(1);
-            }
-        }
-    }*/
+    /* onLoaded(event: EventData) {
+         if (isAndroid) {
+             const tabView = (<any>event.object)._tabLayout.getChildAt(0);
+             for (let i = 0; i < tabView.getChildCount(); i++) {
+                 const tabItem = tabView.getChildAt(i),
+                     textView = tabItem.getChildAt(1);
+                 tabItem.setLayoutParams(
+                     new android.widget.LinearLayout
+                         .LayoutParams(android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+                             android.view.ViewGroup.LayoutParams.MATCH_PARENT)
+                 );
+                 textView.setMaxWidth(layout.toDevicePixels(800)); // increase as much you want
+                 textView.setMaxLines(1);
+             }
+         }
+     }*/
 
     static navCtrl;
     public ngAfterViewInit() {
@@ -78,15 +78,27 @@ export class NipbudComponent implements OnInit, AfterViewInit {
     }
 
     private getLocation() {
-        isEnabled().then( (isLocationEnabled) =>{
+        isEnabled().then((isLocationEnabled) => {
             let message = "Location services are not available";
-            enableLocationRequest().then(()=>this._router.navigateByUrl('/items'));
+
+            enableLocationRequest().then(
+                () => {
+                    this._router.navigateByUrl('/items')
+                }).catch((e: Error) => {
+                    if (e.message.includes('Cannot enable the location service.')) {
+                        alert('Cannot enable the location service.');
+                        this._router.navigateByUrl('/items');
+                    } else {
+                        alert(e.message);
+                        this._router.navigateByUrl('/items');
+                    }
+                });
             if (isLocationEnabled) {
                 message = "Location services are available";
                 this._router.navigateByUrl('/items');
             }
-         //   alert(message);
-        }, function (e) {
+            //   alert(message);
+        }, function(e) {
             console.log("Location error received: " + (e.message || e));
         });
 
