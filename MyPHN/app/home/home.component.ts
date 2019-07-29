@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
     }
 
     goToUrl(url) {
-        this._router.navigateByUrl('')
+        // this._router.navigateByUrl('/items')
         ItemsComponent.setSelectedIndex(url);
     }
 
