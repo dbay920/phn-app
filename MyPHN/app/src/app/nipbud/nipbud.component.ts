@@ -83,19 +83,19 @@ export class NipbudComponent implements OnInit, AfterViewInit {
 
             enableLocationRequest().then(
                 () => {
-                    this._router.navigateByUrl('/items')
+                    this.routerExtensions.navigate(['/items'], { clearHistory: true });
                 }).catch((e: Error) => {
                     if (e.message.includes('Cannot enable the location service.')) {
                         alert('Cannot enable the location service.');
-                        this._router.navigateByUrl('/items');
+                        this.routerExtensions.navigate(['/items'], { clearHistory: true });
                     } else {
                         alert(e.message);
-                        this._router.navigateByUrl('/items');
+                        this.routerExtensions.navigate(['/items'], { clearHistory: true });
                     }
                 });
             if (isLocationEnabled) {
                 message = "Location services are available";
-                this._router.navigateByUrl('/items');
+                this.routerExtensions.navigate(['/items'], { clearHistory: true });
             }
             //   alert(message);
         }, function(e) {
