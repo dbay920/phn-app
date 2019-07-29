@@ -5,7 +5,7 @@ import { AppModule } from "./app.module";
 import { isAndroid, isIOS, device, screen } from "tns-core-modules/platform";
 
 import * as elementRegistryModule from 'nativescript-angular/element-registry';
-elementRegistryModule.registerElement("CardView", () => require("nativescript-cardview").CardView);
+elementRegistryModule.registerElement("CardView", () => require("@nstudio/nativescript-cardview").CardView);
 
 const firebase = require("nativescript-plugin-firebase");
 
