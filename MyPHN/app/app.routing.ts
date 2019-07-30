@@ -14,12 +14,17 @@ import { SearchComponent } from "./search/search.component"
 import { SearchTermComponent } from "./search/term.component"
 import { PortalComponent } from "./portal/portal.component"
 import { ItemsComponent } from "./items.component";
+import { NipbudComponent} from "./src/app/nipbud/nipbud.component";
 
 const routes: Routes = [
     {
         path: "",
-        redirectTo: "/items",
+        redirectTo: "/nipbud",
         pathMatch: "full"
+    },
+    {
+        path: "nipbud",
+        component: NipbudComponent,
     },
     {
         path: "items",

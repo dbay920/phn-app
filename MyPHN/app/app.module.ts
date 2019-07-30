@@ -22,7 +22,8 @@ import { SearchTermComponent } from "./search/term.component"
 import { PortalComponent } from "./portal/portal.component"
 import { ServicesService } from "./shared/services/services.service"
 import { ProvidersService } from "./shared/providers/providers.service"
-import { NewsComponent } from "./news/news.component"
+import { NewsComponent } from "./news/news.component";
+import { NipbudComponent} from "./src/app/nipbud/nipbud.component";
 
 @NgModule({
     bootstrap: [
@@ -50,6 +51,7 @@ import { NewsComponent } from "./news/news.component"
         CountyComponent,
         LocationsComponent,
         LocationDetailComponent,
+        NipbudComponent,
     ],
     providers: [
         LocationsService,

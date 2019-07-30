@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "453784066967",
+    "firebase_url": "https://my-phn-19367.firebaseio.com",
+    "project_id": "my-phn-19367",
+    "storage_bucket": "my-phn-19367.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453784066967:android:b2108772c550b4a9",
+        "android_client_info": {
+          "package_name": "net.primaryhealth.MyPHN"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453784066967-asjq20btmjr3rl0fcmq0qrf3l5auqd0u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLrYFUlt_X1A2-aBevtEMizviOEioSlBw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

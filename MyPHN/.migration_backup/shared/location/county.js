@@ -1,0 +1,38 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var County = /** @class */ (function () {
+    function County() {
+        this.data = [];
+    }
+    County.buildFromName = function (name) {
+        var obj = new County();
+        var county = name.split(' ');
+        if (county.length > 1) {
+            obj.push('https://primary-health.net/' + county[0] + '.aspx');
+        }
+        else {
+            obj.push(county[0]);
+        }
+        return obj;
+    };
+    County.prototype.getHref = function () {
+        return this.data[0];
+    };
+    County.prototype.getName = function () {
+        var parts = this.data[0].split('net/');
+        if (parts.length > 1) {
+            var x = parts[1];
+            if (x)
+                return x.split('.')[0] + ' County';
+        }
+        else {
+            return this.service;
+        }
+    };
+    County.prototype.push = function (x) {
+        this.data.push(x);
+    };
+    return County;
+}());
+exports.County = County;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY291bnR5LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiY291bnR5LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUE7SUFJSTtRQUNJLElBQUksQ0FBQyxJQUFJLEdBQUcsRUFBRSxDQUFDO0lBQ25CLENBQUM7SUFFTSxvQkFBYSxHQUFwQixVQUFxQixJQUFZO1FBQzdCLElBQUksR0FBRyxHQUFHLElBQUksTUFBTSxFQUFFLENBQUM7UUFDdkIsSUFBSSxNQUFNLEdBQUcsSUFBSSxDQUFDLEtBQUssQ0FBQyxHQUFHLENBQUMsQ0FBQTtRQUU1QixJQUFJLE1BQU0sQ0FBQyxNQUFNLEdBQUcsQ0FBQyxFQUFFO1lBQ25CLEdBQUcsQ0FBQyxJQUFJLENBQUMsNkJBQTZCLEdBQUcsTUFBTSxDQUFDLENBQUMsQ0FBQyxHQUFHLE9BQU8sQ0FBQyxDQUFDO1NBQ2pFO2FBQU07WUFDSCxHQUFHLENBQUMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDO1NBQ3ZCO1FBRUQsT0FBTyxHQUFHLENBQUM7SUFDZixDQUFDO0lBRUQsd0JBQU8sR0FBUDtRQUNJLE9BQU8sSUFBSSxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQztJQUN4QixDQUFDO0lBRUQsd0JBQU8sR0FBUDtRQUNJLElBQUksS0FBSyxHQUFHLElBQUksQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUMsS0FBSyxDQUFDLE1BQU0sQ0FBQyxDQUFBO1FBRXRDLElBQUksS0FBSyxDQUFDLE1BQU0sR0FBRyxDQUFDLEVBQUU7WUFDbEIsSUFBSSxDQUFDLEdBQUcsS0FBSyxDQUFDLENBQUMsQ0FBQyxDQUFDO1lBRWpCLElBQUksQ0FBQztnQkFDRCxPQUFPLENBQUMsQ0FBQyxLQUFLLENBQUMsR0FBRyxDQUFDLENBQUMsQ0FBQyxDQUFDLEdBQUcsU0FBUyxDQUFDO1NBQzFDO2FBQU07WUFDSCxPQUFPLElBQUksQ0FBQyxPQUFPLENBQUM7U0FDdkI7SUFDTCxDQUFDO0lBRUQscUJBQUksR0FBSixVQUFLLENBQVM7UUFDVixJQUFJLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQztJQUN0QixDQUFDO0lBQ0wsYUFBQztBQUFELENBQUMsQUF6Q0QsSUF5Q0M7QUF6Q1ksd0JBQU0iLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY2xhc3MgQ291bnR5IHtcbiAgICBkYXRhOiBBcnJheTxzdHJpbmc+O1xuICAgIHNlcnZpY2U6IHN0cmluZztcblxuICAgIGNvbnN0cnVjdG9yKCkge1xuICAgICAgICB0aGlzLmRhdGEgPSBbXTtcbiAgICB9XG5cbiAgICBzdGF0aWMgYnVpbGRGcm9tTmFtZShuYW1lOiBzdHJpbmcpIHtcbiAgICAgICAgbGV0IG9iaiA9IG5ldyBDb3VudHkoKTtcbiAgICAgICAgbGV0IGNvdW50eSA9IG5hbWUuc3BsaXQoJyAnKVxuXG4gICAgICAgIGlmIChjb3VudHkubGVuZ3RoID4gMSkge1xuICAgICAgICAgICAgb2JqLnB1c2goJ2h0dHBzOi8vcHJpbWFyeS1oZWFsdGgubmV0LycgKyBjb3VudHlbMF0gKyAnLmFzcHgnKTtcbiAgICAgICAgfSBlbHNlIHtcbiAgICAgICAgICAgIG9iai5wdXNoKGNvdW50eVswXSk7XG4gICAgICAgIH1cblxuICAgICAgICByZXR1cm4gb2JqO1xuICAgIH1cblxuICAgIGdldEhyZWYoKSB7XG4gICAgICAgIHJldHVybiB0aGlzLmRhdGFbMF07XG4gICAgfVxuXG4gICAgZ2V0TmFtZSgpIHtcbiAgICAgICAgbGV0IHBhcnRzID0gdGhpcy5kYXRhWzBdLnNwbGl0KCduZXQvJylcblxuICAgICAgICBpZiAocGFydHMubGVuZ3RoID4gMSkge1xuICAgICAgICAgICAgbGV0IHggPSBwYXJ0c1sxXTtcblxuICAgICAgICAgICAgaWYgKHgpXG4gICAgICAgICAgICAgICAgcmV0dXJuIHguc3BsaXQoJy4nKVswXSArICcgQ291bnR5JztcbiAgICAgICAgfSBlbHNlIHtcbiAgICAgICAgICAgIHJldHVybiB0aGlzLnNlcnZpY2U7XG4gICAgICAgIH1cbiAgICB9XG5cbiAgICBwdXNoKHg6IHN0cmluZykge1xuICAgICAgICB0aGlzLmRhdGEucHVzaCh4KTtcbiAgICB9XG59XG4iXX0=
