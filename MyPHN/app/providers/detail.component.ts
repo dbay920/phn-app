@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Provider } from '../shared/providers/provider'
 import { ItemsComponent } from '../items.component';
 import * as TNSPhone from 'nativescript-phone';
-import { LocateAddress } from "nativescript-locate-address";
+// import { LocateAddress } from "nativescript-locate-address";
 
 @Component({
     selector: "ns-items",
@@ -64,6 +64,7 @@ export class ProviderDetailComponent implements OnInit {
         TNSPhone.dial(x, true);
     }
 
+    /*
     navigate(x) {
         let locator = new LocateAddress();
 
@@ -82,4 +83,5 @@ export class ProviderDetailComponent implements OnInit {
 
         });
     }
+    */
 }
