@@ -6,7 +6,7 @@ import { LocationDetail } from "../shared/location/detail";
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageRoute } from "nativescript-angular/router";
 import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";
-import { LocateAddress } from "nativescript-locate-address";
+// import { LocateAddress } from "nativescript-locate-address";
 import * as LabelModule from "tns-core-modules/ui/label";
 import { Config } from '../shared/config';
 import * as _ from "lodash";
@@ -135,15 +135,16 @@ export class LocationDetailComponent implements OnInit {
     listViewItemTap(i) {
         this.cards[i].visible = !this.cards[i].visible;
     }
-
-    navigate() {
-        let locator = new LocateAddress();
-        locator.locate({
-            address: this.details.getAddress(),
-        }).then(() => {
-            console.log("Maps app launched.");
-        }, (error) => {
-            console.log(error);
-        });
-    }
+    /*
+        navigate() {
+            let locator = new LocateAddress();
+            locator.locate({
+                address: this.details.getAddress(),
+            }).then(() => {
+                console.log("Maps app launched.");
+            }, (error) => {
+                console.log(error);
+            });
+        }
+    */
 }
