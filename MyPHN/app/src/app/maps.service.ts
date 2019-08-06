@@ -12,3 +12,4 @@ export class MapsService {
         utilsModule.openUrl(`geo:${lat},${long}`);
     }
 }
+
