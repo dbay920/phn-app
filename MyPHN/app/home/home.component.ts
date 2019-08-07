@@ -106,9 +106,7 @@ export class HomeComponent implements OnInit {
     }
 
     public navigate() {
-        const geo = this.minCounty.getGeo();
-
-        this.maps.openMapApp(geo.latitude, geo.longitude);
+        this.maps.openMapApp(this.minCounty);
     }
 
     private myDist(x: any, y: any) {
