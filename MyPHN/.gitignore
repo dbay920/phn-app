@@ -1,6 +1,6 @@
 npm-debug.log
 .DS_Store
-
+.migration_backup/
 *.js.map
 app/**/*.js
 app/tns_modules
