@@ -40,8 +40,9 @@ export class MapsService {
                 if (avail) {
                     this.directions.navigate({
                         to: {
-                            lat,
-                            lng,
+                            address: loc.getAddress(),
+                            // lat,
+                            // lng,
                         }
                     }).then((__: any) => {
                         // success
