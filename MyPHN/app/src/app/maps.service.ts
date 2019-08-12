@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as utilsModule from 'tns-core-modules/utils/utils';
 import { isIOS } from 'tns-core-modules/ui/page/page';
-import { Location } from '~/shared/location/location';
 import * as _ from 'lodash';
 
 import { Directions } from "nativescript-directions";
+
+export interface HasAddress {
+    getAddress: () => string;
+}
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +20,7 @@ export class MapsService {
         this.directions = new Directions();
     }
 
-    public openMapApp(loc: Location) {
+    public openMapApp(loc: HasAddress) {
         if (isIOS) {
             const addr = loc.getAddress();
             const first = addr.split(',')[0];
@@ -32,10 +35,11 @@ export class MapsService {
 
             utilsModule.openUrl(url);
         } else {
+            /*
             const geo = loc.getGeo();
             const lat = geo.latitude;
             const lng = geo.longitude;
-
+*/
             this.directions.available().then((avail: boolean) => {
                 if (avail) {
                     this.directions.navigate({
@@ -55,6 +59,10 @@ export class MapsService {
             });
             //            utilsModule.openUrl(`geo:${lat},${long}`);
         }
+    }
+
+    public openMapAppWithAddress(x: string) {
+        return this.openMapApp({ getAddress: () => x });
     }
 }
 
