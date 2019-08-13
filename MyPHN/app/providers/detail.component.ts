@@ -4,7 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Provider } from '../shared/providers/provider'
 import { ItemsComponent } from '../items.component';
 import * as TNSPhone from 'nativescript-phone';
-import { LocateAddress } from "nativescript-locate-address";
+import { MapsService } from "~/src/app/maps.service";
+// import { LocateAddress } from "nativescript-locate-address";
 
 @Component({
     selector: "ns-items",
@@ -26,7 +27,8 @@ export class ProviderDetailComponent implements OnInit {
         private route: ActivatedRoute,
         private _router: Router,
         private providersService: ProvidersService,
-        private _ngZone: NgZone
+        private _ngZone: NgZone,
+        private maps: MapsService,
     ) {
     }
 
@@ -64,22 +66,8 @@ export class ProviderDetailComponent implements OnInit {
         TNSPhone.dial(x, true);
     }
 
-    navigate(x) {
-        let locator = new LocateAddress();
-
-        locator.available().then((avail) => {
-            if (!avail) {
-                alert("maps not available")
-            } else {
-                locator.locate({
-                    address: x.replace('\n', '%2C').replace(/ /g, '+').replace(',', '%2C'),
-                }).then(() => {
-                    console.log("Maps app launched.");
-                }, (error) => {
-                    console.log(error);
-                });
-            }
-
-        });
+    public navigate(x: string) {
+        //                address: x.replace('\n', '%2C').replace(/ /g, '+').replace(',', '%2C'),
+        this.maps.openMapAppWithAddress(x);
     }
 }

@@ -4,12 +4,19 @@ import { LocationsService } from "../shared/location/locations.service";
 import { County } from "../shared/location/county";
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageRoute } from "nativescript-angular/router";
-import { SegmentedBar, SegmentedBarItem } from "tns-core-modules/ui/segmented-bar";
+import {
+    SegmentedBar,
+    SegmentedBarItem
+} from "tns-core-modules/ui/segmented-bar";
 import { Config } from '../shared/config';
 import * as _ from "lodash";
-import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";
+import {
+    isEnabled,
+    enableLocationRequest,
+    getCurrentLocation, watchLocation, distance, clearWatch
+} from "nativescript-geolocation";
 import { Location } from "../shared/location/location";
-import { LocateAddress } from "nativescript-locate-address";
+// import { LocateAddress } from "nativescript-locate-address";
 
 
 @Component({

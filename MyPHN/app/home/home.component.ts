@@ -1,14 +1,15 @@
-import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
-import { View } from "tns-core-modules/ui/core/view";
+import { Component, OnInit } from "@angular/core";
 import { LocationsService } from "../shared/location/locations.service";
-import { ActivatedRoute, Router } from '@angular/router';
-import { Color } from "tns-core-modules/color";
 import { LocationDetail } from "../shared/location/detail"
-import { isEnabled, enableLocationRequest, getCurrentLocation, watchLocation, distance, clearWatch } from "nativescript-geolocation";
-import { LocateAddress } from "nativescript-locate-address";
+import {
+    isEnabled,
+    enableLocationRequest,
+    getCurrentLocation,
+    distance,
+} from "nativescript-geolocation";
 import { ItemsComponent } from "../items.component";
-import { Config } from '../shared/config';
 import { Location } from '../shared/location/location';
+import { MapsService } from "~/src/app/maps.service";
 
 @Component({
     selector: "ns-items",
@@ -19,31 +20,33 @@ import { Location } from '../shared/location/location';
 })
 
 export class HomeComponent implements OnInit {
-    countyLats;
-    image: string;
-    details: LocationDetail;
-    distance;
-    name;
-    cards;
-    address;
+    //    countyLats;
+
+    public image: string;
+    public details: LocationDetail;
+
+    // display value for closest location
+    public distance: string;
+    public name: string;
+    public address: string;
+
+    public cards: Array<any>;
+    private minCounty: Location;
 
     constructor(
-        private _router: Router,
+        //   private _router: Router,
         private locationsService: LocationsService,
+        private maps: MapsService,
         //      private censusService: CensusService
     ) {
     }
 
-    myDist(x, y) {
-        return distance(x, y);
-    }
-
-    goToUrl(url) {
+    public goToUrl(url: number) {
         // this._router.navigateByUrl('/items')
         ItemsComponent.setSelectedIndex(url);
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         // Loading image to show while detecting location
         this.image = 'res://loadingscreen'; // TODO: change me
 
@@ -69,54 +72,44 @@ export class HomeComponent implements OnInit {
             console.log('nonblocking');
         }
 
-        this.locationsService.getAllLocations().then((countyLats) => {
-            getCurrentLocation({
-                desiredAccuracy: 3, updateDistance: 10, timeout: 30000
-            }).then((loc) => {
-                if (loc) {
-                    let metersToMiles = 0.000621371;
-                    let minDist = 8000;
-                    let minCounty: Location;
+        this.locationsService.getAllLocations()
+            .then((countyLats: Location[]) => {
+                getCurrentLocation({
+                    desiredAccuracy: 3, updateDistance: 10, timeout: 30000
+                }).then((loc) => {
+                    if (loc) {
+                        let metersToMiles = 0.000621371;
+                        let minDist = 8000;
 
-                    countyLats.forEach((feature) => {
-                        let location = feature.getGeo();
-                        let dist = this.myDist(location, loc) * metersToMiles;
+                        countyLats.forEach((feature) => {
+                            let location = feature.getGeo();
+                            let dist =
+                                this.myDist(location, loc) * metersToMiles;
 
-                        if (dist < minDist) {
-                            minDist = dist;
-                            minCounty = feature;
-                        }
-                    });
-                    this.name = minCounty.getName()
-                    this.address = minCounty.getAddress().replace(', ', '\n');
-                    this.distance = minDist.toFixed(1) + ' mi';
-                    this.image = minCounty.getImage();
-                }
-            }, function(e) {
+                            if (dist < minDist) {
+                                minDist = dist;
+                                this.minCounty = feature;
+                            }
+                        });
+                        this.name = this.minCounty.getName()
+                        this.address =
+                            this.minCounty.getAddress().replace(', ', '\n');
+                        this.distance = minDist.toFixed(1) + ' mi';
+                        this.image = this.minCounty.getImage();
+                    }
+                }, (_e) => {
 
-                // image to show when we cannot determine location
-                this.image = 'res://icon_location_home'; // TODO: change me
+                    // image to show when we cannot determine location
+                    this.image = 'res://icon_location_home'; // TODO: change me
+                });
             });
-        });
     }
 
-    navigate() {
-        let locator = new LocateAddress();
+    public navigate() {
+        this.maps.openMapApp(this.minCounty);
+    }
 
-        locator.available().then((avail) => {
-            if (!avail) {
-                alert("maps not available")
-            } else {
-                locator.locate({
-                    address: this.address.replace('\n', '%2C').replace(/ /g, '+').replace(',', '%2C'),
-                }).then(() => {
-                    console.log("Maps app launched.");
-                }, (error) => {
-                    console.log(error);
-                });
-            }
-
-        });
-
+    private myDist(x: any, y: any) {
+        return distance(x, y);
     }
 }
